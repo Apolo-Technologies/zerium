@@ -66,14 +66,14 @@ func (w *wizard) networkStats(tips bool) {
 		} else {
 			services["nginx"] = infos.String()
 		}
-		logger.Debug("Checking for ethstats availability")
+		logger.Debug("Checking for zrmstats availability")
 		if infos, err := checkEthstats(client, w.network); err != nil {
 			if err != ErrServiceUnknown {
-				services["ethstats"] = err.Error()
+				services["zrmstats"] = err.Error()
 			}
 		} else {
-			services["ethstats"] = infos.String()
-			protips.ethstats = infos.config
+			services["zrmstats"] = infos.String()
+			protips.zrmstats = infos.config
 		}
 		logger.Debug("Checking for bootnode availability")
 		if infos, err := checkNode(client, w.network, true); err != nil {
@@ -138,8 +138,8 @@ func (w *wizard) networkStats(tips bool) {
 			protips.network = genesis.Config.ChainId.Int64()
 		}
 	}
-	if protips.ethstats != "" {
-		w.conf.ethstats = protips.ethstats
+	if protips.zrmstats != "" {
+		w.conf.zrmstats = protips.zrmstats
 	}
 	w.conf.bootFull = protips.bootFull
 	w.conf.bootLight = protips.bootLight
@@ -159,7 +159,7 @@ type protips struct {
 	network   int64
 	bootFull  []string
 	bootLight []string
-	ethstats  string
+	zrmstats  string
 }
 
 // print analyzes the network information available and prints a collection of
@@ -171,13 +171,13 @@ func (p *protips) print(network string) {
 		fullinit = fmt.Sprintf("gzrm --datadir=$HOME/.%s init %s.json && ", network, network)
 		lightinit = fmt.Sprintf("gzrm --datadir=$HOME/.%s --light init %s.json && ", network, network)
 	}
-	// If an ethstats server is available, add the ethstats flag
+	// If an zrmstats server is available, add the zrmstats flag
 	statsflag := ""
-	if p.ethstats != "" {
-		if strings.Contains(p.ethstats, " ") {
-			statsflag = fmt.Sprintf(` --ethstats="yournode:%s"`, p.ethstats)
+	if p.zrmstats != "" {
+		if strings.Contains(p.zrmstats, " ") {
+			statsflag = fmt.Sprintf(` --zrmstats="yournode:%s"`, p.zrmstats)
 		} else {
-			statsflag = fmt.Sprintf(` --ethstats=yournode:%s`, p.ethstats)
+			statsflag = fmt.Sprintf(` --zrmstats=yournode:%s`, p.zrmstats)
 		}
 	}
 	// If bootnodes have been specified, add the bootnode flag

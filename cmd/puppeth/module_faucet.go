@@ -51,7 +51,7 @@ ADD account.pass /account.pass
 EXPOSE 8080
 
 CMD [ \
-	"/faucet", "--genesis", "/genesis.json", "--network", "{{.NetworkID}}", "--bootnodes", "{{.Bootnodes}}", "--ethstats", "{{.Ethstats}}", "--ethport", "{{.EthPort}}", \
+	"/faucet", "--genesis", "/genesis.json", "--network", "{{.NetworkID}}", "--bootnodes", "{{.Bootnodes}}", "--zrmstats", "{{.Ethstats}}", "--ethport", "{{.EthPort}}", \
 	"--faucet.name", "{{.FaucetName}}", "--faucet.amount", "{{.FaucetAmount}}", "--faucet.minutes", "{{.FaucetMinutes}}", "--faucet.tiers", "{{.FaucetTiers}}",          \
 	"--github.user", "{{.GitHubUser}}", "--github.token", "{{.GitHubToken}}", "--account.json", "/account.json", "--account.pass", "/account.pass"                       \
 	{{if .CaptchaToken}}, "--captcha.token", "{{.CaptchaToken}}", "--captcha.secret", "{{.CaptchaSecret}}"{{end}}                                                        \
@@ -102,7 +102,7 @@ func deployFaucet(client *sshClient, network string, bootnodes []string, config 
 	template.Must(template.New("").Parse(faucetDockerfile)).Execute(dockerfile, map[string]interface{}{
 		"NetworkID":     config.node.network,
 		"Bootnodes":     strings.Join(bootnodes, ","),
-		"Ethstats":      config.node.ethstats,
+		"Ethstats":      config.node.zrmstats,
 		"EthPort":       config.node.portFull,
 		"GitHubUser":    config.githubUser,
 		"GitHubToken":   config.githubToken,
@@ -122,7 +122,7 @@ func deployFaucet(client *sshClient, network string, bootnodes []string, config 
 		"VHost":         config.host,
 		"ApiPort":       config.port,
 		"EthPort":       config.node.portFull,
-		"EthName":       config.node.ethstats[:strings.Index(config.node.ethstats, ":")],
+		"EthName":       config.node.zrmstats[:strings.Index(config.node.zrmstats, ":")],
 		"GitHubUser":    config.githubUser,
 		"GitHubToken":   config.githubToken,
 		"CaptchaToken":  config.captchaToken,
@@ -164,7 +164,7 @@ type faucetInfos struct {
 
 // String implements the stringer interface.
 func (info *faucetInfos) String() string {
-	return fmt.Sprintf("host=%s, api=%d, zrm=%d, amount=%d, minutes=%d, tiers=%d, github=%s, captcha=%v, ethstats=%s", info.host, info.port, info.node.portFull, info.amount, info.minutes, info.tiers, info.githubUser, info.captchaToken != "", info.node.ethstats)
+	return fmt.Sprintf("host=%s, api=%d, zrm=%d, amount=%d, minutes=%d, tiers=%d, github=%s, captcha=%v, zrmstats=%s", info.host, info.port, info.node.portFull, info.amount, info.minutes, info.tiers, info.githubUser, info.captchaToken != "", info.node.zrmstats)
 }
 
 // checkFaucet does a health-check against an faucet server to verify whether
@@ -215,7 +215,7 @@ func checkFaucet(client *sshClient, network string) (*faucetInfos, error) {
 		node: &nodeInfos{
 			datadir:  infos.volumes["/root/.faucet"],
 			portFull: infos.portmap[infos.envvars["ETH_PORT"]+"/tcp"],
-			ethstats: infos.envvars["ETH_NAME"],
+			zrmstats: infos.envvars["ETH_NAME"],
 			keyJSON:  keyJSON,
 			keyPass:  keyPass,
 		},

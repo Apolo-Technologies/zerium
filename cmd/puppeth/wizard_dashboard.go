@@ -59,7 +59,7 @@ func (w *wizard) deployDashboard() {
 		}
 	}
 	listing := make(map[string]string)
-	for _, service := range []string{"ethstats", "explorer", "wallet", "faucet"} {
+	for _, service := range []string{"zrmstats", "explorer", "wallet", "faucet"} {
 		// Gather all the locally hosted pages of this type
 		var pages []string
 		for _, server := range available[service] {
@@ -70,7 +70,7 @@ func (w *wizard) deployDashboard() {
 			// If there's a service running on the machine, retrieve it's port number
 			var port int
 			switch service {
-			case "ethstats":
+			case "zrmstats":
 				if infos, err := checkEthstats(client, w.network); err == nil {
 					port = infos.port
 				}
@@ -112,15 +112,15 @@ func (w *wizard) deployDashboard() {
 			// No service hosting for this
 		}
 	}
-	// If we have ethstats running, ask whether to make the secret public or not
-	var ethstats bool
-	if w.conf.ethstats != "" {
+	// If we have zrmstats running, ask whether to make the secret public or not
+	var zrmstats bool
+	if w.conf.zrmstats != "" {
 		fmt.Println()
-		fmt.Println("Include ethstats secret on dashboard (y/n)? (default = yes)")
-		ethstats = w.readDefaultString("y") == "y"
+		fmt.Println("Include zrmstats secret on dashboard (y/n)? (default = yes)")
+		zrmstats = w.readDefaultString("y") == "y"
 	}
 	// Try to deploy the dashboard container on the host
-	if out, err := deployDashboard(client, w.network, infos.port, infos.host, listing, &w.conf, ethstats); err != nil {
+	if out, err := deployDashboard(client, w.network, infos.port, infos.host, listing, &w.conf, zrmstats); err != nil {
 		log.Error("Failed to deploy dashboard container", "err", err)
 		if len(out) > 0 {
 			fmt.Printf("%s\n", out)

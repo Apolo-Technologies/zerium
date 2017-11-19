@@ -114,7 +114,7 @@ var dashboardContent = `
 										<br/>
 										<p>To run an archive node, download <a href="/{{.GethGenesis}}"><code>{{.GethGenesis}}</code></a> and start Geth with:
 											<pre>gzrm --datadir=$HOME/.{{.Network}} init {{.GethGenesis}}</pre>
-											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=1024 --syncmode=full{{if .Ethstats}} --ethstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
+											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=1024 --syncmode=full{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
 										</p>
 										<br/>
 										<p>You can download Geth from <a href="https://gzrm.apolo-technologies.org/downloads/" target="about:blank">https://gzrm.apolo-technologies.org/downloads/</a>.</p>
@@ -133,7 +133,7 @@ var dashboardContent = `
 										<br/>
 										<p>To run a full node, download <a href="/{{.GethGenesis}}"><code>{{.GethGenesis}}</code></a> and start Geth with:
 											<pre>gzrm --datadir=$HOME/.{{.Network}} init {{.GethGenesis}}</pre>
-											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=512{{if .Ethstats}} --ethstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
+											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=512{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
 										</p>
 										<br/>
 										<p>You can download Geth from <a href="https://gzrm.apolo-technologies.org/downloads/" target="about:blank">https://gzrm.apolo-technologies.org/downloads/</a>.</p>
@@ -155,7 +155,7 @@ var dashboardContent = `
 										<br/>
 										<p>To run a light node, download <a href="/{{.GethGenesis}}"><code>{{.GethGenesis}}</code></a> and start Geth with:
 											<pre>gzrm --datadir=$HOME/.{{.Network}} --light init {{.GethGenesis}}</pre>
-											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --syncmode=light{{if .Ethstats}} --ethstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
+											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --syncmode=light{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
 										</p>
 										<br/>
 										<p>You can download Geth from <a href="https://gzrm.apolo-technologies.org/downloads/" target="about:blank">https://gzrm.apolo-technologies.org/downloads/</a>.</p>
@@ -174,7 +174,7 @@ var dashboardContent = `
 										<br/>
 										<p>To run an embedded node, download <a href="/{{.GethGenesis}}"><code>{{.GethGenesis}}</code></a> and start Geth with:
 											<pre>gzrm --datadir=$HOME/.{{.Network}} --light init {{.GethGenesis}}</pre>
-											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=32 --syncmode=light{{if .Ethstats}} --ethstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
+											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=32 --syncmode=light{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
 										</p>
 										<br/>
 										<p>You can download Geth from <a href="https://gzrm.apolo-technologies.org/downloads/" target="about:blank">https://gzrm.apolo-technologies.org/downloads/</a>.</p>
@@ -205,7 +205,7 @@ var dashboardContent = `
 											<pre>gzrm --datadir=$HOME/.{{.Network}} init {{.GethGenesis}}</pre>
 										</p>
 										<p>With your local chain initialized, you can start the Zerium Wallet:
-											<pre>apolo-technologieswallet --rpc $HOME/.{{.Network}}/gzrm.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Ethstats}} --node-ethstats='{{.Ethstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
+											<pre>apolo-technologieswallet --rpc $HOME/.{{.Network}}/gzrm.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Ethstats}} --node-zrmstats='{{.Ethstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
 										<p>
 										<br/>
 										<p>You can download the Zerium Wallet from <a href="https://github.com/apolo-technologies/mist/releases" target="about:blank">https://github.com/apolo-technologies/mist/releases</a>.</p>
@@ -226,7 +226,7 @@ var dashboardContent = `
 											<pre>gzrm --datadir=$HOME/.{{.Network}} init {{.GethGenesis}}</pre>
 										</p>
 										<p>With your local chain initialized, you can start Mist:
-											<pre>mist --rpc $HOME/.{{.Network}}/gzrm.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Ethstats}} --node-ethstats='{{.Ethstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
+											<pre>mist --rpc $HOME/.{{.Network}}/gzrm.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Ethstats}} --node-zrmstats='{{.Ethstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
 										<p>
 										<br/>
 										<p>You can download the Mist browser from <a href="https://github.com/apolo-technologies/mist/releases" target="about:blank">https://github.com/apolo-technologies/mist/releases</a>.</p>
@@ -319,7 +319,7 @@ try! node?.start();
 										<div class="clearfix"></div>
 									</div>
 									<div style="display: inline-block; vertical-align: bottom; width: 623px; margin-top: 16px;">
-										<p>Puppeth is a tool to aid you in creating a new Zerium network down to the genesis block, bootnodes, signers, ethstats server, crypto faucet, wallet browsers, block explorer, dashboard and more; without the hassle that it would normally entail to manually configure all these services one by one.</p>
+										<p>Puppeth is a tool to aid you in creating a new Zerium network down to the genesis block, bootnodes, signers, zrmstats server, crypto faucet, wallet browsers, block explorer, dashboard and more; without the hassle that it would normally entail to manually configure all these services one by one.</p>
 										<p>Puppeth uses ssh to dial in to remote servers, and builds its network components out of docker containers using docker-compose. The user is guided through the process via a command line wizard that does the heavy lifting and topology configuration automatically behind the scenes.</p>
 										<br/>
 										<p>Puppeth is distributed as part of the <a href="https://gzrm.apolo-technologies.org/downloads/" target="about:blank">Geth &amp; Tools</a> bundles, but can also be installed separately via:<pre>go get github.com/apolo-technologies/zerium/cmd/puppeth</pre></p>
@@ -436,7 +436,7 @@ services:
 // deployDashboard deploys a new dashboard container to a remote machine via SSH,
 // docker and docker-compose. If an instance with the specified network name
 // already exists there, it will be overwritten!
-func deployDashboard(client *sshClient, network string, port int, vhost string, services map[string]string, conf *config, ethstats bool) ([]byte, error) {
+func deployDashboard(client *sshClient, network string, port int, vhost string, services map[string]string, conf *config, zrmstats bool) ([]byte, error) {
 	// Generate the content to upload to the server
 	workdir := fmt.Sprintf("%d", rand.Int63())
 	files := make(map[string][]byte)
@@ -455,8 +455,8 @@ func deployDashboard(client *sshClient, network string, port int, vhost string, 
 	})
 	files[filepath.Join(workdir, "docker-compose.yaml")] = composefile.Bytes()
 
-	statsLogin := fmt.Sprintf("yournode:%s", conf.ethstats)
-	if !ethstats {
+	statsLogin := fmt.Sprintf("yournode:%s", conf.zrmstats)
+	if !zrmstats {
 		statsLogin = ""
 	}
 	indexfile := new(bytes.Buffer)
@@ -464,7 +464,7 @@ func deployDashboard(client *sshClient, network string, port int, vhost string, 
 		"Network":            network,
 		"NetworkID":          conf.genesis.Config.ChainId,
 		"NetworkTitle":       strings.Title(network),
-		"EthstatsPage":       services["ethstats"],
+		"EthstatsPage":       services["zrmstats"],
 		"ExplorerPage":       services["explorer"],
 		"WalletPage":         services["wallet"],
 		"FaucetPage":         services["faucet"],
@@ -507,7 +507,7 @@ func (info *dashboardInfos) String() string {
 // checkDashboard does a health-check against a dashboard container to verify if
 // it's running, and if yes, gathering a collection of useful infos about it.
 func checkDashboard(client *sshClient, network string) (*dashboardInfos, error) {
-	// Inspect a possible ethstats container on the host
+	// Inspect a possible zrmstats container on the host
 	infos, err := inspectContainer(client, fmt.Sprintf("%s_dashboard_1", network))
 	if err != nil {
 		return nil, err

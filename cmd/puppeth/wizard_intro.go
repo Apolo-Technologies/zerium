@@ -48,7 +48,7 @@ func (w *wizard) run() {
 	fmt.Println("| Welcome to puppeth, your Zerium private network manager |")
 	fmt.Println("|                                                           |")
 	fmt.Println("| This tool lets you create a new Zerium network down to  |")
-	fmt.Println("| the genesis block, bootnodes, miners and ethstats servers |")
+	fmt.Println("| the genesis block, bootnodes, miners and zrmstats servers |")
 	fmt.Println("| without the hassle that it would normally entail.         |")
 	fmt.Println("|                                                           |")
 	fmt.Println("| Puppeth uses SSH to dial in to remote servers, and builds |")

@@ -43,7 +43,7 @@ import (
 	"github.com/apolo-technologies/zerium/zrm/downloader"
 	"github.com/apolo-technologies/zerium/zrm/gasprice"
 	"github.com/apolo-technologies/zerium/ethdb"
-	"github.com/apolo-technologies/zerium/ethstats"
+	"github.com/apolo-technologies/zerium/zrmstats"
 	"github.com/apolo-technologies/zerium/les"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/metrics"
@@ -347,8 +347,8 @@ var (
 	}
 	// Logging and debug settings
 	EthStatsURLFlag = cli.StringFlag{
-		Name:  "ethstats",
-		Usage: "Reporting URL of a ethstats service (nodename:secret@host:port)",
+		Name:  "zrmstats",
+		Usage: "Reporting URL of a zrmstats service (nodename:secret@host:port)",
 	}
 	MetricsEnabledFlag = cli.BoolFlag{
 		Name:  metrics.MetricsEnabledFlag,
@@ -1102,7 +1102,7 @@ func RegisterEthStatsService(stack *node.Node, url string) {
 		var lesServ *les.LightZerium
 		ctx.Service(&lesServ)
 
-		return ethstats.New(url, ethServ, lesServ)
+		return zrmstats.New(url, ethServ, lesServ)
 	}); err != nil {
 		Fatalf("Failed to register the Zerium Stats service: %v", err)
 	}

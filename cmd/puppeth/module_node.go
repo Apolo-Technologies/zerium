@@ -40,7 +40,7 @@ ADD genesis.json /genesis.json
 RUN \
   echo 'gzrm init /genesis.json' > gzrm.sh && \{{if .Unlock}}
 	echo 'mkdir -p /root/.apolo-technologies/keystore/ && cp /signer.json /root/.apolo-technologies/keystore/' >> gzrm.sh && \{{end}}
-	echo $'gzrm --networkid {{.NetworkID}} --cache 512 --port {{.Port}} --maxpeers {{.Peers}} {{.LightFlag}} --ethstats \'{{.Ethstats}}\' {{if .BootV4}}--bootnodesv4 {{.BootV4}}{{end}} {{if .BootV5}}--bootnodesv5 {{.BootV5}}{{end}} {{if .Etherbase}}--etherbase {{.Etherbase}} --mine{{end}}{{if .Unlock}}--unlock 0 --password /signer.pass --mine{{end}} --targetgaslimit {{.GasTarget}} --gasprice {{.GasPrice}}' >> gzrm.sh
+	echo $'gzrm --networkid {{.NetworkID}} --cache 512 --port {{.Port}} --maxpeers {{.Peers}} {{.LightFlag}} --zrmstats \'{{.Ethstats}}\' {{if .BootV4}}--bootnodesv4 {{.BootV4}}{{end}} {{if .BootV5}}--bootnodesv5 {{.BootV5}}{{end}} {{if .Etherbase}}--etherbase {{.Etherbase}} --mine{{end}}{{if .Unlock}}--unlock 0 --password /signer.pass --mine{{end}} --targetgaslimit {{.GasTarget}} --gasprice {{.GasPrice}}' >> gzrm.sh
 
 ENTRYPOINT ["/bin/sh", "gzrm.sh"]
 `
@@ -102,7 +102,7 @@ func deployNode(client *sshClient, network string, bootv4, bootv5 []string, conf
 		"LightFlag": lightFlag,
 		"BootV4":    strings.Join(bootv4, ","),
 		"BootV5":    strings.Join(bootv5, ","),
-		"Ethstats":  config.ethstats,
+		"Ethstats":  config.zrmstats,
 		"Etherbase": config.etherbase,
 		"GasTarget": uint64(1000000 * config.gasTarget),
 		"GasPrice":  uint64(1000000000 * config.gasPrice),
@@ -120,7 +120,7 @@ func deployNode(client *sshClient, network string, bootv4, bootv5 []string, conf
 		"Light":      config.peersLight > 0,
 		"LightPort":  config.portFull + 1,
 		"LightPeers": config.peersLight,
-		"Ethstats":   config.ethstats[:strings.Index(config.ethstats, ":")],
+		"Ethstats":   config.zrmstats[:strings.Index(config.zrmstats, ":")],
 		"Etherbase":  config.etherbase,
 		"GasTarget":  config.gasTarget,
 		"GasPrice":   config.gasPrice,
@@ -150,7 +150,7 @@ type nodeInfos struct {
 	genesis    []byte
 	network    int64
 	datadir    string
-	ethstats   string
+	zrmstats   string
 	portFull   int
 	portLight  int
 	enodeFull  string
@@ -170,8 +170,8 @@ func (info *nodeInfos) String() string {
 	if info.peersLight > 0 {
 		discv5 = fmt.Sprintf(", portv5=%d", info.portLight)
 	}
-	return fmt.Sprintf("port=%d%s, datadir=%s, peers=%d, lights=%d, ethstats=%s, gastarget=%0.3f MGas, gasprice=%0.3f GWei",
-		info.portFull, discv5, info.datadir, info.peersTotal, info.peersLight, info.ethstats, info.gasTarget, info.gasPrice)
+	return fmt.Sprintf("port=%d%s, datadir=%s, peers=%d, lights=%d, zrmstats=%s, gastarget=%0.3f MGas, gasprice=%0.3f GWei",
+		info.portFull, discv5, info.datadir, info.peersTotal, info.peersLight, info.zrmstats, info.gasTarget, info.gasPrice)
 }
 
 // checkNode does a health-check against an boot or seal node server to verify
@@ -227,7 +227,7 @@ func checkNode(client *sshClient, network string, boot bool) (*nodeInfos, error)
 		portLight:  infos.portmap[infos.envvars["LIGHT_PORT"]],
 		peersTotal: totalPeers,
 		peersLight: lightPeers,
-		ethstats:   infos.envvars["STATS_NAME"],
+		zrmstats:   infos.envvars["STATS_NAME"],
 		etherbase:  infos.envvars["MINER_NAME"],
 		keyJSON:    keyJSON,
 		keyPass:    keyPass,

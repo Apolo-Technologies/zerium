@@ -78,7 +78,7 @@ func deployNginx(client *sshClient, network string, port int) ([]byte, error) {
 	}
 	defer client.Run("rm -rf " + workdir)
 
-	// Build and deploy the ethstats service
+	// Build and deploy the zrmstats service
 	return nil, client.Stream(fmt.Sprintf("cd %s && docker-compose -p %s up -d --build", workdir, network))
 }
 

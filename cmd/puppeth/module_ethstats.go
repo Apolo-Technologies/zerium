@@ -27,9 +27,9 @@ import (
 	"github.com/apolo-technologies/zerium/log"
 )
 
-// ethstatsDockerfile is the Dockerfile required to build an ethstats backend
+// zrmstatsDockerfile is the Dockerfile required to build an zrmstats backend
 // and associated monitoring site.
-var ethstatsDockerfile = `
+var zrmstatsDockerfile = `
 FROM mhart/alpine-node:latest
 
 RUN \
@@ -47,14 +47,14 @@ RUN echo 'module.exports = {trusted: [{{.Trusted}}], banned: [{{.Banned}}], rese
 CMD ["npm", "start"]
 `
 
-// ethstatsComposefile is the docker-compose.yml file required to deploy and
-// maintain an ethstats monitoring site.
-var ethstatsComposefile = `
+// zrmstatsComposefile is the docker-compose.yml file required to deploy and
+// maintain an zrmstats monitoring site.
+var zrmstatsComposefile = `
 version: '2'
 services:
-  ethstats:
+  zrmstats:
     build: .
-    image: {{.Network}}/ethstats{{if not .VHost}}
+    image: {{.Network}}/zrmstats{{if not .VHost}}
     ports:
       - "{{.Port}}:3000"{{end}}
     environment:
@@ -69,7 +69,7 @@ services:
     restart: always
 `
 
-// deployEthstats deploys a new ethstats container to a remote machine via SSH,
+// deployEthstats deploys a new zrmstats container to a remote machine via SSH,
 // docker and docker-compose. If an instance with the specified network name
 // already exists there, it will be overwritten!
 func deployEthstats(client *sshClient, network string, port int, secret string, vhost string, trusted []string, banned []string) ([]byte, error) {
@@ -87,14 +87,14 @@ func deployEthstats(client *sshClient, network string, port int, secret string, 
 	}
 
 	dockerfile := new(bytes.Buffer)
-	template.Must(template.New("").Parse(ethstatsDockerfile)).Execute(dockerfile, map[string]interface{}{
+	template.Must(template.New("").Parse(zrmstatsDockerfile)).Execute(dockerfile, map[string]interface{}{
 		"Trusted": strings.Join(trustedLabels, ", "),
 		"Banned":  strings.Join(bannedLabels, ", "),
 	})
 	files[filepath.Join(workdir, "Dockerfile")] = dockerfile.Bytes()
 
 	composefile := new(bytes.Buffer)
-	template.Must(template.New("").Parse(ethstatsComposefile)).Execute(composefile, map[string]interface{}{
+	template.Must(template.New("").Parse(zrmstatsComposefile)).Execute(composefile, map[string]interface{}{
 		"Network": network,
 		"Port":    port,
 		"Secret":  secret,
@@ -109,13 +109,13 @@ func deployEthstats(client *sshClient, network string, port int, secret string, 
 	}
 	defer client.Run("rm -rf " + workdir)
 
-	// Build and deploy the ethstats service
+	// Build and deploy the zrmstats service
 	return nil, client.Stream(fmt.Sprintf("cd %s && docker-compose -p %s up -d --build", workdir, network))
 }
 
-// ethstatsInfos is returned from an ethstats status check to allow reporting
+// zrmstatsInfos is returned from an zrmstats status check to allow reporting
 // various configuration parameters.
-type ethstatsInfos struct {
+type zrmstatsInfos struct {
 	host   string
 	port   int
 	secret string
@@ -124,15 +124,15 @@ type ethstatsInfos struct {
 }
 
 // String implements the stringer interface.
-func (info *ethstatsInfos) String() string {
+func (info *zrmstatsInfos) String() string {
 	return fmt.Sprintf("host=%s, port=%d, secret=%s, banned=%v", info.host, info.port, info.secret, info.banned)
 }
 
-// checkEthstats does a health-check against an ethstats server to verify whether
+// checkEthstats does a health-check against an zrmstats server to verify whether
 // it's running, and if yes, gathering a collection of useful infos about it.
-func checkEthstats(client *sshClient, network string) (*ethstatsInfos, error) {
-	// Inspect a possible ethstats container on the host
-	infos, err := inspectContainer(client, fmt.Sprintf("%s_ethstats_1", network))
+func checkEthstats(client *sshClient, network string) (*zrmstatsInfos, error) {
+	// Inspect a possible zrmstats container on the host
+	infos, err := inspectContainer(client, fmt.Sprintf("%s_zrmstats_1", network))
 	if err != nil {
 		return nil, err
 	}
@@ -167,7 +167,7 @@ func checkEthstats(client *sshClient, network string) (*ethstatsInfos, error) {
 		log.Warn("Ethstats service seems unreachable", "server", host, "port", port, "err", err)
 	}
 	// Container available, assemble and return the useful infos
-	return &ethstatsInfos{
+	return &zrmstatsInfos{
 		host:   host,
 		port:   port,
 		secret: secret,

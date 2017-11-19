@@ -72,7 +72,7 @@ var tomlSettings = toml.Config{
 	},
 }
 
-type ethstatsConfig struct {
+type zrmstatsConfig struct {
 	URL string `toml:",omitempty"`
 }
 
@@ -80,7 +80,7 @@ type gethConfig struct {
 	Eth       zrm.Config
 	Shh       whisper.Config
 	Node      node.Config
-	Ethstats  ethstatsConfig
+	Ethstats  zrmstatsConfig
 	Dashboard dashboard.Config
 }
 

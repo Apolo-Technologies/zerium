@@ -33,8 +33,8 @@ func (w *wizard) deployNode(boot bool) {
 		log.Error("No genesis block configured")
 		return
 	}
-	if w.conf.ethstats == "" {
-		log.Error("No ethstats server configured")
+	if w.conf.zrmstats == "" {
+		log.Error("No zrmstats server configured")
 		return
 	}
 	// Select the server to interact with
@@ -44,7 +44,7 @@ func (w *wizard) deployNode(boot bool) {
 	}
 	client := w.servers[server]
 
-	// Retrieve any active ethstats configurations from the server
+	// Retrieve any active zrmstats configurations from the server
 	infos, err := checkNode(client, w.network, boot)
 	if err != nil {
 		if boot {
@@ -82,12 +82,12 @@ func (w *wizard) deployNode(boot bool) {
 
 	// Set a proper name to report on the stats page
 	fmt.Println()
-	if infos.ethstats == "" {
+	if infos.zrmstats == "" {
 		fmt.Printf("What should the node be called on the stats page?\n")
-		infos.ethstats = w.readString() + ":" + w.conf.ethstats
+		infos.zrmstats = w.readString() + ":" + w.conf.zrmstats
 	} else {
-		fmt.Printf("What should the node be called on the stats page? (default = %s)\n", infos.ethstats)
-		infos.ethstats = w.readDefaultString(infos.ethstats) + ":" + w.conf.ethstats
+		fmt.Printf("What should the node be called on the stats page? (default = %s)\n", infos.zrmstats)
+		infos.zrmstats = w.readDefaultString(infos.zrmstats) + ":" + w.conf.zrmstats
 	}
 	// If the node is a miner/signer, load up needed credentials
 	if !boot {

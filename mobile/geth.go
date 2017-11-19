@@ -28,7 +28,7 @@ import (
 	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
 	"github.com/apolo-technologies/zerium/ethclient"
-	"github.com/apolo-technologies/zerium/ethstats"
+	"github.com/apolo-technologies/zerium/zrmstats"
 	"github.com/apolo-technologies/zerium/les"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/p2p"
@@ -161,7 +161,7 @@ func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 				var lesServ *les.LightZerium
 				ctx.Service(&lesServ)
 
-				return ethstats.New(config.ZeriumNetStats, nil, lesServ)
+				return zrmstats.New(config.ZeriumNetStats, nil, lesServ)
 			}); err != nil {
 				return nil, fmt.Errorf("netstats init: %v", err)
 			}
