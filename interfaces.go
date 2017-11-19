@@ -15,7 +15,7 @@
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
 // Package apolo-technologies defines interfaces for interacting with Zerium.
-package apolo-technologies
+package apolo_technologies
 
 import (
 	"context"
