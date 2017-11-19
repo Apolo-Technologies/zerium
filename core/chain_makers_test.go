@@ -24,7 +24,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/core/vm"
 	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/params"
 )
 
@@ -36,7 +36,7 @@ func ExampleGenerateChain() {
 		addr1   = crypto.PubkeyToAddress(key1.PublicKey)
 		addr2   = crypto.PubkeyToAddress(key2.PublicKey)
 		addr3   = crypto.PubkeyToAddress(key3.PublicKey)
-		db, _   = ethdb.NewMemDatabase()
+		db, _   = zrmdb.NewMemDatabase()
 	)
 
 	// Ensure that key1 has some funds in the genesis block.

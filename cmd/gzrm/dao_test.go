@@ -25,7 +25,7 @@ import (
 
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/params"
 )
 
@@ -121,7 +121,7 @@ func testDAOForkBlockNewChain(t *testing.T, test int, genesis string, expectBloc
 	}
 	// Retrieve the DAO config flag from the database
 	path := filepath.Join(datadir, "gzrm", "chaindata")
-	db, err := ethdb.NewLDBDatabase(path, 0, 0)
+	db, err := zrmdb.NewLDBDatabase(path, 0, 0)
 	if err != nil {
 		t.Fatalf("test %d: failed to open test database: %v", test, err)
 	}

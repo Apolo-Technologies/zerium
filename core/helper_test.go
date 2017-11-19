@@ -21,7 +21,7 @@ import (
 	"fmt"
 
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 )
 
@@ -30,7 +30,7 @@ type TestManager struct {
 	// stateManager *StateManager
 	eventMux *event.TypeMux
 
-	db         ethdb.Database
+	db         zrmdb.Database
 	txPool     *TxPool
 	blockChain *BlockChain
 	Blocks     []*types.Block
@@ -72,12 +72,12 @@ func (tm *TestManager) EventMux() *event.TypeMux {
 // 	return nil
 // }
 
-func (tm *TestManager) Db() ethdb.Database {
+func (tm *TestManager) Db() zrmdb.Database {
 	return tm.db
 }
 
 func NewTestManager() *TestManager {
-	db, err := ethdb.NewMemDatabase()
+	db, err := zrmdb.NewMemDatabase()
 	if err != nil {
 		fmt.Println("Could not create mem-db, failing")
 		return nil

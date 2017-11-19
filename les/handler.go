@@ -34,7 +34,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/light"
 	"github.com/apolo-technologies/zerium/log"
@@ -100,7 +100,7 @@ type ProtocolManager struct {
 	networkId   uint64
 	chainConfig *params.ChainConfig
 	blockchain  BlockChain
-	chainDb     ethdb.Database
+	chainDb     zrmdb.Database
 	odr         *LesOdr
 	server      *LesServer
 	serverPool  *serverPool
@@ -128,7 +128,7 @@ type ProtocolManager struct {
 
 // NewProtocolManager returns a new apolo-technologies sub protocol manager. The Zerium sub protocol manages peers capable
 // with the apolo-technologies network.
-func NewProtocolManager(chainConfig *params.ChainConfig, lightSync bool, protocolVersions []uint, networkId uint64, mux *event.TypeMux, engine consensus.Engine, peers *peerSet, blockchain BlockChain, txpool txPool, chainDb ethdb.Database, odr *LesOdr, txrelay *LesTxRelay, quitSync chan struct{}, wg *sync.WaitGroup) (*ProtocolManager, error) {
+func NewProtocolManager(chainConfig *params.ChainConfig, lightSync bool, protocolVersions []uint, networkId uint64, mux *event.TypeMux, engine consensus.Engine, peers *peerSet, blockchain BlockChain, txpool txPool, chainDb zrmdb.Database, odr *LesOdr, txrelay *LesTxRelay, quitSync chan struct{}, wg *sync.WaitGroup) (*ProtocolManager, error) {
 	// Create the protocol manager with the base fields
 	manager := &ProtocolManager{
 		lightSync:   lightSync,
@@ -839,7 +839,7 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 		if reject(uint64(reqCnt), MaxHelperTrieProofsFetch) {
 			return errResp(ErrRequestRejected, "")
 		}
-		trieDb := ethdb.NewTable(pm.chainDb, light.ChtTablePrefix)
+		trieDb := zrmdb.NewTable(pm.chainDb, light.ChtTablePrefix)
 		for _, req := range req.Reqs {
 			if bytes >= softResponseLimit {
 				break
@@ -900,7 +900,7 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 				var prefix string
 				root, prefix = pm.getHelperTrie(req.HelperTrieType, req.TrieIdx)
 				if root != (common.Hash{}) {
-					if t, err := trie.New(root, ethdb.NewTable(pm.chainDb, prefix)); err == nil {
+					if t, err := trie.New(root, zrmdb.NewTable(pm.chainDb, prefix)); err == nil {
 						tr = t
 					}
 				}

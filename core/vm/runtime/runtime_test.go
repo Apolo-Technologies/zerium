@@ -25,7 +25,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 )
 
 func TestDefaults(t *testing.T) {
@@ -94,7 +94,7 @@ func TestExecute(t *testing.T) {
 }
 
 func TestCall(t *testing.T) {
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	state, _ := state.New(common.Hash{}, state.NewDatabase(db))
 	address := common.HexToAddress("0x0a")
 	state.SetCode(address, []byte{

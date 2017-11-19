@@ -28,7 +28,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/core/vm"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/params"
 	"github.com/apolo-technologies/zerium/rpc"
@@ -41,7 +41,7 @@ type Backend interface {
 	Downloader() *downloader.Downloader
 	ProtocolVersion() int
 	SuggestPrice(ctx context.Context) (*big.Int, error)
-	ChainDb() ethdb.Database
+	ChainDb() zrmdb.Database
 	EventMux() *event.TypeMux
 	AccountManager() *accounts.Manager
 	// BlockChain API

@@ -27,7 +27,7 @@ import (
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/ethclient"
+	"github.com/apolo-technologies/zerium/zrmclient"
 	"github.com/apolo-technologies/zerium/zrmstats"
 	"github.com/apolo-technologies/zerium/les"
 	"github.com/apolo-technologies/zerium/node"
@@ -195,7 +195,7 @@ func (n *Node) GetZeriumClient() (client *ZeriumClient, _ error) {
 	if err != nil {
 		return nil, err
 	}
-	return &ZeriumClient{ethclient.NewClient(rpc)}, nil
+	return &ZeriumClient{zrmclient.NewClient(rpc)}, nil
 }
 
 // GetNodeInfo gathers and returns a collection of metadata known about the host.

@@ -30,7 +30,7 @@ import (
 	apolo-technologies "github.com/apolo-technologies/zerium"
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/params"
@@ -100,7 +100,7 @@ type Downloader struct {
 
 	queue   *queue   // Scheduler for selecting the hashes to download
 	peers   *peerSet // Set of active peers from which download can proceed
-	stateDB ethdb.Database
+	stateDB zrmdb.Database
 
 	fsPivotLock  *types.Header // Pivot header on critical section entry (cannot change between retries)
 	fsPivotFails uint32        // Number of subsequent fast sync failures in the critical section
@@ -201,7 +201,7 @@ type BlockChain interface {
 }
 
 // New creates a new downloader to fetch hashes and blocks from remote peers.
-func New(mode SyncMode, stateDb ethdb.Database, mux *event.TypeMux, chain BlockChain, lightchain LightChain, dropPeer peerDropFn) *Downloader {
+func New(mode SyncMode, stateDb zrmdb.Database, mux *event.TypeMux, chain BlockChain, lightchain LightChain, dropPeer peerDropFn) *Downloader {
 	if lightchain == nil {
 		lightchain = chain
 	}

@@ -48,7 +48,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/ethclient"
+	"github.com/apolo-technologies/zerium/zrmclient"
 	"github.com/apolo-technologies/zerium/zrmstats"
 	"github.com/apolo-technologies/zerium/les"
 	"github.com/apolo-technologies/zerium/log"
@@ -70,7 +70,7 @@ var (
 	statsFlag   = flag.String("zrmstats", "", "Ethstats network monitoring auth string")
 
 	netnameFlag = flag.String("faucet.name", "", "Network name to assign to the faucet")
-	payoutFlag  = flag.Int("faucet.amount", 1, "Number of Ethers to pay out per user request")
+	payoutFlag  = flag.Int("faucet.amount", 1, "Number of Zeriums to pay out per user request")
 	minutesFlag = flag.Int("faucet.minutes", 1440, "Number of minutes to wait between funding rounds")
 	tiersFlag   = flag.Int("faucet.tiers", 3, "Number of funding tiers to enable (x3 time, x2.5 funds)")
 
@@ -101,7 +101,7 @@ func main() {
 	for i := 0; i < *tiersFlag; i++ {
 		// Calculate the amount for the next tier and format it
 		amount := float64(*payoutFlag) * math.Pow(2.5, float64(i))
-		amounts[i] = fmt.Sprintf("%s Ethers", strconv.FormatFloat(amount, 'f', -1, 64))
+		amounts[i] = fmt.Sprintf("%s Zeriums", strconv.FormatFloat(amount, 'f', -1, 64))
 		if amount == 1 {
 			amounts[i] = strings.TrimSuffix(amounts[i], "s")
 		}
@@ -194,7 +194,7 @@ type request struct {
 type faucet struct {
 	config *params.ChainConfig // Chain configurations for signing
 	stack  *node.Node          // Zerium protocol stack
-	client *ethclient.Client   // Client connection to the Zerium chain
+	client *zrmclient.Client   // Client connection to the Zerium chain
 	index  []byte              // Index page to serve up on the web
 
 	keystore *keystore.KeyStore // Keystore containing the single signer
@@ -263,7 +263,7 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 		stack.Stop()
 		return nil, err
 	}
-	client := ethclient.NewClient(api)
+	client := zrmclient.NewClient(api)
 
 	return &faucet{
 		config:   genesis.Config,

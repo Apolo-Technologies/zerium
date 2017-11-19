@@ -27,15 +27,15 @@ import (
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/params"
 	"github.com/apolo-technologies/zerium/trie"
 )
 
 func TestNodeIterator(t *testing.T) {
 	var (
-		fulldb, _  = ethdb.NewMemDatabase()
-		lightdb, _ = ethdb.NewMemDatabase()
+		fulldb, _  = zrmdb.NewMemDatabase()
+		lightdb, _ = zrmdb.NewMemDatabase()
 		gspec      = core.Genesis{Alloc: core.GenesisAlloc{testBankAddress: {Balance: testBankFunds}}}
 		genesis    = gspec.MustCommit(fulldb)
 	)

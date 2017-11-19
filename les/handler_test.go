@@ -28,7 +28,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/light"
 	"github.com/apolo-technologies/zerium/p2p"
 	"github.com/apolo-technologies/zerium/params"
@@ -68,7 +68,7 @@ func TestGetBlockHeadersLes1(t *testing.T) { testGetBlockHeaders(t, 1) }
 func TestGetBlockHeadersLes2(t *testing.T) { testGetBlockHeaders(t, 2) }
 
 func testGetBlockHeaders(t *testing.T, protocol int) {
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	pm := newTestProtocolManagerMust(t, false, downloader.MaxHashFetch+15, nil, nil, nil, db)
 	bc := pm.blockchain.(*core.BlockChain)
 	peer, _ := newTestPeer(t, "peer", protocol, pm, true)
@@ -199,7 +199,7 @@ func TestGetBlockBodiesLes1(t *testing.T) { testGetBlockBodies(t, 1) }
 func TestGetBlockBodiesLes2(t *testing.T) { testGetBlockBodies(t, 2) }
 
 func testGetBlockBodies(t *testing.T, protocol int) {
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	pm := newTestProtocolManagerMust(t, false, downloader.MaxBlockFetch+15, nil, nil, nil, db)
 	bc := pm.blockchain.(*core.BlockChain)
 	peer, _ := newTestPeer(t, "peer", protocol, pm, true)
@@ -278,7 +278,7 @@ func TestGetCodeLes2(t *testing.T) { testGetCode(t, 2) }
 
 func testGetCode(t *testing.T, protocol int) {
 	// Assemble the test environment
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	pm := newTestProtocolManagerMust(t, false, 4, testChainGen, nil, nil, db)
 	bc := pm.blockchain.(*core.BlockChain)
 	peer, _ := newTestPeer(t, "peer", protocol, pm, true)
@@ -313,7 +313,7 @@ func TestGetReceiptLes2(t *testing.T) { testGetReceipt(t, 2) }
 
 func testGetReceipt(t *testing.T, protocol int) {
 	// Assemble the test environment
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	pm := newTestProtocolManagerMust(t, false, 4, testChainGen, nil, nil, db)
 	bc := pm.blockchain.(*core.BlockChain)
 	peer, _ := newTestPeer(t, "peer", protocol, pm, true)
@@ -342,7 +342,7 @@ func TestGetProofsLes2(t *testing.T) { testGetProofs(t, 2) }
 
 func testGetProofs(t *testing.T, protocol int) {
 	// Assemble the test environment
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	pm := newTestProtocolManagerMust(t, false, 4, testChainGen, nil, nil, db)
 	bc := pm.blockchain.(*core.BlockChain)
 	peer, _ := newTestPeer(t, "peer", protocol, pm, true)
@@ -413,7 +413,7 @@ func testGetProofs(t *testing.T, protocol int) {
 }
 
 func TestTransactionStatusLes2(t *testing.T) {
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	pm := newTestProtocolManagerMust(t, false, 0, nil, nil, nil, db)
 	chain := pm.blockchain.(*core.BlockChain)
 	txpool := core.NewTxPool(core.DefaultTxPoolConfig, params.TestChainConfig, chain)

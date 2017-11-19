@@ -26,7 +26,7 @@ import (
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/params"
@@ -58,7 +58,7 @@ type TxPool struct {
 	mu           sync.RWMutex
 	chain        *LightChain
 	odr          OdrBackend
-	chainDb      ethdb.Database
+	chainDb      zrmdb.Database
 	relay        TxRelayBackend
 	head         common.Hash
 	nonce        map[common.Address]uint64            // "pending" nonce

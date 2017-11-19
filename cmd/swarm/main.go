@@ -38,7 +38,7 @@ import (
 	"github.com/apolo-technologies/zerium/console"
 	"github.com/apolo-technologies/zerium/contracts/ens"
 	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/ethclient"
+	"github.com/apolo-technologies/zerium/zrmclient"
 	"github.com/apolo-technologies/zerium/internal/debug"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/node"
@@ -428,7 +428,7 @@ func detectEnsAddr(client *rpc.Client) (common.Address, error) {
 		return common.Address{}, err
 	}
 
-	block, err := ethclient.NewClient(client).BlockByNumber(ctx, big.NewInt(0))
+	block, err := zrmclient.NewClient(client).BlockByNumber(ctx, big.NewInt(0))
 	if err != nil {
 		return common.Address{}, err
 	}
@@ -482,23 +482,23 @@ func registerBzzService(ctx *cli.Context, stack *node.Node) {
 	cors := ctx.GlobalString(CorsStringFlag.Name)
 
 	boot := func(ctx *node.ServiceContext) (node.Service, error) {
-		var swapClient *ethclient.Client
+		var swapClient *zrmclient.Client
 		if swapapi != "" {
 			log.Info("connecting to SWAP API", "url", swapapi)
-			swapClient, err = ethclient.Dial(swapapi)
+			swapClient, err = zrmclient.Dial(swapapi)
 			if err != nil {
 				return nil, fmt.Errorf("error connecting to SWAP API %s: %s", swapapi, err)
 			}
 		}
 
-		var ensClient *ethclient.Client
+		var ensClient *zrmclient.Client
 		if ensapi != "" {
 			log.Info("connecting to ENS API", "url", ensapi)
 			client, err := rpc.Dial(ensapi)
 			if err != nil {
 				return nil, fmt.Errorf("error connecting to ENS API %s: %s", ensapi, err)
 			}
-			ensClient = ethclient.NewClient(client)
+			ensClient = zrmclient.NewClient(client)
 
 			if ensAddr != "" {
 				bzzconfig.EnsRoot = common.HexToAddress(ensAddr)

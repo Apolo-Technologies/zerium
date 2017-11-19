@@ -28,7 +28,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/common/hexutil"
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/rpc"
 )
@@ -54,7 +54,7 @@ type PublicFilterAPI struct {
 	backend   Backend
 	mux       *event.TypeMux
 	quit      chan struct{}
-	chainDb   ethdb.Database
+	chainDb   zrmdb.Database
 	events    *EventSystem
 	filtersMu sync.Mutex
 	filters   map[rpc.ID]*filter

@@ -29,7 +29,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/vm"
 	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/params"
 )
 
@@ -79,7 +79,7 @@ type vmExecMarshaling struct {
 }
 
 func (t *VMTest) Run(vmconfig vm.Config) error {
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	statedb := makePreState(db, t.json.Pre)
 	ret, gasRemaining, err := t.exec(statedb, vmconfig)
 

@@ -28,7 +28,7 @@ import (
 	"time"
 
 	"github.com/apolo-technologies/zerium/common/mclock"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/p2p"
 	"github.com/apolo-technologies/zerium/p2p/discover"
@@ -95,7 +95,7 @@ const (
 // known light server nodes. It received discovered nodes, stores statistics about
 // known nodes and takes care of always having enough good quality servers connected.
 type serverPool struct {
-	db     ethdb.Database
+	db     zrmdb.Database
 	dbKey  []byte
 	server *p2p.Server
 	quit   chan struct{}
@@ -120,7 +120,7 @@ type serverPool struct {
 }
 
 // newServerPool creates a new serverPool instance
-func newServerPool(db ethdb.Database, quit chan struct{}, wg *sync.WaitGroup) *serverPool {
+func newServerPool(db zrmdb.Database, quit chan struct{}, wg *sync.WaitGroup) *serverPool {
 	pool := &serverPool{
 		db:           db,
 		quit:         quit,

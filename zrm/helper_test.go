@@ -34,7 +34,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/vm"
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/p2p"
 	"github.com/apolo-technologies/zerium/p2p/discover"
@@ -53,7 +53,7 @@ func newTestProtocolManager(mode downloader.SyncMode, blocks int, generator func
 	var (
 		evmux  = new(event.TypeMux)
 		engine = zrmash.NewFaker()
-		db, _  = ethdb.NewMemDatabase()
+		db, _  = zrmdb.NewMemDatabase()
 		gspec  = &core.Genesis{
 			Config: params.TestChainConfig,
 			Alloc:  core.GenesisAlloc{testBank: {Balance: big.NewInt(1000000)}},

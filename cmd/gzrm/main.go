@@ -31,7 +31,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/console"
 	"github.com/apolo-technologies/zerium/zrm"
-	"github.com/apolo-technologies/zerium/ethclient"
+	"github.com/apolo-technologies/zerium/zrmclient"
 	"github.com/apolo-technologies/zerium/internal/debug"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/metrics"
@@ -244,7 +244,7 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 		if err != nil {
 			utils.Fatalf("Failed to attach to self: %v", err)
 		}
-		stateReader := ethclient.NewClient(rpcClient)
+		stateReader := zrmclient.NewClient(rpcClient)
 
 		// Open any wallets already attached
 		for _, wallet := range stack.AccountManager().Wallets() {

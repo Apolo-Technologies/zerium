@@ -29,7 +29,7 @@ import (
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/bloombits"
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/params"
 	"github.com/apolo-technologies/zerium/rpc"
@@ -37,7 +37,7 @@ import (
 
 type testBackend struct {
 	mux        *event.TypeMux
-	db         ethdb.Database
+	db         zrmdb.Database
 	sections   uint64
 	txFeed     *event.Feed
 	rmLogsFeed *event.Feed
@@ -45,7 +45,7 @@ type testBackend struct {
 	chainFeed  *event.Feed
 }
 
-func (b *testBackend) ChainDb() ethdb.Database {
+func (b *testBackend) ChainDb() zrmdb.Database {
 	return b.db
 }
 
@@ -128,7 +128,7 @@ func TestBlockSubscription(t *testing.T) {
 
 	var (
 		mux         = new(event.TypeMux)
-		db, _       = ethdb.NewMemDatabase()
+		db, _       = zrmdb.NewMemDatabase()
 		txFeed      = new(event.Feed)
 		rmLogsFeed  = new(event.Feed)
 		logsFeed    = new(event.Feed)
@@ -185,7 +185,7 @@ func TestPendingTxFilter(t *testing.T) {
 
 	var (
 		mux        = new(event.TypeMux)
-		db, _      = ethdb.NewMemDatabase()
+		db, _      = zrmdb.NewMemDatabase()
 		txFeed     = new(event.Feed)
 		rmLogsFeed = new(event.Feed)
 		logsFeed   = new(event.Feed)
@@ -248,7 +248,7 @@ func TestPendingTxFilter(t *testing.T) {
 func TestLogFilterCreation(t *testing.T) {
 	var (
 		mux        = new(event.TypeMux)
-		db, _      = ethdb.NewMemDatabase()
+		db, _      = zrmdb.NewMemDatabase()
 		txFeed     = new(event.Feed)
 		rmLogsFeed = new(event.Feed)
 		logsFeed   = new(event.Feed)
@@ -297,7 +297,7 @@ func TestInvalidLogFilterCreation(t *testing.T) {
 
 	var (
 		mux        = new(event.TypeMux)
-		db, _      = ethdb.NewMemDatabase()
+		db, _      = zrmdb.NewMemDatabase()
 		txFeed     = new(event.Feed)
 		rmLogsFeed = new(event.Feed)
 		logsFeed   = new(event.Feed)
@@ -327,7 +327,7 @@ func TestLogFilter(t *testing.T) {
 
 	var (
 		mux        = new(event.TypeMux)
-		db, _      = ethdb.NewMemDatabase()
+		db, _      = zrmdb.NewMemDatabase()
 		txFeed     = new(event.Feed)
 		rmLogsFeed = new(event.Feed)
 		logsFeed   = new(event.Feed)
@@ -446,7 +446,7 @@ func TestPendingLogsSubscription(t *testing.T) {
 
 	var (
 		mux        = new(event.TypeMux)
-		db, _      = ethdb.NewMemDatabase()
+		db, _      = zrmdb.NewMemDatabase()
 		txFeed     = new(event.Feed)
 		rmLogsFeed = new(event.Feed)
 		logsFeed   = new(event.Feed)

@@ -28,7 +28,7 @@ import (
 	"github.com/apolo-technologies/zerium/contracts/chequebook"
 	"github.com/apolo-technologies/zerium/contracts/ens"
 	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/ethclient"
+	"github.com/apolo-technologies/zerium/zrmclient"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/p2p"
@@ -76,7 +76,7 @@ func (self *Swarm) API() *SwarmAPI {
 
 // creates a new swarm service instance
 // implements node.Service
-func NewSwarm(ctx *node.ServiceContext, backend chequebook.Backend, ensClient *ethclient.Client, config *api.Config, swapEnabled, syncEnabled bool, cors string) (self *Swarm, err error) {
+func NewSwarm(ctx *node.ServiceContext, backend chequebook.Backend, ensClient *zrmclient.Client, config *api.Config, swapEnabled, syncEnabled bool, cors string) (self *Swarm, err error) {
 	if bytes.Equal(common.FromHex(config.PublicKey), storage.ZeroKey) {
 		return nil, fmt.Errorf("empty public key")
 	}

@@ -31,7 +31,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/vm"
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/p2p"
 	"github.com/apolo-technologies/zerium/params"
@@ -345,7 +345,7 @@ func testGetNodeData(t *testing.T, protocol int) {
 
 	// Fetch for now the entire chain db
 	hashes := []common.Hash{}
-	for _, key := range pm.chaindb.(*ethdb.MemDatabase).Keys() {
+	for _, key := range pm.chaindb.(*zrmdb.MemDatabase).Keys() {
 		if len(key) == len(common.Hash{}) {
 			hashes = append(hashes, common.BytesToHash(key))
 		}
@@ -368,7 +368,7 @@ func testGetNodeData(t *testing.T, protocol int) {
 			t.Errorf("data hash mismatch: have %x, want %x", hash, want)
 		}
 	}
-	statedb, _ := ethdb.NewMemDatabase()
+	statedb, _ := zrmdb.NewMemDatabase()
 	for i := 0; i < len(data); i++ {
 		statedb.Put(hashes[i].Bytes(), data[i])
 	}
@@ -470,7 +470,7 @@ func testDAOChallenge(t *testing.T, localForked, remoteForked bool, timeout bool
 	var (
 		evmux         = new(event.TypeMux)
 		pow           = zrmash.NewFaker()
-		db, _         = ethdb.NewMemDatabase()
+		db, _         = zrmdb.NewMemDatabase()
 		config        = &params.ChainConfig{DAOForkBlock: big.NewInt(1), DAOForkSupport: localForked}
 		gspec         = &core.Genesis{Config: config}
 		genesis       = gspec.MustCommit(db)

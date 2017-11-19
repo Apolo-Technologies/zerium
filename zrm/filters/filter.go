@@ -24,13 +24,13 @@ import (
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/bloombits"
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/rpc"
 )
 
 type Backend interface {
-	ChainDb() ethdb.Database
+	ChainDb() zrmdb.Database
 	EventMux() *event.TypeMux
 	HeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Header, error)
 	GetReceipts(ctx context.Context, blockHash common.Hash) (types.Receipts, error)
@@ -48,7 +48,7 @@ type Backend interface {
 type Filter struct {
 	backend Backend
 
-	db         ethdb.Database
+	db         zrmdb.Database
 	begin, end int64
 	addresses  []common.Address
 	topics     [][]common.Hash

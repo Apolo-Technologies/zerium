@@ -38,7 +38,7 @@ import (
 	"github.com/apolo-technologies/zerium/zrm/downloader"
 	"github.com/apolo-technologies/zerium/zrm/filters"
 	"github.com/apolo-technologies/zerium/zrm/gasprice"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/internal/ethapi"
 	"github.com/apolo-technologies/zerium/log"
@@ -73,7 +73,7 @@ type Zerium struct {
 	lesServer       LesServer
 
 	// DB interfaces
-	chainDb ethdb.Database // Block chain database
+	chainDb zrmdb.Database // Block chain database
 
 	eventMux       *event.TypeMux
 	engine         consensus.Engine
@@ -197,19 +197,19 @@ func makeExtraData(extra []byte) []byte {
 }
 
 // CreateDB creates the chain database.
-func CreateDB(ctx *node.ServiceContext, config *Config, name string) (ethdb.Database, error) {
+func CreateDB(ctx *node.ServiceContext, config *Config, name string) (zrmdb.Database, error) {
 	db, err := ctx.OpenDatabase(name, config.DatabaseCache, config.DatabaseHandles)
 	if err != nil {
 		return nil, err
 	}
-	if db, ok := db.(*ethdb.LDBDatabase); ok {
+	if db, ok := db.(*zrmdb.LDBDatabase); ok {
 		db.Meter("zrm/db/chaindata/")
 	}
 	return db, nil
 }
 
 // CreateConsensusEngine creates the required type of consensus engine instance for an Zerium service
-func CreateConsensusEngine(ctx *node.ServiceContext, config *Config, chainConfig *params.ChainConfig, db ethdb.Database) consensus.Engine {
+func CreateConsensusEngine(ctx *node.ServiceContext, config *Config, chainConfig *params.ChainConfig, db zrmdb.Database) consensus.Engine {
 	// If proof-of-authority is requested, set it up
 	if chainConfig.Clique != nil {
 		return clique.New(chainConfig.Clique, db)
@@ -353,7 +353,7 @@ func (s *Zerium) BlockChain() *core.BlockChain       { return s.blockchain }
 func (s *Zerium) TxPool() *core.TxPool               { return s.txPool }
 func (s *Zerium) EventMux() *event.TypeMux           { return s.eventMux }
 func (s *Zerium) Engine() consensus.Engine           { return s.engine }
-func (s *Zerium) ChainDb() ethdb.Database            { return s.chainDb }
+func (s *Zerium) ChainDb() zrmdb.Database            { return s.chainDb }
 func (s *Zerium) IsListening() bool                  { return true } // Always listening
 func (s *Zerium) EthVersion() int                    { return int(s.protocolManager.SubProtocols[0].Version) }
 func (s *Zerium) NetVersion() uint64                 { return s.networkId }

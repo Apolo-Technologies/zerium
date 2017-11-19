@@ -34,7 +34,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/vm"
 	"github.com/apolo-technologies/zerium/core/vm/runtime"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/params"
 	cli "gopkg.in/urfave/cli.v1"
@@ -99,7 +99,7 @@ func runCmd(ctx *cli.Context) error {
 		_, statedb = gen.ToBlock()
 		chainConfig = gen.Config
 	} else {
-		db, _ := ethdb.NewMemDatabase()
+		db, _ := zrmdb.NewMemDatabase()
 		statedb, _ = state.New(common.Hash{}, state.NewDatabase(db))
 	}
 	if ctx.GlobalString(SenderFlag.Name) != "" {

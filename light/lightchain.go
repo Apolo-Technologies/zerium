@@ -27,7 +27,7 @@ import (
 	"github.com/apolo-technologies/zerium/consensus"
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/params"
@@ -45,7 +45,7 @@ var (
 // interface. It only does header validation during chain insertion.
 type LightChain struct {
 	hc            *core.HeaderChain
-	chainDb       ethdb.Database
+	chainDb       zrmdb.Database
 	odr           OdrBackend
 	chainFeed     event.Feed
 	chainSideFeed event.Feed

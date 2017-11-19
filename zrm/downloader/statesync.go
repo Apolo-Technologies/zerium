@@ -26,7 +26,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/crypto/sha3"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/trie"
 )
@@ -316,7 +316,7 @@ func (s *stateSync) loop() error {
 }
 
 func (s *stateSync) commit(force bool) error {
-	if !force && s.bytesUncommitted < ethdb.IdealBatchSize {
+	if !force && s.bytesUncommitted < zrmdb.IdealBatchSize {
 		return nil
 	}
 	start := time.Now()

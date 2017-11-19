@@ -33,7 +33,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/params"
 )
 
@@ -46,7 +46,7 @@ var errGasEstimationFailed = errors.New("gas required exceeds allowance or alway
 // SimulatedBackend implements bind.ContractBackend, simulating a blockchain in
 // the background. Its main purpose is to allow easily testing contract bindings.
 type SimulatedBackend struct {
-	database   ethdb.Database   // In memory database to store our testing data
+	database   zrmdb.Database   // In memory database to store our testing data
 	blockchain *core.BlockChain // Zerium blockchain to handle the consensus
 
 	mu           sync.Mutex
@@ -59,7 +59,7 @@ type SimulatedBackend struct {
 // NewSimulatedBackend creates a new binding backend using a simulated blockchain
 // for testing purposes.
 func NewSimulatedBackend(alloc core.GenesisAlloc) *SimulatedBackend {
-	database, _ := ethdb.NewMemDatabase()
+	database, _ := zrmdb.NewMemDatabase()
 	genesis := core.Genesis{Config: params.AllEthashProtocolChanges, Alloc: alloc}
 	genesis.MustCommit(database)
 	blockchain, _ := core.NewBlockChain(database, genesis.Config, zrmash.NewFaker(), vm.Config{})

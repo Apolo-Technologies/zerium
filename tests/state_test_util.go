@@ -32,7 +32,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/vm"
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/crypto/sha3"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/params"
 	"github.com/apolo-technologies/zerium/rlp"
 )
@@ -126,7 +126,7 @@ func (t *StateTest) Run(subtest StateSubtest, vmconfig vm.Config) (*state.StateD
 		return nil, UnsupportedForkError{subtest.Fork}
 	}
 	block, _ := t.genesis(config).ToBlock()
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	statedb := makePreState(db, t.json.Pre)
 
 	post := t.json.Post[subtest.Fork][subtest.Index]
@@ -158,7 +158,7 @@ func (t *StateTest) gasLimit(subtest StateSubtest) uint64 {
 	return t.json.Tx.GasLimit[t.json.Post[subtest.Fork][subtest.Index].Indexes.Gas]
 }
 
-func makePreState(db ethdb.Database, accounts core.GenesisAlloc) *state.StateDB {
+func makePreState(db zrmdb.Database, accounts core.GenesisAlloc) *state.StateDB {
 	sdb := state.NewDatabase(db)
 	statedb, _ := state.New(common.Hash{}, sdb)
 	for addr, a := range accounts {

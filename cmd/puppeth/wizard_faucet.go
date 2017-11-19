@@ -62,7 +62,7 @@ func (w *wizard) deployFaucet() {
 	}
 	// Port and proxy settings retrieved, figure out the funcing amount per perdion configurations
 	fmt.Println()
-	fmt.Printf("How many Ethers to release per request? (default = %d)\n", infos.amount)
+	fmt.Printf("How many Zeriums to release per request? (default = %d)\n", infos.amount)
 	infos.amount = w.readDefaultInt(infos.amount)
 
 	fmt.Println()

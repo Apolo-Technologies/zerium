@@ -33,7 +33,7 @@ import (
 	"github.com/apolo-technologies/zerium/zrm/downloader"
 	"github.com/apolo-technologies/zerium/zrm/filters"
 	"github.com/apolo-technologies/zerium/zrm/gasprice"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/internal/ethapi"
 	"github.com/apolo-technologies/zerium/light"
@@ -60,7 +60,7 @@ type LightZerium struct {
 	reqDist         *requestDistributor
 	retriever       *retrieveManager
 	// DB interfaces
-	chainDb ethdb.Database // Block chain database
+	chainDb zrmdb.Database // Block chain database
 
 	bloomRequests                              chan chan *bloombits.Retrieval // Channel receiving bloom data retrieval requests
 	bloomIndexer, chtIndexer, bloomTrieIndexer *core.ChainIndexer

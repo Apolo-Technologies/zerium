@@ -28,7 +28,7 @@ import (
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/params"
 )
 
@@ -81,8 +81,8 @@ func TestTxPool(t *testing.T) {
 	}
 
 	var (
-		sdb, _  = ethdb.NewMemDatabase()
-		ldb, _  = ethdb.NewMemDatabase()
+		sdb, _  = zrmdb.NewMemDatabase()
+		ldb, _  = zrmdb.NewMemDatabase()
 		gspec   = core.Genesis{Alloc: core.GenesisAlloc{testBankAddress: {Balance: testBankFunds}}}
 		genesis = gspec.MustCommit(sdb)
 	)

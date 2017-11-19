@@ -27,7 +27,7 @@ import (
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/params"
 )
@@ -49,7 +49,7 @@ func BenchmarkFilters(b *testing.B) {
 	defer os.RemoveAll(dir)
 
 	var (
-		db, _      = ethdb.NewLDBDatabase(dir, 0, 0)
+		db, _      = zrmdb.NewLDBDatabase(dir, 0, 0)
 		mux        = new(event.TypeMux)
 		txFeed     = new(event.Feed)
 		rmLogsFeed = new(event.Feed)
@@ -114,7 +114,7 @@ func TestFilters(t *testing.T) {
 	defer os.RemoveAll(dir)
 
 	var (
-		db, _      = ethdb.NewLDBDatabase(dir, 0, 0)
+		db, _      = zrmdb.NewLDBDatabase(dir, 0, 0)
 		mux        = new(event.TypeMux)
 		txFeed     = new(event.Feed)
 		rmLogsFeed = new(event.Feed)

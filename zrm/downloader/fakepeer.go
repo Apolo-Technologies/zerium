@@ -22,7 +22,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 )
 
 // FakePeer is a mock downloader peer that operates on a local database instance
@@ -30,13 +30,13 @@ import (
 // sync commands from an xisting local database.
 type FakePeer struct {
 	id string
-	db ethdb.Database
+	db zrmdb.Database
 	hc *core.HeaderChain
 	dl *Downloader
 }
 
 // NewFakePeer creates a new mock downloader peer with the given data sources.
-func NewFakePeer(id string, db ethdb.Database, hc *core.HeaderChain, dl *Downloader) *FakePeer {
+func NewFakePeer(id string, db zrmdb.Database, hc *core.HeaderChain, dl *Downloader) *FakePeer {
 	return &FakePeer{id: id, db: db, hc: hc, dl: dl}
 }
 

@@ -21,7 +21,7 @@ import (
 	"sync"
 
 	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/trie"
 	lru "github.com/hashicorp/golang-lru"
 )
@@ -65,13 +65,13 @@ type Trie interface {
 
 // NewDatabase creates a backing store for state. The returned database is safe for
 // concurrent use and retains cached trie nodes in memory.
-func NewDatabase(db ethdb.Database) Database {
+func NewDatabase(db zrmdb.Database) Database {
 	csc, _ := lru.New(codeSizeCacheSize)
 	return &cachingDB{db: db, codeSizeCache: csc}
 }
 
 type cachingDB struct {
-	db            ethdb.Database
+	db            zrmdb.Database
 	mu            sync.Mutex
 	pastTries     []*trie.SecureTrie
 	codeSizeCache *lru.Cache

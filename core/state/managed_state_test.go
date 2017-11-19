@@ -20,13 +20,13 @@ import (
 	"testing"
 
 	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 )
 
 var addr = common.BytesToAddress([]byte("test"))
 
 func create() (*ManagedState, *account) {
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	statedb, _ := New(common.Hash{}, NewDatabase(db))
 	ms := ManageState(statedb)
 	ms.StateDB.SetNonce(addr, 100)

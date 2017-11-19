@@ -30,7 +30,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/vm"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
 	"github.com/apolo-technologies/zerium/zrm/gasprice"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/params"
 	"github.com/apolo-technologies/zerium/rpc"
@@ -184,7 +184,7 @@ func (b *EthApiBackend) SuggestPrice(ctx context.Context) (*big.Int, error) {
 	return b.gpo.SuggestPrice(ctx)
 }
 
-func (b *EthApiBackend) ChainDb() ethdb.Database {
+func (b *EthApiBackend) ChainDb() zrmdb.Database {
 	return b.zrm.ChainDb()
 }
 

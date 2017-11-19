@@ -20,20 +20,20 @@ import (
 	"context"
 
 	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/light"
 	"github.com/apolo-technologies/zerium/log"
 )
 
 // LesOdr implements light.OdrBackend
 type LesOdr struct {
-	db                                         ethdb.Database
+	db                                         zrmdb.Database
 	chtIndexer, bloomTrieIndexer, bloomIndexer *core.ChainIndexer
 	retriever                                  *retrieveManager
 	stop                                       chan struct{}
 }
 
-func NewLesOdr(db ethdb.Database, chtIndexer, bloomTrieIndexer, bloomIndexer *core.ChainIndexer, retriever *retrieveManager) *LesOdr {
+func NewLesOdr(db zrmdb.Database, chtIndexer, bloomTrieIndexer, bloomIndexer *core.ChainIndexer, retriever *retrieveManager) *LesOdr {
 	return &LesOdr{
 		db:               db,
 		chtIndexer:       chtIndexer,
@@ -50,7 +50,7 @@ func (odr *LesOdr) Stop() {
 }
 
 // Database returns the backing database
-func (odr *LesOdr) Database() ethdb.Database {
+func (odr *LesOdr) Database() zrmdb.Database {
 	return odr.db
 }
 

@@ -33,7 +33,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
 	"github.com/apolo-technologies/zerium/zrm/fetcher"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/p2p"
@@ -71,7 +71,7 @@ type ProtocolManager struct {
 
 	txpool      txPool
 	blockchain  *core.BlockChain
-	chaindb     ethdb.Database
+	chaindb     zrmdb.Database
 	chainconfig *params.ChainConfig
 	maxPeers    int
 
@@ -99,7 +99,7 @@ type ProtocolManager struct {
 
 // NewProtocolManager returns a new apolo-technologies sub protocol manager. The Zerium sub protocol manages peers capable
 // with the apolo-technologies network.
-func NewProtocolManager(config *params.ChainConfig, mode downloader.SyncMode, networkId uint64, mux *event.TypeMux, txpool txPool, engine consensus.Engine, blockchain *core.BlockChain, chaindb ethdb.Database) (*ProtocolManager, error) {
+func NewProtocolManager(config *params.ChainConfig, mode downloader.SyncMode, networkId uint64, mux *event.TypeMux, txpool txPool, engine consensus.Engine, blockchain *core.BlockChain, chaindb zrmdb.Database) (*ProtocolManager, error) {
 	// Create the protocol manager with the base fields
 	manager := &ProtocolManager{
 		networkId:   networkId,

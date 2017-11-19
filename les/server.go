@@ -28,7 +28,7 @@ import (
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/zrm"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/les/flowcontrol"
 	"github.com/apolo-technologies/zerium/light"
 	"github.com/apolo-technologies/zerium/log"
@@ -222,7 +222,7 @@ func linRegFromBytes(data []byte) *linReg {
 
 type requestCostStats struct {
 	lock  sync.RWMutex
-	db    ethdb.Database
+	db    zrmdb.Database
 	stats map[uint64]*linReg
 }
 
@@ -233,7 +233,7 @@ type requestCostStatsRlp []struct {
 
 var rcStatsKey = []byte("_requestCostStats")
 
-func newCostStats(db ethdb.Database) *requestCostStats {
+func newCostStats(db zrmdb.Database) *requestCostStats {
 	stats := make(map[uint64]*linReg)
 	for _, code := range reqList {
 		stats[code] = &linReg{cnt: 100}

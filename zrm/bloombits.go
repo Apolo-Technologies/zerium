@@ -24,7 +24,7 @@ import (
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/bloombits"
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/params"
 )
 
@@ -93,7 +93,7 @@ const (
 type BloomIndexer struct {
 	size uint64 // section size to generate bloombits for
 
-	db  ethdb.Database       // database instance to write index data and metadata into
+	db  zrmdb.Database       // database instance to write index data and metadata into
 	gen *bloombits.Generator // generator to rotate the bloom bits crating the bloom index
 
 	section uint64      // Section is the section number being processed currently
@@ -102,12 +102,12 @@ type BloomIndexer struct {
 
 // NewBloomIndexer returns a chain indexer that generates bloom bits data for the
 // canonical chain for fast logs filtering.
-func NewBloomIndexer(db ethdb.Database, size uint64) *core.ChainIndexer {
+func NewBloomIndexer(db zrmdb.Database, size uint64) *core.ChainIndexer {
 	backend := &BloomIndexer{
 		db:   db,
 		size: size,
 	}
-	table := ethdb.NewTable(db, string(core.BloomBitsIndexPrefix))
+	table := zrmdb.NewTable(db, string(core.BloomBitsIndexPrefix))
 
 	return core.NewChainIndexer(db, table, backend, size, bloomConfirms, bloomThrottling, "bloombits")
 }

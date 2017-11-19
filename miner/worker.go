@@ -31,7 +31,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/params"
@@ -109,7 +109,7 @@ type worker struct {
 	zrm     Backend
 	chain   *core.BlockChain
 	proc    core.Validator
-	chainDb ethdb.Database
+	chainDb zrmdb.Database
 
 	coinbase common.Address
 	extra    []byte

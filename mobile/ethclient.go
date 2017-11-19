@@ -22,17 +22,17 @@ import (
 	"math/big"
 
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/ethclient"
+	"github.com/apolo-technologies/zerium/zrmclient"
 )
 
 // ZeriumClient provides access to the Zerium APIs.
 type ZeriumClient struct {
-	client *ethclient.Client
+	client *zrmclient.Client
 }
 
 // NewZeriumClient connects a client to the given URL.
 func NewZeriumClient(rawurl string) (client *ZeriumClient, _ error) {
-	rawClient, err := ethclient.Dial(rawurl)
+	rawClient, err := zrmclient.Dial(rawurl)
 	return &ZeriumClient{rawClient}, err
 }
 

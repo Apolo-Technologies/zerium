@@ -42,7 +42,7 @@ import (
 	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
 	"github.com/apolo-technologies/zerium/zrm/gasprice"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/zrmstats"
 	"github.com/apolo-technologies/zerium/les"
 	"github.com/apolo-technologies/zerium/log"
@@ -1115,7 +1115,7 @@ func SetupNetwork(ctx *cli.Context) {
 }
 
 // MakeChainDatabase open an LevelDB using the flags passed to the client and will hard crash if it fails.
-func MakeChainDatabase(ctx *cli.Context, stack *node.Node) ethdb.Database {
+func MakeChainDatabase(ctx *cli.Context, stack *node.Node) zrmdb.Database {
 	var (
 		cache   = ctx.GlobalInt(CacheFlag.Name)
 		handles = makeDatabaseHandles()
@@ -1145,7 +1145,7 @@ func MakeGenesis(ctx *cli.Context) *core.Genesis {
 }
 
 // MakeChain creates a chain manager from set command line flags.
-func MakeChain(ctx *cli.Context, stack *node.Node) (chain *core.BlockChain, chainDb ethdb.Database) {
+func MakeChain(ctx *cli.Context, stack *node.Node) (chain *core.BlockChain, chainDb zrmdb.Database) {
 	var err error
 	chainDb = MakeChainDatabase(ctx, stack)
 

@@ -32,7 +32,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/ethdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/params"
 	"github.com/apolo-technologies/zerium/rlp"
 )
@@ -98,7 +98,7 @@ func (t *BlockTest) Run() error {
 	}
 
 	// import pre accounts & construct test genesis block & state root
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	gblock, err := t.genesis(config).Commit(db)
 	if err != nil {
 		return err
