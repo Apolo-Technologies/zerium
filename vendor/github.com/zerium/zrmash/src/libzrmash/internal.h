@@ -1,7 +1,7 @@
 #pragma once
 #include "compiler.h"
 #include "endian.h"
-#include "ethash.h"
+#include "zrmash.h"
 #include <stdio.h>
 
 #define ENABLE_SSE 0
@@ -31,33 +31,33 @@ typedef union node {
 
 } node;
 
-static inline uint8_t ethash_h256_get(ethash_h256_t const* hash, unsigned int i)
+static inline uint8_t zrmash_h256_get(zrmash_h256_t const* hash, unsigned int i)
 {
 	return hash->b[i];
 }
 
-static inline void ethash_h256_set(ethash_h256_t* hash, unsigned int i, uint8_t v)
+static inline void zrmash_h256_set(zrmash_h256_t* hash, unsigned int i, uint8_t v)
 {
 	hash->b[i] = v;
 }
 
-static inline void ethash_h256_reset(ethash_h256_t* hash)
+static inline void zrmash_h256_reset(zrmash_h256_t* hash)
 {
 	memset(hash, 0, 32);
 }
 
 // Returns if hash is less than or equal to boundary (2^256/difficulty)
-static inline bool ethash_check_difficulty(
-	ethash_h256_t const* hash,
-	ethash_h256_t const* boundary
+static inline bool zrmash_check_difficulty(
+	zrmash_h256_t const* hash,
+	zrmash_h256_t const* boundary
 )
 {
 	// Boundary is big endian
 	for (int i = 0; i < 32; i++) {
-		if (ethash_h256_get(hash, i) == ethash_h256_get(boundary, i)) {
+		if (zrmash_h256_get(hash, i) == zrmash_h256_get(boundary, i)) {
 			continue;
 		}
-		return ethash_h256_get(hash, i) < ethash_h256_get(boundary, i);
+		return zrmash_h256_get(hash, i) < zrmash_h256_get(boundary, i);
 	}
 	return true;
 }
@@ -71,29 +71,29 @@ static inline bool ethash_check_difficulty(
  * @param boundary         The boundary is defined as (2^256 / difficulty)
  * @return                 true for succesful pre-verification and false otherwise
  */
-bool ethash_quick_check_difficulty(
-	ethash_h256_t const* header_hash,
+bool zrmash_quick_check_difficulty(
+	zrmash_h256_t const* header_hash,
 	uint64_t const nonce,
-	ethash_h256_t const* mix_hash,
-	ethash_h256_t const* boundary
+	zrmash_h256_t const* mix_hash,
+	zrmash_h256_t const* boundary
 );
 
-struct ethash_light {
+struct zrmash_light {
 	void* cache;
 	uint64_t cache_size;
 	uint64_t block_number;
 };
 
 /**
- * Allocate and initialize a new ethash_light handler. Internal version
+ * Allocate and initialize a new zrmash_light handler. Internal version
  *
  * @param cache_size    The size of the cache in bytes
  * @param seed          Block seedhash to be used during the computation of the
  *                      cache nodes
- * @return              Newly allocated ethash_light handler or NULL in case of
- *                      ERRNOMEM or invalid parameters used for @ref ethash_compute_cache_nodes()
+ * @return              Newly allocated zrmash_light handler or NULL in case of
+ *                      ERRNOMEM or invalid parameters used for @ref zrmash_compute_cache_nodes()
  */
-ethash_light_t ethash_light_new_internal(uint64_t cache_size, ethash_h256_t const* seed);
+zrmash_light_t zrmash_light_new_internal(uint64_t cache_size, zrmash_h256_t const* seed);
 
 /**
  * Calculate the light client data. Internal version.
@@ -104,74 +104,74 @@ ethash_light_t ethash_light_new_internal(uint64_t cache_size, ethash_h256_t cons
  * @param nonce          The nonce to pack into the mix
  * @return               The resulting hash.
  */
-ethash_return_value_t ethash_light_compute_internal(
-	ethash_light_t light,
+zrmash_return_value_t zrmash_light_compute_internal(
+	zrmash_light_t light,
 	uint64_t full_size,
-	ethash_h256_t const header_hash,
+	zrmash_h256_t const header_hash,
 	uint64_t nonce
 );
 
-struct ethash_full {
+struct zrmash_full {
 	FILE* file;
 	uint64_t file_size;
 	node* data;
 };
 
 /**
- * Allocate and initialize a new ethash_full handler. Internal version.
+ * Allocate and initialize a new zrmash_full handler. Internal version.
  *
  * @param dirname        The directory in which to put the DAG file.
  * @param seedhash       The seed hash of the block. Used in the DAG file naming.
  * @param full_size      The size of the full data in bytes.
- * @param cache          A cache object to use that was allocated with @ref ethash_cache_new().
- *                       Iff this function succeeds the ethash_full_t will take memory
+ * @param cache          A cache object to use that was allocated with @ref zrmash_cache_new().
+ *                       Iff this function succeeds the zrmash_full_t will take memory
  *                       memory ownership of the cache and free it at deletion. If
  *                       not then the user still has to handle freeing of the cache himself.
- * @param callback       A callback function with signature of @ref ethash_callback_t
+ * @param callback       A callback function with signature of @ref zrmash_callback_t
  *                       It accepts an unsigned with which a progress of DAG calculation
  *                       can be displayed. If all goes well the callback should return 0.
  *                       If a non-zero value is returned then DAG generation will stop.
- * @return               Newly allocated ethash_full handler or NULL in case of
- *                       ERRNOMEM or invalid parameters used for @ref ethash_compute_full_data()
+ * @return               Newly allocated zrmash_full handler or NULL in case of
+ *                       ERRNOMEM or invalid parameters used for @ref zrmash_compute_full_data()
  */
-ethash_full_t ethash_full_new_internal(
+zrmash_full_t zrmash_full_new_internal(
 	char const* dirname,
-	ethash_h256_t const seed_hash,
+	zrmash_h256_t const seed_hash,
 	uint64_t full_size,
-	ethash_light_t const light,
-	ethash_callback_t callback
+	zrmash_light_t const light,
+	zrmash_callback_t callback
 );
 
-void ethash_calculate_dag_item(
+void zrmash_calculate_dag_item(
 	node* const ret,
 	uint32_t node_index,
-	ethash_light_t const cache
+	zrmash_light_t const cache
 );
 
-void ethash_quick_hash(
-	ethash_h256_t* return_hash,
-	ethash_h256_t const* header_hash,
+void zrmash_quick_hash(
+	zrmash_h256_t* return_hash,
+	zrmash_h256_t const* header_hash,
 	const uint64_t nonce,
-	ethash_h256_t const* mix_hash
+	zrmash_h256_t const* mix_hash
 );
 
-uint64_t ethash_get_datasize(uint64_t const block_number);
-uint64_t ethash_get_cachesize(uint64_t const block_number);
+uint64_t zrmash_get_datasize(uint64_t const block_number);
+uint64_t zrmash_get_cachesize(uint64_t const block_number);
 
 /**
  * Compute the memory data for a full node's memory
  *
- * @param mem         A pointer to an ethash full's memory
+ * @param mem         A pointer to an zrmash full's memory
  * @param full_size   The size of the full data in bytes
  * @param cache       A cache object to use in the calculation
- * @param callback    The callback function. Check @ref ethash_full_new() for details.
+ * @param callback    The callback function. Check @ref zrmash_full_new() for details.
  * @return            true if all went fine and false for invalid parameters
  */
-bool ethash_compute_full_data(
+bool zrmash_compute_full_data(
 	void* mem,
 	uint64_t full_size,
-	ethash_light_t const light,
-	ethash_callback_t callback
+	zrmash_light_t const light,
+	zrmash_callback_t callback
 );
 
 #ifdef __cplusplus

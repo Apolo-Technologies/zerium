@@ -25,7 +25,7 @@ import (
 
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/consensus"
-	"github.com/apolo-technologies/zerium/consensus/ethash"
+	"github.com/apolo-technologies/zerium/consensus/zrmash"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/log"
 )
@@ -116,7 +116,7 @@ func (a *RemoteAgent) GetWork() ([3]string, error) {
 		block := a.currentWork.Block
 
 		res[0] = block.HashNoNonce().Hex()
-		seedHash := ethash.SeedHash(block.NumberU64())
+		seedHash := zrmash.SeedHash(block.NumberU64())
 		res[1] = common.BytesToHash(seedHash).Hex()
 		// Calculate the "target" to be returned to the external miner
 		n := big.NewInt(1)

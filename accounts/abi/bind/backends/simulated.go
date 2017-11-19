@@ -28,7 +28,7 @@ import (
 	"github.com/apolo-technologies/zerium/accounts/abi/bind"
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/common/math"
-	"github.com/apolo-technologies/zerium/consensus/ethash"
+	"github.com/apolo-technologies/zerium/consensus/zrmash"
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/types"
@@ -62,7 +62,7 @@ func NewSimulatedBackend(alloc core.GenesisAlloc) *SimulatedBackend {
 	database, _ := ethdb.NewMemDatabase()
 	genesis := core.Genesis{Config: params.AllEthashProtocolChanges, Alloc: alloc}
 	genesis.MustCommit(database)
-	blockchain, _ := core.NewBlockChain(database, genesis.Config, ethash.NewFaker(), vm.Config{})
+	blockchain, _ := core.NewBlockChain(database, genesis.Config, zrmash.NewFaker(), vm.Config{})
 	backend := &SimulatedBackend{database: database, blockchain: blockchain, config: genesis.Config}
 	backend.rollback()
 	return backend

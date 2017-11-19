@@ -1,18 +1,18 @@
 /*
-  This file is part of ethash.
+  This file is part of zrmash.
 
-  ethash is free software: you can redistribute it and/or modify
+  zrmash is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  ethash is distributed in the hope that it will be useful,
+  zrmash is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with ethash.  If not, see <http://www.gnu.org/licenses/>.
+  along with zrmash.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /** @file sha3.cpp
@@ -23,9 +23,9 @@
 #include <cryptopp/sha3.h>
 
 extern "C" {
-struct ethash_h256;
-typedef struct ethash_h256 ethash_h256_t;
-void SHA3_256(ethash_h256_t const* ret, uint8_t const* data, size_t size)
+struct zrmash_h256;
+typedef struct zrmash_h256 zrmash_h256_t;
+void SHA3_256(zrmash_h256_t const* ret, uint8_t const* data, size_t size)
 {
 	CryptoPP::SHA3_256().CalculateDigest((uint8_t*)ret, data, size);
 }

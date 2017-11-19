@@ -16,9 +16,9 @@
 
 // +build !go1.8
 
-package ethash
+package zrmash
 
-// cacheSize calculates and returns the size of the ethash verification cache that
+// cacheSize calculates and returns the size of the zrmash verification cache that
 // belongs to a certain block number. The cache size grows linearly, however, we
 // always take the highest prime below the linearly growing threshold in order to
 // reduce the risk of accidental regularities leading to cyclic behavior.
@@ -32,7 +32,7 @@ func cacheSize(block uint64) uint64 {
 	panic("fast prime testing unsupported in Go < 1.8")
 }
 
-// datasetSize calculates and returns the size of the ethash mining dataset that
+// datasetSize calculates and returns the size of the zrmash mining dataset that
 // belongs to a certain block number. The dataset size grows linearly, however, we
 // always take the highest prime below the linearly growing threshold in order to
 // reduce the risk of accidental regularities leading to cyclic behavior.

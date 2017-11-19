@@ -1,4 +1,4 @@
-set(LIBRARY ethash)
+set(LIBRARY zrmash)
 
 if (CPPETHEREUM)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
@@ -13,7 +13,7 @@ endif()
 set(FILES 	util.h
           	io.c
           	internal.c
-          	ethash.h
+          	zrmash.h
           	endian.h
           	compiler.h
           	fnv.h

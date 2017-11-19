@@ -34,7 +34,7 @@ import (
 // DefaultConfig contains default settings for use on the Zerium main net.
 var DefaultConfig = Config{
 	SyncMode:             downloader.FastSync,
-	EthashCacheDir:       "ethash",
+	EthashCacheDir:       "zrmash",
 	EthashCachesInMem:    2,
 	EthashCachesOnDisk:   3,
 	EthashDatasetsInMem:  1,
@@ -61,7 +61,7 @@ func init() {
 	if runtime.GOOS == "windows" {
 		DefaultConfig.EthashDatasetDir = filepath.Join(home, "AppData", "Ethash")
 	} else {
-		DefaultConfig.EthashDatasetDir = filepath.Join(home, ".ethash")
+		DefaultConfig.EthashDatasetDir = filepath.Join(home, ".zrmash")
 	}
 }
 

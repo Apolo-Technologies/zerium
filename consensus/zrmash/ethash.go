@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package ethash implements the ethash proof-of-work consensus engine.
-package ethash
+// Package zrmash implements the zrmash proof-of-work consensus engine.
+package zrmash
 
 import (
 	"errors"
@@ -142,7 +142,7 @@ func memoryMapAndGenerate(path string, size uint64, generator func(buffer []uint
 	return memoryMap(path)
 }
 
-// cache wraps an ethash cache with some metadata to allow easier concurrent use.
+// cache wraps an zrmash cache with some metadata to allow easier concurrent use.
 type cache struct {
 	epoch uint64 // Epoch for which this cache is relevant
 
@@ -185,15 +185,15 @@ func (c *cache) generate(dir string, limit int, test bool) {
 		var err error
 		c.dump, c.mmap, c.cache, err = memoryMap(path)
 		if err == nil {
-			logger.Debug("Loaded old ethash cache from disk")
+			logger.Debug("Loaded old zrmash cache from disk")
 			return
 		}
-		logger.Debug("Failed to load old ethash cache", "err", err)
+		logger.Debug("Failed to load old zrmash cache", "err", err)
 
 		// No previous cache available, create a new cache file to fill
 		c.dump, c.mmap, c.cache, err = memoryMapAndGenerate(path, size, func(buffer []uint32) { generateCache(buffer, c.epoch, seed) })
 		if err != nil {
-			logger.Error("Failed to generate mapped ethash cache", "err", err)
+			logger.Error("Failed to generate mapped zrmash cache", "err", err)
 
 			c.cache = make([]uint32, size/4)
 			generateCache(c.cache, c.epoch, seed)
@@ -219,7 +219,7 @@ func (c *cache) release() {
 	}
 }
 
-// dataset wraps an ethash dataset with some metadata to allow easier concurrent use.
+// dataset wraps an zrmash dataset with some metadata to allow easier concurrent use.
 type dataset struct {
 	epoch uint64 // Epoch for which this cache is relevant
 
@@ -269,10 +269,10 @@ func (d *dataset) generate(dir string, limit int, test bool) {
 		var err error
 		d.dump, d.mmap, d.dataset, err = memoryMap(path)
 		if err == nil {
-			logger.Debug("Loaded old ethash dataset from disk")
+			logger.Debug("Loaded old zrmash dataset from disk")
 			return
 		}
-		logger.Debug("Failed to load old ethash dataset", "err", err)
+		logger.Debug("Failed to load old zrmash dataset", "err", err)
 
 		// No previous dataset available, create a new dataset file to fill
 		cache := make([]uint32, csize/4)
@@ -280,7 +280,7 @@ func (d *dataset) generate(dir string, limit int, test bool) {
 
 		d.dump, d.mmap, d.dataset, err = memoryMapAndGenerate(path, dsize, func(buffer []uint32) { generateDataset(buffer, d.epoch, cache) })
 		if err != nil {
-			logger.Error("Failed to generate mapped ethash dataset", "err", err)
+			logger.Error("Failed to generate mapped zrmash dataset", "err", err)
 
 			d.dataset = make([]uint32, dsize/2)
 			generateDataset(d.dataset, d.epoch, cache)
@@ -306,21 +306,21 @@ func (d *dataset) release() {
 	}
 }
 
-// MakeCache generates a new ethash cache and optionally stores it to disk.
+// MakeCache generates a new zrmash cache and optionally stores it to disk.
 func MakeCache(block uint64, dir string) {
 	c := cache{epoch: block / epochLength}
 	c.generate(dir, math.MaxInt32, false)
 	c.release()
 }
 
-// MakeDataset generates a new ethash dataset and optionally stores it to disk.
+// MakeDataset generates a new zrmash dataset and optionally stores it to disk.
 func MakeDataset(block uint64, dir string) {
 	d := dataset{epoch: block / epochLength}
 	d.generate(dir, math.MaxInt32, false)
 	d.release()
 }
 
-// Ethash is a consensus engine based on proot-of-work implementing the ethash
+// Ethash is a consensus engine based on proot-of-work implementing the zrmash
 // algorithm.
 type Ethash struct {
 	cachedir     string // Data directory to store the verification caches
@@ -352,17 +352,17 @@ type Ethash struct {
 	lock sync.Mutex // Ensures thread safety for the in-memory caches and mining fields
 }
 
-// New creates a full sized ethash PoW scheme.
+// New creates a full sized zrmash PoW scheme.
 func New(cachedir string, cachesinmem, cachesondisk int, dagdir string, dagsinmem, dagsondisk int) *Ethash {
 	if cachesinmem <= 0 {
-		log.Warn("One ethash cache must always be in memory", "requested", cachesinmem)
+		log.Warn("One zrmash cache must always be in memory", "requested", cachesinmem)
 		cachesinmem = 1
 	}
 	if cachedir != "" && cachesondisk > 0 {
-		log.Info("Disk storage enabled for ethash caches", "dir", cachedir, "count", cachesondisk)
+		log.Info("Disk storage enabled for zrmash caches", "dir", cachedir, "count", cachesondisk)
 	}
 	if dagdir != "" && dagsondisk > 0 {
-		log.Info("Disk storage enabled for ethash DAGs", "dir", dagdir, "count", dagsondisk)
+		log.Info("Disk storage enabled for zrmash DAGs", "dir", dagdir, "count", dagsondisk)
 	}
 	return &Ethash{
 		cachedir:     cachedir,
@@ -378,7 +378,7 @@ func New(cachedir string, cachesinmem, cachesondisk int, dagdir string, dagsinme
 	}
 }
 
-// NewTester creates a small sized ethash PoW scheme useful only for testing
+// NewTester creates a small sized zrmash PoW scheme useful only for testing
 // purposes.
 func NewTester() *Ethash {
 	return &Ethash{
@@ -391,34 +391,34 @@ func NewTester() *Ethash {
 	}
 }
 
-// NewFaker creates a ethash consensus engine with a fake PoW scheme that accepts
+// NewFaker creates a zrmash consensus engine with a fake PoW scheme that accepts
 // all blocks' seal as valid, though they still have to conform to the Zerium
 // consensus rules.
 func NewFaker() *Ethash {
 	return &Ethash{fakeMode: true}
 }
 
-// NewFakeFailer creates a ethash consensus engine with a fake PoW scheme that
+// NewFakeFailer creates a zrmash consensus engine with a fake PoW scheme that
 // accepts all blocks as valid apart from the single one specified, though they
 // still have to conform to the Zerium consensus rules.
 func NewFakeFailer(fail uint64) *Ethash {
 	return &Ethash{fakeMode: true, fakeFail: fail}
 }
 
-// NewFakeDelayer creates a ethash consensus engine with a fake PoW scheme that
+// NewFakeDelayer creates a zrmash consensus engine with a fake PoW scheme that
 // accepts all blocks as valid, but delays verifications by some time, though
 // they still have to conform to the Zerium consensus rules.
 func NewFakeDelayer(delay time.Duration) *Ethash {
 	return &Ethash{fakeMode: true, fakeDelay: delay}
 }
 
-// NewFullFaker creates an ethash consensus engine with a full fake scheme that
+// NewFullFaker creates an zrmash consensus engine with a full fake scheme that
 // accepts all blocks as valid, without checking any consensus rules whatsoever.
 func NewFullFaker() *Ethash {
 	return &Ethash{fakeMode: true, fakeFull: true}
 }
 
-// NewShared creates a full sized ethash PoW shared between all requesters running
+// NewShared creates a full sized zrmash PoW shared between all requesters running
 // in the same process.
 func NewShared() *Ethash {
 	return &Ethash{shared: sharedEthash}
@@ -427,53 +427,53 @@ func NewShared() *Ethash {
 // cache tries to retrieve a verification cache for the specified block number
 // by first checking against a list of in-memory caches, then against caches
 // stored on disk, and finally generating one if none can be found.
-func (ethash *Ethash) cache(block uint64) []uint32 {
+func (zrmash *Ethash) cache(block uint64) []uint32 {
 	epoch := block / epochLength
 
 	// If we have a PoW for that epoch, use that
-	ethash.lock.Lock()
+	zrmash.lock.Lock()
 
-	current, future := ethash.caches[epoch], (*cache)(nil)
+	current, future := zrmash.caches[epoch], (*cache)(nil)
 	if current == nil {
 		// No in-memory cache, evict the oldest if the cache limit was reached
-		for len(ethash.caches) > 0 && len(ethash.caches) >= ethash.cachesinmem {
+		for len(zrmash.caches) > 0 && len(zrmash.caches) >= zrmash.cachesinmem {
 			var evict *cache
-			for _, cache := range ethash.caches {
+			for _, cache := range zrmash.caches {
 				if evict == nil || evict.used.After(cache.used) {
 					evict = cache
 				}
 			}
-			delete(ethash.caches, evict.epoch)
+			delete(zrmash.caches, evict.epoch)
 			evict.release()
 
-			log.Trace("Evicted ethash cache", "epoch", evict.epoch, "used", evict.used)
+			log.Trace("Evicted zrmash cache", "epoch", evict.epoch, "used", evict.used)
 		}
 		// If we have the new cache pre-generated, use that, otherwise create a new one
-		if ethash.fcache != nil && ethash.fcache.epoch == epoch {
+		if zrmash.fcache != nil && zrmash.fcache.epoch == epoch {
 			log.Trace("Using pre-generated cache", "epoch", epoch)
-			current, ethash.fcache = ethash.fcache, nil
+			current, zrmash.fcache = zrmash.fcache, nil
 		} else {
-			log.Trace("Requiring new ethash cache", "epoch", epoch)
+			log.Trace("Requiring new zrmash cache", "epoch", epoch)
 			current = &cache{epoch: epoch}
 		}
-		ethash.caches[epoch] = current
+		zrmash.caches[epoch] = current
 
 		// If we just used up the future cache, or need a refresh, regenerate
-		if ethash.fcache == nil || ethash.fcache.epoch <= epoch {
-			if ethash.fcache != nil {
-				ethash.fcache.release()
+		if zrmash.fcache == nil || zrmash.fcache.epoch <= epoch {
+			if zrmash.fcache != nil {
+				zrmash.fcache.release()
 			}
-			log.Trace("Requiring new future ethash cache", "epoch", epoch+1)
+			log.Trace("Requiring new future zrmash cache", "epoch", epoch+1)
 			future = &cache{epoch: epoch + 1}
-			ethash.fcache = future
+			zrmash.fcache = future
 		}
 		// New current cache, set its initial timestamp
 		current.used = time.Now()
 	}
-	ethash.lock.Unlock()
+	zrmash.lock.Unlock()
 
 	// Wait for generation finish, bump the timestamp and finalize the cache
-	current.generate(ethash.cachedir, ethash.cachesondisk, ethash.tester)
+	current.generate(zrmash.cachedir, zrmash.cachesondisk, zrmash.tester)
 
 	current.lock.Lock()
 	current.used = time.Now()
@@ -481,7 +481,7 @@ func (ethash *Ethash) cache(block uint64) []uint32 {
 
 	// If we exhausted the future cache, now's a good time to regenerate it
 	if future != nil {
-		go future.generate(ethash.cachedir, ethash.cachesondisk, ethash.tester)
+		go future.generate(zrmash.cachedir, zrmash.cachesondisk, zrmash.tester)
 	}
 	return current.cache
 }
@@ -489,54 +489,54 @@ func (ethash *Ethash) cache(block uint64) []uint32 {
 // dataset tries to retrieve a mining dataset for the specified block number
 // by first checking against a list of in-memory datasets, then against DAGs
 // stored on disk, and finally generating one if none can be found.
-func (ethash *Ethash) dataset(block uint64) []uint32 {
+func (zrmash *Ethash) dataset(block uint64) []uint32 {
 	epoch := block / epochLength
 
 	// If we have a PoW for that epoch, use that
-	ethash.lock.Lock()
+	zrmash.lock.Lock()
 
-	current, future := ethash.datasets[epoch], (*dataset)(nil)
+	current, future := zrmash.datasets[epoch], (*dataset)(nil)
 	if current == nil {
 		// No in-memory dataset, evict the oldest if the dataset limit was reached
-		for len(ethash.datasets) > 0 && len(ethash.datasets) >= ethash.dagsinmem {
+		for len(zrmash.datasets) > 0 && len(zrmash.datasets) >= zrmash.dagsinmem {
 			var evict *dataset
-			for _, dataset := range ethash.datasets {
+			for _, dataset := range zrmash.datasets {
 				if evict == nil || evict.used.After(dataset.used) {
 					evict = dataset
 				}
 			}
-			delete(ethash.datasets, evict.epoch)
+			delete(zrmash.datasets, evict.epoch)
 			evict.release()
 
-			log.Trace("Evicted ethash dataset", "epoch", evict.epoch, "used", evict.used)
+			log.Trace("Evicted zrmash dataset", "epoch", evict.epoch, "used", evict.used)
 		}
 		// If we have the new cache pre-generated, use that, otherwise create a new one
-		if ethash.fdataset != nil && ethash.fdataset.epoch == epoch {
+		if zrmash.fdataset != nil && zrmash.fdataset.epoch == epoch {
 			log.Trace("Using pre-generated dataset", "epoch", epoch)
-			current = &dataset{epoch: ethash.fdataset.epoch} // Reload from disk
-			ethash.fdataset = nil
+			current = &dataset{epoch: zrmash.fdataset.epoch} // Reload from disk
+			zrmash.fdataset = nil
 		} else {
-			log.Trace("Requiring new ethash dataset", "epoch", epoch)
+			log.Trace("Requiring new zrmash dataset", "epoch", epoch)
 			current = &dataset{epoch: epoch}
 		}
-		ethash.datasets[epoch] = current
+		zrmash.datasets[epoch] = current
 
 		// If we just used up the future dataset, or need a refresh, regenerate
-		if ethash.fdataset == nil || ethash.fdataset.epoch <= epoch {
-			if ethash.fdataset != nil {
-				ethash.fdataset.release()
+		if zrmash.fdataset == nil || zrmash.fdataset.epoch <= epoch {
+			if zrmash.fdataset != nil {
+				zrmash.fdataset.release()
 			}
-			log.Trace("Requiring new future ethash dataset", "epoch", epoch+1)
+			log.Trace("Requiring new future zrmash dataset", "epoch", epoch+1)
 			future = &dataset{epoch: epoch + 1}
-			ethash.fdataset = future
+			zrmash.fdataset = future
 		}
 		// New current dataset, set its initial timestamp
 		current.used = time.Now()
 	}
-	ethash.lock.Unlock()
+	zrmash.lock.Unlock()
 
 	// Wait for generation finish, bump the timestamp and finalize the cache
-	current.generate(ethash.dagdir, ethash.dagsondisk, ethash.tester)
+	current.generate(zrmash.dagdir, zrmash.dagsondisk, zrmash.tester)
 
 	current.lock.Lock()
 	current.used = time.Now()
@@ -544,18 +544,18 @@ func (ethash *Ethash) dataset(block uint64) []uint32 {
 
 	// If we exhausted the future dataset, now's a good time to regenerate it
 	if future != nil {
-		go future.generate(ethash.dagdir, ethash.dagsondisk, ethash.tester)
+		go future.generate(zrmash.dagdir, zrmash.dagsondisk, zrmash.tester)
 	}
 	return current.dataset
 }
 
 // Threads returns the number of mining threads currently enabled. This doesn't
 // necessarily mean that mining is running!
-func (ethash *Ethash) Threads() int {
-	ethash.lock.Lock()
-	defer ethash.lock.Unlock()
+func (zrmash *Ethash) Threads() int {
+	zrmash.lock.Lock()
+	defer zrmash.lock.Unlock()
 
-	return ethash.threads
+	return zrmash.threads
 }
 
 // SetThreads updates the number of mining threads currently enabled. Calling
@@ -563,32 +563,32 @@ func (ethash *Ethash) Threads() int {
 // specified, the miner will use all cores of the machine. Setting a thread
 // count below zero is allowed and will cause the miner to idle, without any
 // work being done.
-func (ethash *Ethash) SetThreads(threads int) {
-	ethash.lock.Lock()
-	defer ethash.lock.Unlock()
+func (zrmash *Ethash) SetThreads(threads int) {
+	zrmash.lock.Lock()
+	defer zrmash.lock.Unlock()
 
 	// If we're running a shared PoW, set the thread count on that instead
-	if ethash.shared != nil {
-		ethash.shared.SetThreads(threads)
+	if zrmash.shared != nil {
+		zrmash.shared.SetThreads(threads)
 		return
 	}
 	// Update the threads and ping any running seal to pull in any changes
-	ethash.threads = threads
+	zrmash.threads = threads
 	select {
-	case ethash.update <- struct{}{}:
+	case zrmash.update <- struct{}{}:
 	default:
 	}
 }
 
 // Hashrate implements PoW, returning the measured rate of the search invocations
 // per second over the last minute.
-func (ethash *Ethash) Hashrate() float64 {
-	return ethash.hashrate.Rate1()
+func (zrmash *Ethash) Hashrate() float64 {
+	return zrmash.hashrate.Rate1()
 }
 
 // APIs implements consensus.Engine, returning the user facing RPC APIs. Currently
 // that is empty.
-func (ethash *Ethash) APIs(chain consensus.ChainReader) []rpc.API {
+func (zrmash *Ethash) APIs(chain consensus.ChainReader) []rpc.API {
 	return nil
 }
 

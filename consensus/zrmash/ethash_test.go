@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-package ethash
+package zrmash
 
 import (
 	"math/big"
@@ -23,18 +23,18 @@ import (
 	"github.com/apolo-technologies/zerium/core/types"
 )
 
-// Tests that ethash works correctly in test mode.
+// Tests that zrmash works correctly in test mode.
 func TestTestMode(t *testing.T) {
 	head := &types.Header{Number: big.NewInt(1), Difficulty: big.NewInt(100)}
 
-	ethash := NewTester()
-	block, err := ethash.Seal(nil, types.NewBlockWithHeader(head), nil)
+	zrmash := NewTester()
+	block, err := zrmash.Seal(nil, types.NewBlockWithHeader(head), nil)
 	if err != nil {
 		t.Fatalf("failed to seal block: %v", err)
 	}
 	head.Nonce = types.EncodeNonce(block.Nonce())
 	head.MixDigest = block.MixDigest()
-	if err := ethash.VerifySeal(nil, head); err != nil {
+	if err := zrmash.VerifySeal(nil, head); err != nil {
 		t.Fatalf("unexpected verification error: %v", err)
 	}
 }

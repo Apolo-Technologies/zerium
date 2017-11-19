@@ -33,7 +33,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/consensus"
 	"github.com/apolo-technologies/zerium/consensus/clique"
-	"github.com/apolo-technologies/zerium/consensus/ethash"
+	"github.com/apolo-technologies/zerium/consensus/zrmash"
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/vm"
@@ -211,32 +211,32 @@ var (
 	}
 	// Ethash settings
 	EthashCacheDirFlag = DirectoryFlag{
-		Name:  "ethash.cachedir",
-		Usage: "Directory to store the ethash verification caches (default = inside the datadir)",
+		Name:  "zrmash.cachedir",
+		Usage: "Directory to store the zrmash verification caches (default = inside the datadir)",
 	}
 	EthashCachesInMemoryFlag = cli.IntFlag{
-		Name:  "ethash.cachesinmem",
-		Usage: "Number of recent ethash caches to keep in memory (16MB each)",
+		Name:  "zrmash.cachesinmem",
+		Usage: "Number of recent zrmash caches to keep in memory (16MB each)",
 		Value: zrm.DefaultConfig.EthashCachesInMem,
 	}
 	EthashCachesOnDiskFlag = cli.IntFlag{
-		Name:  "ethash.cachesondisk",
-		Usage: "Number of recent ethash caches to keep on disk (16MB each)",
+		Name:  "zrmash.cachesondisk",
+		Usage: "Number of recent zrmash caches to keep on disk (16MB each)",
 		Value: zrm.DefaultConfig.EthashCachesOnDisk,
 	}
 	EthashDatasetDirFlag = DirectoryFlag{
-		Name:  "ethash.dagdir",
-		Usage: "Directory to store the ethash mining DAGs (default = inside home folder)",
+		Name:  "zrmash.dagdir",
+		Usage: "Directory to store the zrmash mining DAGs (default = inside home folder)",
 		Value: DirectoryString{zrm.DefaultConfig.EthashDatasetDir},
 	}
 	EthashDatasetsInMemoryFlag = cli.IntFlag{
-		Name:  "ethash.dagsinmem",
-		Usage: "Number of recent ethash mining DAGs to keep in memory (1+GB each)",
+		Name:  "zrmash.dagsinmem",
+		Usage: "Number of recent zrmash mining DAGs to keep in memory (1+GB each)",
 		Value: zrm.DefaultConfig.EthashDatasetsInMem,
 	}
 	EthashDatasetsOnDiskFlag = cli.IntFlag{
-		Name:  "ethash.dagsondisk",
-		Usage: "Number of recent ethash mining DAGs to keep on disk (1+GB each)",
+		Name:  "zrmash.dagsondisk",
+		Usage: "Number of recent zrmash mining DAGs to keep on disk (1+GB each)",
 		Value: zrm.DefaultConfig.EthashDatasetsOnDisk,
 	}
 	// Transaction pool settings
@@ -1157,9 +1157,9 @@ func MakeChain(ctx *cli.Context, stack *node.Node) (chain *core.BlockChain, chai
 	if config.Clique != nil {
 		engine = clique.New(config.Clique, chainDb)
 	} else {
-		engine = ethash.NewFaker()
+		engine = zrmash.NewFaker()
 		if !ctx.GlobalBool(FakePoWFlag.Name) {
-			engine = ethash.New(
+			engine = zrmash.New(
 				stack.ResolvePath(zrm.DefaultConfig.EthashCacheDir), zrm.DefaultConfig.EthashCachesInMem, zrm.DefaultConfig.EthashCachesOnDisk,
 				stack.ResolvePath(zrm.DefaultConfig.EthashDatasetDir), zrm.DefaultConfig.EthashDatasetsInMem, zrm.DefaultConfig.EthashDatasetsOnDisk,
 			)

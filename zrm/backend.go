@@ -30,7 +30,7 @@ import (
 	"github.com/apolo-technologies/zerium/common/hexutil"
 	"github.com/apolo-technologies/zerium/consensus"
 	"github.com/apolo-technologies/zerium/consensus/clique"
-	"github.com/apolo-technologies/zerium/consensus/ethash"
+	"github.com/apolo-technologies/zerium/consensus/zrmash"
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/bloombits"
 	"github.com/apolo-technologies/zerium/core/types"
@@ -218,15 +218,15 @@ func CreateConsensusEngine(ctx *node.ServiceContext, config *Config, chainConfig
 	switch {
 	case config.PowFake:
 		log.Warn("Ethash used in fake mode")
-		return ethash.NewFaker()
+		return zrmash.NewFaker()
 	case config.PowTest:
 		log.Warn("Ethash used in test mode")
-		return ethash.NewTester()
+		return zrmash.NewTester()
 	case config.PowShared:
 		log.Warn("Ethash used in shared mode")
-		return ethash.NewShared()
+		return zrmash.NewShared()
 	default:
-		engine := ethash.New(ctx.ResolvePath(config.EthashCacheDir), config.EthashCachesInMem, config.EthashCachesOnDisk,
+		engine := zrmash.New(ctx.ResolvePath(config.EthashCacheDir), config.EthashCachesInMem, config.EthashCachesOnDisk,
 			config.EthashDatasetDir, config.EthashDatasetsInMem, config.EthashDatasetsOnDisk)
 		engine.SetThreads(-1) // Disable CPU mining
 		return engine

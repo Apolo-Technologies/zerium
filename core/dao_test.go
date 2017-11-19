@@ -20,7 +20,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/consensus/ethash"
+	"github.com/apolo-technologies/zerium/consensus/zrmash"
 	"github.com/apolo-technologies/zerium/core/vm"
 	"github.com/apolo-technologies/zerium/ethdb"
 	"github.com/apolo-technologies/zerium/params"
@@ -45,7 +45,7 @@ func TestDAOForkRangeExtradata(t *testing.T) {
 	proConf.DAOForkBlock = forkBlock
 	proConf.DAOForkSupport = true
 
-	proBc, _ := NewBlockChain(proDb, &proConf, ethash.NewFaker(), vm.Config{})
+	proBc, _ := NewBlockChain(proDb, &proConf, zrmash.NewFaker(), vm.Config{})
 	defer proBc.Stop()
 
 	conDb, _ := ethdb.NewMemDatabase()
@@ -55,7 +55,7 @@ func TestDAOForkRangeExtradata(t *testing.T) {
 	conConf.DAOForkBlock = forkBlock
 	conConf.DAOForkSupport = false
 
-	conBc, _ := NewBlockChain(conDb, &conConf, ethash.NewFaker(), vm.Config{})
+	conBc, _ := NewBlockChain(conDb, &conConf, zrmash.NewFaker(), vm.Config{})
 	defer conBc.Stop()
 
 	if _, err := proBc.InsertChain(prefix); err != nil {
@@ -69,7 +69,7 @@ func TestDAOForkRangeExtradata(t *testing.T) {
 		// Create a pro-fork block, and try to feed into the no-fork chain
 		db, _ = ethdb.NewMemDatabase()
 		gspec.MustCommit(db)
-		bc, _ := NewBlockChain(db, &conConf, ethash.NewFaker(), vm.Config{})
+		bc, _ := NewBlockChain(db, &conConf, zrmash.NewFaker(), vm.Config{})
 		defer bc.Stop()
 
 		blocks := conBc.GetBlocksFromHash(conBc.CurrentBlock().Hash(), int(conBc.CurrentBlock().NumberU64()))
@@ -91,7 +91,7 @@ func TestDAOForkRangeExtradata(t *testing.T) {
 		// Create a no-fork block, and try to feed into the pro-fork chain
 		db, _ = ethdb.NewMemDatabase()
 		gspec.MustCommit(db)
-		bc, _ = NewBlockChain(db, &proConf, ethash.NewFaker(), vm.Config{})
+		bc, _ = NewBlockChain(db, &proConf, zrmash.NewFaker(), vm.Config{})
 		defer bc.Stop()
 
 		blocks = proBc.GetBlocksFromHash(proBc.CurrentBlock().Hash(), int(proBc.CurrentBlock().NumberU64()))
@@ -114,7 +114,7 @@ func TestDAOForkRangeExtradata(t *testing.T) {
 	// Verify that contra-forkers accept pro-fork extra-datas after forking finishes
 	db, _ = ethdb.NewMemDatabase()
 	gspec.MustCommit(db)
-	bc, _ := NewBlockChain(db, &conConf, ethash.NewFaker(), vm.Config{})
+	bc, _ := NewBlockChain(db, &conConf, zrmash.NewFaker(), vm.Config{})
 	defer bc.Stop()
 
 	blocks := conBc.GetBlocksFromHash(conBc.CurrentBlock().Hash(), int(conBc.CurrentBlock().NumberU64()))
@@ -131,7 +131,7 @@ func TestDAOForkRangeExtradata(t *testing.T) {
 	// Verify that pro-forkers accept contra-fork extra-datas after forking finishes
 	db, _ = ethdb.NewMemDatabase()
 	gspec.MustCommit(db)
-	bc, _ = NewBlockChain(db, &proConf, ethash.NewFaker(), vm.Config{})
+	bc, _ = NewBlockChain(db, &proConf, zrmash.NewFaker(), vm.Config{})
 	defer bc.Stop()
 
 	blocks = proBc.GetBlocksFromHash(proBc.CurrentBlock().Hash(), int(proBc.CurrentBlock().NumberU64()))

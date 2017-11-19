@@ -1,12 +1,12 @@
 /*
-  This file is part of ethash.
+  This file is part of zrmash.
 
-  ethash is free software: you can redistribute it and/or modify
+  zrmash is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  ethash is distributed in the hope that it will be useful,
+  zrmash is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
   GNU General Public License for more details.
@@ -26,7 +26,7 @@
 #include <errno.h>
 #include <math.h>
 #include "mmap.h"
-#include "ethash.h"
+#include "zrmash.h"
 #include "fnv.h"
 #include "endian.h"
 #include "internal.h"
@@ -41,13 +41,13 @@
 #include "sha3.h"
 #endif // WITH_CRYPTOPP
 
-uint64_t ethash_get_datasize(uint64_t const block_number)
+uint64_t zrmash_get_datasize(uint64_t const block_number)
 {
 	assert(block_number / ETHASH_EPOCH_LENGTH < 2048);
 	return dag_sizes[block_number / ETHASH_EPOCH_LENGTH];
 }
 
-uint64_t ethash_get_cachesize(uint64_t const block_number)
+uint64_t zrmash_get_cachesize(uint64_t const block_number)
 {
 	assert(block_number / ETHASH_EPOCH_LENGTH < 2048);
 	return cache_sizes[block_number / ETHASH_EPOCH_LENGTH];
@@ -56,10 +56,10 @@ uint64_t ethash_get_cachesize(uint64_t const block_number)
 // Follows Sergio's "STRICT MEMORY HARD HASHING FUNCTIONS" (2014)
 // https://bitslog.files.wordpress.com/2013/12/memohash-v0-3.pdf
 // SeqMemoHash(s, R, N)
-bool static ethash_compute_cache_nodes(
+bool static zrmash_compute_cache_nodes(
 	node* const nodes,
 	uint64_t cache_size,
-	ethash_h256_t const* seed
+	zrmash_h256_t const* seed
 )
 {
 	if (cache_size % sizeof(node) != 0) {
@@ -90,10 +90,10 @@ bool static ethash_compute_cache_nodes(
 	return true;
 }
 
-void ethash_calculate_dag_item(
+void zrmash_calculate_dag_item(
 	node* const ret,
 	uint32_t node_index,
-	ethash_light_t const light
+	zrmash_light_t const light
 )
 {
 	uint32_t num_parent_nodes = (uint32_t) (light->cache_size / sizeof(node));
@@ -142,11 +142,11 @@ void ethash_calculate_dag_item(
 	SHA3_512(ret->bytes, ret->bytes, sizeof(node));
 }
 
-bool ethash_compute_full_data(
+bool zrmash_compute_full_data(
 	void* mem,
 	uint64_t full_size,
-	ethash_light_t const light,
-	ethash_callback_t callback
+	zrmash_light_t const light,
+	zrmash_callback_t callback
 )
 {
 	if (full_size % (sizeof(uint32_t) * MIX_WORDS) != 0 ||
@@ -166,17 +166,17 @@ bool ethash_compute_full_data(
 			return false;
 		}
 		progress += progress_change;
-		ethash_calculate_dag_item(&(full_nodes[n]), n, light);
+		zrmash_calculate_dag_item(&(full_nodes[n]), n, light);
 	}
 	return true;
 }
 
-static bool ethash_hash(
-	ethash_return_value_t* ret,
+static bool zrmash_hash(
+	zrmash_return_value_t* ret,
 	node const* full_nodes,
-	ethash_light_t const light,
+	zrmash_light_t const light,
 	uint64_t full_size,
-	ethash_h256_t const header_hash,
+	zrmash_h256_t const header_hash,
 	uint64_t const nonce
 )
 {
@@ -211,7 +211,7 @@ static bool ethash_hash(
 				dag_node = &full_nodes[MIX_NODES * index + n];
 			} else {
 				node tmp_node;
-				ethash_calculate_dag_item(&tmp_node, index * MIX_NODES + n, light);
+				zrmash_calculate_dag_item(&tmp_node, index * MIX_NODES + n, light);
 				dag_node = &tmp_node;
 			}
 
@@ -254,11 +254,11 @@ static bool ethash_hash(
 	return true;
 }
 
-void ethash_quick_hash(
-	ethash_h256_t* return_hash,
-	ethash_h256_t const* header_hash,
+void zrmash_quick_hash(
+	zrmash_h256_t* return_hash,
+	zrmash_h256_t const* header_hash,
 	uint64_t nonce,
-	ethash_h256_t const* mix_hash
+	zrmash_h256_t const* mix_hash
 )
 {
 	uint8_t buf[64 + 32];
@@ -270,32 +270,32 @@ void ethash_quick_hash(
 	SHA3_256(return_hash, buf, 64 + 32);
 }
 
-ethash_h256_t ethash_get_seedhash(uint64_t block_number)
+zrmash_h256_t zrmash_get_seedhash(uint64_t block_number)
 {
-	ethash_h256_t ret;
-	ethash_h256_reset(&ret);
+	zrmash_h256_t ret;
+	zrmash_h256_reset(&ret);
 	uint64_t const epochs = block_number / ETHASH_EPOCH_LENGTH;
 	for (uint32_t i = 0; i < epochs; ++i)
 		SHA3_256(&ret, (uint8_t*)&ret, 32);
 	return ret;
 }
 
-bool ethash_quick_check_difficulty(
-	ethash_h256_t const* header_hash,
+bool zrmash_quick_check_difficulty(
+	zrmash_h256_t const* header_hash,
 	uint64_t const nonce,
-	ethash_h256_t const* mix_hash,
-	ethash_h256_t const* boundary
+	zrmash_h256_t const* mix_hash,
+	zrmash_h256_t const* boundary
 )
 {
 
-	ethash_h256_t return_hash;
-	ethash_quick_hash(&return_hash, header_hash, nonce, mix_hash);
-	return ethash_check_difficulty(&return_hash, boundary);
+	zrmash_h256_t return_hash;
+	zrmash_quick_hash(&return_hash, header_hash, nonce, mix_hash);
+	return zrmash_check_difficulty(&return_hash, boundary);
 }
 
-ethash_light_t ethash_light_new_internal(uint64_t cache_size, ethash_h256_t const* seed)
+zrmash_light_t zrmash_light_new_internal(uint64_t cache_size, zrmash_h256_t const* seed)
 {
-	struct ethash_light *ret;
+	struct zrmash_light *ret;
 	ret = calloc(sizeof(*ret), 1);
 	if (!ret) {
 		return NULL;
@@ -305,7 +305,7 @@ ethash_light_t ethash_light_new_internal(uint64_t cache_size, ethash_h256_t cons
 		goto fail_free_light;
 	}
 	node* nodes = (node*)ret->cache;
-	if (!ethash_compute_cache_nodes(nodes, cache_size, seed)) {
+	if (!zrmash_compute_cache_nodes(nodes, cache_size, seed)) {
 		goto fail_free_cache_mem;
 	}
 	ret->cache_size = cache_size;
@@ -318,16 +318,16 @@ fail_free_light:
 	return NULL;
 }
 
-ethash_light_t ethash_light_new(uint64_t block_number)
+zrmash_light_t zrmash_light_new(uint64_t block_number)
 {
-	ethash_h256_t seedhash = ethash_get_seedhash(block_number);
-	ethash_light_t ret;
-	ret = ethash_light_new_internal(ethash_get_cachesize(block_number), &seedhash);
+	zrmash_h256_t seedhash = zrmash_get_seedhash(block_number);
+	zrmash_light_t ret;
+	ret = zrmash_light_new_internal(zrmash_get_cachesize(block_number), &seedhash);
 	ret->block_number = block_number;
 	return ret;
 }
 
-void ethash_light_delete(ethash_light_t light)
+void zrmash_light_delete(zrmash_light_t light)
 {
 	if (light->cache) {
 		free(light->cache);
@@ -335,38 +335,38 @@ void ethash_light_delete(ethash_light_t light)
 	free(light);
 }
 
-ethash_return_value_t ethash_light_compute_internal(
-	ethash_light_t light,
+zrmash_return_value_t zrmash_light_compute_internal(
+	zrmash_light_t light,
 	uint64_t full_size,
-	ethash_h256_t const header_hash,
+	zrmash_h256_t const header_hash,
 	uint64_t nonce
 )
 {
-  	ethash_return_value_t ret;
+  	zrmash_return_value_t ret;
 	ret.success = true;
-	if (!ethash_hash(&ret, NULL, light, full_size, header_hash, nonce)) {
+	if (!zrmash_hash(&ret, NULL, light, full_size, header_hash, nonce)) {
 		ret.success = false;
 	}
 	return ret;
 }
 
-ethash_return_value_t ethash_light_compute(
-	ethash_light_t light,
-	ethash_h256_t const header_hash,
+zrmash_return_value_t zrmash_light_compute(
+	zrmash_light_t light,
+	zrmash_h256_t const header_hash,
 	uint64_t nonce
 )
 {
-	uint64_t full_size = ethash_get_datasize(light->block_number);
-	return ethash_light_compute_internal(light, full_size, header_hash, nonce);
+	uint64_t full_size = zrmash_get_datasize(light->block_number);
+	return zrmash_light_compute_internal(light, full_size, header_hash, nonce);
 }
 
-static bool ethash_mmap(struct ethash_full* ret, FILE* f)
+static bool zrmash_mmap(struct zrmash_full* ret, FILE* f)
 {
 	int fd;
 	char* mmapped_data;
 	errno = 0;
 	ret->file = f;
-	if ((fd = ethash_fileno(ret->file)) == -1) {
+	if ((fd = zrmash_fileno(ret->file)) == -1) {
 		return false;
 	}
 	mmapped_data= mmap(
@@ -384,47 +384,47 @@ static bool ethash_mmap(struct ethash_full* ret, FILE* f)
 	return true;
 }
 
-ethash_full_t ethash_full_new_internal(
+zrmash_full_t zrmash_full_new_internal(
 	char const* dirname,
-	ethash_h256_t const seed_hash,
+	zrmash_h256_t const seed_hash,
 	uint64_t full_size,
-	ethash_light_t const light,
-	ethash_callback_t callback
+	zrmash_light_t const light,
+	zrmash_callback_t callback
 )
 {
-	struct ethash_full* ret;
+	struct zrmash_full* ret;
 	FILE *f = NULL;
 	ret = calloc(sizeof(*ret), 1);
 	if (!ret) {
 		return NULL;
 	}
 	ret->file_size = (size_t)full_size;
-	switch (ethash_io_prepare(dirname, seed_hash, &f, (size_t)full_size, false)) {
+	switch (zrmash_io_prepare(dirname, seed_hash, &f, (size_t)full_size, false)) {
 	case ETHASH_IO_FAIL:
-		// ethash_io_prepare will do all ETHASH_CRITICAL() logging in fail case
+		// zrmash_io_prepare will do all ETHASH_CRITICAL() logging in fail case
 		goto fail_free_full;
 	case ETHASH_IO_MEMO_MATCH:
-		if (!ethash_mmap(ret, f)) {
+		if (!zrmash_mmap(ret, f)) {
 			ETHASH_CRITICAL("mmap failure()");
 			goto fail_close_file;
 		}
 		return ret;
 	case ETHASH_IO_MEMO_SIZE_MISMATCH:
 		// if a DAG of same filename but unexpected size is found, silently force new file creation
-		if (ethash_io_prepare(dirname, seed_hash, &f, (size_t)full_size, true) != ETHASH_IO_MEMO_MISMATCH) {
+		if (zrmash_io_prepare(dirname, seed_hash, &f, (size_t)full_size, true) != ETHASH_IO_MEMO_MISMATCH) {
 			ETHASH_CRITICAL("Could not recreate DAG file after finding existing DAG with unexpected size.");
 			goto fail_free_full;
 		}
 		// fallthrough to the mismatch case here, DO NOT go through match
 	case ETHASH_IO_MEMO_MISMATCH:
-		if (!ethash_mmap(ret, f)) {
+		if (!zrmash_mmap(ret, f)) {
 			ETHASH_CRITICAL("mmap failure()");
 			goto fail_close_file;
 		}
 		break;
 	}
 
-	if (!ethash_compute_full_data(ret->data, full_size, light, callback)) {
+	if (!zrmash_compute_full_data(ret->data, full_size, light, callback)) {
 		ETHASH_CRITICAL("Failure at computing DAG data.");
 		goto fail_free_full_data;
 	}
@@ -455,18 +455,18 @@ fail_free_full:
 	return NULL;
 }
 
-ethash_full_t ethash_full_new(ethash_light_t light, ethash_callback_t callback)
+zrmash_full_t zrmash_full_new(zrmash_light_t light, zrmash_callback_t callback)
 {
 	char strbuf[256];
-	if (!ethash_get_default_dirname(strbuf, 256)) {
+	if (!zrmash_get_default_dirname(strbuf, 256)) {
 		return NULL;
 	}
-	uint64_t full_size = ethash_get_datasize(light->block_number);
-	ethash_h256_t seedhash = ethash_get_seedhash(light->block_number);
-	return ethash_full_new_internal(strbuf, seedhash, full_size, light, callback);
+	uint64_t full_size = zrmash_get_datasize(light->block_number);
+	zrmash_h256_t seedhash = zrmash_get_seedhash(light->block_number);
+	return zrmash_full_new_internal(strbuf, seedhash, full_size, light, callback);
 }
 
-void ethash_full_delete(ethash_full_t full)
+void zrmash_full_delete(zrmash_full_t full)
 {
 	// could check that munmap(..) == 0 but even if it did not can't really do anything here
 	munmap(full->data, (size_t)full->file_size);
@@ -476,15 +476,15 @@ void ethash_full_delete(ethash_full_t full)
 	free(full);
 }
 
-ethash_return_value_t ethash_full_compute(
-	ethash_full_t full,
-	ethash_h256_t const header_hash,
+zrmash_return_value_t zrmash_full_compute(
+	zrmash_full_t full,
+	zrmash_h256_t const header_hash,
 	uint64_t nonce
 )
 {
-	ethash_return_value_t ret;
+	zrmash_return_value_t ret;
 	ret.success = true;
-	if (!ethash_hash(
+	if (!zrmash_hash(
 		&ret,
 		(node const*)full->data,
 		NULL,
@@ -496,12 +496,12 @@ ethash_return_value_t ethash_full_compute(
 	return ret;
 }
 
-void const* ethash_full_dag(ethash_full_t full)
+void const* zrmash_full_dag(zrmash_full_t full)
 {
 	return full->data;
 }
 
-uint64_t ethash_full_dag_size(ethash_full_t full)
+uint64_t zrmash_full_dag_size(zrmash_full_t full)
 {
 	return full->file_size;
 }

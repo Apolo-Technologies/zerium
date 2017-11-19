@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-package ethash
+package zrmash
 
 import (
 	"bytes"
@@ -704,8 +704,8 @@ func TestConcurrentDiskCacheGeneration(t *testing.T) {
 		go func(idx int) {
 			defer pend.Done()
 
-			ethash := New(cachedir, 0, 1, "", 0, 0)
-			if err := ethash.VerifySeal(nil, block.Header()); err != nil {
+			zrmash := New(cachedir, 0, 1, "", 0, 0)
+			if err := zrmash.VerifySeal(nil, block.Header()); err != nil {
 				t.Errorf("proc %d: block verification failed: %v", idx, err)
 			}
 		}(i)

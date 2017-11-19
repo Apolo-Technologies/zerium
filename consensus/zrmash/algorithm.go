@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-package ethash
+package zrmash
 
 import (
 	"encoding/binary"
@@ -94,7 +94,7 @@ func generateCache(dest []uint32, epoch uint64, seed []byte) {
 		if elapsed > 3*time.Second {
 			logFn = logger.Info
 		}
-		logFn("Generated ethash verification cache", "elapsed", common.PrettyDuration(elapsed))
+		logFn("Generated zrmash verification cache", "elapsed", common.PrettyDuration(elapsed))
 	}()
 	// Convert our destination slice to a byte buffer
 	header := *(*reflect.SliceHeader)(unsafe.Pointer(&dest))
@@ -118,7 +118,7 @@ func generateCache(dest []uint32, epoch uint64, seed []byte) {
 			case <-done:
 				return
 			case <-time.After(3 * time.Second):
-				logger.Info("Generating ethash verification cache", "percentage", atomic.LoadUint32(&progress)*100/uint32(rows)/4, "elapsed", common.PrettyDuration(time.Since(start)))
+				logger.Info("Generating zrmash verification cache", "percentage", atomic.LoadUint32(&progress)*100/uint32(rows)/4, "elapsed", common.PrettyDuration(time.Since(start)))
 			}
 		}
 	}()
@@ -160,8 +160,8 @@ func swap(buffer []byte) {
 	}
 }
 
-// prepare converts an ethash cache or dataset from a byte stream into the internal
-// int representation. All ethash methods work with ints to avoid constant byte to
+// prepare converts an zrmash cache or dataset from a byte stream into the internal
+// int representation. All zrmash methods work with ints to avoid constant byte to
 // int conversions as well as to handle both little and big endian systems.
 func prepare(dest []uint32, src []byte) {
 	for i := 0; i < len(dest); i++ {
@@ -177,7 +177,7 @@ func fnv(a, b uint32) uint32 {
 	return a*0x01000193 ^ b
 }
 
-// fnvHash mixes in data into mix using the ethash fnv method.
+// fnvHash mixes in data into mix using the zrmash fnv method.
 func fnvHash(mix []uint32, data []uint32) {
 	for i := 0; i < len(mix); i++ {
 		mix[i] = mix[i]*0x01000193 ^ data[i]
@@ -217,7 +217,7 @@ func generateDatasetItem(cache []uint32, index uint32, keccak512 hasher) []byte 
 	return mix
 }
 
-// generateDataset generates the entire ethash dataset for mining.
+// generateDataset generates the entire zrmash dataset for mining.
 // This method places the result into dest in machine byte order.
 func generateDataset(dest []uint32, epoch uint64, cache []uint32) {
 	// Print some debug logs to allow analysis on low end devices
@@ -231,7 +231,7 @@ func generateDataset(dest []uint32, epoch uint64, cache []uint32) {
 		if elapsed > 3*time.Second {
 			logFn = logger.Info
 		}
-		logFn("Generated ethash verification cache", "elapsed", common.PrettyDuration(elapsed))
+		logFn("Generated zrmash verification cache", "elapsed", common.PrettyDuration(elapsed))
 	}()
 
 	// Figure out whether the bytes need to be swapped for the machine
@@ -355,7 +355,7 @@ func hashimotoFull(dataset []uint32, hash []byte, nonce uint64) ([]byte, []byte)
 	return hashimoto(hash, nonce, uint64(len(dataset))*4, lookup)
 }
 
-// datasetSizes is a lookup table for the ethash dataset size for the first 2048
+// datasetSizes is a lookup table for the zrmash dataset size for the first 2048
 // epochs (i.e. 61440000 blocks).
 var datasetSizes = []uint64{
 	1073739904, 1082130304, 1090514816, 1098906752, 1107293056,
@@ -769,7 +769,7 @@ var datasetSizes = []uint64{
 	18186498944, 18194886784, 18203275648, 18211666048, 18220048768,
 	18228444544, 18236833408, 18245220736}
 
-// cacheSizes is a lookup table for the ethash verification cache size for the
+// cacheSizes is a lookup table for the zrmash verification cache size for the
 // first 2048 epochs (i.e. 61440000 blocks).
 var cacheSizes = []uint64{
 	16776896, 16907456, 17039296, 17170112, 17301056, 17432512, 17563072,

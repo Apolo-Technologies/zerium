@@ -26,23 +26,23 @@
 
 #if defined(_WIN32)
 #include <stdlib.h>
-#define ethash_swap_u32(input_) _byteswap_ulong(input_)
-#define ethash_swap_u64(input_) _byteswap_uint64(input_)
+#define zrmash_swap_u32(input_) _byteswap_ulong(input_)
+#define zrmash_swap_u64(input_) _byteswap_uint64(input_)
 #elif defined(__APPLE__)
 #include <libkern/OSByteOrder.h>
-#define ethash_swap_u32(input_) OSSwapInt32(input_)
-#define ethash_swap_u64(input_) OSSwapInt64(input_)
+#define zrmash_swap_u32(input_) OSSwapInt32(input_)
+#define zrmash_swap_u64(input_) OSSwapInt64(input_)
 #elif defined(__FreeBSD__) || defined(__DragonFly__) || defined(__NetBSD__)
-#define ethash_swap_u32(input_) bswap32(input_)
-#define ethash_swap_u64(input_) bswap64(input_)
+#define zrmash_swap_u32(input_) bswap32(input_)
+#define zrmash_swap_u64(input_) bswap64(input_)
 #elif defined(__OpenBSD__)
 #include <endian.h>
-#define ethash_swap_u32(input_) swap32(input_)
-#define ethash_swap_u64(input_) swap64(input_)
+#define zrmash_swap_u32(input_) swap32(input_)
+#define zrmash_swap_u64(input_) swap64(input_)
 #else // posix
 #include <byteswap.h>
-#define ethash_swap_u32(input_) bswap_32(input_)
-#define ethash_swap_u64(input_) bswap_64(input_)
+#define zrmash_swap_u32(input_) bswap_32(input_)
+#define zrmash_swap_u64(input_) bswap_64(input_)
 #endif
 
 
@@ -57,20 +57,20 @@
 
 #elif BIG_ENDIAN == BYTE_ORDER
 
-#define fix_endian32(dst_, src_) dst_ = ethash_swap_u32(src_)
-#define fix_endian32_same(val_) val_ = ethash_swap_u32(val_)
-#define fix_endian64(dst_, src_) dst_ = ethash_swap_u64(src_)
-#define fix_endian64_same(val_) val_ = ethash_swap_u64(val_)
+#define fix_endian32(dst_, src_) dst_ = zrmash_swap_u32(src_)
+#define fix_endian32_same(val_) val_ = zrmash_swap_u32(val_)
+#define fix_endian64(dst_, src_) dst_ = zrmash_swap_u64(src_)
+#define fix_endian64_same(val_) val_ = zrmash_swap_u64(val_)
 #define fix_endian_arr32(arr_, size_) \
   do { \
     for (unsigned i_ = 0; i_ < (size_); ++i_) { \
-      arr_[i_] = ethash_swap_u32(arr_[i_]); \
+      arr_[i_] = zrmash_swap_u32(arr_[i_]); \
     } \
   } while (0)
 #define fix_endian_arr64(arr_, size_) \
   do { \
     for (unsigned i_ = 0; i_ < (size_); ++i_) { \
-      arr_[i_] = ethash_swap_u64(arr_[i_]); \
+      arr_[i_] = zrmash_swap_u64(arr_[i_]); \
     } \
   } while (0)
 #else
