@@ -20,7 +20,7 @@ import (
 	"context"
 	"sync"
 
-	apolo-technologies "github.com/apolo-technologies/zerium"
+	apolo_technologies "github.com/apolo-technologies/zerium"
 	"github.com/apolo-technologies/zerium/event"
 	"github.com/apolo-technologies/zerium/rpc"
 )

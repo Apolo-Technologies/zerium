@@ -25,7 +25,7 @@ import (
 	"sync"
 	"time"
 
-	apolo-technologies "github.com/apolo-technologies/zerium"
+	apolo_technologies "github.com/apolo-technologies/zerium"
 	"github.com/apolo-technologies/zerium/accounts"
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/core/types"
