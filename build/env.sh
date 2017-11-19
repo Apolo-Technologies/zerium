@@ -14,7 +14,7 @@ ethdir="$workspace/src/github.com/apolo-technologies"
 if [ ! -L "$ethdir/zerium" ]; then
     sudo mkdir -p "$ethdir"
     cd "$ethdir"
-    ln -s ../../../../../. zerium
+    sudo ln -s ../../../../../. zerium
     cd "$root"
 fi
 
