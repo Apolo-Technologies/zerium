@@ -23,12 +23,12 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/rlp"
-	"github.com/apolo-technologies/zerium/trie"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/rlp"
+	"github.com/abt/zerium/trie"
 )
 
 type revision struct {
@@ -36,7 +36,7 @@ type revision struct {
 	journalIndex int
 }
 
-// StateDBs within the apolo-technologies protocol are used to store anything
+// StateDBs within the abt protocol are used to store anything
 // within the merkle trie. StateDBs take care of caching and storing
 // nested states. It's the general query interface to retrieve:
 // * Contracts

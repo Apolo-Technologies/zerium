@@ -16,7 +16,7 @@
 
 package core
 
-import "github.com/apolo-technologies/zerium/common"
+import "github.com/abt/zerium/common"
 
 // BadHashes represent a set of manually tracked bad hashes (usually hard forks)
 var BadHashes = map[common.Hash]bool{

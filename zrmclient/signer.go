@@ -20,8 +20,8 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
 )
 
 // senderFromServer is a types.Signer that remembers the sender address returned by the RPC

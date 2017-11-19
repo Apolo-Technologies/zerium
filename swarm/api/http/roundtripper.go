@@ -20,17 +20,17 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 )
 
 /*
 http roundtripper to register for bzz url scheme
-see https://github.com/apolo-technologies/zerium/issues/2040
+see https://github.com/abt/zerium/issues/2040
 Usage:
 
 import (
- "github.com/apolo-technologies/zerium/common/httpclient"
- "github.com/apolo-technologies/zerium/swarm/api/http"
+ "github.com/abt/zerium/common/httpclient"
+ "github.com/abt/zerium/swarm/api/http"
 )
 client := httpclient.New()
 // for (private) swarm proxy running locally

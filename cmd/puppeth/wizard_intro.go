@@ -25,7 +25,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 )
 
 // makeWizard creates and returns a new puppeth wizard.

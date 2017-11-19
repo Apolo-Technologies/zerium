@@ -23,10 +23,10 @@ import (
 	"errors"
 	"time"
 
-	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/accounts/keystore"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/accounts"
+	"github.com/abt/zerium/accounts/keystore"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/crypto"
 )
 
 const (

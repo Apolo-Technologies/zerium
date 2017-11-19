@@ -22,11 +22,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/rpc"
 	"github.com/rcrowley/go-metrics"
 )
 
@@ -378,7 +378,7 @@ func (s *PublicWeb3API) ClientVersion() string {
 	return s.stack.Server().Name
 }
 
-// Sha3 applies the apolo-technologies sha3 implementation on the input.
+// Sha3 applies the abt sha3 implementation on the input.
 // It assumes the input is hex encoded.
 func (s *PublicWeb3API) Sha3(input hexutil.Bytes) hexutil.Bytes {
 	return crypto.Keccak256(input)

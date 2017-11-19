@@ -22,10 +22,10 @@ import (
 	"io"
 	"io/ioutil"
 
-	"github.com/apolo-technologies/zerium/accounts/keystore"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/accounts/keystore"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/crypto"
 )
 
 // NewTransactor is a utility method to easily create a transaction signer from

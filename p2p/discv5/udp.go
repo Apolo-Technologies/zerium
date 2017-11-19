@@ -24,12 +24,12 @@ import (
 	"net"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/p2p/nat"
-	"github.com/apolo-technologies/zerium/p2p/netutil"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/p2p/nat"
+	"github.com/abt/zerium/p2p/netutil"
+	"github.com/abt/zerium/rlp"
 )
 
 const Version = 4

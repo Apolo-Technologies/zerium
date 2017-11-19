@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 // ContractRef is a reference to the contract's backing object
@@ -39,7 +39,7 @@ type AccountRef common.Address
 // Address casts AccountRef to a Address
 func (ar AccountRef) Address() common.Address { return (common.Address)(ar) }
 
-// Contract represents an apolo-technologies contract in the state database. It contains
+// Contract represents an abt contract in the state database. It contains
 // the the contract code, calling arguments. Contract implements ContractRef
 type Contract struct {
 	// CallerAddress is the result of the caller which initialised this

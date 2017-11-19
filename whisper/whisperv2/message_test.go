@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/crypto"
 )
 
 // Tests whether a message can be wrapped without any identity or encryption.

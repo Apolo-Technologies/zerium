@@ -7,9 +7,9 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/common/math"
 )
 
 var _ = (*genesisAccountMarshaling)(nil)

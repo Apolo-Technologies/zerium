@@ -15,7 +15,7 @@
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
 // Contains the Whisper protocol Envelope element. For formal details please see
-// the specs at https://github.com/apolo-technologies/wiki/wiki/Whisper-PoC-1-Protocol-Spec#envelopes.
+// the specs at https://github.com/abt/wiki/wiki/Whisper-PoC-1-Protocol-Spec#envelopes.
 
 package whisperv2
 
@@ -26,11 +26,11 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/math"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/crypto/ecies"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/math"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/crypto/ecies"
+	"github.com/abt/zerium/rlp"
 )
 
 // Envelope represents a clear-text data packet to transmit through the Whisper

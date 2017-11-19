@@ -7,10 +7,10 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/accounts/abi"
-	"github.com/apolo-technologies/zerium/accounts/abi/bind"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/abt/zerium/accounts/abi"
+	"github.com/abt/zerium/accounts/abi/bind"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
 )
 
 // ChequebookABI is the input ABI used to generate the binding from.

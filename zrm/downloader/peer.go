@@ -29,9 +29,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/log"
 )
 
 const (

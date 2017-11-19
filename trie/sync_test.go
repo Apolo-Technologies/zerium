@@ -20,8 +20,8 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/zrmdb"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/zrmdb"
 )
 
 // makeTestTrie create a sample test trie to test node-wise reconstruction.

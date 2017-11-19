@@ -24,7 +24,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 )
 
 // zrmstatsDockerfile is the Dockerfile required to build an zrmstats backend

@@ -20,9 +20,9 @@ import (
 	"container/list"
 	"fmt"
 
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/event"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/event"
 )
 
 // Implement our EthTest Manager

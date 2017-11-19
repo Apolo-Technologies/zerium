@@ -22,12 +22,12 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/p2p/netutil"
-	"github.com/apolo-technologies/zerium/swarm/network/kademlia"
-	"github.com/apolo-technologies/zerium/swarm/storage"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/p2p/netutil"
+	"github.com/abt/zerium/swarm/network/kademlia"
+	"github.com/abt/zerium/swarm/storage"
 )
 
 // Hive is the logistic manager of the swarm

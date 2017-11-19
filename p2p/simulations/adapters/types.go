@@ -25,11 +25,11 @@ import (
 	"os"
 
 	"github.com/docker/docker/pkg/reexec"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/node"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/node"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/rpc"
 )
 
 // Node represents a node in a simulation network which is created by a

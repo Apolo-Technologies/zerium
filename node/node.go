@@ -26,13 +26,13 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/internal/debug"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/accounts"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/internal/debug"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/rpc"
 	"github.com/prometheus/prometheus/util/flock"
 )
 

@@ -19,7 +19,7 @@ package downloader
 import (
 	"fmt"
 
-	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/abt/zerium/core/types"
 )
 
 // peerDropFn is a callback type for dropping a peer detected as malicious.

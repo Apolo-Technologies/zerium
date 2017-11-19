@@ -1,18 +1,18 @@
 /*
-  This file is part of cpp-apolo-technologies.
+  This file is part of cpp-abt.
 
-  cpp-apolo-technologies is free software: you can redistribute it and/or modify
+  cpp-abt is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  cpp-apolo-technologies is distributed in the hope that it will be useful,
+  cpp-abt is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with cpp-apolo-technologies.  If not, see <http://www.gnu.org/licenses/>.
+  along with cpp-abt.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file fnv.h
 * @author Matthew Wampler-Doty <negacthulhu@gmail.com>

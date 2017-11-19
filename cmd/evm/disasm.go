@@ -22,7 +22,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/core/asm"
+	"github.com/abt/zerium/core/asm"
 	cli "gopkg.in/urfave/cli.v1"
 )
 

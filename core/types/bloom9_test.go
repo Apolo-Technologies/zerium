@@ -54,7 +54,7 @@ func TestBloom(t *testing.T) {
 import (
 	"testing"
 
-	"github.com/apolo-technologies/zerium/core/state"
+	"github.com/abt/zerium/core/state"
 )
 
 func TestBloom9(t *testing.T) {

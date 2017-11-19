@@ -28,9 +28,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/accounts"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/log"
 	"gopkg.in/fatih/set.v0"
 )
 

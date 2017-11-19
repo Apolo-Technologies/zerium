@@ -24,11 +24,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common/mclock"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/common/mclock"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/rlp"
 )
 
 const (

@@ -19,7 +19,7 @@ package whisperv5
 import (
 	"testing"
 
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/crypto"
 )
 
 func BenchmarkDeriveKeyMaterial(b *testing.B) {

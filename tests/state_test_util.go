@@ -23,22 +23,22 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/common/math"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/core/state"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/crypto/sha3"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/params"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/common/math"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/core/state"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/core/vm"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/crypto/sha3"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/params"
+	"github.com/abt/zerium/rlp"
 )
 
 // StateTest checks transaction processing without block context.
-// See https://github.com/apolo-technologies/EIPs/issues/176 for the test format specification.
+// See https://github.com/abt/EIPs/issues/176 for the test format specification.
 type StateTest struct {
 	json stJSON
 }
@@ -219,7 +219,7 @@ func (tx *stTransaction) toMessage(ps stPostState) (core.Message, error) {
 	dataHex := tx.Data[ps.Indexes.Data]
 	valueHex := tx.Value[ps.Indexes.Value]
 	gasLimit := tx.GasLimit[ps.Indexes.Gas]
-	// Value, Data hex encoding is messy: https://github.com/apolo-technologies/tests/issues/203
+	// Value, Data hex encoding is messy: https://github.com/abt/tests/issues/203
 	value := new(big.Int)
 	if valueHex != "0x" {
 		v, ok := math.ParseBig256(valueHex)

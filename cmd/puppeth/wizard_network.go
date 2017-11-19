@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 )
 
 // manageServers displays a list of servers the user can disconnect from, and an

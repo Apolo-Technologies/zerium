@@ -23,10 +23,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/consensus/zrmash"
-	"github.com/apolo-technologies/zerium/zrm"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/cmd/utils"
+	"github.com/abt/zerium/consensus/zrmash"
+	"github.com/abt/zerium/zrm"
+	"github.com/abt/zerium/params"
 	"gopkg.in/urfave/cli.v1"
 )
 

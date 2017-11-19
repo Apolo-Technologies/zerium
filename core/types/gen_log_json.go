@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/hexutil"
 )
 
 func (l Log) MarshalJSON() ([]byte, error) {

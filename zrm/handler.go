@@ -26,20 +26,20 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/consensus"
-	"github.com/apolo-technologies/zerium/consensus/misc"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/zrm/fetcher"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/params"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/consensus"
+	"github.com/abt/zerium/consensus/misc"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/zrm/downloader"
+	"github.com/abt/zerium/zrm/fetcher"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/params"
+	"github.com/abt/zerium/rlp"
 )
 
 const (
@@ -97,8 +97,8 @@ type ProtocolManager struct {
 	wg sync.WaitGroup
 }
 
-// NewProtocolManager returns a new apolo-technologies sub protocol manager. The Zerium sub protocol manages peers capable
-// with the apolo-technologies network.
+// NewProtocolManager returns a new abt sub protocol manager. The Zerium sub protocol manages peers capable
+// with the abt network.
 func NewProtocolManager(config *params.ChainConfig, mode downloader.SyncMode, networkId uint64, mux *event.TypeMux, txpool txPool, engine consensus.Engine, blockchain *core.BlockChain, chaindb zrmdb.Database) (*ProtocolManager, error) {
 	// Create the protocol manager with the base fields
 	manager := &ProtocolManager{

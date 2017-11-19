@@ -22,11 +22,11 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/accounts/abi/bind"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/contracts/ens/contract"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/accounts/abi/bind"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/contracts/ens/contract"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/crypto"
 )
 
 var (

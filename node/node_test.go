@@ -24,9 +24,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/rpc"
 )
 
 var (

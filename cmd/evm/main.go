@@ -22,7 +22,7 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/apolo-technologies/zerium/cmd/utils"
+	"github.com/abt/zerium/cmd/utils"
 	"gopkg.in/urfave/cli.v1"
 )
 

@@ -28,7 +28,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 // In this test, nodes try to randomly resolve each other.

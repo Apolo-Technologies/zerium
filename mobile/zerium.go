@@ -22,14 +22,14 @@ import (
 	"errors"
 	"math/big"
 
-	apolo_technologies "github.com/apolo-technologies/zerium"
-	"github.com/apolo-technologies/zerium/common"
+	abt "github.com/abt/zerium"
+	"github.com/abt/zerium/common"
 )
 
 // Subscription represents an event subscription where events are
 // delivered on a data channel.
 type Subscription struct {
-	sub apolo-technologies.Subscription
+	sub abt.Subscription
 }
 
 // Unsubscribe cancels the sending of events to the data channel
@@ -40,7 +40,7 @@ func (s *Subscription) Unsubscribe() {
 
 // CallMsg contains parameters for contract calls.
 type CallMsg struct {
-	msg apolo-technologies.CallMsg
+	msg abt.CallMsg
 }
 
 // NewCallMsg creates an empty contract call parameter list.
@@ -75,7 +75,7 @@ func (msg *CallMsg) SetTo(address *Address) {
 // SyncProgress gives progress indications when the node is synchronising with
 // the Zerium network.
 type SyncProgress struct {
-	progress apolo-technologies.SyncProgress
+	progress abt.SyncProgress
 }
 
 func (p *SyncProgress) GetStartingBlock() int64 { return int64(p.progress.StartingBlock) }
@@ -128,7 +128,7 @@ func (t *Topics) Append(topics *Hashes) {
 
 // FilterQuery contains options for contact log filtering.
 type FilterQuery struct {
-	query apolo-technologies.FilterQuery
+	query abt.FilterQuery
 }
 
 // NewFilterQuery creates an empty filter query for contact log filtering.

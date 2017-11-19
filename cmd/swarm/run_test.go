@@ -27,12 +27,12 @@ import (
 	"time"
 
 	"github.com/docker/docker/pkg/reexec"
-	"github.com/apolo-technologies/zerium/accounts/keystore"
-	"github.com/apolo-technologies/zerium/internal/cmdtest"
-	"github.com/apolo-technologies/zerium/node"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/rpc"
-	"github.com/apolo-technologies/zerium/swarm"
+	"github.com/abt/zerium/accounts/keystore"
+	"github.com/abt/zerium/internal/cmdtest"
+	"github.com/abt/zerium/node"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/rpc"
+	"github.com/abt/zerium/swarm"
 )
 
 func init() {

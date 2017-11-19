@@ -23,7 +23,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 func TestWhisperBasic(t *testing.T) {

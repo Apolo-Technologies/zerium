@@ -20,12 +20,12 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/accounts/keystore"
-	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/console"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/accounts"
+	"github.com/abt/zerium/accounts/keystore"
+	"github.com/abt/zerium/cmd/utils"
+	"github.com/abt/zerium/console"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/log"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -86,7 +86,7 @@ Note that exporting your key in unencrypted format is NOT supported.
 
 Keys are stored under <DATADIR>/keystore.
 It is safe to transfer the entire directory or the individual keys therein
-between apolo-technologies nodes by simply copying.
+between abt nodes by simply copying.
 
 Make sure you backup your keys regularly.`,
 		Subcommands: []cli.Command{
@@ -183,7 +183,7 @@ For non-interactive use the passphrase can be specified with the -password flag:
     gzrm account import [options] <keyfile>
 
 Note:
-As you can directly copy your encrypted accounts to another apolo-technologies instance,
+As you can directly copy your encrypted accounts to another abt instance,
 this import mechanism is not needed when you transfer an account between
 nodes.
 `,

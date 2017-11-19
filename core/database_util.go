@@ -24,13 +24,13 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/metrics"
-	"github.com/apolo-technologies/zerium/params"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/metrics"
+	"github.com/abt/zerium/params"
+	"github.com/abt/zerium/rlp"
 )
 
 // DatabaseReader wraps the Get method of a backing data store.
@@ -59,7 +59,7 @@ var (
 	bloomBitsPrefix     = []byte("B") // bloomBitsPrefix + bit (uint16 big endian) + section (uint64 big endian) + hash -> bloom bits
 
 	preimagePrefix = "secure-key-"              // preimagePrefix + hash -> preimage
-	configPrefix   = []byte("apolo-technologies-config-") // config prefix for the db
+	configPrefix   = []byte("abt-config-") // config prefix for the db
 
 	// Chain index prefixes (use `i` + single byte to avoid mixing data types).
 	BloomBitsIndexPrefix = []byte("iB") // BloomBitsIndexPrefix is the data table of a chain indexer to track its progress

@@ -22,10 +22,10 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/accounts/abi"
-	"github.com/apolo-technologies/zerium/accounts/abi/bind"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/abt/zerium/accounts/abi"
+	"github.com/abt/zerium/accounts/abi/bind"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
 )
 
 // Signer is an interaface defining the callback when a contract requires a

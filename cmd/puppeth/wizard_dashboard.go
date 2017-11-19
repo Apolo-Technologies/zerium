@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 )
 
 // deployDashboard queries the user for various input on deploying a web-service

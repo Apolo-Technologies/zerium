@@ -19,7 +19,7 @@ package trie
 import (
 	"fmt"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 // MissingNodeError is returned by the trie functions (TryGet, TryUpdate, TryDelete)

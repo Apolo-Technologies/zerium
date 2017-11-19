@@ -21,7 +21,7 @@ package keystore
 import (
 	"time"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 	"github.com/rjeczalik/notify"
 )
 

@@ -22,7 +22,7 @@ import (
 	"math/big"
 	"reflect"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 // unpacker is a utility interface that enables us to have

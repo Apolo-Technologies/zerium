@@ -24,9 +24,9 @@ import (
 	"net"
 	"time"
 
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/p2p/netutil"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/p2p/netutil"
 )
 
 const (

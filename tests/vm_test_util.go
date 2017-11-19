@@ -22,19 +22,19 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/common/math"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/core/state"
-	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/common/math"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/core/state"
+	"github.com/abt/zerium/core/vm"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/params"
 )
 
 // VMTest checks ZVM execution without block or transaction context.
-// See https://github.com/apolo-technologies/tests/wiki/VM-Tests for the test format specification.
+// See https://github.com/abt/tests/wiki/VM-Tests for the test format specification.
 type VMTest struct {
 	json vmJSON
 }

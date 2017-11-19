@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/log"
 )
 
 // WaitMined waits for tx to be mined on the blockchain.

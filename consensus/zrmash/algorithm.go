@@ -26,11 +26,11 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/bitutil"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/crypto/sha3"
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/bitutil"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/crypto/sha3"
+	"github.com/abt/zerium/log"
 )
 
 const (

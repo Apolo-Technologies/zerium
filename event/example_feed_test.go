@@ -19,7 +19,7 @@ package event_test
 import (
 	"fmt"
 
-	"github.com/apolo-technologies/zerium/event"
+	"github.com/abt/zerium/event"
 )
 
 func ExampleFeed_acknowledgedEvents() {

@@ -1,9 +1,9 @@
 pragma solidity ^0.4.18;
 
-import "https://github.com/apolo-technologies/solidity/std/mortal.sol";
+import "https://github.com/abt/solidity/std/mortal.sol";
 
 /// @title Chequebook for Zerium micropayments
-/// @author Daniel A. Nagy <daniel@apolo-technologies.org>
+/// @author Daniel A. Nagy <daniel@abt.org>
 contract chequebook is mortal {
     // Cumulative paid amount in wei to each beneficiary
     mapping (address => uint256) public sent;

@@ -21,8 +21,8 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/crypto"
 )
 
 // Event is an event potentially triggered by the ZVM's LOG mechanism. The Event

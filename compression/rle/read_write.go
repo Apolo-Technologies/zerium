@@ -21,7 +21,7 @@ import (
 	"bytes"
 	"errors"
 
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/crypto"
 )
 
 const (

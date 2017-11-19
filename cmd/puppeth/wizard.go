@@ -29,9 +29,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/log"
 	"golang.org/x/crypto/ssh/terminal"
 )
 

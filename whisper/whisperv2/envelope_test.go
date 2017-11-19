@@ -21,8 +21,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/crypto/ecies"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/crypto/ecies"
 )
 
 func TestEnvelopeOpen(t *testing.T) {

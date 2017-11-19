@@ -22,8 +22,8 @@ package node
 import (
 	"reflect"
 
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/rpc"
 )
 
 // NoopService is a trivial implementation of the Service interface.

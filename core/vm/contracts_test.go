@@ -5,7 +5,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 // precompiledTest defines the input/output pairs for precompiled contract tests.

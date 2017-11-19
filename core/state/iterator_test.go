@@ -20,7 +20,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 // Tests that the node iterator indeed walks over the entire database contents.

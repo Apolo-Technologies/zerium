@@ -23,8 +23,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/rlp"
 )
 
 // from bcValidBlockTest.json, "SimpleTx"

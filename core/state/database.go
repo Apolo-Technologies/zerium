@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/trie"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/trie"
 	lru "github.com/hashicorp/golang-lru"
 )
 

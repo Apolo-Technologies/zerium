@@ -24,17 +24,17 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/zrm"
-	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/zrmclient"
-	"github.com/apolo-technologies/zerium/zrmstats"
-	"github.com/apolo-technologies/zerium/les"
-	"github.com/apolo-technologies/zerium/node"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/nat"
-	"github.com/apolo-technologies/zerium/params"
-	whisper "github.com/apolo-technologies/zerium/whisper/whisperv5"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/zrm"
+	"github.com/abt/zerium/zrm/downloader"
+	"github.com/abt/zerium/zrmclient"
+	"github.com/abt/zerium/zrmstats"
+	"github.com/abt/zerium/les"
+	"github.com/abt/zerium/node"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/nat"
+	"github.com/abt/zerium/params"
+	whisper "github.com/abt/zerium/whisper/whisperv5"
 )
 
 // NodeConfig represents the collection of configuration values to fine tune the Geth
@@ -153,7 +153,7 @@ func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 		if err := rawStack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 			return les.New(ctx, &ethConf)
 		}); err != nil {
-			return nil, fmt.Errorf("apolo-technologies init: %v", err)
+			return nil, fmt.Errorf("abt init: %v", err)
 		}
 		// If netstats reporting is requested, do it
 		if config.ZeriumNetStats != "" {

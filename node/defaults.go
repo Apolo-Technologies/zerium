@@ -22,8 +22,8 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/nat"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/nat"
 )
 
 const (
@@ -59,7 +59,7 @@ func DefaultDataDir() string {
 		} else if runtime.GOOS == "windows" {
 			return filepath.Join(home, "AppData", "Roaming", "Zerium")
 		} else {
-			return filepath.Join(home, ".apolo-technologies")
+			return filepath.Join(home, ".abt")
 		}
 	}
 	// As we cannot guess a stable location, return empty and handle later

@@ -31,23 +31,23 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/accounts/keystore"
-	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/console"
-	"github.com/apolo-technologies/zerium/contracts/ens"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/zrmclient"
-	"github.com/apolo-technologies/zerium/internal/debug"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/node"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/params"
-	"github.com/apolo-technologies/zerium/rpc"
-	"github.com/apolo-technologies/zerium/swarm"
-	bzzapi "github.com/apolo-technologies/zerium/swarm/api"
+	"github.com/abt/zerium/accounts"
+	"github.com/abt/zerium/accounts/keystore"
+	"github.com/abt/zerium/cmd/utils"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/console"
+	"github.com/abt/zerium/contracts/ens"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/zrmclient"
+	"github.com/abt/zerium/internal/debug"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/node"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/params"
+	"github.com/abt/zerium/rpc"
+	"github.com/abt/zerium/swarm"
+	bzzapi "github.com/abt/zerium/swarm/api"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -256,12 +256,12 @@ Manage the local chunk database.
 					Description: `
 Export a local chunk database as a tar archive (use - to send to stdout).
 
-    swarm db export ~/.apolo-technologies/swarm/bzz-KEY/chunks chunks.tar
+    swarm db export ~/.abt/swarm/bzz-KEY/chunks chunks.tar
 
 The export may be quite large, consider piping the output through the Unix
 pv(1) tool to get a progress bar:
 
-    swarm db export ~/.apolo-technologies/swarm/bzz-KEY/chunks - | pv > chunks.tar
+    swarm db export ~/.abt/swarm/bzz-KEY/chunks - | pv > chunks.tar
 `,
 				},
 				{
@@ -272,12 +272,12 @@ pv(1) tool to get a progress bar:
 					Description: `
 Import chunks from a tar archive into a local chunk database (use - to read from stdin).
 
-    swarm db import ~/.apolo-technologies/swarm/bzz-KEY/chunks chunks.tar
+    swarm db import ~/.abt/swarm/bzz-KEY/chunks chunks.tar
 
 The import may be quite large, consider piping the input through the Unix
 pv(1) tool to get a progress bar:
 
-    pv chunks.tar | swarm db import ~/.apolo-technologies/swarm/bzz-KEY/chunks -
+    pv chunks.tar | swarm db import ~/.abt/swarm/bzz-KEY/chunks -
 `,
 				},
 				{

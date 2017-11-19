@@ -25,9 +25,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/log"
 	"github.com/rcrowley/go-metrics"
 	"gopkg.in/karalabe/cookiejar.v2/collections/prque"
 )

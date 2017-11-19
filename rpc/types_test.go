@@ -20,7 +20,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/abt/zerium/common/math"
 )
 
 func TestBlockNumberJSONUnmarshal(t *testing.T) {

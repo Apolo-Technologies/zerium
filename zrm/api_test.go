@@ -21,9 +21,9 @@ import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/state"
-	"github.com/apolo-technologies/zerium/zrmdb"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/state"
+	"github.com/abt/zerium/zrmdb"
 )
 
 var dumper = spew.ConfigState{Indent: "    "}

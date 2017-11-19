@@ -23,10 +23,10 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/common/math"
-	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/common/math"
+	"github.com/abt/zerium/core/types"
 )
 
 type Storage map[common.Hash]common.Hash

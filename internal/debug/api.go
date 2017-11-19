@@ -33,7 +33,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 )
 
 // Handler is the global debugging handler.

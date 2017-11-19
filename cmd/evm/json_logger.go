@@ -21,9 +21,9 @@ import (
 	"io"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/math"
-	"github.com/apolo-technologies/zerium/core/vm"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/math"
+	"github.com/abt/zerium/core/vm"
 )
 
 type JSONLogger struct {

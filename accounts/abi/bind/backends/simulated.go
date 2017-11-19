@@ -24,17 +24,17 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium"
-	"github.com/apolo-technologies/zerium/accounts/abi/bind"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/math"
-	"github.com/apolo-technologies/zerium/consensus/zrmash"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/core/state"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium"
+	"github.com/abt/zerium/accounts/abi/bind"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/math"
+	"github.com/abt/zerium/consensus/zrmash"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/core/state"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/core/vm"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/params"
 )
 
 // This nil assignment ensures compile time that SimulatedBackend implements bind.ContractBackend.
@@ -158,7 +158,7 @@ func (b *SimulatedBackend) PendingCodeAt(ctx context.Context, contract common.Ad
 }
 
 // CallContract executes a contract call.
-func (b *SimulatedBackend) CallContract(ctx context.Context, call apolo-technologies.CallMsg, blockNumber *big.Int) ([]byte, error) {
+func (b *SimulatedBackend) CallContract(ctx context.Context, call abt.CallMsg, blockNumber *big.Int) ([]byte, error) {
 	b.mu.Lock()
 	defer b.mu.Unlock()
 
@@ -174,7 +174,7 @@ func (b *SimulatedBackend) CallContract(ctx context.Context, call apolo-technolo
 }
 
 // PendingCallContract executes a contract call on the pending state.
-func (b *SimulatedBackend) PendingCallContract(ctx context.Context, call apolo-technologies.CallMsg) ([]byte, error) {
+func (b *SimulatedBackend) PendingCallContract(ctx context.Context, call abt.CallMsg) ([]byte, error) {
 	b.mu.Lock()
 	defer b.mu.Unlock()
 	defer b.pendingState.RevertToSnapshot(b.pendingState.Snapshot())
@@ -200,7 +200,7 @@ func (b *SimulatedBackend) SuggestGasPrice(ctx context.Context) (*big.Int, error
 
 // EstimateGas executes the requested code against the currently pending block/state and
 // returns the used amount of gas.
-func (b *SimulatedBackend) EstimateGas(ctx context.Context, call apolo-technologies.CallMsg) (*big.Int, error) {
+func (b *SimulatedBackend) EstimateGas(ctx context.Context, call abt.CallMsg) (*big.Int, error) {
 	b.mu.Lock()
 	defer b.mu.Unlock()
 
@@ -250,7 +250,7 @@ func (b *SimulatedBackend) EstimateGas(ctx context.Context, call apolo-technolog
 
 // callContract implemens common code between normal and pending contract calls.
 // state is modified during execution, make sure to copy it if necessary.
-func (b *SimulatedBackend) callContract(ctx context.Context, call apolo-technologies.CallMsg, block *types.Block, statedb *state.StateDB) ([]byte, *big.Int, bool, error) {
+func (b *SimulatedBackend) callContract(ctx context.Context, call abt.CallMsg, block *types.Block, statedb *state.StateDB) ([]byte, *big.Int, bool, error) {
 	// Ensure message is initialized properly.
 	if call.GasPrice == nil {
 		call.GasPrice = big.NewInt(1)
@@ -320,7 +320,7 @@ func (b *SimulatedBackend) AdjustTime(adjustment time.Duration) error {
 
 // callmsg implements core.Message to allow passing it as a transaction simulator.
 type callmsg struct {
-	apolo-technologies.CallMsg
+	abt.CallMsg
 }
 
 func (m callmsg) From() common.Address { return m.CallMsg.From }

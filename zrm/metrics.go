@@ -17,8 +17,8 @@
 package zrm
 
 import (
-	"github.com/apolo-technologies/zerium/metrics"
-	"github.com/apolo-technologies/zerium/p2p"
+	"github.com/abt/zerium/metrics"
+	"github.com/abt/zerium/p2p"
 )
 
 var (

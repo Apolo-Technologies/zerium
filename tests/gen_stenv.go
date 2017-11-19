@@ -7,8 +7,8 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/math"
 )
 
 var _ = (*stEnvMarshaling)(nil)

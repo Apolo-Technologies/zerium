@@ -26,8 +26,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common/bitutil"
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/common/bitutil"
+	"github.com/abt/zerium/crypto"
 )
 
 // bloomIndexes represents the bit indexes inside the bloom filter that belong

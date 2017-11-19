@@ -21,9 +21,9 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/abt/zerium"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
 )
 
 var (
@@ -49,7 +49,7 @@ type ContractCaller interface {
 	CodeAt(ctx context.Context, contract common.Address, blockNumber *big.Int) ([]byte, error)
 	// ContractCall executes an Zerium contract call with the specified data as the
 	// input.
-	CallContract(ctx context.Context, call apolo-technologies.CallMsg, blockNumber *big.Int) ([]byte, error)
+	CallContract(ctx context.Context, call abt.CallMsg, blockNumber *big.Int) ([]byte, error)
 }
 
 // DeployBackend wraps the operations needed by WaitMined and WaitDeployed.
@@ -65,7 +65,7 @@ type PendingContractCaller interface {
 	// PendingCodeAt returns the code of the given account in the pending state.
 	PendingCodeAt(ctx context.Context, contract common.Address) ([]byte, error)
 	// PendingCallContract executes an Zerium contract call against the pending state.
-	PendingCallContract(ctx context.Context, call apolo-technologies.CallMsg) ([]byte, error)
+	PendingCallContract(ctx context.Context, call abt.CallMsg) ([]byte, error)
 }
 
 // ContractTransactor defines the methods needed to allow operating with contract
@@ -85,7 +85,7 @@ type ContractTransactor interface {
 	// There is no guarantee that this is the true gas limit requirement as other
 	// transactions may be added or removed by miners, but it should provide a basis
 	// for setting a reasonable default.
-	EstimateGas(ctx context.Context, call apolo-technologies.CallMsg) (usedGas *big.Int, err error)
+	EstimateGas(ctx context.Context, call abt.CallMsg) (usedGas *big.Int, err error)
 	// SendTransaction injects the transaction into the pending pool for execution.
 	SendTransaction(ctx context.Context, tx *types.Transaction) error
 }

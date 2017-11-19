@@ -23,9 +23,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common/math"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/common/math"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/params"
 )
 
 type diffTest struct {

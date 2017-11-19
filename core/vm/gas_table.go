@@ -19,9 +19,9 @@ package vm
 import (
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/math"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/math"
+	"github.com/abt/zerium/params"
 )
 
 // memoryGasCosts calculates the quadratic gas for memory expansion. It does so

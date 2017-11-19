@@ -25,11 +25,11 @@ import (
 	"net"
 	"time"
 
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/p2p/nat"
-	"github.com/apolo-technologies/zerium/p2p/netutil"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/p2p/nat"
+	"github.com/abt/zerium/p2p/netutil"
+	"github.com/abt/zerium/rlp"
 )
 
 const Version = 4
@@ -240,7 +240,7 @@ func newUDP(priv *ecdsa.PrivateKey, c conn, natm nat.Interface, nodeDBPath strin
 	realaddr := c.LocalAddr().(*net.UDPAddr)
 	if natm != nil {
 		if !realaddr.IP.IsLoopback() {
-			go nat.Map(natm, udp.closing, "udp", realaddr.Port, realaddr.Port, "apolo-technologies discovery")
+			go nat.Map(natm, udp.closing, "udp", realaddr.Port, realaddr.Port, "abt discovery")
 		}
 		// TODO: react to external IP changes over time.
 		if ext, err := natm.ExternalIP(); err == nil {

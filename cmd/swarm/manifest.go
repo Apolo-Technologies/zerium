@@ -24,9 +24,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/swarm/api"
-	swarm "github.com/apolo-technologies/zerium/swarm/api/client"
+	"github.com/abt/zerium/cmd/utils"
+	"github.com/abt/zerium/swarm/api"
+	swarm "github.com/abt/zerium/swarm/api/client"
 	"gopkg.in/urfave/cli.v1"
 )
 

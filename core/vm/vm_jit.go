@@ -25,7 +25,7 @@ int   evmjit_run(void* _jit, void* _data, void* _env);
 void  evmjit_destroy(void* _jit);
 
 // Shared library evmjit (e.g. libevmjit.so) is expected to be installed in /usr/local/lib
-// More: https://github.com/apolo-technologies/evmjit
+// More: https://github.com/abt/evmjit
 #cgo LDFLAGS: -levmjit
 */
 import "C"
@@ -38,9 +38,9 @@ import (
 	"math/big"
 	"unsafe"
 
-	"github.com/apolo-technologies/zerium/core/state"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/core/state"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/params"
 )
 
 type JitVm struct {

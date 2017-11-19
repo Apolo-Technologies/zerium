@@ -19,7 +19,7 @@ package p2p
 import (
 	"fmt"
 
-	"github.com/apolo-technologies/zerium/p2p/discover"
+	"github.com/abt/zerium/p2p/discover"
 )
 
 // Protocol represents a P2P subprotocol implementation.

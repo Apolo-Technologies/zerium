@@ -21,9 +21,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/discover"
+	"github.com/abt/zerium/zrm/downloader"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/discover"
 )
 
 // Tests that fast sync gets disabled as soon as a real block is successfully

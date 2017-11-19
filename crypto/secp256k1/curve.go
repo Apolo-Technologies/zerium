@@ -37,7 +37,7 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/abt/zerium/common/math"
 )
 
 /*

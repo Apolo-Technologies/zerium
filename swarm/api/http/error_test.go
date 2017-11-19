@@ -24,7 +24,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/swarm/testutil"
+	"github.com/abt/zerium/swarm/testutil"
 )
 
 func TestError(t *testing.T) {

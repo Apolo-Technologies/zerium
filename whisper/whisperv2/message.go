@@ -15,7 +15,7 @@
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
 // Contains the Whisper protocol Message element. For formal details please see
-// the specs at https://github.com/apolo-technologies/wiki/wiki/Whisper-PoC-1-Protocol-Spec#messages.
+// the specs at https://github.com/abt/wiki/wiki/Whisper-PoC-1-Protocol-Spec#messages.
 
 package whisperv2
 
@@ -26,10 +26,10 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/crypto/ecies"
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/crypto/ecies"
+	"github.com/abt/zerium/log"
 )
 
 // Message represents an end-user data packet to transmit through the Whisper

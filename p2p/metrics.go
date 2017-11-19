@@ -21,7 +21,7 @@ package p2p
 import (
 	"net"
 
-	"github.com/apolo-technologies/zerium/metrics"
+	"github.com/abt/zerium/metrics"
 )
 
 var (

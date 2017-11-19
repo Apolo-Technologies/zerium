@@ -27,7 +27,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/abt/zerium/common/math"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -48,7 +48,7 @@ func (self *DirectoryString) Set(value string) error {
 }
 
 // Custom cli.Flag type which expand the received string to an absolute path.
-// e.g. ~/.apolo-technologies -> /home/username/.apolo-technologies
+// e.g. ~/.abt -> /home/username/.abt
 type DirectoryFlag struct {
 	Name  string
 	Value DirectoryString

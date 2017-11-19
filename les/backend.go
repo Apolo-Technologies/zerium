@@ -22,27 +22,27 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/consensus"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/core/bloombits"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/zrm"
-	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/zrm/filters"
-	"github.com/apolo-technologies/zerium/zrm/gasprice"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/internal/ethapi"
-	"github.com/apolo-technologies/zerium/light"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/node"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/discv5"
-	"github.com/apolo-technologies/zerium/params"
-	rpc "github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/accounts"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/consensus"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/core/bloombits"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/zrm"
+	"github.com/abt/zerium/zrm/downloader"
+	"github.com/abt/zerium/zrm/filters"
+	"github.com/abt/zerium/zrm/gasprice"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/internal/ethapi"
+	"github.com/abt/zerium/light"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/node"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/discv5"
+	"github.com/abt/zerium/params"
+	rpc "github.com/abt/zerium/rpc"
 )
 
 type LightZerium struct {
@@ -170,7 +170,7 @@ func (s *LightDummyAPI) Mining() bool {
 	return false
 }
 
-// APIs returns the collection of RPC services the apolo-technologies package offers.
+// APIs returns the collection of RPC services the abt package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
 func (s *LightZerium) APIs() []rpc.API {
 	return append(ethapi.GetAPIs(s.ApiBackend), []rpc.API{

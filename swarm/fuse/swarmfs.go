@@ -17,7 +17,7 @@
 package fuse
 
 import (
-	"github.com/apolo-technologies/zerium/swarm/api"
+	"github.com/abt/zerium/swarm/api"
 	"sync"
 	"time"
 )

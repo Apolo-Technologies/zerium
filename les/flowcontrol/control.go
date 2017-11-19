@@ -21,7 +21,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common/mclock"
+	"github.com/abt/zerium/common/mclock"
 )
 
 const fcTimeConst = time.Millisecond

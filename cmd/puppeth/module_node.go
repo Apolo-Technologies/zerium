@@ -25,12 +25,12 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 )
 
 // nodeDockerfile is the Dockerfile required to run an Zerium node.
 var nodeDockerfile = `
-FROM apolo-technologies/client-go:latest
+FROM abt/client-go:latest
 
 ADD genesis.json /genesis.json
 {{if .Unlock}}
@@ -39,7 +39,7 @@ ADD genesis.json /genesis.json
 {{end}}
 RUN \
   echo 'gzrm init /genesis.json' > gzrm.sh && \{{if .Unlock}}
-	echo 'mkdir -p /root/.apolo-technologies/keystore/ && cp /signer.json /root/.apolo-technologies/keystore/' >> gzrm.sh && \{{end}}
+	echo 'mkdir -p /root/.abt/keystore/ && cp /signer.json /root/.abt/keystore/' >> gzrm.sh && \{{end}}
 	echo $'gzrm --networkid {{.NetworkID}} --cache 512 --port {{.Port}} --maxpeers {{.Peers}} {{.LightFlag}} --zrmstats \'{{.Ethstats}}\' {{if .BootV4}}--bootnodesv4 {{.BootV4}}{{end}} {{if .BootV5}}--bootnodesv5 {{.BootV5}}{{end}} {{if .Etherbase}}--etherbase {{.Etherbase}} --mine{{end}}{{if .Unlock}}--unlock 0 --password /signer.pass --mine{{end}} --targetgaslimit {{.GasTarget}} --gasprice {{.GasPrice}}' >> gzrm.sh
 
 ENTRYPOINT ["/bin/sh", "gzrm.sh"]
@@ -58,7 +58,7 @@ services:
       - "{{.FullPort}}:{{.FullPort}}/udp"{{if .Light}}
       - "{{.LightPort}}:{{.LightPort}}/udp"{{end}}
     volumes:
-      - {{.Datadir}}:/root/.apolo-technologies
+      - {{.Datadir}}:/root/.abt
     environment:
       - FULL_PORT={{.FullPort}}/tcp
       - LIGHT_PORT={{.LightPort}}/udp
@@ -222,7 +222,7 @@ func checkNode(client *sshClient, network string, boot bool) (*nodeInfos, error)
 	// Assemble and return the useful infos
 	stats := &nodeInfos{
 		genesis:    genesis,
-		datadir:    infos.volumes["/root/.apolo-technologies"],
+		datadir:    infos.volumes["/root/.abt"],
 		portFull:   infos.portmap[infos.envvars["FULL_PORT"]],
 		portLight:  infos.portmap[infos.envvars["LIGHT_PORT"]],
 		peersTotal: totalPeers,

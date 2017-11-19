@@ -25,17 +25,17 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/accounts/keystore"
-	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/console"
-	"github.com/apolo-technologies/zerium/zrm"
-	"github.com/apolo-technologies/zerium/zrmclient"
-	"github.com/apolo-technologies/zerium/internal/debug"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/metrics"
-	"github.com/apolo-technologies/zerium/node"
+	"github.com/abt/zerium/accounts"
+	"github.com/abt/zerium/accounts/keystore"
+	"github.com/abt/zerium/cmd/utils"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/console"
+	"github.com/abt/zerium/zrm"
+	"github.com/abt/zerium/zrmclient"
+	"github.com/abt/zerium/internal/debug"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/metrics"
+	"github.com/abt/zerium/node"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -278,22 +278,22 @@ func startNode(ctx *cli.Context, stack *node.Node) {
 	// Start auxiliary services if enabled
 	if ctx.GlobalBool(utils.MiningEnabledFlag.Name) || ctx.GlobalBool(utils.DeveloperFlag.Name) {
 		// Mining only makes sense if a full Zerium node is running
-		var apolo-technologies *zrm.Zerium
-		if err := stack.Service(&apolo-technologies); err != nil {
-			utils.Fatalf("apolo-technologies service not running: %v", err)
+		var abt *zrm.Zerium
+		if err := stack.Service(&abt); err != nil {
+			utils.Fatalf("abt service not running: %v", err)
 		}
 		// Use a reduced number of threads if requested
 		if threads := ctx.GlobalInt(utils.MinerThreadsFlag.Name); threads > 0 {
 			type threaded interface {
 				SetThreads(threads int)
 			}
-			if th, ok := apolo-technologies.Engine().(threaded); ok {
+			if th, ok := abt.Engine().(threaded); ok {
 				th.SetThreads(threads)
 			}
 		}
 		// Set the gas price to the limits from the CLI and start mining
-		apolo-technologies.TxPool().SetGasPrice(utils.GlobalBig(ctx, utils.GasPriceFlag.Name))
-		if err := apolo-technologies.StartMining(true); err != nil {
+		abt.TxPool().SetGasPrice(utils.GlobalBig(ctx, utils.GasPriceFlag.Name))
+		if err := abt.StartMining(true); err != nil {
 			utils.Fatalf("Failed to start mining: %v", err)
 		}
 	}

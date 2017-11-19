@@ -24,12 +24,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/rpc"
 )
 
 const (

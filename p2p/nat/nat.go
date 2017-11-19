@@ -25,7 +25,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 	"github.com/jackpal/go-nat-pmp"
 )
 

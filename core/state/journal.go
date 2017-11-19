@@ -19,7 +19,7 @@ package state
 import (
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 type journalEntry interface {

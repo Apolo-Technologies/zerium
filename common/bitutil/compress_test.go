@@ -21,7 +21,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/abt/zerium/common/hexutil"
 )
 
 // Tests that data bitset encoding and decoding works and is bijective.

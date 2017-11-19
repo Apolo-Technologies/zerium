@@ -20,7 +20,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 func TestSet(t *testing.T) {

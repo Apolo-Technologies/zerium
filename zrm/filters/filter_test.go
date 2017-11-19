@@ -23,13 +23,13 @@ import (
 	"os"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/params"
 )
 
 func makeReceipt(addr common.Address) *types.Receipt {
@@ -59,7 +59,7 @@ func BenchmarkFilters(b *testing.B) {
 		key1, _    = crypto.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")
 		addr1      = crypto.PubkeyToAddress(key1.PublicKey)
 		addr2      = common.BytesToAddress([]byte("jeff"))
-		addr3      = common.BytesToAddress([]byte("apolo-technologies"))
+		addr3      = common.BytesToAddress([]byte("abt"))
 		addr4      = common.BytesToAddress([]byte("random addresses please"))
 	)
 	defer db.Close()

@@ -22,8 +22,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/p2p/simulations/adapters"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/p2p/simulations/adapters"
 )
 
 // TestNetworkSimulation creates a multi-node simulation network with each node

@@ -5,7 +5,7 @@ package whisperv6
 import (
 	"encoding/json"
 
-	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/abt/zerium/common/hexutil"
 )
 
 var _ = (*criteriaOverride)(nil)

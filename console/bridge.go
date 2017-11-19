@@ -23,9 +23,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apolo-technologies/zerium/accounts/usbwallet"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/accounts/usbwallet"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/rpc"
 	"github.com/robertkrimen/otto"
 )
 

@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/apolo-technologies/zerium/accounts/keystore"
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/accounts/keystore"
+	"github.com/abt/zerium/log"
 )
 
 // deployFaucet queries the user for various input on deploying a faucet, after

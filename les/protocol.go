@@ -26,11 +26,11 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/crypto/secp256k1"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/crypto/secp256k1"
+	"github.com/abt/zerium/rlp"
 )
 
 // Constants to match up protocol versions and messages

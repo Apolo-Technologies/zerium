@@ -24,12 +24,12 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/rlp"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/rlp"
+	"github.com/abt/zerium/rpc"
 )
 
 // Client defines typed wrappers for the Zerium RPC API.
@@ -82,7 +82,7 @@ func (ec *Client) getBlock(ctx context.Context, method string, args ...interface
 	if err != nil {
 		return nil, err
 	} else if len(raw) == 0 {
-		return nil, apolo-technologies.NotFound
+		return nil, abt.NotFound
 	}
 	// Decode header and transactions.
 	var head *types.Header
@@ -144,7 +144,7 @@ func (ec *Client) HeaderByHash(ctx context.Context, hash common.Hash) (*types.He
 	var head *types.Header
 	err := ec.c.CallContext(ctx, &head, "eth_getBlockByHash", hash, false)
 	if err == nil && head == nil {
-		err = apolo-technologies.NotFound
+		err = abt.NotFound
 	}
 	return head, err
 }
@@ -155,7 +155,7 @@ func (ec *Client) HeaderByNumber(ctx context.Context, number *big.Int) (*types.H
 	var head *types.Header
 	err := ec.c.CallContext(ctx, &head, "eth_getBlockByNumber", toBlockNumArg(number), false)
 	if err == nil && head == nil {
-		err = apolo-technologies.NotFound
+		err = abt.NotFound
 	}
 	return head, err
 }
@@ -185,7 +185,7 @@ func (ec *Client) TransactionByHash(ctx context.Context, hash common.Hash) (tx *
 	if err != nil {
 		return nil, false, err
 	} else if json == nil {
-		return nil, false, apolo-technologies.NotFound
+		return nil, false, abt.NotFound
 	} else if _, r, _ := json.tx.RawSignatureValues(); r == nil {
 		return nil, false, fmt.Errorf("server returned transaction without signature")
 	}
@@ -231,7 +231,7 @@ func (ec *Client) TransactionInBlock(ctx context.Context, blockHash common.Hash,
 	err := ec.c.CallContext(ctx, &json, "eth_getTransactionByBlockHashAndIndex", blockHash, hexutil.Uint64(index))
 	if err == nil {
 		if json == nil {
-			return nil, apolo-technologies.NotFound
+			return nil, abt.NotFound
 		} else if _, r, _ := json.tx.RawSignatureValues(); r == nil {
 			return nil, fmt.Errorf("server returned transaction without signature")
 		}
@@ -247,7 +247,7 @@ func (ec *Client) TransactionReceipt(ctx context.Context, txHash common.Hash) (*
 	err := ec.c.CallContext(ctx, &r, "eth_getTransactionReceipt", txHash)
 	if err == nil {
 		if r == nil {
-			return nil, apolo-technologies.NotFound
+			return nil, abt.NotFound
 		}
 	}
 	return r, err
@@ -270,7 +270,7 @@ type rpcProgress struct {
 
 // SyncProgress retrieves the current progress of the sync algorithm. If there's
 // no sync currently running, it returns nil.
-func (ec *Client) SyncProgress(ctx context.Context) (*apolo-technologies.SyncProgress, error) {
+func (ec *Client) SyncProgress(ctx context.Context) (*abt.SyncProgress, error) {
 	var raw json.RawMessage
 	if err := ec.c.CallContext(ctx, &raw, "eth_syncing"); err != nil {
 		return nil, err
@@ -284,7 +284,7 @@ func (ec *Client) SyncProgress(ctx context.Context) (*apolo-technologies.SyncPro
 	if err := json.Unmarshal(raw, &progress); err != nil {
 		return nil, err
 	}
-	return &apolo-technologies.SyncProgress{
+	return &abt.SyncProgress{
 		StartingBlock: uint64(progress.StartingBlock),
 		CurrentBlock:  uint64(progress.CurrentBlock),
 		HighestBlock:  uint64(progress.HighestBlock),
@@ -295,7 +295,7 @@ func (ec *Client) SyncProgress(ctx context.Context) (*apolo-technologies.SyncPro
 
 // SubscribeNewHead subscribes to notifications about the current blockchain head
 // on the given channel.
-func (ec *Client) SubscribeNewHead(ctx context.Context, ch chan<- *types.Header) (apolo-technologies.Subscription, error) {
+func (ec *Client) SubscribeNewHead(ctx context.Context, ch chan<- *types.Header) (abt.Subscription, error) {
 	return ec.c.EthSubscribe(ctx, ch, "newHeads", map[string]struct{}{})
 }
 
@@ -349,18 +349,18 @@ func (ec *Client) NonceAt(ctx context.Context, account common.Address, blockNumb
 // Filters
 
 // FilterLogs executes a filter query.
-func (ec *Client) FilterLogs(ctx context.Context, q apolo-technologies.FilterQuery) ([]types.Log, error) {
+func (ec *Client) FilterLogs(ctx context.Context, q abt.FilterQuery) ([]types.Log, error) {
 	var result []types.Log
 	err := ec.c.CallContext(ctx, &result, "eth_getLogs", toFilterArg(q))
 	return result, err
 }
 
 // SubscribeFilterLogs subscribes to the results of a streaming filter query.
-func (ec *Client) SubscribeFilterLogs(ctx context.Context, q apolo-technologies.FilterQuery, ch chan<- types.Log) (apolo-technologies.Subscription, error) {
+func (ec *Client) SubscribeFilterLogs(ctx context.Context, q abt.FilterQuery, ch chan<- types.Log) (abt.Subscription, error) {
 	return ec.c.EthSubscribe(ctx, ch, "logs", toFilterArg(q))
 }
 
-func toFilterArg(q apolo-technologies.FilterQuery) interface{} {
+func toFilterArg(q abt.FilterQuery) interface{} {
 	arg := map[string]interface{}{
 		"fromBlock": toBlockNumArg(q.FromBlock),
 		"toBlock":   toBlockNumArg(q.ToBlock),
@@ -421,7 +421,7 @@ func (ec *Client) PendingTransactionCount(ctx context.Context) (uint, error) {
 // blockNumber selects the block height at which the call runs. It can be nil, in which
 // case the code is taken from the latest known block. Note that state from very old
 // blocks might not be available.
-func (ec *Client) CallContract(ctx context.Context, msg apolo-technologies.CallMsg, blockNumber *big.Int) ([]byte, error) {
+func (ec *Client) CallContract(ctx context.Context, msg abt.CallMsg, blockNumber *big.Int) ([]byte, error) {
 	var hex hexutil.Bytes
 	err := ec.c.CallContext(ctx, &hex, "eth_call", toCallArg(msg), toBlockNumArg(blockNumber))
 	if err != nil {
@@ -432,7 +432,7 @@ func (ec *Client) CallContract(ctx context.Context, msg apolo-technologies.CallM
 
 // PendingCallContract executes a message call transaction using the ZVM.
 // The state seen by the contract call is the pending state.
-func (ec *Client) PendingCallContract(ctx context.Context, msg apolo-technologies.CallMsg) ([]byte, error) {
+func (ec *Client) PendingCallContract(ctx context.Context, msg abt.CallMsg) ([]byte, error) {
 	var hex hexutil.Bytes
 	err := ec.c.CallContext(ctx, &hex, "eth_call", toCallArg(msg), "pending")
 	if err != nil {
@@ -455,7 +455,7 @@ func (ec *Client) SuggestGasPrice(ctx context.Context) (*big.Int, error) {
 // the current pending state of the backend blockchain. There is no guarantee that this is
 // the true gas limit requirement as other transactions may be added or removed by miners,
 // but it should provide a basis for setting a reasonable default.
-func (ec *Client) EstimateGas(ctx context.Context, msg apolo-technologies.CallMsg) (*big.Int, error) {
+func (ec *Client) EstimateGas(ctx context.Context, msg abt.CallMsg) (*big.Int, error) {
 	var hex hexutil.Big
 	err := ec.c.CallContext(ctx, &hex, "eth_estimateGas", toCallArg(msg))
 	if err != nil {
@@ -476,7 +476,7 @@ func (ec *Client) SendTransaction(ctx context.Context, tx *types.Transaction) er
 	return ec.c.CallContext(ctx, nil, "eth_sendRawTransaction", common.ToHex(data))
 }
 
-func toCallArg(msg apolo-technologies.CallMsg) interface{} {
+func toCallArg(msg abt.CallMsg) interface{} {
 	arg := map[string]interface{}{
 		"from": msg.From,
 		"to":   msg.To,

@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/apolo-technologies/zerium/cmd/evm/internal/compiler"
+	"github.com/abt/zerium/cmd/evm/internal/compiler"
 
 	cli "gopkg.in/urfave/cli.v1"
 )

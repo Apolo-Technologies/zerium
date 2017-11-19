@@ -26,14 +26,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/accounts/abi/bind"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/contracts/chequebook"
-	"github.com/apolo-technologies/zerium/contracts/chequebook/contract"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/swarm/services/swap/swap"
+	"github.com/abt/zerium/accounts/abi/bind"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/contracts/chequebook"
+	"github.com/abt/zerium/contracts/chequebook/contract"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/swarm/services/swap/swap"
 )
 
 // SwAP       Swarm Accounting Protocol with

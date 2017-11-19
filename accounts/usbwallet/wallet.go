@@ -25,11 +25,11 @@ import (
 	"sync"
 	"time"
 
-	apolo_technologies "github.com/apolo-technologies/zerium"
-	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/log"
+	abt "github.com/abt/zerium"
+	"github.com/abt/zerium/accounts"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/log"
 	"github.com/karalabe/hid"
 )
 
@@ -84,7 +84,7 @@ type wallet struct {
 
 	deriveNextPath accounts.DerivationPath   // Next derivation path for account auto-discovery
 	deriveNextAddr common.Address            // Next derived account address for auto-discovery
-	deriveChain    apolo-technologies.ChainStateReader // Blockchain state reader to discover used account with
+	deriveChain    abt.ChainStateReader // Blockchain state reader to discover used account with
 	deriveReq      chan chan struct{}        // Channel to request a self-derivation on
 	deriveQuit     chan chan error           // Channel to terminate the self-deriver with
 
@@ -484,7 +484,7 @@ func (w *wallet) Derive(path accounts.DerivationPath, pin bool) (accounts.Accoun
 // user used previously (based on the chain state), but ones that he/she did not
 // explicitly pin to the wallet manually. To avoid chain head monitoring, self
 // derivation only runs during account listing (and even then throttled).
-func (w *wallet) SelfDerive(base accounts.DerivationPath, chain apolo-technologies.ChainStateReader) {
+func (w *wallet) SelfDerive(base accounts.DerivationPath, chain abt.ChainStateReader) {
 	w.stateLock.Lock()
 	defer w.stateLock.Unlock()
 

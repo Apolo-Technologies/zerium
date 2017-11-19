@@ -17,8 +17,8 @@
 package core
 
 import (
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
 )
 
 // TxPreEvent is posted when a transaction enters the transaction pool.

@@ -29,7 +29,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/params"
 )
 
 var (

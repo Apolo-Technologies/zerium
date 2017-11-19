@@ -19,7 +19,7 @@ package params
 import (
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 // DAOForkBlockExtra is the block header extra-data field to set for the DAO fork

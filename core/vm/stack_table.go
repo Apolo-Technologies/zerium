@@ -19,7 +19,7 @@ package vm
 import (
 	"fmt"
 
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/params"
 )
 
 func makeStackFunc(pop, push int) stackValidationFunc {

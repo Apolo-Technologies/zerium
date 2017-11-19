@@ -20,8 +20,8 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/swarm/storage"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/swarm/storage"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/iterator"
 )

@@ -23,11 +23,11 @@ import (
 	"net"
 	"sync"
 
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/node"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/node"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/rpc"
 )
 
 // SimAdapter is a NodeAdapter which creates in-memory simulation nodes and

@@ -1,4 +1,4 @@
-// Zerium Name Service contracts by Nick Johnson <nick@apolo-technologies.org>
+// Zerium Name Service contracts by Nick Johnson <nick@abt.org>
 // 
 // To the extent possible under law, the person who associated CC0 with
 // ENS contracts has waived all copyright and related or neighboring rights

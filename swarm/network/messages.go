@@ -21,11 +21,11 @@ import (
 	"net"
 	"time"
 
-	"github.com/apolo-technologies/zerium/contracts/chequebook"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/swarm/network/kademlia"
-	"github.com/apolo-technologies/zerium/swarm/services/swap"
-	"github.com/apolo-technologies/zerium/swarm/storage"
+	"github.com/abt/zerium/contracts/chequebook"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/swarm/network/kademlia"
+	"github.com/abt/zerium/swarm/services/swap"
+	"github.com/abt/zerium/swarm/storage"
 )
 
 /*

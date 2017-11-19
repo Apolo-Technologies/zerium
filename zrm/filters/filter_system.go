@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package filters implements an apolo-technologies filtering system for block,
+// Package filters implements an abt filtering system for block,
 // transactions and log events.
 package filters
 
@@ -25,11 +25,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/rpc"
 )
 
 // Type determines the kind of filter and is used to put the filter in to

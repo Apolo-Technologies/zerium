@@ -20,10 +20,10 @@ package accounts
 import (
 	"math/big"
 
-	apolo_technologies "github.com/apolo-technologies/zerium"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/event"
+	abt "github.com/abt/zerium"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/event"
 )
 
 // Account represents an Zerium account located at a specific location defined
@@ -85,7 +85,7 @@ type Wallet interface {
 	//
 	// You can disable automatic account discovery by calling SelfDerive with a nil
 	// chain state reader.
-	SelfDerive(base DerivationPath, chain apolo-technologies.ChainStateReader)
+	SelfDerive(base DerivationPath, chain abt.ChainStateReader)
 
 	// SignHash requests the wallet to sign the given hash.
 	//

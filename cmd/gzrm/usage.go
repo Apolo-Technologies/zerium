@@ -22,8 +22,8 @@ import (
 	"io"
 	"sort"
 
-	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/internal/debug"
+	"github.com/abt/zerium/cmd/utils"
+	"github.com/abt/zerium/internal/debug"
 	"gopkg.in/urfave/cli.v1"
 	"strings"
 )

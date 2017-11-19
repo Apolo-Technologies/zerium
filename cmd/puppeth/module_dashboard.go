@@ -24,7 +24,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 )
 
 // dashboardContent is the actual dashboard HTML content to serve up when users
@@ -117,7 +117,7 @@ var dashboardContent = `
 											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=1024 --syncmode=full{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
 										</p>
 										<br/>
-										<p>You can download Geth from <a href="https://gzrm.apolo-technologies.org/downloads/" target="about:blank">https://gzrm.apolo-technologies.org/downloads/</a>.</p>
+										<p>You can download Geth from <a href="https://gzrm.abt.org/downloads/" target="about:blank">https://gzrm.abt.org/downloads/</a>.</p>
 									</div>
 								</div>
 							</div>
@@ -136,7 +136,7 @@ var dashboardContent = `
 											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=512{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
 										</p>
 										<br/>
-										<p>You can download Geth from <a href="https://gzrm.apolo-technologies.org/downloads/" target="about:blank">https://gzrm.apolo-technologies.org/downloads/</a>.</p>
+										<p>You can download Geth from <a href="https://gzrm.abt.org/downloads/" target="about:blank">https://gzrm.abt.org/downloads/</a>.</p>
 									</div>
 								</div>
 							</div>
@@ -158,7 +158,7 @@ var dashboardContent = `
 											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --syncmode=light{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
 										</p>
 										<br/>
-										<p>You can download Geth from <a href="https://gzrm.apolo-technologies.org/downloads/" target="about:blank">https://gzrm.apolo-technologies.org/downloads/</a>.</p>
+										<p>You can download Geth from <a href="https://gzrm.abt.org/downloads/" target="about:blank">https://gzrm.abt.org/downloads/</a>.</p>
 									</div>
 								</div>
 							</div>
@@ -177,7 +177,7 @@ var dashboardContent = `
 											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=32 --syncmode=light{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
 										</p>
 										<br/>
-										<p>You can download Geth from <a href="https://gzrm.apolo-technologies.org/downloads/" target="about:blank">https://gzrm.apolo-technologies.org/downloads/</a>.</p>
+										<p>You can download Geth from <a href="https://gzrm.abt.org/downloads/" target="about:blank">https://gzrm.abt.org/downloads/</a>.</p>
 									</div>
 								</div>
 							</div>
@@ -205,10 +205,10 @@ var dashboardContent = `
 											<pre>gzrm --datadir=$HOME/.{{.Network}} init {{.GethGenesis}}</pre>
 										</p>
 										<p>With your local chain initialized, you can start the Zerium Wallet:
-											<pre>apolo-technologieswallet --rpc $HOME/.{{.Network}}/gzrm.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Ethstats}} --node-zrmstats='{{.Ethstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
+											<pre>abtwallet --rpc $HOME/.{{.Network}}/gzrm.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Ethstats}} --node-zrmstats='{{.Ethstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
 										<p>
 										<br/>
-										<p>You can download the Zerium Wallet from <a href="https://github.com/apolo-technologies/mist/releases" target="about:blank">https://github.com/apolo-technologies/mist/releases</a>.</p>
+										<p>You can download the Zerium Wallet from <a href="https://github.com/abt/mist/releases" target="about:blank">https://github.com/abt/mist/releases</a>.</p>
 									</div>
 								</div>
 							</div>
@@ -229,7 +229,7 @@ var dashboardContent = `
 											<pre>mist --rpc $HOME/.{{.Network}}/gzrm.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Ethstats}} --node-zrmstats='{{.Ethstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
 										<p>
 										<br/>
-										<p>You can download the Mist browser from <a href="https://github.com/apolo-technologies/mist/releases" target="about:blank">https://github.com/apolo-technologies/mist/releases</a>.</p>
+										<p>You can download the Mist browser from <a href="https://github.com/abt/mist/releases" target="about:blank">https://github.com/abt/mist/releases</a>.</p>
 									</div>
 								</div>
 							</div>
@@ -253,10 +253,10 @@ var dashboardContent = `
 										<p>Starting with the 1.5 release of zerium, we've transitioned away from shipping only full blown Zerium clients and started focusing on releasing the code as reusable packages initially for Go projects, then later for Java based Android projects too. Mobile support is still evolving, hence is bound to change often and hard, but the Zerium network can nonetheless be accessed from Android too.</p>
 										<p>Under the hood the Android library is backed by a zerium light node, meaning that given a not-too-old Android device, you should be able to join the network without significant issues. Certain functionality is not yet available and rough edges are bound to appear here and there, please report issues if you find any.</p>
 										<br/>
-										<p>The stable Android archives are distributed via Maven Central, and the develop snapshots via the Sonatype repositories. Before proceeding, please ensure you have a recent version configured in your Android project. You can find details in <a href="https://github.com/apolo-technologies/zerium/wiki/Mobile:-Introduction#android-archive" target="about:blank">Mobile: Introduction &ndash; Android archive</a>.
+										<p>The stable Android archives are distributed via Maven Central, and the develop snapshots via the Sonatype repositories. Before proceeding, please ensure you have a recent version configured in your Android project. You can find details in <a href="https://github.com/abt/zerium/wiki/Mobile:-Introduction#android-archive" target="about:blank">Mobile: Introduction &ndash; Android archive</a>.
 										<p>Before connecting to the Zerium network, download the <a href="/{{.GethGenesis}}"><code>{{.GethGenesis}}</code></a> genesis json file and either store it in your Android project as a resource file you can access, or save it as a string in a variable. You're going to need to to initialize your client.</p>
 										<p>Inside your Java code you can now import the gzrm archive and connect to Zerium:
-											<pre>import org.apolo-technologies.gzrm.*;</pre>
+											<pre>import org.abt.gzrm.*;</pre>
 <pre>
 Enodes bootnodes = new Enodes();{{range .BootnodesLight}}
 bootnodes.append(new Enode("{{.}}"));{{end}}
@@ -284,7 +284,7 @@ node.start();
 										<p>Starting with the 1.5 release of zerium, we've transitioned away from shipping only full blown Zerium clients and started focusing on releasing the code as reusable packages initially for Go projects, then later for ObjC/Swift based iOS projects too. Mobile support is still evolving, hence is bound to change often and hard, but the Zerium network can nonetheless be accessed from iOS too.</p>
 										<p>Under the hood the iOS library is backed by a zerium light node, meaning that given a not-too-old Apple device, you should be able to join the network without significant issues. Certain functionality is not yet available and rough edges are bound to appear here and there, please report issues if you find any.</p>
 										<br/>
-										<p>Both stable and develop builds of the iOS framework are available via CocoaPods. Before proceeding, please ensure you have a recent version configured in your iOS project. You can find details in <a href="https://github.com/apolo-technologies/zerium/wiki/Mobile:-Introduction#ios-framework" target="about:blank">Mobile: Introduction &ndash; iOS framework</a>.
+										<p>Both stable and develop builds of the iOS framework are available via CocoaPods. Before proceeding, please ensure you have a recent version configured in your iOS project. You can find details in <a href="https://github.com/abt/zerium/wiki/Mobile:-Introduction#ios-framework" target="about:blank">Mobile: Introduction &ndash; iOS framework</a>.
 										<p>Before connecting to the Zerium network, download the <a href="/{{.GethGenesis}}"><code>{{.GethGenesis}}</code></a> genesis json file and either store it in your iOS project as a resource file you can access, or save it as a string in a variable. You're going to need to to initialize your client.</p>
 										<p>Inside your Swift code you can now import the gzrm framework and connect to Zerium (ObjC should be analogous):
 											<pre>import Geth</pre>
@@ -322,7 +322,7 @@ try! node?.start();
 										<p>Puppeth is a tool to aid you in creating a new Zerium network down to the genesis block, bootnodes, signers, zrmstats server, crypto faucet, wallet browsers, block explorer, dashboard and more; without the hassle that it would normally entail to manually configure all these services one by one.</p>
 										<p>Puppeth uses ssh to dial in to remote servers, and builds its network components out of docker containers using docker-compose. The user is guided through the process via a command line wizard that does the heavy lifting and topology configuration automatically behind the scenes.</p>
 										<br/>
-										<p>Puppeth is distributed as part of the <a href="https://gzrm.apolo-technologies.org/downloads/" target="about:blank">Geth &amp; Tools</a> bundles, but can also be installed separately via:<pre>go get github.com/apolo-technologies/zerium/cmd/puppeth</pre></p>
+										<p>Puppeth is distributed as part of the <a href="https://gzrm.abt.org/downloads/" target="about:blank">Geth &amp; Tools</a> bundles, but can also be installed separately via:<pre>go get github.com/abt/zerium/cmd/puppeth</pre></p>
 										<br/>
 										<p><em>Copyright 2017. The zerium Authors.</em></p>
 									</div>

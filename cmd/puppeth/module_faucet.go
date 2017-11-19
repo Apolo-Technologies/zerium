@@ -25,7 +25,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 )
 
 // faucetDockerfile is the Dockerfile required to build an faucet container to
@@ -38,9 +38,9 @@ ENV GOPATH /go
 
 RUN \
   apk add --update git go make gcc musl-dev ca-certificates linux-headers                             && \
-	mkdir -p $GOPATH/src/github.com/apolo-technologies                                                            && \
-	(cd $GOPATH/src/github.com/apolo-technologies && git clone --depth=1 https://github.com/apolo-technologies/zerium) && \
-  go build -v github.com/apolo-technologies/zerium/cmd/faucet                                              && \
+	mkdir -p $GOPATH/src/github.com/abt                                                            && \
+	(cd $GOPATH/src/github.com/abt && git clone --depth=1 https://github.com/abt/zerium) && \
+  go build -v github.com/abt/zerium/cmd/faucet                                              && \
   apk del git go make gcc musl-dev linux-headers                                                      && \
   rm -rf $GOPATH && rm -rf /var/cache/apk/*
 

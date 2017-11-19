@@ -22,7 +22,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 	"gopkg.in/urfave/cli.v1"
 )
 

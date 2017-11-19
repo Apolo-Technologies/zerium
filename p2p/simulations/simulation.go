@@ -20,7 +20,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/apolo-technologies/zerium/p2p/discover"
+	"github.com/abt/zerium/p2p/discover"
 )
 
 // Simulation provides a framework for running actions in a simulated network

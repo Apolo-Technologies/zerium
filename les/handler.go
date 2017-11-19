@@ -27,23 +27,23 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/consensus"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/core/state"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/zrm"
-	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/light"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/p2p/discv5"
-	"github.com/apolo-technologies/zerium/params"
-	"github.com/apolo-technologies/zerium/rlp"
-	"github.com/apolo-technologies/zerium/trie"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/consensus"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/core/state"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/zrm"
+	"github.com/abt/zerium/zrm/downloader"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/light"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/p2p/discv5"
+	"github.com/abt/zerium/params"
+	"github.com/abt/zerium/rlp"
+	"github.com/abt/zerium/trie"
 )
 
 const (
@@ -126,8 +126,8 @@ type ProtocolManager struct {
 	wg *sync.WaitGroup
 }
 
-// NewProtocolManager returns a new apolo-technologies sub protocol manager. The Zerium sub protocol manages peers capable
-// with the apolo-technologies network.
+// NewProtocolManager returns a new abt sub protocol manager. The Zerium sub protocol manages peers capable
+// with the abt network.
 func NewProtocolManager(chainConfig *params.ChainConfig, lightSync bool, protocolVersions []uint, networkId uint64, mux *event.TypeMux, engine consensus.Engine, peers *peerSet, blockchain BlockChain, txpool txPool, chainDb zrmdb.Database, odr *LesOdr, txrelay *LesTxRelay, quitSync chan struct{}, wg *sync.WaitGroup) (*ProtocolManager, error) {
 	// Create the protocol manager with the base fields
 	manager := &ProtocolManager{

@@ -26,11 +26,11 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/swarm/api"
-	swarm "github.com/apolo-technologies/zerium/swarm/api/client"
-	"github.com/apolo-technologies/zerium/swarm/storage"
-	"github.com/apolo-technologies/zerium/swarm/testutil"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/swarm/api"
+	swarm "github.com/abt/zerium/swarm/api/client"
+	"github.com/abt/zerium/swarm/storage"
+	"github.com/abt/zerium/swarm/testutil"
 )
 
 func TestBzzrGetPath(t *testing.T) {

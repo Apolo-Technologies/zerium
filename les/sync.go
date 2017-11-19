@@ -20,9 +20,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/light"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/zrm/downloader"
+	"github.com/abt/zerium/light"
 )
 
 const (

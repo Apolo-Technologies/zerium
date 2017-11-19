@@ -22,7 +22,7 @@ We want to build zerium with the most recent version of Go, irrespective of the 
 version that is available in the main Ubuntu repository. In order to make this possible,
 our PPA depends on the ~gophers/ubuntu/archive PPA. Our source package build-depends on
 golang-1.9, which is co-installable alongside the regular golang package. PPA dependencies
-can be edited at https://launchpad.net/%7Eapolo-technologies/+archive/ubuntu/apolo-technologies/+edit-dependencies
+can be edited at https://launchpad.net/%7Eabt/+archive/ubuntu/abt/+edit-dependencies
 
 ## Building Packages Locally (for testing)
 
@@ -40,7 +40,7 @@ Create the source packages:
 
 Then go into the source package directory for your running distribution and build the package:
 
-    $ cd dist/apolo-technologies-unstable-1.6.0+xenial
+    $ cd dist/abt-unstable-1.6.0+xenial
     $ dpkg-buildpackage
 
 Built packages are placed in the dist/ directory.

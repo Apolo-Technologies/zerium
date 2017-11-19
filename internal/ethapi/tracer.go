@@ -23,9 +23,9 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/core/vm"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/core/vm"
 	"github.com/robertkrimen/otto"
 )
 

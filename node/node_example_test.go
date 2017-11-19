@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/apolo-technologies/zerium/node"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/node"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/rpc"
 )
 
 // SampleService is a trivial network service that can be attached to a node for

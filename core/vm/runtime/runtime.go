@@ -21,12 +21,12 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/state"
-	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/state"
+	"github.com/abt/zerium/core/vm"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/params"
 )
 
 // Config is a basic type specifying certain configuration flags for running

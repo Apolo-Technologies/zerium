@@ -23,9 +23,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/zrmdb"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/zrmdb"
 )
 
 // Runs multiple tests with randomized parameters.

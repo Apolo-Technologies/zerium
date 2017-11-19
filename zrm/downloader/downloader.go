@@ -27,13 +27,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	apolo_technologies "github.com/apolo-technologies/zerium"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/params"
+	abt "github.com/abt/zerium"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/params"
 	"github.com/rcrowley/go-metrics"
 )
 
@@ -240,7 +240,7 @@ func New(mode SyncMode, stateDb zrmdb.Database, mux *event.TypeMux, chain BlockC
 // In addition, during the state download phase of fast synchronisation the number
 // of processed and the total number of known states are also returned. Otherwise
 // these are zero.
-func (d *Downloader) Progress() apolo-technologies.SyncProgress {
+func (d *Downloader) Progress() abt.SyncProgress {
 	// Lock the current stats and return the progress
 	d.syncStatsLock.RLock()
 	defer d.syncStatsLock.RUnlock()
@@ -254,7 +254,7 @@ func (d *Downloader) Progress() apolo-technologies.SyncProgress {
 	case LightSync:
 		current = d.lightchain.CurrentHeader().Number.Uint64()
 	}
-	return apolo-technologies.SyncProgress{
+	return abt.SyncProgress{
 		StartingBlock: d.syncStatsChainOrigin,
 		CurrentBlock:  current,
 		HighestBlock:  d.syncStatsChainHeight,

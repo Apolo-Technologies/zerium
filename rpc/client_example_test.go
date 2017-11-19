@@ -22,7 +22,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/rpc"
 )
 
 // In this example, our client whishes to track the latest 'block number'

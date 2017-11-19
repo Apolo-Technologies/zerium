@@ -29,8 +29,8 @@ import (
 
 	"github.com/cespare/cp"
 	"github.com/davecgh/go-spew/spew"
-	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/accounts"
+	"github.com/abt/zerium/common"
 )
 
 var (

@@ -22,7 +22,7 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 // A BigInt represents a signed multi-precision integer.

@@ -24,10 +24,10 @@ import (
 	"runtime"
 	"sync"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/consensus"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/consensus"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/log"
 )
 
 // Seal implements consensus.Engine, attempting to find a nonce that satisfies

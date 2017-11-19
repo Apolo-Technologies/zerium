@@ -21,7 +21,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 func (Address) Generate(rand *rand.Rand, size int) reflect.Value {

@@ -25,14 +25,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/mclock"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/p2p/discv5"
-	"github.com/apolo-technologies/zerium/p2p/nat"
-	"github.com/apolo-technologies/zerium/p2p/netutil"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/mclock"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/p2p/discv5"
+	"github.com/abt/zerium/p2p/nat"
+	"github.com/abt/zerium/p2p/netutil"
 )
 
 const (
@@ -445,7 +445,7 @@ func (srv *Server) startListening() error {
 	if !laddr.IP.IsLoopback() && srv.NAT != nil {
 		srv.loopWG.Add(1)
 		go func() {
-			nat.Map(srv.NAT, srv.quit, "tcp", laddr.Port, laddr.Port, "apolo-technologies p2p")
+			nat.Map(srv.NAT, srv.quit, "tcp", laddr.Port, laddr.Port, "abt p2p")
 			srv.loopWG.Done()
 		}()
 	}

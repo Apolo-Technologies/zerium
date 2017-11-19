@@ -21,7 +21,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/crypto"
 )
 
 // Callable method given a `Name` and whether the method is a constant.

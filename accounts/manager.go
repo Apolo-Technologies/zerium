@@ -21,7 +21,7 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/apolo-technologies/zerium/event"
+	"github.com/abt/zerium/event"
 )
 
 // Manager is an overarching account manager that can communicate with various

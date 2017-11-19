@@ -25,7 +25,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 	"gopkg.in/fatih/set.v0"
 )
 

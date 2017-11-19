@@ -19,8 +19,8 @@ package miner
 import (
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
 )
 
 // noopHeaderRetriever is an implementation of headerRetriever that always

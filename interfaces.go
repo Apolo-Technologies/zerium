@@ -14,16 +14,16 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package apolo-technologies defines interfaces for interacting with Zerium.
-package apolo_technologies
+// Package abt defines interfaces for interacting with Zerium.
+package abt
 
 import (
 	"context"
 	"errors"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
 )
 
 // NotFound is returned by API methods if the requested item does not exist.

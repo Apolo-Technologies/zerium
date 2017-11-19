@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/crypto/sha3"
-	"github.com/apolo-technologies/zerium/p2p/discover"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/crypto/sha3"
+	"github.com/abt/zerium/p2p/discover"
 )
 
 func init() {

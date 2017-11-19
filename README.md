@@ -4,16 +4,16 @@ Official golang implementation of the Zerium protocol.
 
 [![API Reference](
 https://camo.githubusercontent.com/915b7be44ada53c290eb157634330494ebe3e30a/68747470733a2f2f676f646f632e6f72672f6769746875622e636f6d2f676f6c616e672f6764646f3f7374617475732e737667
-)](https://godoc.org/github.com/apolo-technologies/zerium)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/apolo-technologies/zerium?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+)](https://godoc.org/github.com/abt/zerium)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/abt/zerium?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Automated builds are available for stable releases and the unstable master branch.
-Binary archives are published at https://gzrm.apolo-technologies.org/downloads/.
+Binary archives are published at https://gzrm.abt.org/downloads/.
 
 ## Building the source
 
 For prerequisites and detailed build instructions please read the
-[Installation Instructions](https://github.com/apolo-technologies/zerium/wiki/Building-Zerium)
+[Installation Instructions](https://github.com/abt/zerium/wiki/Building-Zerium)
 on the wiki.
 
 Building gzrm requires both a Go (version 1.7 or later) and a C compiler.
@@ -32,19 +32,19 @@ The zerium project comes with several wrappers/executables found in the `cmd` di
 
 | Command    | Description |
 |:----------:|-------------|
-| **`gzrm`** | Our main Zerium CLI client. It is the entry point into the Zerium network (main-, test- or private net), capable of running as a full node (default) archive node (retaining all historical state) or a light node (retrieving data live). It can be used by other processes as a gateway into the Zerium network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `gzrm --help` and the [CLI Wiki page](https://github.com/apolo-technologies/zerium/wiki/Command-Line-Options) for command line options. |
-| `abigen` | Source code generator to convert Zerium contract definitions into easy to use, compile-time type-safe Go packages. It operates on plain [Zerium contract ABIs](https://github.com/apolo-technologies/wiki/wiki/Zerium-Contract-ABI) with expanded functionality if the contract bytecode is also available. However it also accepts Solidity source files, making development much more streamlined. Please see our [Native DApps](https://github.com/apolo-technologies/zerium/wiki/Native-DApps:-Go-bindings-to-Zerium-contracts) wiki page for details. |
+| **`gzrm`** | Our main Zerium CLI client. It is the entry point into the Zerium network (main-, test- or private net), capable of running as a full node (default) archive node (retaining all historical state) or a light node (retrieving data live). It can be used by other processes as a gateway into the Zerium network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `gzrm --help` and the [CLI Wiki page](https://github.com/abt/zerium/wiki/Command-Line-Options) for command line options. |
+| `abigen` | Source code generator to convert Zerium contract definitions into easy to use, compile-time type-safe Go packages. It operates on plain [Zerium contract ABIs](https://github.com/abt/wiki/wiki/Zerium-Contract-ABI) with expanded functionality if the contract bytecode is also available. However it also accepts Solidity source files, making development much more streamlined. Please see our [Native DApps](https://github.com/abt/zerium/wiki/Native-DApps:-Go-bindings-to-Zerium-contracts) wiki page for details. |
 | `bootnode` | Stripped down version of our Zerium client implementation that only takes part in the network node discovery protocol, but does not run any of the higher level application protocols. It can be used as a lightweight bootstrap node to aid in finding peers in private networks. |
 | `evm` | Developer utility version of the ZVM (Zerium Virtual Machine) that is capable of running bytecode snippets within a configurable environment and execution mode. Its purpose is to allow isolated, fine-grained debugging of ZVM opcodes (e.g. `evm --code 60ff60ff --debug`). |
-| `gethrpctest` | Developer utility tool to support our [apolo-technologies/rpc-test](https://github.com/apolo-technologies/rpc-tests) test suite which validates baseline conformity to the [Zerium JSON RPC](https://github.com/apolo-technologies/wiki/wiki/JSON-RPC) specs. Please see the [test suite's readme](https://github.com/apolo-technologies/rpc-tests/blob/master/README.md) for details. |
-| `rlpdump` | Developer utility tool to convert binary RLP ([Recursive Length Prefix](https://github.com/apolo-technologies/wiki/wiki/RLP)) dumps (data encoding used by the Zerium protocol both network as well as consensus wise) to user friendlier hierarchical representation (e.g. `rlpdump --hex CE0183FFFFFFC4C304050583616263`). |
+| `gethrpctest` | Developer utility tool to support our [abt/rpc-test](https://github.com/abt/rpc-tests) test suite which validates baseline conformity to the [Zerium JSON RPC](https://github.com/abt/wiki/wiki/JSON-RPC) specs. Please see the [test suite's readme](https://github.com/abt/rpc-tests/blob/master/README.md) for details. |
+| `rlpdump` | Developer utility tool to convert binary RLP ([Recursive Length Prefix](https://github.com/abt/wiki/wiki/RLP)) dumps (data encoding used by the Zerium protocol both network as well as consensus wise) to user friendlier hierarchical representation (e.g. `rlpdump --hex CE0183FFFFFFC4C304050583616263`). |
 | `swarm`    | swarm daemon and tools. This is the entrypoint for the swarm network. `swarm --help` for command line options and subcommands. See https://swarm-guide.readthedocs.io for swarm documentation. |
 | `puppeth`    | a CLI wizard that aids in creating a new Zerium network. |
 
 ## Running gzrm
 
 Going through all the possible command line flags is out of scope here (please consult our
-[CLI Wiki page](https://github.com/apolo-technologies/zerium/wiki/Command-Line-Options)), but we've
+[CLI Wiki page](https://github.com/abt/zerium/wiki/Command-Line-Options)), but we've
 enumerated a few common parameter combos to get you up to speed quickly on how you can run your
 own Geth instance.
 
@@ -66,9 +66,9 @@ This command will:
  * Bump the memory allowance of the database to 512MB (`--cache=512`), which can help significantly in
    sync times especially for HDD users. This flag is optional and you can set it as high or as low as
    you'd like, though we'd recommend the 512MB - 2GB range.
- * Start up Geth's built-in interactive [JavaScript console](https://github.com/apolo-technologies/zerium/wiki/JavaScript-Console),
-   (via the trailing `console` subcommand) through which you can invoke all official [`web3` methods](https://github.com/apolo-technologies/wiki/wiki/JavaScript-API)
-   as well as Geth's own [management APIs](https://github.com/apolo-technologies/zerium/wiki/Management-APIs).
+ * Start up Geth's built-in interactive [JavaScript console](https://github.com/abt/zerium/wiki/JavaScript-Console),
+   (via the trailing `console` subcommand) through which you can invoke all official [`web3` methods](https://github.com/abt/wiki/wiki/JavaScript-API)
+   as well as Geth's own [management APIs](https://github.com/abt/zerium/wiki/Management-APIs).
    This too is optional and if you leave it out you can always attach to an already running Geth instance
    with `gzrm attach`.
 
@@ -89,8 +89,8 @@ here.
 
 Specifying the `--testnet` flag however will reconfigure your Geth instance a bit:
 
- * Instead of using the default data directory (`~/.apolo-technologies` on Linux for example), Geth will nest
-   itself one level deeper into a `testnet` subfolder (`~/.apolo-technologies/testnet` on Linux). Note, on OSX
+ * Instead of using the default data directory (`~/.abt` on Linux for example), Geth will nest
+   itself one level deeper into a `testnet` subfolder (`~/.abt/testnet` on Linux). Note, on OSX
    and Linux this also means that attaching to a running testnet node requires the use of a custom
    endpoint since `gzrm attach` will try to attach to a production node endpoint by default. E.g.
    `gzrm attach <datadir>/testnet/gzrm.ipc`. Windows users are not affected by this.
@@ -123,9 +123,9 @@ $ gzrm --your-favourite-flags dumpconfig
 One of the quickest ways to get Zerium up and running on your machine is by using Docker:
 
 ```
-docker run -d --name apolo-technologies-node -v /Users/alice/apolo-technologies:/root \
+docker run -d --name abt-node -v /Users/alice/abt:/root \
            -p 8545:8545 -p 30303:30303 \
-           apolo-technologies/client-go --fast --cache=512
+           abt/client-go --fast --cache=512
 ```
 
 This will start gzrm in fast sync mode with a DB memory allowance of 512MB just as the above command does.  It will also create a persistent volume in your home directory for saving your blockchain as well as map the default ports. There is also an `alpine` tag available for a slim version of the image.
@@ -136,8 +136,8 @@ Do not forget `--rpcaddr 0.0.0.0`, if you want to access RPC from other containe
 
 As a developer, sooner rather than later you'll want to start interacting with Geth and the Zerium
 network via your own programs and not manually through the console. To aid this, Geth has built in
-support for a JSON-RPC based APIs ([standard APIs](https://github.com/apolo-technologies/wiki/wiki/JSON-RPC) and
-[Geth specific APIs](https://github.com/apolo-technologies/zerium/wiki/Management-APIs)). These can be
+support for a JSON-RPC based APIs ([standard APIs](https://github.com/abt/wiki/wiki/JSON-RPC) and
+[Geth specific APIs](https://github.com/abt/zerium/wiki/Management-APIs)). These can be
 exposed via HTTP, WebSockets and IPC (unix sockets on unix based platforms, and named pipes on Windows).
 
 The IPC interface is enabled by default and exposes all the APIs supported by Geth, whereas the HTTP
@@ -229,7 +229,7 @@ $ bootnode --genkey=boot.key
 $ bootnode --nodekey=boot.key
 ```
 
-With the bootnode online, it will display an [`enode` URL](https://github.com/apolo-technologies/wiki/wiki/enode-url-format)
+With the bootnode online, it will display an [`enode` URL](https://github.com/abt/wiki/wiki/enode-url-format)
 that other nodes can use to connect to it and exchange peer information. Make sure to replace the
 displayed IP address information (most probably `[::]`) with your externally accessible IP to get the
 actual `enode` URL.
@@ -254,7 +254,7 @@ need to configure a miner to process transactions and create new blocks for you.
 
 Mining on the public Zerium network is a complex task as it's only feasible using GPUs, requiring
 an OpenCL or CUDA enabled `ethminer` instance. For information on such a setup, please consult the
-[EtherMining subreddit](https://www.reddit.com/r/EtherMining/) and the [Genoil miner](https://github.com/Genoil/cpp-apolo-technologies)
+[EtherMining subreddit](https://www.reddit.com/r/EtherMining/) and the [Genoil miner](https://github.com/Genoil/cpp-abt)
 repository.
 
 In a private network setting however, a single CPU miner instance is more than enough for practical
@@ -277,7 +277,7 @@ anyone on the internet, and are grateful for even the smallest of fixes!
 
 If you'd like to contribute to zerium, please fork, fix, commit and send a pull request
 for the maintainers to review and merge into the main code base. If you wish to submit more
-complex changes though, please check up with the core devs first on [our gitter channel](https://gitter.im/apolo-technologies/zerium)
+complex changes though, please check up with the core devs first on [our gitter channel](https://gitter.im/abt/zerium)
 to ensure those changes are in line with the general philosophy of the project and/or get some
 early feedback which can make both your efforts much lighter as well as our review and merge
 procedures quick and simple.
@@ -290,7 +290,7 @@ Please make sure your contributions adhere to our coding guidelines:
  * Commit messages should be prefixed with the package(s) they modify.
    * E.g. "zrm, rpc: make trace configs optional"
 
-Please see the [Developers' Guide](https://github.com/apolo-technologies/zerium/wiki/Developers'-Guide)
+Please see the [Developers' Guide](https://github.com/abt/zerium/wiki/Developers'-Guide)
 for more details on configuring your environment, managing project dependencies and testing procedures.
 
 ## License

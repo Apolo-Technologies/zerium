@@ -28,11 +28,11 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/p2p/simulations/adapters"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/p2p/simulations/adapters"
+	"github.com/abt/zerium/rpc"
 	"github.com/julienschmidt/httprouter"
 	"golang.org/x/net/websocket"
 )

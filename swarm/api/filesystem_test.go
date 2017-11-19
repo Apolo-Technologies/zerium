@@ -24,8 +24,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/swarm/storage"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/swarm/storage"
 )
 
 var testDownloadDir, _ = ioutil.TempDir(os.TempDir(), "bzz-test")

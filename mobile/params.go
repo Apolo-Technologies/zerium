@@ -21,9 +21,9 @@ package gzrm
 import (
 	"encoding/json"
 
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/p2p/discv5"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/p2p/discv5"
+	"github.com/abt/zerium/params"
 )
 
 // MainnetGenesis returns the JSON spec to use for the main Zerium network. It

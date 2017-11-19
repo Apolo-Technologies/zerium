@@ -18,11 +18,11 @@
 package consensus
 
 import (
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/state"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/params"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/state"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/params"
+	"github.com/abt/zerium/rpc"
 )
 
 // ChainReader defines a small collection of methods needed to access the local

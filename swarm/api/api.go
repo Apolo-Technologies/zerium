@@ -29,9 +29,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/swarm/storage"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/swarm/storage"
 )
 
 var hashMatcher = regexp.MustCompile("^[0-9A-Fa-f]{64}")
@@ -43,7 +43,7 @@ type Resolver interface {
 /*
 Api implements webserver/file system related content storage and retrieval
 on top of the dpa
-it is the public interface of the dpa which is included in the apolo-technologies stack
+it is the public interface of the dpa which is included in the abt stack
 */
 type Api struct {
 	dpa *storage.DPA

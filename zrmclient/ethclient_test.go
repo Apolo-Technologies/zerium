@@ -16,19 +16,19 @@
 
 package zrmclient
 
-import "github.com/apolo-technologies/zerium"
+import "github.com/abt/zerium"
 
-// Verify that Client implements the apolo-technologies interfaces.
+// Verify that Client implements the abt interfaces.
 var (
-	_ = apolo-technologies.ChainReader(&Client{})
-	_ = apolo-technologies.TransactionReader(&Client{})
-	_ = apolo-technologies.ChainStateReader(&Client{})
-	_ = apolo-technologies.ChainSyncReader(&Client{})
-	_ = apolo-technologies.ContractCaller(&Client{})
-	_ = apolo-technologies.GasEstimator(&Client{})
-	_ = apolo-technologies.GasPricer(&Client{})
-	_ = apolo-technologies.LogFilterer(&Client{})
-	_ = apolo-technologies.PendingStateReader(&Client{})
-	// _ = apolo-technologies.PendingStateEventer(&Client{})
-	_ = apolo-technologies.PendingContractCaller(&Client{})
+	_ = abt.ChainReader(&Client{})
+	_ = abt.TransactionReader(&Client{})
+	_ = abt.ChainStateReader(&Client{})
+	_ = abt.ChainSyncReader(&Client{})
+	_ = abt.ContractCaller(&Client{})
+	_ = abt.GasEstimator(&Client{})
+	_ = abt.GasPricer(&Client{})
+	_ = abt.LogFilterer(&Client{})
+	_ = abt.PendingStateReader(&Client{})
+	// _ = abt.PendingStateEventer(&Client{})
+	_ = abt.PendingContractCaller(&Client{})
 )

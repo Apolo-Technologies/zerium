@@ -19,7 +19,7 @@
 This key store behaves as KeyStorePlain with the difference that
 the private key is encrypted and on disk uses another JSON encoding.
 
-The crypto is documented at https://github.com/apolo-technologies/wiki/wiki/Web3-Secret-Storage-Definition
+The crypto is documented at https://github.com/abt/wiki/wiki/Web3-Secret-Storage-Definition
 
 */
 
@@ -35,10 +35,10 @@ import (
 	"io/ioutil"
 	"path/filepath"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/math"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/crypto/randentropy"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/math"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/crypto/randentropy"
 	"github.com/pborman/uuid"
 	"golang.org/x/crypto/pbkdf2"
 	"golang.org/x/crypto/scrypt"

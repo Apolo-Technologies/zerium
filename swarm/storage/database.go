@@ -16,13 +16,13 @@
 
 package storage
 
-// this is a clone of an earlier state of the apolo-technologies zrmdb/database
+// this is a clone of an earlier state of the abt zrmdb/database
 // no need for queueing/caching
 
 import (
 	"fmt"
 
-	"github.com/apolo-technologies/zerium/compression/rle"
+	"github.com/abt/zerium/compression/rle"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/iterator"
 	"github.com/syndtr/goleveldb/leveldb/opt"

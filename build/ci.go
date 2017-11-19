@@ -58,7 +58,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apolo-technologies/zerium/internal/build"
+	"github.com/abt/zerium/internal/build"
 )
 
 var (
@@ -449,7 +449,7 @@ func maybeSkipArchive(env build.Environment) {
 func doDebianSource(cmdline []string) {
 	var (
 		signer  = flag.String("signer", "", `Signing key name, also used as package author`)
-		upload  = flag.String("upload", "", `Where to upload the source package (usually "ppa:apolo-technologies/apolo-technologies")`)
+		upload  = flag.String("upload", "", `Where to upload the source package (usually "ppa:abt/abt")`)
 		workdir = flag.String("workdir", "", `Output directory for packages (uses temp dir if unset)`)
 		now     = time.Now()
 	)
@@ -544,9 +544,9 @@ func newDebMetadata(distro, author string, env build.Environment, t time.Time) d
 // on all executable packages.
 func (meta debMetadata) Name() string {
 	if isUnstableBuild(meta.Env) {
-		return "apolo-technologies-unstable"
+		return "abt-unstable"
 	}
-	return "apolo-technologies"
+	return "abt"
 }
 
 // VersionString returns the debian version of the packages.
@@ -590,7 +590,7 @@ func (meta debMetadata) ExeConflicts(exe debExecutable) string {
 		// be preferred and the conflicting files should be handled via
 		// alternates. We might do this eventually but using a conflict is
 		// easier now.
-		return "apolo-technologies, " + exe.Name
+		return "abt, " + exe.Name
 	}
 	return ""
 }
@@ -716,7 +716,7 @@ func doAndroidArchive(cmdline []string) {
 	// Build the Android archive and Maven resources
 	build.MustRun(goTool("get", "golang.org/x/mobile/cmd/gomobile"))
 	build.MustRun(gomobileTool("init", "--ndk", os.Getenv("ANDROID_NDK")))
-	build.MustRun(gomobileTool("bind", "--target", "android", "--javapkg", "org.apolo-technologies", "-v", "github.com/apolo-technologies/zerium/mobile"))
+	build.MustRun(gomobileTool("bind", "--target", "android", "--javapkg", "org.abt", "-v", "github.com/abt/zerium/mobile"))
 
 	if *local {
 		// If we're building locally, copy bundle to build dir and skip Maven
@@ -836,7 +836,7 @@ func doXCodeFramework(cmdline []string) {
 	// Build the iOS XCode framework
 	build.MustRun(goTool("get", "golang.org/x/mobile/cmd/gomobile"))
 	build.MustRun(gomobileTool("init"))
-	bind := gomobileTool("bind", "--target", "ios", "--tags", "ios", "-v", "github.com/apolo-technologies/zerium/mobile")
+	bind := gomobileTool("bind", "--target", "ios", "--tags", "ios", "-v", "github.com/abt/zerium/mobile")
 
 	if *local {
 		// If we're building locally, use the build folder and stop afterwards

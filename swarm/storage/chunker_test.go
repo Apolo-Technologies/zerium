@@ -27,7 +27,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/crypto/sha3"
+	"github.com/abt/zerium/crypto/sha3"
 )
 
 /*

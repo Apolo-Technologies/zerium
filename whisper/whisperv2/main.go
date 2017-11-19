@@ -27,12 +27,12 @@ import (
 	"os"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/logger"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/nat"
-	"github.com/apolo-technologies/zerium/whisper"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/logger"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/nat"
+	"github.com/abt/zerium/whisper"
 )
 
 func main() {

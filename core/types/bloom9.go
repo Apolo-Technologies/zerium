@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/crypto"
 )
 
 type bytesBacked interface {

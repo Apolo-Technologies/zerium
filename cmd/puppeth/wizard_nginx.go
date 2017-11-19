@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/apolo-technologies/zerium/log"
+	"github.com/abt/zerium/log"
 )
 
 // ensureVirtualHost checks whether a reverse-proxy is running on the specified

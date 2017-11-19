@@ -21,9 +21,9 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/core/state"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/core/state"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/params"
 )
 
 var (

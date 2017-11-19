@@ -25,7 +25,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/internal/build"
+	"github.com/abt/zerium/internal/build"
 )
 
 // androidTestClass is a Java class to do some lightweight tests against the Android
@@ -40,7 +40,7 @@ import android.test.MoreAsserts;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-import org.apolo-technologies.gzrm.*;
+import org.abt.gzrm.*;
 
 public class AndroidTest extends InstrumentationTestCase {
 	public AndroidTest() {}
@@ -96,7 +96,7 @@ public class AndroidTest extends InstrumentationTestCase {
 
 		try {
 			// Start up a new inprocess node
-			Node node = new Node(getInstrumentation().getContext().getFilesDir() + "/.apolo-technologies", new NodeConfig());
+			Node node = new Node(getInstrumentation().getContext().getFilesDir() + "/.abt", new NodeConfig());
 			node.start();
 
 			// Retrieve some data via function calls (we don't really care about the results)
@@ -195,21 +195,21 @@ func TestAndroid(t *testing.T) {
 	defer os.Chdir(pwd)
 
 	// Create the skeleton of the Android project
-	for _, dir := range []string{"src/main", "src/androidTest/java/org/apolo-technologies/gethtest", "libs"} {
+	for _, dir := range []string{"src/main", "src/androidTest/java/org/abt/gethtest", "libs"} {
 		err = os.MkdirAll(dir, os.ModePerm)
 		if err != nil {
 			t.Fatal(err)
 		}
 	}
 	// Generate the mobile bindings for Geth and add the tester class
-	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.apolo-technologies", "github.com/apolo-technologies/zerium/mobile")
+	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.abt", "github.com/abt/zerium/mobile")
 	if output, err := gobind.CombinedOutput(); err != nil {
 		t.Logf("%s", output)
 		t.Fatalf("failed to run gomobile bind: %v", err)
 	}
 	build.CopyFile(filepath.Join("libs", "gzrm.aar"), "gzrm.aar", os.ModePerm)
 
-	if err = ioutil.WriteFile(filepath.Join("src", "androidTest", "java", "org", "apolo-technologies", "gethtest", "AndroidTest.java"), []byte(androidTestClass), os.ModePerm); err != nil {
+	if err = ioutil.WriteFile(filepath.Join("src", "androidTest", "java", "org", "abt", "gethtest", "AndroidTest.java"), []byte(androidTestClass), os.ModePerm); err != nil {
 		t.Fatalf("failed to write Android test class: %v", err)
 	}
 	// Finish creating the project and run the tests via gradle
@@ -227,7 +227,7 @@ func TestAndroid(t *testing.T) {
 
 const androidManifest = `<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.apolo-technologies.gethtest"
+          package="org.abt.gethtest"
 	  android:versionCode="1"
 	  android:versionName="1.0">
 

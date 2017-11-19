@@ -40,7 +40,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/crypto"
 )
 
 var dumpEnc bool

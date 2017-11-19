@@ -21,7 +21,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common/mclock"
+	"github.com/abt/zerium/common/mclock"
 )
 
 // Subscription represents a stream of events. The carrier of the events is typically a

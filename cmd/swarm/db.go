@@ -22,9 +22,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/swarm/storage"
+	"github.com/abt/zerium/cmd/utils"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/swarm/storage"
 	"gopkg.in/urfave/cli.v1"
 )
 

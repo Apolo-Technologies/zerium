@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/params"
 )
 
 const (

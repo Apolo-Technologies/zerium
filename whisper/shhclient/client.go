@@ -19,10 +19,10 @@ package shhclient
 import (
 	"context"
 
-	"github.com/apolo-technologies/zerium"
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/rpc"
-	whisper "github.com/apolo-technologies/zerium/whisper/whisperv5"
+	"github.com/abt/zerium"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/rpc"
+	whisper "github.com/abt/zerium/whisper/whisperv5"
 )
 
 // Client defines typed wrappers for the Whisper v5 RPC API.
@@ -168,7 +168,7 @@ func (sc *Client) Post(ctx context.Context, message whisper.NewMessage) error {
 // SubscribeMessages subscribes to messages that match the given criteria. This method
 // is only supported on bi-directional connections such as websockets and IPC.
 // NewMessageFilter uses polling and is supported over HTTP.
-func (ec *Client) SubscribeMessages(ctx context.Context, criteria whisper.Criteria, ch chan<- *whisper.Message) (apolo-technologies.Subscription, error) {
+func (ec *Client) SubscribeMessages(ctx context.Context, criteria whisper.Criteria, ch chan<- *whisper.Message) (abt.Subscription, error) {
 	return ec.c.ShhSubscribe(ctx, ch, "messages", criteria)
 }
 

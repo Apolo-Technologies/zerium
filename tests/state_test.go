@@ -22,7 +22,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/core/vm"
+	"github.com/abt/zerium/core/vm"
 )
 
 func TestState(t *testing.T) {

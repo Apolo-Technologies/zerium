@@ -24,7 +24,7 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/rlp"
 )
 
 // RLPTest is the JSON structure of a single RLP test.

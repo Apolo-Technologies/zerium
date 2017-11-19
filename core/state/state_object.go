@@ -22,10 +22,10 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/rlp"
-	"github.com/apolo-technologies/zerium/trie"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/rlp"
+	"github.com/abt/zerium/trie"
 )
 
 var emptyCodeHash = crypto.Keccak256(nil)
@@ -63,7 +63,7 @@ func (self Storage) Copy() Storage {
 // Finally, call CommitTrie to write the modified storage trie into a database.
 type stateObject struct {
 	address  common.Address
-	addrHash common.Hash // hash of apolo-technologies address of the account
+	addrHash common.Hash // hash of abt address of the account
 	data     Account
 	db       *StateDB
 

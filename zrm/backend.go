@@ -25,29 +25,29 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/consensus"
-	"github.com/apolo-technologies/zerium/consensus/clique"
-	"github.com/apolo-technologies/zerium/consensus/zrmash"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/core/bloombits"
-	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/zrm/filters"
-	"github.com/apolo-technologies/zerium/zrm/gasprice"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/internal/ethapi"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/miner"
-	"github.com/apolo-technologies/zerium/node"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/params"
-	"github.com/apolo-technologies/zerium/rlp"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/accounts"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/consensus"
+	"github.com/abt/zerium/consensus/clique"
+	"github.com/abt/zerium/consensus/zrmash"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/core/bloombits"
+	"github.com/abt/zerium/core/types"
+	"github.com/abt/zerium/core/vm"
+	"github.com/abt/zerium/zrm/downloader"
+	"github.com/abt/zerium/zrm/filters"
+	"github.com/abt/zerium/zrm/gasprice"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/internal/ethapi"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/miner"
+	"github.com/abt/zerium/node"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/params"
+	"github.com/abt/zerium/rlp"
+	"github.com/abt/zerium/rpc"
 )
 
 type LesServer interface {
@@ -63,7 +63,7 @@ type Zerium struct {
 	chainConfig *params.ChainConfig
 
 	// Channel for shutting down the service
-	shutdownChan  chan bool    // Channel for shutting down the apolo-technologies
+	shutdownChan  chan bool    // Channel for shutting down the abt
 	stopDbUpgrade func() error // stop chain db sequential key upgrade
 
 	// Handlers
@@ -233,7 +233,7 @@ func CreateConsensusEngine(ctx *node.ServiceContext, config *Config, chainConfig
 	}
 }
 
-// APIs returns the collection of RPC services the apolo-technologies package offers.
+// APIs returns the collection of RPC services the abt package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
 func (s *Zerium) APIs() []rpc.API {
 	apis := ethapi.GetAPIs(s.ApiBackend)

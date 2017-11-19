@@ -20,9 +20,9 @@ import (
 	"math/big"
 	"sync/atomic"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/params"
 )
 
 // emptyCodeHash is used by create to ensure deployment is disallowed to already
@@ -98,7 +98,7 @@ type ZVM struct {
 	// virtual machine configuration options used to initialise the
 	// evm.
 	vmConfig Config
-	// global (to this context) apolo-technologies virtual machine
+	// global (to this context) abt virtual machine
 	// used throughout the execution of the tx.
 	interpreter *Interpreter
 	// abort is used to abort the ZVM calling operations

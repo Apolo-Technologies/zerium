@@ -21,7 +21,7 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/apolo-technologies/zerium/core/vm"
+	"github.com/abt/zerium/core/vm"
 )
 
 // Iterator for disassembled ZVM instructions

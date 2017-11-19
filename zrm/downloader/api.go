@@ -20,9 +20,9 @@ import (
 	"context"
 	"sync"
 
-	apolo_technologies "github.com/apolo-technologies/zerium"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/rpc"
+	abt "github.com/abt/zerium"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/rpc"
 )
 
 // PublicDownloaderAPI provides an API which gives information about the current synchronisation status.
@@ -122,7 +122,7 @@ func (api *PublicDownloaderAPI) Syncing(ctx context.Context) (*rpc.Subscription,
 // SyncingResult provides information about the current synchronisation status for this node.
 type SyncingResult struct {
 	Syncing bool                  `json:"syncing"`
-	Status  apolo-technologies.SyncProgress `json:"status"`
+	Status  abt.SyncProgress `json:"status"`
 }
 
 // uninstallSyncSubscriptionRequest uninstalles a syncing subscription in the API event loop.

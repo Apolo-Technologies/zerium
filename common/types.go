@@ -23,8 +23,8 @@ import (
 	"math/rand"
 	"reflect"
 
-	"github.com/apolo-technologies/zerium/common/hexutil"
-	"github.com/apolo-technologies/zerium/crypto/sha3"
+	"github.com/abt/zerium/common/hexutil"
+	"github.com/abt/zerium/crypto/sha3"
 )
 
 const (

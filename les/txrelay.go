@@ -19,8 +19,8 @@ package les
 import (
 	"sync"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/types"
 )
 
 type ltrInfo struct {

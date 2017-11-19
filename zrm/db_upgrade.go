@@ -21,11 +21,11 @@ import (
 	"bytes"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/rlp"
 )
 
 var deduplicateData = []byte("dbUpgrade_20170714deduplicateData")

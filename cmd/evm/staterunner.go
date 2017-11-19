@@ -23,10 +23,10 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/apolo-technologies/zerium/core/state"
-	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/log"
-	"github.com/apolo-technologies/zerium/tests"
+	"github.com/abt/zerium/core/state"
+	"github.com/abt/zerium/core/vm"
+	"github.com/abt/zerium/log"
+	"github.com/abt/zerium/tests"
 
 	cli "gopkg.in/urfave/cli.v1"
 )

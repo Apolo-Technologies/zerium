@@ -20,8 +20,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/p2p/discover"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/p2p/discover"
 )
 
 type testPeer struct {

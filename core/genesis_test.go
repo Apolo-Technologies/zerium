@@ -22,11 +22,11 @@ import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/consensus/zrmash"
-	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/consensus/zrmash"
+	"github.com/abt/zerium/core/vm"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/params"
 )
 
 func TestDefaultGenesisBlock(t *testing.T) {

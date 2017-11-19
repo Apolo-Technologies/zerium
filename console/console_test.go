@@ -26,11 +26,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/zrm"
-	"github.com/apolo-technologies/zerium/internal/jsre"
-	"github.com/apolo-technologies/zerium/node"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core"
+	"github.com/abt/zerium/zrm"
+	"github.com/abt/zerium/internal/jsre"
+	"github.com/abt/zerium/node"
 )
 
 const (
@@ -73,7 +73,7 @@ func (p *hookedPrompter) SetWordCompleter(completer WordCompleter) {}
 type tester struct {
 	workspace string
 	stack     *node.Node
-	apolo-technologies  *zrm.Zerium
+	abt  *zrm.Zerium
 	console   *Console
 	input     *hookedPrompter
 	output    *bytes.Buffer
@@ -127,13 +127,13 @@ func newTester(t *testing.T, confOverride func(*zrm.Config)) *tester {
 		t.Fatalf("failed to create JavaScript console: %v", err)
 	}
 	// Create the final tester and return
-	var apolo-technologies *zrm.Zerium
-	stack.Service(&apolo-technologies)
+	var abt *zrm.Zerium
+	stack.Service(&abt)
 
 	return &tester{
 		workspace: workspace,
 		stack:     stack,
-		apolo-technologies:  apolo-technologies,
+		abt:  abt,
 		console:   console,
 		input:     prompter,
 		output:    printer,

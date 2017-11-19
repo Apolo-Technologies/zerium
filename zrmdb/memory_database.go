@@ -20,7 +20,7 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 /*

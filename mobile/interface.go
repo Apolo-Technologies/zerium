@@ -22,7 +22,7 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/apolo-technologies/zerium/common"
+	"github.com/abt/zerium/common"
 )
 
 // Interface represents a wrapped version of Go's interface{}, with the capacity

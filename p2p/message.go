@@ -27,9 +27,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/p2p/discover"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/p2p/discover"
+	"github.com/abt/zerium/rlp"
 )
 
 // Msg defines the structure of a p2p message.

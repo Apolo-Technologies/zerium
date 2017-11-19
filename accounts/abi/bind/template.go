@@ -16,7 +16,7 @@
 
 package bind
 
-import "github.com/apolo-technologies/zerium/accounts/abi"
+import "github.com/abt/zerium/accounts/abi"
 
 // tmplData is the data structure required to fill the binding template.
 type tmplData struct {
@@ -274,8 +274,8 @@ const tmplSourceJava = `
 
 package {{.Package}};
 
-import org.apolo-technologies.gzrm.*;
-import org.apolo-technologies.gzrm.internal.*;
+import org.abt.gzrm.*;
+import org.abt.gzrm.internal.*;
 
 {{range $contract := .Contracts}}
 	public class {{.Type}} {

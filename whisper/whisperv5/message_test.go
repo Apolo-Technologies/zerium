@@ -21,8 +21,8 @@ import (
 	mrand "math/rand"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/abt/zerium/crypto"
+	"github.com/abt/zerium/rlp"
 )
 
 func generateMessageParams() (*MessageParams, error) {

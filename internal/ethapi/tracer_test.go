@@ -23,9 +23,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/params"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/core/vm"
+	"github.com/abt/zerium/params"
 )
 
 type account struct{}

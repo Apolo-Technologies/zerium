@@ -25,9 +25,9 @@ import (
 	"sort"
 	"time"
 
-	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/common/mclock"
-	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/abt/zerium/common"
+	"github.com/abt/zerium/common/mclock"
+	"github.com/abt/zerium/crypto"
 )
 
 const (

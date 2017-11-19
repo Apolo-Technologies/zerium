@@ -4,9 +4,9 @@ Priority: extra
 Maintainer: {{.Author}}
 Build-Depends: debhelper (>= 8.0.0), golang-1.9
 Standards-Version: 3.9.5
-Homepage: https://apolo-technologies.org
-Vcs-Git: git://github.com/apolo-technologies/zerium.git
-Vcs-Browser: https://github.com/apolo-technologies/zerium
+Homepage: https://zerium.org
+Vcs-Git: git://github.com/abt/zerium.git
+Vcs-Browser: https://github.com/abt/zerium
 
 Package: {{.Name}}
 Architecture: any

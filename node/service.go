@@ -19,11 +19,11 @@ package node
 import (
 	"reflect"
 
-	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/p2p"
-	"github.com/apolo-technologies/zerium/rpc"
+	"github.com/abt/zerium/accounts"
+	"github.com/abt/zerium/zrmdb"
+	"github.com/abt/zerium/event"
+	"github.com/abt/zerium/p2p"
+	"github.com/abt/zerium/rpc"
 )
 
 // ServiceContext is a collection of service independent options inherited from

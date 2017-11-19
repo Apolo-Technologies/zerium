@@ -27,8 +27,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/apolo-technologies/zerium/swarm/api"
-	"github.com/apolo-technologies/zerium/swarm/storage"
+	"github.com/abt/zerium/swarm/api"
+	"github.com/abt/zerium/swarm/storage"
 )
 
 type fileInfo struct {

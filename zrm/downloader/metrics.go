@@ -19,7 +19,7 @@
 package downloader
 
 import (
-	"github.com/apolo-technologies/zerium/metrics"
+	"github.com/abt/zerium/metrics"
 )
 
 var (
