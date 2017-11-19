@@ -12,7 +12,7 @@ workspace="$PWD/build/_workspace"
 root="$PWD"
 ethdir="$workspace/src/github.com/apolo-technologies"
 if [ ! -L "$ethdir/zerium" ]; then
-    mkdir -p "$ethdir"
+    sudo mkdir -p "$ethdir"
     cd "$ethdir"
     ln -s ../../../../../. zerium
     cd "$root"
