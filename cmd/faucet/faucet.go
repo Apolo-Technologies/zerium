@@ -1,12 +1,12 @@
-// Copyright 2017 The zerium Authors
-// This file is part of zerium.
+// Copyright 2017 The Zerium Authors
+// This file is part of Zerium.
 //
-// zerium is free software: you can redistribute it and/or modify
+// Zerium is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// zerium is distributed in the hope that it will be useful,
+// Zerium is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
@@ -64,10 +64,10 @@ import (
 var (
 	genesisFlag = flag.String("genesis", "", "Genesis json file to seed the chain with")
 	apiPortFlag = flag.Int("apiport", 8080, "Listener port for the HTTP API connection")
-	ethPortFlag = flag.Int("ethport", 30303, "Listener port for the devp2p connection")
+	ethPortFlag = flag.Int("zrmport", 30303, "Listener port for the devp2p connection")
 	bootFlag    = flag.String("bootnodes", "", "Comma separated bootnode enode URLs to seed with")
 	netFlag     = flag.Uint64("network", 0, "Network ID to use for the Zerium protocol")
-	statsFlag   = flag.String("zrmstats", "", "Ethstats network monitoring auth string")
+	statsFlag   = flag.String("zrmstats", "", "Zrmstats network monitoring auth string")
 
 	netnameFlag = flag.String("faucet.name", "", "Network name to assign to the faucet")
 	payoutFlag  = flag.Int("faucet.amount", 1, "Number of Zeriums to pay out per user request")

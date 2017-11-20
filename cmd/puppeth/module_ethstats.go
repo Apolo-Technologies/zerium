@@ -69,10 +69,10 @@ services:
     restart: always
 `
 
-// deployEthstats deploys a new zrmstats container to a remote machine via SSH,
+// deployZrmstats deploys a new zrmstats container to a remote machine via SSH,
 // docker and docker-compose. If an instance with the specified network name
 // already exists there, it will be overwritten!
-func deployEthstats(client *sshClient, network string, port int, secret string, vhost string, trusted []string, banned []string) ([]byte, error) {
+func deployZrmstats(client *sshClient, network string, port int, secret string, vhost string, trusted []string, banned []string) ([]byte, error) {
 	// Generate the content to upload to the server
 	workdir := fmt.Sprintf("%d", rand.Int63())
 	files := make(map[string][]byte)
@@ -128,9 +128,9 @@ func (info *zrmstatsInfos) String() string {
 	return fmt.Sprintf("host=%s, port=%d, secret=%s, banned=%v", info.host, info.port, info.secret, info.banned)
 }
 
-// checkEthstats does a health-check against an zrmstats server to verify whether
+// checkZrmstats does a health-check against an zrmstats server to verify whether
 // it's running, and if yes, gathering a collection of useful infos about it.
-func checkEthstats(client *sshClient, network string) (*zrmstatsInfos, error) {
+func checkZrmstats(client *sshClient, network string) (*zrmstatsInfos, error) {
 	// Inspect a possible zrmstats container on the host
 	infos, err := inspectContainer(client, fmt.Sprintf("%s_zrmstats_1", network))
 	if err != nil {
@@ -164,7 +164,7 @@ func checkEthstats(client *sshClient, network string) (*zrmstatsInfos, error) {
 
 	// Run a sanity check to see if the port is reachable
 	if err = checkPort(host, port); err != nil {
-		log.Warn("Ethstats service seems unreachable", "server", host, "port", port, "err", err)
+		log.Warn("Zrmstats service seems unreachable", "server", host, "port", port, "err", err)
 	}
 	// Container available, assemble and return the useful infos
 	return &zrmstatsInfos{

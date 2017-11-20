@@ -51,7 +51,7 @@ ADD account.pass /account.pass
 EXPOSE 8080
 
 CMD [ \
-	"/faucet", "--genesis", "/genesis.json", "--network", "{{.NetworkID}}", "--bootnodes", "{{.Bootnodes}}", "--zrmstats", "{{.Ethstats}}", "--ethport", "{{.EthPort}}", \
+	"/faucet", "--genesis", "/genesis.json", "--network", "{{.NetworkID}}", "--bootnodes", "{{.Bootnodes}}", "--zrmstats", "{{.Zrmstats}}", "--zrmport", "{{.ZrmPort}}", \
 	"--faucet.name", "{{.FaucetName}}", "--faucet.amount", "{{.FaucetAmount}}", "--faucet.minutes", "{{.FaucetMinutes}}", "--faucet.tiers", "{{.FaucetTiers}}",          \
 	"--github.user", "{{.GitHubUser}}", "--github.token", "{{.GitHubToken}}", "--account.json", "/account.json", "--account.pass", "/account.pass"                       \
 	{{if .CaptchaToken}}, "--captcha.token", "{{.CaptchaToken}}", "--captcha.secret", "{{.CaptchaSecret}}"{{end}}                                                        \
@@ -66,13 +66,13 @@ services:
     build: .
     image: {{.Network}}/faucet
     ports:
-      - "{{.EthPort}}:{{.EthPort}}"{{if not .VHost}}
+      - "{{.ZrmPort}}:{{.ZrmPort}}"{{if not .VHost}}
       - "{{.ApiPort}}:8080"{{end}}
     volumes:
       - {{.Datadir}}:/root/.faucet
     environment:
-      - ETH_PORT={{.EthPort}}
-      - ETH_NAME={{.EthName}}
+      - ZRM_PORT={{.ZrmPort}}
+      - ZRM_NAME={{.ZrmName}}
       - FAUCET_AMOUNT={{.FaucetAmount}}
       - FAUCET_MINUTES={{.FaucetMinutes}}
       - FAUCET_TIERS={{.FaucetTiers}}
@@ -102,8 +102,8 @@ func deployFaucet(client *sshClient, network string, bootnodes []string, config 
 	template.Must(template.New("").Parse(faucetDockerfile)).Execute(dockerfile, map[string]interface{}{
 		"NetworkID":     config.node.network,
 		"Bootnodes":     strings.Join(bootnodes, ","),
-		"Ethstats":      config.node.zrmstats,
-		"EthPort":       config.node.portFull,
+		"Zrmstats":      config.node.zrmstats,
+		"ZrmPort":       config.node.portFull,
 		"GitHubUser":    config.githubUser,
 		"GitHubToken":   config.githubToken,
 		"CaptchaToken":  config.captchaToken,
@@ -121,8 +121,8 @@ func deployFaucet(client *sshClient, network string, bootnodes []string, config 
 		"Datadir":       config.node.datadir,
 		"VHost":         config.host,
 		"ApiPort":       config.port,
-		"EthPort":       config.node.portFull,
-		"EthName":       config.node.zrmstats[:strings.Index(config.node.zrmstats, ":")],
+		"ZrmPort":       config.node.portFull,
+		"ZrmName":       config.node.zrmstats[:strings.Index(config.node.zrmstats, ":")],
 		"GitHubUser":    config.githubUser,
 		"GitHubToken":   config.githubToken,
 		"CaptchaToken":  config.captchaToken,
@@ -214,8 +214,8 @@ func checkFaucet(client *sshClient, network string) (*faucetInfos, error) {
 	return &faucetInfos{
 		node: &nodeInfos{
 			datadir:  infos.volumes["/root/.faucet"],
-			portFull: infos.portmap[infos.envvars["ETH_PORT"]+"/tcp"],
-			zrmstats: infos.envvars["ETH_NAME"],
+			portFull: infos.portmap[infos.envvars["ZRM_PORT"]+"/tcp"],
+			zrmstats: infos.envvars["ZRM_NAME"],
 			keyJSON:  keyJSON,
 			keyPass:  keyPass,
 		},

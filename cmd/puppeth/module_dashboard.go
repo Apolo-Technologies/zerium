@@ -76,7 +76,7 @@ var dashboardContent = `
 						<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 							<div class="menu_section">
 								<ul class="nav side-menu">
-									{{if .EthstatsPage}}<li><a onclick="load('//{{.EthstatsPage}}')"><i class="fa fa-tachometer"></i> Network Stats</a></li>{{end}}
+									{{if .ZrmstatsPage}}<li><a onclick="load('//{{.ZrmstatsPage}}')"><i class="fa fa-tachometer"></i> Network Stats</a></li>{{end}}
 									{{if .ExplorerPage}}<li><a onclick="load('//{{.ExplorerPage}}')"><i class="fa fa-database"></i> Block Explorer</a></li>{{end}}
 									{{if .WalletPage}}<li><a onclick="load('//{{.WalletPage}}')"><i class="fa fa-address-book-o"></i> Browser Wallet</a></li>{{end}}
 									{{if .FaucetPage}}<li><a onclick="load('//{{.FaucetPage}}')"><i class="fa fa-bath"></i> Crypto Faucet</a></li>{{end}}
@@ -114,7 +114,7 @@ var dashboardContent = `
 										<br/>
 										<p>To run an archive node, download <a href="/{{.GethGenesis}}"><code>{{.GethGenesis}}</code></a> and start Geth with:
 											<pre>gzrm --datadir=$HOME/.{{.Network}} init {{.GethGenesis}}</pre>
-											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=1024 --syncmode=full{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
+											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=1024 --syncmode=full{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
 										</p>
 										<br/>
 										<p>You can download Geth from <a href="https://gzrm.abt.org/downloads/" target="about:blank">https://gzrm.abt.org/downloads/</a>.</p>
@@ -133,7 +133,7 @@ var dashboardContent = `
 										<br/>
 										<p>To run a full node, download <a href="/{{.GethGenesis}}"><code>{{.GethGenesis}}</code></a> and start Geth with:
 											<pre>gzrm --datadir=$HOME/.{{.Network}} init {{.GethGenesis}}</pre>
-											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=512{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
+											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=512{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
 										</p>
 										<br/>
 										<p>You can download Geth from <a href="https://gzrm.abt.org/downloads/" target="about:blank">https://gzrm.abt.org/downloads/</a>.</p>
@@ -155,7 +155,7 @@ var dashboardContent = `
 										<br/>
 										<p>To run a light node, download <a href="/{{.GethGenesis}}"><code>{{.GethGenesis}}</code></a> and start Geth with:
 											<pre>gzrm --datadir=$HOME/.{{.Network}} --light init {{.GethGenesis}}</pre>
-											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --syncmode=light{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
+											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --syncmode=light{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
 										</p>
 										<br/>
 										<p>You can download Geth from <a href="https://gzrm.abt.org/downloads/" target="about:blank">https://gzrm.abt.org/downloads/</a>.</p>
@@ -174,7 +174,7 @@ var dashboardContent = `
 										<br/>
 										<p>To run an embedded node, download <a href="/{{.GethGenesis}}"><code>{{.GethGenesis}}</code></a> and start Geth with:
 											<pre>gzrm --datadir=$HOME/.{{.Network}} --light init {{.GethGenesis}}</pre>
-											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=32 --syncmode=light{{if .Ethstats}} --zrmstats='{{.Ethstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
+											<pre>gzrm --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=32 --syncmode=light{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
 										</p>
 										<br/>
 										<p>You can download Geth from <a href="https://gzrm.abt.org/downloads/" target="about:blank">https://gzrm.abt.org/downloads/</a>.</p>
@@ -205,7 +205,7 @@ var dashboardContent = `
 											<pre>gzrm --datadir=$HOME/.{{.Network}} init {{.GethGenesis}}</pre>
 										</p>
 										<p>With your local chain initialized, you can start the Zerium Wallet:
-											<pre>abtwallet --rpc $HOME/.{{.Network}}/gzrm.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Ethstats}} --node-zrmstats='{{.Ethstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
+											<pre>abtwallet --rpc $HOME/.{{.Network}}/gzrm.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Zrmstats}} --node-zrmstats='{{.Zrmstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
 										<p>
 										<br/>
 										<p>You can download the Zerium Wallet from <a href="https://github.com/abt/mist/releases" target="about:blank">https://github.com/abt/mist/releases</a>.</p>
@@ -226,7 +226,7 @@ var dashboardContent = `
 											<pre>gzrm --datadir=$HOME/.{{.Network}} init {{.GethGenesis}}</pre>
 										</p>
 										<p>With your local chain initialized, you can start Mist:
-											<pre>mist --rpc $HOME/.{{.Network}}/gzrm.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Ethstats}} --node-zrmstats='{{.Ethstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
+											<pre>mist --rpc $HOME/.{{.Network}}/gzrm.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Zrmstats}} --node-zrmstats='{{.Zrmstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
 										<p>
 										<br/>
 										<p>You can download the Mist browser from <a href="https://github.com/abt/mist/releases" target="about:blank">https://github.com/abt/mist/releases</a>.</p>
@@ -264,8 +264,8 @@ bootnodes.append(new Enode("{{.}}"));{{end}}
 NodeConfig config = new NodeConfig();
 config.setBootstrapNodes(bootnodes);
 config.setZeriumNetworkID({{.NetworkID}});
-config.setZeriumGenesis(genesis);{{if .Ethstats}}
-config.setZeriumNetStats("{{.Ethstats}}");{{end}}
+config.setZeriumGenesis(genesis);{{if .Zrmstats}}
+config.setZeriumNetStats("{{.Zrmstats}}");{{end}}
 
 Node node = new Node(getFilesDir() + "/.{{.Network}}", config);
 node.start();
@@ -297,8 +297,8 @@ bootnodes?.append(GethNewEnode("{{.}}", &error)){{end}}
 let config = GethNewNodeConfig()
 config?.setBootstrapNodes(bootnodes)
 config?.setZeriumNetworkID({{.NetworkID}})
-config?.setZeriumGenesis(genesis){{if .Ethstats}}
-config?.setZeriumNetStats("{{.Ethstats}}"){{end}}
+config?.setZeriumGenesis(genesis){{if .Zrmstats}}
+config?.setZeriumNetStats("{{.Zrmstats}}"){{end}}
 
 let datadir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
 let node = GethNewNode(datadir + "/.{{.Network}}", config, &error);
@@ -464,7 +464,7 @@ func deployDashboard(client *sshClient, network string, port int, vhost string, 
 		"Network":            network,
 		"NetworkID":          conf.genesis.Config.ChainId,
 		"NetworkTitle":       strings.Title(network),
-		"EthstatsPage":       services["zrmstats"],
+		"ZrmstatsPage":       services["zrmstats"],
 		"ExplorerPage":       services["explorer"],
 		"WalletPage":         services["wallet"],
 		"FaucetPage":         services["faucet"],
@@ -473,7 +473,7 @@ func deployDashboard(client *sshClient, network string, port int, vhost string, 
 		"BootnodesLight":     conf.bootLight,
 		"BootnodesFullFlat":  strings.Join(conf.bootFull, ","),
 		"BootnodesLightFlat": strings.Join(conf.bootLight, ","),
-		"Ethstats":           statsLogin,
+		"Zrmstats":           statsLogin,
 	})
 	files[filepath.Join(workdir, "index.html")] = indexfile.Bytes()
 

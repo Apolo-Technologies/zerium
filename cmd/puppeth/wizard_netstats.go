@@ -67,7 +67,7 @@ func (w *wizard) networkStats(tips bool) {
 			services["nginx"] = infos.String()
 		}
 		logger.Debug("Checking for zrmstats availability")
-		if infos, err := checkEthstats(client, w.network); err != nil {
+		if infos, err := checkZrmstats(client, w.network); err != nil {
 			if err != ErrServiceUnknown {
 				services["zrmstats"] = err.Error()
 			}

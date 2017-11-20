@@ -80,7 +80,7 @@ type gethConfig struct {
 	Eth       zrm.Config
 	Shh       whisper.Config
 	Node      node.Config
-	Ethstats  zrmstatsConfig
+	Zrmstats  zrmstatsConfig
 	Dashboard dashboard.Config
 }
 
@@ -133,7 +133,7 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, gethConfig) {
 	}
 	utils.SetEthConfig(ctx, stack, &cfg.Eth)
 	if ctx.GlobalIsSet(utils.EthStatsURLFlag.Name) {
-		cfg.Ethstats.URL = ctx.GlobalString(utils.EthStatsURLFlag.Name)
+		cfg.Zrmstats.URL = ctx.GlobalString(utils.EthStatsURLFlag.Name)
 	}
 
 	utils.SetShhConfig(ctx, stack, &cfg.Shh)
@@ -174,8 +174,8 @@ func makeFullNode(ctx *cli.Context) *node.Node {
 	}
 
 	// Add the Zerium Stats daemon if requested.
-	if cfg.Ethstats.URL != "" {
-		utils.RegisterEthStatsService(stack, cfg.Ethstats.URL)
+	if cfg.Zrmstats.URL != "" {
+		utils.RegisterEthStatsService(stack, cfg.Zrmstats.URL)
 	}
 
 	// Add the release oracle service so it boots along with node.
