@@ -28,7 +28,7 @@ import (
 	"github.com/abt/zerium/log"
 )
 
-// makeWizard creates and returns a new puppeth wizard.
+// makeWizard creates and returns a new puppzrm wizard.
 func makeWizard(network string) *wizard {
 	return &wizard{
 		network: network,
@@ -45,7 +45,7 @@ func makeWizard(network string) *wizard {
 // setting up a new or managing an existing Zerium private network.
 func (w *wizard) run() {
 	fmt.Println("+-----------------------------------------------------------+")
-	fmt.Println("| Welcome to puppeth, your Zerium private network manager |")
+	fmt.Println("| Welcome to puppzrm, your Zerium private network manager |")
 	fmt.Println("|                                                           |")
 	fmt.Println("| This tool lets you create a new Zerium network down to  |")
 	fmt.Println("| the genesis block, bootnodes, miners and zrmstats servers |")
@@ -72,7 +72,7 @@ func (w *wizard) run() {
 	log.Info("Administering Zerium network", "name", w.network)
 
 	// Load initial configurations and connect to all live servers
-	w.conf.path = filepath.Join(os.Getenv("HOME"), ".puppeth", w.network)
+	w.conf.path = filepath.Join(os.Getenv("HOME"), ".puppzrm", w.network)
 
 	blob, err := ioutil.ReadFile(w.conf.path)
 	if err != nil {

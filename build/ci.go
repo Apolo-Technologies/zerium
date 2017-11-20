@@ -75,7 +75,7 @@ var (
 		executablePath("bootnode"),
 		executablePath("evm"),
 		executablePath("gzrm"),
-		executablePath("puppeth"),
+		executablePath("puppzrm"),
 		executablePath("rlpdump"),
 		executablePath("swarm"),
 		executablePath("wnode"),
@@ -100,7 +100,7 @@ var (
 			Description: "Zerium CLI client.",
 		},
 		{
-			Name:        "puppeth",
+			Name:        "puppzrm",
 			Description: "Zerium private network manager.",
 		},
 		{

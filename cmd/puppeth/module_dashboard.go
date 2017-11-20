@@ -322,12 +322,12 @@ try! node?.start();
 										<p>Puppeth is a tool to aid you in creating a new Zerium network down to the genesis block, bootnodes, signers, zrmstats server, crypto faucet, wallet browsers, block explorer, dashboard and more; without the hassle that it would normally entail to manually configure all these services one by one.</p>
 										<p>Puppeth uses ssh to dial in to remote servers, and builds its network components out of docker containers using docker-compose. The user is guided through the process via a command line wizard that does the heavy lifting and topology configuration automatically behind the scenes.</p>
 										<br/>
-										<p>Puppeth is distributed as part of the <a href="https://gzrm.abt.org/downloads/" target="about:blank">Geth &amp; Tools</a> bundles, but can also be installed separately via:<pre>go get github.com/abt/zerium/cmd/puppeth</pre></p>
+										<p>Puppeth is distributed as part of the <a href="https://gzrm.abt.org/downloads/" target="about:blank">Geth &amp; Tools</a> bundles, but can also be installed separately via:<pre>go get github.com/abt/zerium/cmd/puppzrm</pre></p>
 										<br/>
 										<p><em>Copyright 2017. The zerium Authors.</em></p>
 									</div>
 									<div style="display: inline-block; vertical-align: bottom; width: 217px;">
-										<img src="puppeth.png" style="height: 256px; margin: 16px 16px 16px 16px"></img>
+										<img src="puppzrm.png" style="height: 256px; margin: 16px 16px 16px 16px"></img>
 									</div>
 								</div>
 							</div>
@@ -406,7 +406,7 @@ RUN \
 
 ADD {{.Network}}.json /dashboard/{{.Network}}.json
 ADD index.html /dashboard/index.html
-ADD puppeth.png /dashboard/puppeth.png
+ADD puppzrm.png /dashboard/puppzrm.png
 
 EXPOSE 80
 
@@ -480,7 +480,7 @@ func deployDashboard(client *sshClient, network string, port int, vhost string, 
 	genesis, _ := conf.genesis.MarshalJSON()
 	files[filepath.Join(workdir, network+".json")] = genesis
 
-	files[filepath.Join(workdir, "puppeth.png")] = dashboardMascot
+	files[filepath.Join(workdir, "puppzrm.png")] = dashboardMascot
 
 	// Upload the deployment files to the remote server (and clean up afterwards)
 	if out, err := client.Upload(files); err != nil {
