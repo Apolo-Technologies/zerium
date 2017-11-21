@@ -66,6 +66,7 @@ var (
 	gethArchiveFiles = []string{
 		"COPYING",
 		executablePath("gzrm"),
+		executablePath("genesis"),
 	}
 
 	// Files that end up in the gzrm-alltools*.zip archive.
@@ -79,6 +80,7 @@ var (
 		executablePath("rlpdump"),
 		executablePath("swarm"),
 		executablePath("wnode"),
+		executablePath("genesis"),
 	}
 
 	// A debian package is created for all executables listed here.
@@ -115,6 +117,10 @@ var (
 			Name:        "wnode",
 			Description: "Zerium Whisper diagnostic tool",
 		},
+		{
+			Name:        "genesis",
+			Description: "Zerium genesis block",
+		},	
 	}
 
 	// Distros for which packages are created.
@@ -128,7 +134,12 @@ var GOBIN, _ = filepath.Abs(filepath.Join("build", "bin"))
 
 func executablePath(name string) string {
 	if runtime.GOOS == "windows" {
-		name += ".exe"
+		if name == "genesis" {
+			name += ".json"
+		}
+		else {
+			name += ".exe"
+		}
 	}
 	return filepath.Join(GOBIN, name)
 }
