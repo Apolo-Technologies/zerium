@@ -10,6 +10,6 @@ RUN \
   rm -rf /zerium
 
 EXPOSE 8545
-EXPOSE 30303
+EXPOSE 32310
 
 ENTRYPOINT ["/gzrm"]

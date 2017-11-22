@@ -124,7 +124,7 @@ One of the quickest ways to get Zerium up and running on your machine is by usin
 
 ```
 docker run -d --name abt-node -v /Users/alice/abt:/root \
-           -p 8545:8545 -p 30303:30303 \
+           -p 8545:8545 -p 32310:32310 \
            abt/client-go --fast --cache=512
 ```
 

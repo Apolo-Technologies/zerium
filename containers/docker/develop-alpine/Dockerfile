@@ -9,6 +9,6 @@ RUN \
   rm -rf /zerium && rm -rf /var/cache/apk/*
 
 EXPOSE 8545
-EXPOSE 30303
+EXPOSE 32310
 
 ENTRYPOINT ["/gzrm"]

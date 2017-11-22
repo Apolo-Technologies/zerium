@@ -24,14 +24,14 @@ Section "Geth" GETH_IDX
   createShortCut "$SMPROGRAMS\${APPNAME}\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "" ""
 
   # Firewall - remove rules (if exists)
-  SimpleFC::AdvRemoveRule "Geth incoming peers (TCP:30303)"
-  SimpleFC::AdvRemoveRule "Geth outgoing peers (TCP:30303)"
-  SimpleFC::AdvRemoveRule "Geth UDP discovery (UDP:30303)"
+  SimpleFC::AdvRemoveRule "Geth incoming peers (TCP:32310)"
+  SimpleFC::AdvRemoveRule "Geth outgoing peers (TCP:32310)"
+  SimpleFC::AdvRemoveRule "Geth UDP discovery (UDP:32310)"
 
   # Firewall - add rules
-  SimpleFC::AdvAddRule "Geth incoming peers (TCP:30303)" ""  6 1 1 2147483647 1 "$INSTDIR\gzrm.exe" "" "" "Zerium" 30303 "" "" ""
-  SimpleFC::AdvAddRule "Geth outgoing peers (TCP:30303)" ""  6 2 1 2147483647 1 "$INSTDIR\gzrm.exe" "" "" "Zerium" "" 30303 "" ""
-  SimpleFC::AdvAddRule "Geth UDP discovery (UDP:30303)" "" 17 2 1 2147483647 1 "$INSTDIR\gzrm.exe" "" "" "Zerium" "" 30303 "" ""
+  SimpleFC::AdvAddRule "Geth incoming peers (TCP:32310)" ""  6 1 1 2147483647 1 "$INSTDIR\gzrm.exe" "" "" "Zerium" 32310 "" "" ""
+  SimpleFC::AdvAddRule "Geth outgoing peers (TCP:32310)" ""  6 2 1 2147483647 1 "$INSTDIR\gzrm.exe" "" "" "Zerium" "" 32310 "" ""
+  SimpleFC::AdvAddRule "Geth UDP discovery (UDP:32310)" "" 17 2 1 2147483647 1 "$INSTDIR\gzrm.exe" "" "" "Zerium" "" 32310 "" ""
 
   # Set default IPC endpoint (https://github.com/abt/EIPs/issues/147)
   ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\gzrm.ipc"
