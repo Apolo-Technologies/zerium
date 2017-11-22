@@ -39,3 +39,5 @@ profile.cov
 /dashboard/assets/stats.json
 /dashboard/assets/public/bundle.js
 /.vs
+/bin
+/.vscode
