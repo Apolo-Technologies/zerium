@@ -8,7 +8,7 @@ RUN \
   apk del go git make gcc musl-dev linux-headers && \
   rm -rf /zerium && rm -rf /var/cache/apk/*
 
-EXPOSE 8545
+EXPOSE 2008
 EXPOSE 32310
 
 ENTRYPOINT ["/gzrm"]

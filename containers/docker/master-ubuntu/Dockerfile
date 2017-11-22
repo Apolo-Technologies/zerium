@@ -9,7 +9,7 @@ RUN \
   apt-get remove -y golang git make gcc libc-dev && apt autoremove -y && apt-get clean && \
   rm -rf /zerium
 
-EXPOSE 8545
+EXPOSE 2008
 EXPOSE 32310
 
 ENTRYPOINT ["/gzrm"]
