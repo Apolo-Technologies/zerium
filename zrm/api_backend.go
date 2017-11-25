@@ -177,7 +177,7 @@ func (b *ZrmApiBackend) Downloader() *downloader.Downloader {
 }
 
 func (b *ZrmApiBackend) ProtocolVersion() int {
-	return b.zrm.EthVersion()
+	return b.zrm.ZrmVersion()
 }
 
 func (b *ZrmApiBackend) SuggestPrice(ctx context.Context) (*big.Int, error) {

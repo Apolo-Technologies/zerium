@@ -50,7 +50,7 @@ const (
 	softResponseLimit = 2 * 1024 * 1024 // Target maximum size of returned blocks, headers or node data.
 	estHeaderRlpSize  = 500             // Approximate size of an RLP encoded block header
 
-	ethVersion = 63 // equivalent zrm version for the downloader
+	zrmVersion = 63 // equivalent zrm version for the downloader
 
 	MaxHeaderFetch           = 192 // Amount of block headers to be fetched per retrieval request
 	MaxBodyFetch             = 32  // Amount of block bodies to be fetched per retrieval request
@@ -1124,8 +1124,8 @@ func (pm *ProtocolManager) txStatus(hashes []common.Hash) []txStatus {
 }
 
 // NodeInfo retrieves some protocol metadata about the running host node.
-func (self *ProtocolManager) NodeInfo() *zrm.EthNodeInfo {
-	return &zrm.EthNodeInfo{
+func (self *ProtocolManager) NodeInfo() *zrm.ZrnNodeInfo {
+	return &zrm.ZrmNodeInfo{
 		Network:    self.networkId,
 		Difficulty: self.blockchain.GetTdByHash(self.blockchain.LastBlockHash()),
 		Genesis:    self.blockchain.Genesis().Hash(),
@@ -1199,7 +1199,7 @@ func (d *downloaderPeerNotify) registerPeer(p *peer) {
 		manager: pm,
 		peer:    p,
 	}
-	pm.downloader.RegisterLightPeer(p.id, ethVersion, pc)
+	pm.downloader.RegisterLightPeer(p.id, zrmVersion, pc)
 }
 
 func (d *downloaderPeerNotify) unregisterPeer(p *peer) {
