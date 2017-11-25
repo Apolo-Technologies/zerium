@@ -1,6 +1,6 @@
 set(LIBRARY zrmash)
 
-if (CPPETHEREUM)
+if (CPPZERIUM)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 endif ()
 

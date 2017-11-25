@@ -346,7 +346,7 @@ ccflags="$@"
 		$2 ~ /^EXTATTR_NAMESPACE_NAMES/ ||
 		$2 ~ /^EXTATTR_NAMESPACE_[A-Z]+_STRING/ {next}
 
-		$2 !~ /^ETH_/ &&
+		$2 !~ /^ZRM_/ &&
 		$2 !~ /^EPROC_/ &&
 		$2 !~ /^EQUIV_/ &&
 		$2 !~ /^EXPR_/ &&
@@ -394,7 +394,7 @@ ccflags="$@"
 		$2 ~ /^LINUX_REBOOT_CMD_/ ||
 		$2 ~ /^LINUX_REBOOT_MAGIC[12]$/ ||
 		$2 !~ "NLA_TYPE_MASK" &&
-		$2 ~ /^(NETLINK|NLM|NLMSG|NLA|IFA|IFAN|RT|RTCF|RTN|RTPROT|RTNH|ARPHRD|ETH_P)_/ ||
+		$2 ~ /^(NETLINK|NLM|NLMSG|NLA|IFA|IFAN|RT|RTCF|RTN|RTPROT|RTNH|ARPHRD|ZRM_P)_/ ||
 		$2 ~ /^SIOC/ ||
 		$2 ~ /^TIOC/ ||
 		$2 ~ /^TCGET/ ||

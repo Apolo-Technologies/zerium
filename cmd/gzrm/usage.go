@@ -64,7 +64,7 @@ type flagGroup struct {
 // AppHelpFlagGroups is the application flags, grouped by functionality.
 var AppHelpFlagGroups = []flagGroup{
 	{
-		Name: "ETHEREUM",
+		Name: "ZERIUM",
 		Flags: []cli.Flag{
 			configFileFlag,
 			utils.DataDirFlag,
@@ -74,7 +74,7 @@ var AppHelpFlagGroups = []flagGroup{
 			utils.TestnetFlag,
 			utils.RinkebyFlag,
 			utils.SyncModeFlag,
-			utils.EthStatsURLFlag,
+			utils.ZrmStatsURLFlag,
 			utils.IdentityFlag,
 			utils.LightServFlag,
 			utils.LightPeersFlag,
@@ -88,14 +88,14 @@ var AppHelpFlagGroups = []flagGroup{
 		},
 	},
 	{
-		Name: "ETHASH",
+		Name: "ZRMHASH",
 		Flags: []cli.Flag{
-			utils.EthashCacheDirFlag,
-			utils.EthashCachesInMemoryFlag,
-			utils.EthashCachesOnDiskFlag,
-			utils.EthashDatasetDirFlag,
-			utils.EthashDatasetsInMemoryFlag,
-			utils.EthashDatasetsOnDiskFlag,
+			utils.ZrmhashCacheDirFlag,
+			utils.ZrmhashCachesInMemoryFlag,
+			utils.ZrmhashCachesOnDiskFlag,
+			utils.ZrmhashDatasetDirFlag,
+			utils.ZrmhashDatasetsInMemoryFlag,
+			utils.ZrmhashDatasetsOnDiskFlag,
 		},
 	},
 	//{

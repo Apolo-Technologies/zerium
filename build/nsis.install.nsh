@@ -34,8 +34,8 @@ Section "Gzrm" GZRM_IDX
   SimpleFC::AdvAddRule "Gzrm UDP discovery (UDP:32310)" "" 17 2 1 2147483647 1 "$INSTDIR\gzrm.exe" "" "" "Zerium" "" 32310 "" ""
 
   # Set default IPC endpoint (https://github.com/abt/EIPs/issues/147)
-  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\gzrm.ipc"
-  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "A" "HKLM" "\\.\pipe\gzrm.ipc"
+  ${EnvVarUpdate} $0 "ZERIUM_SOCKET" "R" "HKLM" "\\.\pipe\gzrm.ipc"
+  ${EnvVarUpdate} $0 "ZERIUM_SOCKET" "A" "HKLM" "\\.\pipe\gzrm.ipc"
 
   # Add instdir to PATH
   Push "$INSTDIR"
