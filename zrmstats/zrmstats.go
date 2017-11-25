@@ -83,7 +83,7 @@ type Service struct {
 }
 
 // New returns a monitoring service ready for stats reporting.
-func New(url string, ethServ *zrm.Zerium, lesServ *les.LightZerium) (*Service, error) {
+func New(url string, zrmServ *zrm.Zerium, lesServ *les.LightZerium) (*Service, error) {
 	// Parse the netstats connection url
 	re := regexp.MustCompile("([^:@]*)(:([^@]*))?@(.+)")
 	parts := re.FindStringSubmatch(url)
@@ -92,13 +92,13 @@ func New(url string, ethServ *zrm.Zerium, lesServ *les.LightZerium) (*Service, e
 	}
 	// Assemble and return the stats service
 	var engine consensus.Engine
-	if ethServ != nil {
-		engine = ethServ.Engine()
+	if zrmServ != nil {
+		engine = zrmServ.Engine()
 	} else {
 		engine = lesServ.Engine()
 	}
 	return &Service{
-		zrm:    ethServ,
+		zrm:    zrmServ,
 		les:    lesServ,
 		engine: engine,
 		node:   parts[1],
@@ -375,10 +375,10 @@ func (s *Service) login(conn *websocket.Conn) error {
 
 	var network, protocol string
 	if info := infos.Protocols["zrm"]; info != nil {
-		network = fmt.Sprintf("%d", info.(*zrm.EthNodeInfo).Network)
+		network = fmt.Sprintf("%d", info.(*zrm.ZrmNodeInfo).Network)
 		protocol = fmt.Sprintf("zrm/%d", zrm.ProtocolVersions[0])
 	} else {
-		network = fmt.Sprintf("%d", infos.Protocols["les"].(*zrm.EthNodeInfo).Network)
+		network = fmt.Sprintf("%d", infos.Protocols["les"].(*zrm.ZrmNodeInfo).Network)
 		protocol = fmt.Sprintf("les/%d", les.ClientProtocolVersions[0])
 	}
 	auth := &authMsg{
