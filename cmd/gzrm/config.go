@@ -77,7 +77,7 @@ type zrmstatsConfig struct {
 }
 
 type gzrmConfig struct {
-	Eth       zrm.Config
+	Zrm       zrm.Config
 	Shh       whisper.Config
 	Node      node.Config
 	Zrmstats  zrmstatsConfig
@@ -112,7 +112,7 @@ func defaultNodeConfig() node.Config {
 func makeConfigNode(ctx *cli.Context) (*node.Node, gzrmConfig) {
 	// Load defaults.
 	cfg := gzrmConfig{
-		Eth:       zrm.DefaultConfig,
+		Zrm:       zrm.DefaultConfig,
 		Shh:       whisper.DefaultConfig,
 		Node:      defaultNodeConfig(),
 		Dashboard: dashboard.DefaultConfig,
@@ -131,9 +131,9 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, gzrmConfig) {
 	if err != nil {
 		utils.Fatalf("Failed to create the protocol stack: %v", err)
 	}
-	utils.SetEthConfig(ctx, stack, &cfg.Eth)
-	if ctx.GlobalIsSet(utils.EthStatsURLFlag.Name) {
-		cfg.Zrmstats.URL = ctx.GlobalString(utils.EthStatsURLFlag.Name)
+	utils.SetZrmConfig(ctx, stack, &cfg.Zrm)
+	if ctx.GlobalIsSet(utils.ZrmStatsURLFlag.Name) {
+		cfg.Zrmstats.URL = ctx.GlobalString(utils.ZrmStatsURLFlag.Name)
 	}
 
 	utils.SetShhConfig(ctx, stack, &cfg.Shh)
@@ -155,7 +155,7 @@ func enableWhisper(ctx *cli.Context) bool {
 func makeFullNode(ctx *cli.Context) *node.Node {
 	stack, cfg := makeConfigNode(ctx)
 
-	utils.RegisterEthService(stack, &cfg.Eth)
+	utils.RegisterZrmService(stack, &cfg.Zrm)
 
 	if ctx.GlobalBool(utils.DashboardEnabledFlag.Name) {
 		utils.RegisterDashboardService(stack, &cfg.Dashboard)
@@ -175,7 +175,7 @@ func makeFullNode(ctx *cli.Context) *node.Node {
 
 	// Add the Zerium Stats daemon if requested.
 	if cfg.Zrmstats.URL != "" {
-		utils.RegisterEthStatsService(stack, cfg.Zrmstats.URL)
+		utils.RegisterZrmStatsService(stack, cfg.Zrmstats.URL)
 	}
 
 	// Add the release oracle service so it boots along with node.
@@ -200,8 +200,8 @@ func dumpConfig(ctx *cli.Context) error {
 	_, cfg := makeConfigNode(ctx)
 	comment := ""
 
-	if cfg.Eth.Genesis != nil {
-		cfg.Eth.Genesis = nil
+	if cfg.Zrm.Genesis != nil {
+		cfg.Zrm.Genesis = nil
 		comment += "# Note: this config doesn't contain the genesis block.\n\n"
 	}
 
