@@ -195,7 +195,7 @@ func (api *PrivateMinerAPI) SetGasPrice(gasPrice hexutil.Big) bool {
 }
 
 // SetZeriumbase sets the Zeriumbase of the miner
-func (api *PrivateMinerAPI) SetZeriumbase(Zeriumbase common.Address) bool {
+func (api *PrivateMinerAPI) SetZeriumbase(zeriumbase common.Address) bool {
 	api.e.SetZeriumbase(zeriumbase)
 	return true
 }
