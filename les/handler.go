@@ -1124,7 +1124,7 @@ func (pm *ProtocolManager) txStatus(hashes []common.Hash) []txStatus {
 }
 
 // NodeInfo retrieves some protocol metadata about the running host node.
-func (self *ProtocolManager) NodeInfo() *zrm.ZrnNodeInfo {
+func (self *ProtocolManager) NodeInfo() *zrm.ZrmNodeInfo {
 	return &zrm.ZrmNodeInfo{
 		Network:    self.networkId,
 		Difficulty: self.blockchain.GetTdByHash(self.blockchain.LastBlockHash()),
