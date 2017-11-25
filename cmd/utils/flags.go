@@ -315,8 +315,8 @@ var (
 		Usage: "Target gas limit sets the artificial target gas floor for the blocks to mine",
 		Value: params.GenesisGasLimit.Uint64(),
 	}
-	EtherbaseFlag = cli.StringFlag{
-		Name:  "etherbase",
+	ZeriumbaseFlag = cli.StringFlag{
+		Name:  "zeriumbase",
 		Usage: "Public address for block mining rewards (default = first account created)",
 		Value: "0",
 	}
@@ -751,23 +751,23 @@ func MakeAddress(ks *keystore.KeyStore, account string) (accounts.Account, error
 	return accs[index], nil
 }
 
-// setEtherbase retrieves the etherbase either from the directly specified
+// setZeriumbase retrieves the zeriumbase either from the directly specified
 // command line flags or from the keystore if CLI indexed.
-func setEtherbase(ctx *cli.Context, ks *keystore.KeyStore, cfg *zrm.Config) {
-	if ctx.GlobalIsSet(EtherbaseFlag.Name) {
-		account, err := MakeAddress(ks, ctx.GlobalString(EtherbaseFlag.Name))
+func setZeriumbase(ctx *cli.Context, ks *keystore.KeyStore, cfg *zrm.Config) {
+	if ctx.GlobalIsSet(ZeriumbaseFlag.Name) {
+		account, err := MakeAddress(ks, ctx.GlobalString(ZeriumbaseFlag.Name))
 		if err != nil {
-			Fatalf("Option %q: %v", EtherbaseFlag.Name, err)
+			Fatalf("Option %q: %v", ZeriumbaseFlag.Name, err)
 		}
-		cfg.Etherbase = account.Address
+		cfg.Zeriumbase = account.Address
 		return
 	}
 	accounts := ks.Accounts()
-	if (cfg.Etherbase == common.Address{}) {
+	if (cfg.Zeriumbase == common.Address{}) {
 		if len(accounts) > 0 {
-			cfg.Etherbase = accounts[0].Address
+			cfg.Zeriumbase = accounts[0].Address
 		} else {
-			log.Warn("No etherbase set and no accounts found as default")
+			log.Warn("No zeriumbase set and no accounts found as default")
 		}
 	}
 }
@@ -958,7 +958,7 @@ func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *zrm.Config) {
 	checkExclusive(ctx, FastSyncFlag, LightModeFlag, SyncModeFlag)
 
 	ks := stack.AccountManager().Backends(keystore.KeyStoreType)[0].(*keystore.KeyStore)
-	setEtherbase(ctx, ks, cfg)
+	setZeriumbase(ctx, ks, cfg)
 	setGPO(ctx, &cfg.GPO)
 	setTxPool(ctx, &cfg.TxPool)
 	setEthash(ctx, cfg)

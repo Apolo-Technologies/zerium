@@ -95,7 +95,7 @@ func newTester(t *testing.T, confOverride func(*zrm.Config)) *tester {
 	}
 	ethConf := &zrm.Config{
 		Genesis:   core.DeveloperGenesisBlock(15, common.Address{}),
-		Etherbase: common.HexToAddress(testAddress),
+		Zeriumbase: common.HexToAddress(testAddress),
 		PowTest:   true,
 	}
 	if confOverride != nil {

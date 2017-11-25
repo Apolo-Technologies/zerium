@@ -39,7 +39,7 @@ type testgzrm struct {
 
 	// template variables for expect
 	Datadir   string
-	Etherbase string
+	Zeriumbase string
 }
 
 func init() {
@@ -72,9 +72,9 @@ func runGzrm(t *testing.T, args ...string) *testgzrm {
 			if i < len(args)-1 {
 				tt.Datadir = args[i+1]
 			}
-		case arg == "-etherbase" || arg == "--etherbase":
+		case arg == "-zeriumbase" || arg == "--zeriumbase":
 			if i < len(args)-1 {
-				tt.Etherbase = args[i+1]
+				tt.Zeriumbase = args[i+1]
 			}
 		}
 	}

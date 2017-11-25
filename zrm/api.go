@@ -56,14 +56,14 @@ func NewPublicZeriumAPI(e *Zerium) *PublicZeriumAPI {
 	return &PublicZeriumAPI{e}
 }
 
-// Etherbase is the address that mining rewards will be send to
-func (api *PublicZeriumAPI) Etherbase() (common.Address, error) {
-	return api.e.Etherbase()
+// Zeriumbase is the address that mining rewards will be send to
+func (api *PublicZeriumAPI) Zeriumbase() (common.Address, error) {
+	return api.e.Zeriumbase()
 }
 
-// Coinbase is the address that mining rewards will be send to (alias for Etherbase)
+// Coinbase is the address that mining rewards will be send to (alias for Zeriumbase)
 func (api *PublicZeriumAPI) Coinbase() (common.Address, error) {
-	return api.Etherbase()
+	return api.Zeriumbase()
 }
 
 // Hashrate returns the POW hashrate
@@ -194,9 +194,9 @@ func (api *PrivateMinerAPI) SetGasPrice(gasPrice hexutil.Big) bool {
 	return true
 }
 
-// SetEtherbase sets the etherbase of the miner
-func (api *PrivateMinerAPI) SetEtherbase(etherbase common.Address) bool {
-	api.e.SetEtherbase(etherbase)
+// SetZeriumbase sets the Zeriumbase of the miner
+func (api *PrivateMinerAPI) SetZeriumbase(Zeriumbase common.Address) bool {
+	api.e.SetZeriumbase(zeriumbase)
 	return true
 }
 

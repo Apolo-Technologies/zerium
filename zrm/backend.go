@@ -86,12 +86,12 @@ type Zerium struct {
 
 	miner     *miner.Miner
 	gasPrice  *big.Int
-	etherbase common.Address
+	zeriumbase common.Address
 
 	networkId     uint64
 	netRPCService *ethapi.PublicNetAPI
 
-	lock sync.RWMutex // Protects the variadic fields (e.g. gas price and etherbase)
+	lock sync.RWMutex // Protects the variadic fields (e.g. gas price and zeriumbase)
 }
 
 func (s *Zerium) AddLesServer(ls LesServer) {
@@ -130,7 +130,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Zerium, error) {
 		stopDbUpgrade:  stopDbUpgrade,
 		networkId:      config.NetworkId,
 		gasPrice:       config.GasPrice,
-		etherbase:      config.Etherbase,
+		zeriumbase:      config.Zeriumbase,
 		bloomRequests:  make(chan chan *bloombits.Retrieval),
 		bloomIndexer:   NewBloomIndexer(chainDb, params.BloomBitsBlocks),
 	}
@@ -294,41 +294,41 @@ func (s *Zerium) ResetWithGenesisBlock(gb *types.Block) {
 	s.blockchain.ResetWithGenesisBlock(gb)
 }
 
-func (s *Zerium) Etherbase() (eb common.Address, err error) {
+func (s *Zerium) Zeriumbase() (eb common.Address, err error) {
 	s.lock.RLock()
-	etherbase := s.etherbase
+	zeriumbase := s.zeriumbase
 	s.lock.RUnlock()
 
-	if etherbase != (common.Address{}) {
-		return etherbase, nil
+	if zeriumbase != (common.Address{}) {
+		return zeriumbase, nil
 	}
 	if wallets := s.AccountManager().Wallets(); len(wallets) > 0 {
 		if accounts := wallets[0].Accounts(); len(accounts) > 0 {
 			return accounts[0].Address, nil
 		}
 	}
-	return common.Address{}, fmt.Errorf("etherbase address must be explicitly specified")
+	return common.Address{}, fmt.Errorf("zeriumbase address must be explicitly specified")
 }
 
 // set in js console via admin interface or wrapper from cli flags
-func (self *Zerium) SetEtherbase(etherbase common.Address) {
+func (self *Zerium) SetZeriumbase(zeriumbase common.Address) {
 	self.lock.Lock()
-	self.etherbase = etherbase
+	self.zeriumbase = zeriumbase
 	self.lock.Unlock()
 
-	self.miner.SetEtherbase(etherbase)
+	self.miner.SetZeriumbase(zeriumbase)
 }
 
 func (s *Zerium) StartMining(local bool) error {
-	eb, err := s.Etherbase()
+	eb, err := s.Zeriumbase()
 	if err != nil {
-		log.Error("Cannot start mining without etherbase", "err", err)
-		return fmt.Errorf("etherbase missing: %v", err)
+		log.Error("Cannot start mining without zeriumbase", "err", err)
+		return fmt.Errorf("zeriumbase missing: %v", err)
 	}
 	if clique, ok := s.engine.(*clique.Clique); ok {
 		wallet, err := s.accountManager.Find(accounts.Account{Address: eb})
 		if wallet == nil || err != nil {
-			log.Error("Etherbase account unavailable locally", "err", err)
+			log.Error("Zeriumbase account unavailable locally", "err", err)
 			return fmt.Errorf("signer missing: %v", err)
 		}
 		clique.Authorize(eb, wallet.SignHash)
