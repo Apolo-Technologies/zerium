@@ -23,7 +23,7 @@ import (
 	"sync"
 
 	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/internal/ethapi"
+	"github.com/abt/zerium/internal/zrmapi"
 	"github.com/abt/zerium/params"
 	"github.com/abt/zerium/rpc"
 )
@@ -39,7 +39,7 @@ type Config struct {
 // Oracle recommends gas prices based on the content of recent
 // blocks. Suitable for both light and full clients.
 type Oracle struct {
-	backend   ethapi.Backend
+	backend   zrmapi.Backend
 	lastHead  common.Hash
 	lastPrice *big.Int
 	cacheLock sync.RWMutex
@@ -50,7 +50,7 @@ type Oracle struct {
 }
 
 // NewOracle returns a new oracle.
-func NewOracle(backend ethapi.Backend, params Config) *Oracle {
+func NewOracle(backend zrmapi.Backend, params Config) *Oracle {
 	blocks := params.Blocks
 	if blocks < 1 {
 		blocks = 1

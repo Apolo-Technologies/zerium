@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package ethapi implements the general Zerium API functions.
-package ethapi
+// Package zrmapi implements the general Zerium API functions.
+package zrmapi
 
 import (
 	"context"

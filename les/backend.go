@@ -35,7 +35,7 @@ import (
 	"github.com/abt/zerium/zrm/gasprice"
 	"github.com/abt/zerium/zrmdb"
 	"github.com/abt/zerium/event"
-	"github.com/abt/zerium/internal/ethapi"
+	"github.com/abt/zerium/internal/zrmapi"
 	"github.com/abt/zerium/light"
 	"github.com/abt/zerium/log"
 	"github.com/abt/zerium/node"
@@ -72,7 +72,7 @@ type LightZerium struct {
 	accountManager *accounts.Manager
 
 	networkId     uint64
-	netRPCService *ethapi.PublicNetAPI
+	netRPCService *zrmapi.PublicNetAPI
 
 	wg sync.WaitGroup
 }
@@ -91,7 +91,7 @@ func New(ctx *node.ServiceContext, config *zrm.Config) (*LightZerium, error) {
 	peers := newPeerSet()
 	quitSync := make(chan struct{})
 
-	leth := &LightZerium{
+	lzrm := &LightZerium{
 		chainConfig:      chainConfig,
 		chainDb:          chainDb,
 		eventMux:         ctx.EventMux,
@@ -107,32 +107,32 @@ func New(ctx *node.ServiceContext, config *zrm.Config) (*LightZerium, error) {
 		bloomTrieIndexer: light.NewBloomTrieIndexer(chainDb, true),
 	}
 
-	leth.relay = NewLesTxRelay(peers, leth.reqDist)
-	leth.serverPool = newServerPool(chainDb, quitSync, &leth.wg)
-	leth.retriever = newRetrieveManager(peers, leth.reqDist, leth.serverPool)
-	leth.odr = NewLesOdr(chainDb, leth.chtIndexer, leth.bloomTrieIndexer, leth.bloomIndexer, leth.retriever)
-	if leth.blockchain, err = light.NewLightChain(leth.odr, leth.chainConfig, leth.engine); err != nil {
+	lzrm.relay = NewLesTxRelay(peers, lzrm.reqDist)
+	lzrm.serverPool = newServerPool(chainDb, quitSync, &lzrm.wg)
+	lzrm.retriever = newRetrieveManager(peers, lzrm.reqDist, lzrm.serverPool)
+	lzrm.odr = NewLesOdr(chainDb, lzrm.chtIndexer, lzrm.bloomTrieIndexer, lzrm.bloomIndexer, lzrm.retriever)
+	if lzrm.blockchain, err = light.NewLightChain(lzrm.odr, lzrm.chainConfig, lzrm.engine); err != nil {
 		return nil, err
 	}
-	leth.bloomIndexer.Start(leth.blockchain)
+	lzrm.bloomIndexer.Start(lzrm.blockchain)
 	// Rewind the chain in case of an incompatible config upgrade.
 	if compat, ok := genesisErr.(*params.ConfigCompatError); ok {
 		log.Warn("Rewinding chain to upgrade configuration", "err", compat)
-		leth.blockchain.SetHead(compat.RewindTo)
+		lzrm.blockchain.SetHead(compat.RewindTo)
 		core.WriteChainConfig(chainDb, genesisHash, chainConfig)
 	}
 
-	leth.txPool = light.NewTxPool(leth.chainConfig, leth.blockchain, leth.relay)
-	if leth.protocolManager, err = NewProtocolManager(leth.chainConfig, true, ClientProtocolVersions, config.NetworkId, leth.eventMux, leth.engine, leth.peers, leth.blockchain, nil, chainDb, leth.odr, leth.relay, quitSync, &leth.wg); err != nil {
+	lzrm.txPool = light.NewTxPool(lzrm.chainConfig, lzrm.blockchain, lzrm.relay)
+	if lzrm.protocolManager, err = NewProtocolManager(lzrm.chainConfig, true, ClientProtocolVersions, config.NetworkId, lzrm.eventMux, lzrm.engine, lzrm.peers, lzrm.blockchain, nil, chainDb, lzrm.odr, lzrm.relay, quitSync, &lzrm.wg); err != nil {
 		return nil, err
 	}
-	leth.ApiBackend = &LesApiBackend{leth, nil}
+	lzrm.ApiBackend = &LesApiBackend{lzrm, nil}
 	gpoParams := config.GPO
 	if gpoParams.Default == nil {
 		gpoParams.Default = config.GasPrice
 	}
-	leth.ApiBackend.gpo = gasprice.NewOracle(leth.ApiBackend, gpoParams)
-	return leth, nil
+	lzrm.ApiBackend.gpo = gasprice.NewOracle(lzrm.ApiBackend, gpoParams)
+	return lzrm, nil
 }
 
 func lesTopic(genesisHash common.Hash, protocolVersion uint) discv5.Topic {
@@ -173,7 +173,7 @@ func (s *LightDummyAPI) Mining() bool {
 // APIs returns the collection of RPC services the abt package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
 func (s *LightZerium) APIs() []rpc.API {
-	return append(ethapi.GetAPIs(s.ApiBackend), []rpc.API{
+	return append(zrmapi.GetAPIs(s.ApiBackend), []rpc.API{
 		{
 			Namespace: "zrm",
 			Version:   "1.0",
@@ -220,7 +220,7 @@ func (s *LightZerium) Protocols() []p2p.Protocol {
 func (s *LightZerium) Start(srvr *p2p.Server) error {
 	s.startBloomHandlers()
 	log.Warn("Light client mode is an experimental feature")
-	s.netRPCService = ethapi.NewPublicNetAPI(srvr, s.networkId)
+	s.netRPCService = zrmapi.NewPublicNetAPI(srvr, s.networkId)
 	// search the topic belonging to the oldest supported protocol because
 	// servers always advertise all supported protocols
 	protocolVersion := ClientProtocolVersions[len(ClientProtocolVersions)-1]

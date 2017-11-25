@@ -28,7 +28,7 @@ import (
 	"github.com/abt/zerium/accounts/abi/bind"
 	"github.com/abt/zerium/common"
 	"github.com/abt/zerium/zrm"
-	"github.com/abt/zerium/internal/ethapi"
+	"github.com/abt/zerium/internal/zrmapi"
 	"github.com/abt/zerium/les"
 	"github.com/abt/zerium/log"
 	"github.com/abt/zerium/node"
@@ -61,7 +61,7 @@ type ReleaseService struct {
 // releases and notify the user of such.
 func NewReleaseService(ctx *node.ServiceContext, config Config) (node.Service, error) {
 	// Retrieve the Zerium service dependency to access the blockchain
-	var apiBackend ethapi.Backend
+	var apiBackend zrmapi.Backend
 	var abt *zrm.Zerium
 	if err := ctx.Service(&abt); err == nil {
 		apiBackend = abt.ApiBackend

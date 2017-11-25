@@ -24,7 +24,7 @@ import (
 	"github.com/abt/zerium/common"
 	"github.com/abt/zerium/common/hexutil"
 	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/internal/ethapi"
+	"github.com/abt/zerium/internal/zrmapi"
 	"github.com/abt/zerium/rlp"
 	"github.com/abt/zerium/rpc"
 )
@@ -37,18 +37,18 @@ import (
 // object. These should be rewritten to internal Go method calls when the Go API
 // is refactored to support a clean library use.
 type ContractBackend struct {
-	eapi  *ethapi.PublicZeriumAPI        // Wrapper around the Zerium object to access metadata
-	bcapi *ethapi.PublicBlockChainAPI      // Wrapper around the blockchain to access chain data
-	txapi *ethapi.PublicTransactionPoolAPI // Wrapper around the transaction pool to access transaction data
+	eapi  *zrmapi.PublicZeriumAPI        // Wrapper around the Zerium object to access metadata
+	bcapi *zrmapi.PublicBlockChainAPI      // Wrapper around the blockchain to access chain data
+	txapi *zrmapi.PublicTransactionPoolAPI // Wrapper around the transaction pool to access transaction data
 }
 
 // NewContractBackend creates a new native contract backend using an existing
 // Zerium object.
-func NewContractBackend(apiBackend ethapi.Backend) *ContractBackend {
+func NewContractBackend(apiBackend zrmapi.Backend) *ContractBackend {
 	return &ContractBackend{
-		eapi:  ethapi.NewPublicZeriumAPI(apiBackend),
-		bcapi: ethapi.NewPublicBlockChainAPI(apiBackend),
-		txapi: ethapi.NewPublicTransactionPoolAPI(apiBackend, new(ethapi.AddrLocker)),
+		eapi:  zrmapi.NewPublicZeriumAPI(apiBackend),
+		bcapi: zrmapi.NewPublicBlockChainAPI(apiBackend),
+		txapi: zrmapi.NewPublicTransactionPoolAPI(apiBackend, new(zrmapi.AddrLocker)),
 	}
 }
 
@@ -78,8 +78,8 @@ func (b *ContractBackend) PendingCallContract(ctx context.Context, msg abt.CallM
 	return out, err
 }
 
-func toCallArgs(msg abt.CallMsg) ethapi.CallArgs {
-	args := ethapi.CallArgs{
+func toCallArgs(msg abt.CallMsg) zrmapi.CallArgs {
+	args := zrmapi.CallArgs{
 		To:   msg.To,
 		From: msg.From,
 		Data: msg.Data,
