@@ -34,11 +34,11 @@ import (
 // DefaultConfig contains default settings for use on the Zerium main net.
 var DefaultConfig = Config{
 	SyncMode:             downloader.FastSync,
-	EthashCacheDir:       "zrmash",
-	EthashCachesInMem:    2,
-	EthashCachesOnDisk:   3,
-	EthashDatasetsInMem:  1,
-	EthashDatasetsOnDisk: 2,
+	ZrmashCacheDir:       "zrmash",
+	ZrmashCachesInMem:    2,
+	ZrmashCachesOnDisk:   3,
+	ZrmashDatasetsInMem:  1,
+	ZrmashDatasetsOnDisk: 2,
 	NetworkId:            1,
 	LightPeers:           20,
 	DatabaseCache:        128,
@@ -59,9 +59,9 @@ func init() {
 		}
 	}
 	if runtime.GOOS == "windows" {
-		DefaultConfig.EthashDatasetDir = filepath.Join(home, "AppData", "Ethash")
+		DefaultConfig.ZrmashDatasetDir = filepath.Join(home, "AppData", "Zrmash")
 	} else {
-		DefaultConfig.EthashDatasetDir = filepath.Join(home, ".zrmash")
+		DefaultConfig.ZrmashDatasetDir = filepath.Join(home, ".zrmash")
 	}
 }
 
@@ -91,13 +91,13 @@ type Config struct {
 	ExtraData    []byte         `toml:",omitempty"`
 	GasPrice     *big.Int
 
-	// Ethash options
-	EthashCacheDir       string
-	EthashCachesInMem    int
-	EthashCachesOnDisk   int
-	EthashDatasetDir     string
-	EthashDatasetsInMem  int
-	EthashDatasetsOnDisk int
+	// Zrmash options
+	ZrmashCacheDir       string
+	ZrmashCachesInMem    int
+	ZrmashCachesOnDisk   int
+	ZrmashDatasetDir     string
+	ZrmashDatasetsInMem  int
+	ZrmashDatasetsOnDisk int
 
 	// Transaction pool options
 	TxPool core.TxPoolConfig

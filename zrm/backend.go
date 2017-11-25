@@ -40,7 +40,7 @@ import (
 	"github.com/abt/zerium/zrm/gasprice"
 	"github.com/abt/zerium/zrmdb"
 	"github.com/abt/zerium/event"
-	"github.com/abt/zerium/internal/ethapi"
+	"github.com/abt/zerium/internal/zrmapi"
 	"github.com/abt/zerium/log"
 	"github.com/abt/zerium/miner"
 	"github.com/abt/zerium/node"
@@ -82,14 +82,14 @@ type Zerium struct {
 	bloomRequests chan chan *bloombits.Retrieval // Channel receiving bloom data retrieval requests
 	bloomIndexer  *core.ChainIndexer             // Bloom indexer operating during block imports
 
-	ApiBackend *EthApiBackend
+	ApiBackend *ZrmApiBackend
 
 	miner     *miner.Miner
 	gasPrice  *big.Int
 	zeriumbase common.Address
 
 	networkId     uint64
-	netRPCService *ethapi.PublicNetAPI
+	netRPCService *zrmapi.PublicNetAPI
 
 	lock sync.RWMutex // Protects the variadic fields (e.g. gas price and zeriumbase)
 }
@@ -169,7 +169,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Zerium, error) {
 	zrm.miner = miner.New(zrm, zrm.chainConfig, zrm.EventMux(), zrm.engine)
 	zrm.miner.SetExtra(makeExtraData(config.ExtraData))
 
-	zrm.ApiBackend = &EthApiBackend{zrm, nil}
+	zrm.ApiBackend = &ZrmApiBackend{zrm, nil}
 	gpoParams := config.GPO
 	if gpoParams.Default == nil {
 		gpoParams.Default = config.GasPrice
@@ -217,17 +217,17 @@ func CreateConsensusEngine(ctx *node.ServiceContext, config *Config, chainConfig
 	// Otherwise assume proof-of-work
 	switch {
 	case config.PowFake:
-		log.Warn("Ethash used in fake mode")
+		log.Warn("Zrmash used in fake mode")
 		return zrmash.NewFaker()
 	case config.PowTest:
-		log.Warn("Ethash used in test mode")
+		log.Warn("Zrmash used in test mode")
 		return zrmash.NewTester()
 	case config.PowShared:
-		log.Warn("Ethash used in shared mode")
+		log.Warn("Zrmash used in shared mode")
 		return zrmash.NewShared()
 	default:
-		engine := zrmash.New(ctx.ResolvePath(config.EthashCacheDir), config.EthashCachesInMem, config.EthashCachesOnDisk,
-			config.EthashDatasetDir, config.EthashDatasetsInMem, config.EthashDatasetsOnDisk)
+		engine := zrmash.New(ctx.ResolvePath(config.ZrmashCacheDir), config.ZrmashCachesInMem, config.ZrmashCachesOnDisk,
+			config.ZrmashDatasetDir, config.ZrmashDatasetsInMem, config.ZrmashDatasetsOnDisk)
 		engine.SetThreads(-1) // Disable CPU mining
 		return engine
 	}
@@ -236,7 +236,7 @@ func CreateConsensusEngine(ctx *node.ServiceContext, config *Config, chainConfig
 // APIs returns the collection of RPC services the abt package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
 func (s *Zerium) APIs() []rpc.API {
-	apis := ethapi.GetAPIs(s.ApiBackend)
+	apis := zrmapi.GetAPIs(s.ApiBackend)
 
 	// Append any APIs exposed explicitly by the consensus engine
 	apis = append(apis, s.engine.APIs(s.BlockChain())...)
@@ -355,7 +355,7 @@ func (s *Zerium) EventMux() *event.TypeMux           { return s.eventMux }
 func (s *Zerium) Engine() consensus.Engine           { return s.engine }
 func (s *Zerium) ChainDb() zrmdb.Database            { return s.chainDb }
 func (s *Zerium) IsListening() bool                  { return true } // Always listening
-func (s *Zerium) EthVersion() int                    { return int(s.protocolManager.SubProtocols[0].Version) }
+func (s *Zerium) ZrmVersion() int                    { return int(s.protocolManager.SubProtocols[0].Version) }
 func (s *Zerium) NetVersion() uint64                 { return s.networkId }
 func (s *Zerium) Downloader() *downloader.Downloader { return s.protocolManager.downloader }
 
@@ -375,7 +375,7 @@ func (s *Zerium) Start(srvr *p2p.Server) error {
 	s.startBloomHandlers()
 
 	// Start the RPC service
-	s.netRPCService = ethapi.NewPublicNetAPI(srvr, s.NetVersion())
+	s.netRPCService = zrmapi.NewPublicNetAPI(srvr, s.NetVersion())
 
 	// Figure out a max peers count based on the server limits
 	maxPeers := srvr.MaxPeers

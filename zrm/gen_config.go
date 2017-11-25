@@ -27,12 +27,12 @@ func (c Config) MarshalTOML() (interface{}, error) {
 		MinerThreads            int            `toml:",omitempty"`
 		ExtraData               hexutil.Bytes  `toml:",omitempty"`
 		GasPrice                *big.Int
-		EthashCacheDir          string
-		EthashCachesInMem       int
-		EthashCachesOnDisk      int
-		EthashDatasetDir        string
-		EthashDatasetsInMem     int
-		EthashDatasetsOnDisk    int
+		ZrmashCacheDir          string
+		ZrmashCachesInMem       int
+		ZrmashCachesOnDisk      int
+		ZrmashDatasetDir        string
+		ZrmashDatasetsInMem     int
+		ZrmashDatasetsOnDisk    int
 		TxPool                  core.TxPoolConfig
 		GPO                     gasprice.Config
 		EnablePreimageRecording bool
@@ -54,12 +54,12 @@ func (c Config) MarshalTOML() (interface{}, error) {
 	enc.MinerThreads = c.MinerThreads
 	enc.ExtraData = c.ExtraData
 	enc.GasPrice = c.GasPrice
-	enc.EthashCacheDir = c.EthashCacheDir
-	enc.EthashCachesInMem = c.EthashCachesInMem
-	enc.EthashCachesOnDisk = c.EthashCachesOnDisk
-	enc.EthashDatasetDir = c.EthashDatasetDir
-	enc.EthashDatasetsInMem = c.EthashDatasetsInMem
-	enc.EthashDatasetsOnDisk = c.EthashDatasetsOnDisk
+	enc.ZrmashCacheDir = c.ZrmashCacheDir
+	enc.ZrmashCachesInMem = c.ZrmashCachesInMem
+	enc.ZrmashCachesOnDisk = c.ZrmashCachesOnDisk
+	enc.ZrmashDatasetDir = c.ZrmashDatasetDir
+	enc.ZrmashDatasetsInMem = c.ZrmashDatasetsInMem
+	enc.ZrmashDatasetsOnDisk = c.ZrmashDatasetsOnDisk
 	enc.TxPool = c.TxPool
 	enc.GPO = c.GPO
 	enc.EnablePreimageRecording = c.EnablePreimageRecording
@@ -85,12 +85,12 @@ func (c *Config) UnmarshalTOML(unmarshal func(interface{}) error) error {
 		MinerThreads            *int            `toml:",omitempty"`
 		ExtraData               hexutil.Bytes   `toml:",omitempty"`
 		GasPrice                *big.Int
-		EthashCacheDir          *string
-		EthashCachesInMem       *int
-		EthashCachesOnDisk      *int
-		EthashDatasetDir        *string
-		EthashDatasetsInMem     *int
-		EthashDatasetsOnDisk    *int
+		ZrmashCacheDir          *string
+		ZrmashCachesInMem       *int
+		ZrmashCachesOnDisk      *int
+		ZrmashDatasetDir        *string
+		ZrmashDatasetsInMem     *int
+		ZrmashDatasetsOnDisk    *int
 		TxPool                  *core.TxPoolConfig
 		GPO                     *gasprice.Config
 		EnablePreimageRecording *bool
@@ -139,23 +139,23 @@ func (c *Config) UnmarshalTOML(unmarshal func(interface{}) error) error {
 	if dec.GasPrice != nil {
 		c.GasPrice = dec.GasPrice
 	}
-	if dec.EthashCacheDir != nil {
-		c.EthashCacheDir = *dec.EthashCacheDir
+	if dec.ZrmashCacheDir != nil {
+		c.ZrmashCacheDir = *dec.ZrmashCacheDir
 	}
-	if dec.EthashCachesInMem != nil {
-		c.EthashCachesInMem = *dec.EthashCachesInMem
+	if dec.ZrmashCachesInMem != nil {
+		c.ZrmashCachesInMem = *dec.ZrmashCachesInMem
 	}
-	if dec.EthashCachesOnDisk != nil {
-		c.EthashCachesOnDisk = *dec.EthashCachesOnDisk
+	if dec.ZrmashCachesOnDisk != nil {
+		c.ZrmashCachesOnDisk = *dec.ZrmashCachesOnDisk
 	}
-	if dec.EthashDatasetDir != nil {
-		c.EthashDatasetDir = *dec.EthashDatasetDir
+	if dec.ZrmashDatasetDir != nil {
+		c.ZrmashDatasetDir = *dec.ZrmashDatasetDir
 	}
-	if dec.EthashDatasetsInMem != nil {
-		c.EthashDatasetsInMem = *dec.EthashDatasetsInMem
+	if dec.ZrmashDatasetsInMem != nil {
+		c.ZrmashDatasetsInMem = *dec.ZrmashDatasetsInMem
 	}
-	if dec.EthashDatasetsOnDisk != nil {
-		c.EthashDatasetsOnDisk = *dec.EthashDatasetsOnDisk
+	if dec.ZrmashDatasetsOnDisk != nil {
+		c.ZrmashDatasetsOnDisk = *dec.ZrmashDatasetsOnDisk
 	}
 	if dec.TxPool != nil {
 		c.TxPool = *dec.TxPool
