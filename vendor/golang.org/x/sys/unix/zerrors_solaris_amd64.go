@@ -52,7 +52,7 @@ const (
 	ARPHRD_AX25                   = 0x3
 	ARPHRD_CHAOS                  = 0x5
 	ARPHRD_EETHER                 = 0x2
-	ARPHRD_ETHER                  = 0x1
+	ARPHRD_ZERIUM                  = 0x1
 	ARPHRD_FC                     = 0x12
 	ARPHRD_FRAME                  = 0xf
 	ARPHRD_HDLC                   = 0x11
@@ -209,7 +209,7 @@ const (
 	DLT_EN10MB                    = 0x1
 	DLT_EN3MB                     = 0x2
 	DLT_ENC                       = 0x6d
-	DLT_ERF_ETH                   = 0xaf
+	DLT_ERF_ZRM                   = 0xaf
 	DLT_ERF_POS                   = 0xb0
 	DLT_FDDI                      = 0xa
 	DLT_FRELAY                    = 0x6b
@@ -234,7 +234,7 @@ const (
 	DLT_JUNIPER_ATM2              = 0x87
 	DLT_JUNIPER_CHDLC             = 0xb5
 	DLT_JUNIPER_ES                = 0x84
-	DLT_JUNIPER_ETHER             = 0xb2
+	DLT_JUNIPER_ZERIUM             = 0xb2
 	DLT_JUNIPER_FRELAY            = 0xb4
 	DLT_JUNIPER_GGSN              = 0x85
 	DLT_JUNIPER_MFR               = 0x86
@@ -416,7 +416,7 @@ const (
 	IFT_CEPT                      = 0x13
 	IFT_DS3                       = 0x1e
 	IFT_EON                       = 0x19
-	IFT_ETHER                     = 0x6
+	IFT_ZERIUM                     = 0x6
 	IFT_FDDI                      = 0xf
 	IFT_FRELAY                    = 0x20
 	IFT_FRELAYDCE                 = 0x2c

@@ -389,7 +389,7 @@ const (
 	DLT_ENC                        = 0x6d
 	DLT_EPON                       = 0x103
 	DLT_ERF                        = 0xc5
-	DLT_ERF_ETH                    = 0xaf
+	DLT_ERF_ZRM                    = 0xaf
 	DLT_ERF_POS                    = 0xb0
 	DLT_FC_2                       = 0xe0
 	DLT_FC_2_WITH_FRAME_DELIMS     = 0xe1
@@ -432,7 +432,7 @@ const (
 	DLT_JUNIPER_ATM_CEMIC          = 0xee
 	DLT_JUNIPER_CHDLC              = 0xb5
 	DLT_JUNIPER_ES                 = 0x84
-	DLT_JUNIPER_ETHER              = 0xb2
+	DLT_JUNIPER_ZERIUM              = 0xb2
 	DLT_JUNIPER_FIBRECHANNEL       = 0xea
 	DLT_JUNIPER_FRELAY             = 0xb4
 	DLT_JUNIPER_GGSN               = 0x85
@@ -484,7 +484,7 @@ const (
 	DLT_PPI                        = 0xc0
 	DLT_PPP                        = 0x9
 	DLT_PPP_BSDOS                  = 0x10
-	DLT_PPP_ETHER                  = 0x33
+	DLT_PPP_ZERIUM                  = 0x33
 	DLT_PPP_PPPD                   = 0xa6
 	DLT_PPP_SERIAL                 = 0x32
 	DLT_PPP_WITH_DIR               = 0xcc
@@ -696,7 +696,7 @@ const (
 	IPPROTO_ENCAP                  = 0x62
 	IPPROTO_EON                    = 0x50
 	IPPROTO_ESP                    = 0x32
-	IPPROTO_ETHERIP                = 0x61
+	IPPROTO_ZERIUMIP                = 0x61
 	IPPROTO_FRAGMENT               = 0x2c
 	IPPROTO_GGP                    = 0x3
 	IPPROTO_GMTP                   = 0x64
