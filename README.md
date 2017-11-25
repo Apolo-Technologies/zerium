@@ -36,7 +36,7 @@ The zerium project comes with several wrappers/executables found in the `cmd` di
 | `abigen` | Source code generator to convert Zerium contract definitions into easy to use, compile-time type-safe Go packages. It operates on plain [Zerium contract ABIs](https://github.com/abt/wiki/wiki/Zerium-Contract-ABI) with expanded functionality if the contract bytecode is also available. However it also accepts Solidity source files, making development much more streamlined. Please see our [Native DApps](https://github.com/abt/zerium/wiki/Native-DApps:-Go-bindings-to-Zerium-contracts) wiki page for details. |
 | `bootnode` | Stripped down version of our Zerium client implementation that only takes part in the network node discovery protocol, but does not run any of the higher level application protocols. It can be used as a lightweight bootstrap node to aid in finding peers in private networks. |
 | `evm` | Developer utility version of the ZVM (Zerium Virtual Machine) that is capable of running bytecode snippets within a configurable environment and execution mode. Its purpose is to allow isolated, fine-grained debugging of ZVM opcodes (e.g. `evm --code 60ff60ff --debug`). |
-| `gethrpctest` | Developer utility tool to support our [abt/rpc-test](https://github.com/abt/rpc-tests) test suite which validates baseline conformity to the [Zerium JSON RPC](https://github.com/abt/wiki/wiki/JSON-RPC) specs. Please see the [test suite's readme](https://github.com/abt/rpc-tests/blob/master/README.md) for details. |
+| `gzrmrpctest` | Developer utility tool to support our [abt/rpc-test](https://github.com/abt/rpc-tests) test suite which validates baseline conformity to the [Zerium JSON RPC](https://github.com/abt/wiki/wiki/JSON-RPC) specs. Please see the [test suite's readme](https://github.com/abt/rpc-tests/blob/master/README.md) for details. |
 | `rlpdump` | Developer utility tool to convert binary RLP ([Recursive Length Prefix](https://github.com/abt/wiki/wiki/RLP)) dumps (data encoding used by the Zerium protocol both network as well as consensus wise) to user friendlier hierarchical representation (e.g. `rlpdump --hex CE0183FFFFFFC4C304050583616263`). |
 | `swarm`    | swarm daemon and tools. This is the entrypoint for the swarm network. `swarm --help` for command line options and subcommands. See https://swarm-guide.readthedocs.io for swarm documentation. |
 | `puppzrm`    | a CLI wizard that aids in creating a new Zerium network. |
@@ -46,7 +46,7 @@ The zerium project comes with several wrappers/executables found in the `cmd` di
 Going through all the possible command line flags is out of scope here (please consult our
 [CLI Wiki page](https://github.com/abt/zerium/wiki/Command-Line-Options)), but we've
 enumerated a few common parameter combos to get you up to speed quickly on how you can run your
-own Geth instance.
+own Gzrm instance.
 
 ### Full node on the main Zerium network
 
@@ -66,10 +66,10 @@ This command will:
  * Bump the memory allowance of the database to 512MB (`--cache=512`), which can help significantly in
    sync times especially for HDD users. This flag is optional and you can set it as high or as low as
    you'd like, though we'd recommend the 512MB - 2GB range.
- * Start up Geth's built-in interactive [JavaScript console](https://github.com/abt/zerium/wiki/JavaScript-Console),
+ * Start up Gzrm's built-in interactive [JavaScript console](https://github.com/abt/zerium/wiki/JavaScript-Console),
    (via the trailing `console` subcommand) through which you can invoke all official [`web3` methods](https://github.com/abt/wiki/wiki/JavaScript-API)
-   as well as Geth's own [management APIs](https://github.com/abt/zerium/wiki/Management-APIs).
-   This too is optional and if you leave it out you can always attach to an already running Geth instance
+   as well as Gzrm's own [management APIs](https://github.com/abt/zerium/wiki/Management-APIs).
+   This too is optional and if you leave it out you can always attach to an already running Gzrm instance
    with `gzrm attach`.
 
 ### Full node on the Zerium test network
@@ -87,9 +87,9 @@ The `--fast`, `--cache` flags and `console` subcommand have the exact same meani
 are equally useful on the testnet too. Please see above for their explanations if you've skipped to
 here.
 
-Specifying the `--testnet` flag however will reconfigure your Geth instance a bit:
+Specifying the `--testnet` flag however will reconfigure your Gzrm instance a bit:
 
- * Instead of using the default data directory (`~/.abt` on Linux for example), Geth will nest
+ * Instead of using the default data directory (`~/.abt` on Linux for example), Gzrm will nest
    itself one level deeper into a `testnet` subfolder (`~/.abt/testnet` on Linux). Note, on OSX
    and Linux this also means that attaching to a running testnet node requires the use of a custom
    endpoint since `gzrm attach` will try to attach to a production node endpoint by default. E.g.
@@ -99,7 +99,7 @@ Specifying the `--testnet` flag however will reconfigure your Geth instance a bi
    
 *Note: Although there are some internal protective measures to prevent transactions from crossing
 over between the main network and test network, you should make sure to always use separate accounts
-for play-money and real-money. Unless you manually move accounts, Geth will by default correctly
+for play-money and real-money. Unless you manually move accounts, Gzrm will by default correctly
 separate the two networks and will not make any accounts available between them.*
 
 ### Configuration
@@ -132,15 +132,15 @@ This will start gzrm in fast sync mode with a DB memory allowance of 512MB just 
 
 Do not forget `--rpcaddr 0.0.0.0`, if you want to access RPC from other containers and/or hosts. By default, `gzrm` binds to the local interface and RPC endpoints is not accessible from the outside.
 
-### Programatically interfacing Geth nodes
+### Programatically interfacing Gzrm nodes
 
-As a developer, sooner rather than later you'll want to start interacting with Geth and the Zerium
-network via your own programs and not manually through the console. To aid this, Geth has built in
+As a developer, sooner rather than later you'll want to start interacting with Gzrm and the Zerium
+network via your own programs and not manually through the console. To aid this, Gzrm has built in
 support for a JSON-RPC based APIs ([standard APIs](https://github.com/abt/wiki/wiki/JSON-RPC) and
-[Geth specific APIs](https://github.com/abt/zerium/wiki/Management-APIs)). These can be
+[Gzrm specific APIs](https://github.com/abt/zerium/wiki/Management-APIs)). These can be
 exposed via HTTP, WebSockets and IPC (unix sockets on unix based platforms, and named pipes on Windows).
 
-The IPC interface is enabled by default and exposes all the APIs supported by Geth, whereas the HTTP
+The IPC interface is enabled by default and exposes all the APIs supported by Gzrm, whereas the HTTP
 and WS interfaces need to manually be enabled and only expose a subset of APIs due to security reasons.
 These can be turned on/off and configured as you'd expect.
 
@@ -161,7 +161,7 @@ HTTP based JSON-RPC API options:
   * `--ipcpath` Filename for IPC socket/pipe within the datadir (explicit paths escape it)
 
 You'll need to use your own programming environments' capabilities (libraries, tools, etc) to connect
-via HTTP, WS or IPC to a Geth node configured with the above flags and you'll need to speak [JSON-RPC](http://www.jsonrpc.org/specification)
+via HTTP, WS or IPC to a Gzrm node configured with the above flags and you'll need to speak [JSON-RPC](http://www.jsonrpc.org/specification)
 on all transports. You can reuse the same connection for multiple requests!
 
 **Note: Please understand the security implications of opening up an HTTP/WS based transport before
@@ -211,7 +211,7 @@ configs:
 }
 ```
 
-With the genesis state defined in the above JSON file, you'll need to initialize **every** Geth node
+With the genesis state defined in the above JSON file, you'll need to initialize **every** Gzrm node
 with it prior to starting it up to ensure all blockchain parameters are correctly set:
 
 ```
@@ -234,12 +234,12 @@ that other nodes can use to connect to it and exchange peer information. Make su
 displayed IP address information (most probably `[::]`) with your externally accessible IP to get the
 actual `enode` URL.
 
-*Note: You could also use a full fledged Geth node as a bootnode, but it's the less recommended way.*
+*Note: You could also use a full fledged Gzrm node as a bootnode, but it's the less recommended way.*
 
 #### Starting up your member nodes
 
 With the bootnode operational and externally reachable (you can try `telnet <ip> <port>` to ensure
-it's indeed reachable), start every subsequent Geth node pointed to the bootnode for peer discovery
+it's indeed reachable), start every subsequent Gzrm node pointed to the bootnode for peer discovery
 via the `--bootnodes` flag. It will probably also be desirable to keep the data directory of your
 private network separated, so do also specify a custom `--datadir` flag.
 
@@ -259,7 +259,7 @@ repository.
 
 In a private network setting however, a single CPU miner instance is more than enough for practical
 purposes as it can produce a stable stream of blocks at the correct intervals without needing heavy
-resources (consider running on a single thread, no need for multiple ones either). To start a Geth
+resources (consider running on a single thread, no need for multiple ones either). To start a Gzrm
 instance for mining, run it with all your usual flags, extended by:
 
 ```

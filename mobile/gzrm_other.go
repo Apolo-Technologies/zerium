@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-// +build ios
+// +build !android,!ios
 
 package gzrm
 
 // clientIdentifier is a hard coded identifier to report into the network.
-var clientIdentifier = "iGeth"
+var clientIdentifier = "GzrmMobile"

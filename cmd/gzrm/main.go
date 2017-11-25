@@ -46,7 +46,7 @@ const (
 var (
 	// Git SHA1 commit hash of the release (set via linker flags)
 	gitCommit = ""
-	// Zerium address of the Geth release oracle.
+	// Zerium address of the Gzrm release oracle.
 	relOracle = common.HexToAddress("0xfa7b9770ca4cb04296cac84f37736d4041251cdf")
 	// The app that holds all commands and flags.
 	app = utils.NewApp(gitCommit, "the zerium command line interface")
@@ -143,7 +143,7 @@ var (
 )
 
 func init() {
-	// Initialize the CLI app and start Geth
+	// Initialize the CLI app and start Gzrm
 	app.Action = gzrm
 	app.HideVersion = true // we have a command to print the version
 	app.Copyright = "Copyright 2013-2017 The zerium Authors"

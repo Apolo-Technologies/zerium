@@ -215,9 +215,9 @@ func DefaultWSEndpoint() string {
 // NodeName returns the devp2p node identifier.
 func (c *Config) NodeName() string {
 	name := c.name()
-	// Backwards compatibility: previous versions used title-cased "Geth", keep that.
+	// Backwards compatibility: previous versions used title-cased "Gzrm", keep that.
 	if name == "gzrm" || name == "gzrm-testnet" {
-		name = "Geth"
+		name = "Gzrm"
 	}
 	if c.UserIdent != "" {
 		name += "/" + c.UserIdent
@@ -242,7 +242,7 @@ func (c *Config) name() string {
 }
 
 // These resources are resolved differently for "gzrm" instances.
-var isOldGethResource = map[string]bool{
+var isOldGzrmResource = map[string]bool{
 	"chaindata":          true,
 	"nodes":              true,
 	"nodekey":            true,
@@ -260,7 +260,7 @@ func (c *Config) resolvePath(path string) string {
 	}
 	// Backwards-compatibility: ensure that data directory files created
 	// by gzrm 1.4 are used if they exist.
-	if c.name() == "gzrm" && isOldGethResource[path] {
+	if c.name() == "gzrm" && isOldGzrmResource[path] {
 		oldpath := ""
 		if c.Name == "gzrm" {
 			oldpath = filepath.Join(c.DataDir, path)

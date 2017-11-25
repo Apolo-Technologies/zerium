@@ -17,9 +17,9 @@ Section "Uninstall"
   rmDir "$SMPROGRAMS\${APPNAME}"
 
   # Firewall - remove rules if exists
-  SimpleFC::AdvRemoveRule "Geth incoming peers (TCP:32310)"
-  SimpleFC::AdvRemoveRule "Geth outgoing peers (TCP:32310)"
-  SimpleFC::AdvRemoveRule "Geth UDP discovery (UDP:32310)"
+  SimpleFC::AdvRemoveRule "Gzrm incoming peers (TCP:32310)"
+  SimpleFC::AdvRemoveRule "Gzrm outgoing peers (TCP:32310)"
+  SimpleFC::AdvRemoveRule "Gzrm UDP discovery (UDP:32310)"
 
   # Remove IPC endpoint (https://github.com/abt/EIPs/issues/147)
   ${un.EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\gzrm.ipc"

@@ -47,7 +47,7 @@ public class AndroidTest extends InstrumentationTestCase {
 
 	public void testAccountManagement() {
 		// Create an encrypted keystore with light crypto parameters.
-		KeyStore ks = new KeyStore(getInstrumentation().getContext().getFilesDir() + "/keystore", Geth.LightScryptN, Geth.LightScryptP);
+		KeyStore ks = new KeyStore(getInstrumentation().getContext().getFilesDir() + "/keystore", Gzrm.LightScryptN, Gzrm.LightScryptP);
 
 		try {
 			// Create a new account with the specified encryption passphrase.
@@ -195,13 +195,13 @@ func TestAndroid(t *testing.T) {
 	defer os.Chdir(pwd)
 
 	// Create the skeleton of the Android project
-	for _, dir := range []string{"src/main", "src/androidTest/java/org/abt/gethtest", "libs"} {
+	for _, dir := range []string{"src/main", "src/androidTest/java/org/abt/gzrmtest", "libs"} {
 		err = os.MkdirAll(dir, os.ModePerm)
 		if err != nil {
 			t.Fatal(err)
 		}
 	}
-	// Generate the mobile bindings for Geth and add the tester class
+	// Generate the mobile bindings for Gzrm and add the tester class
 	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.abt", "github.com/abt/zerium/mobile")
 	if output, err := gobind.CombinedOutput(); err != nil {
 		t.Logf("%s", output)
@@ -209,7 +209,7 @@ func TestAndroid(t *testing.T) {
 	}
 	build.CopyFile(filepath.Join("libs", "gzrm.aar"), "gzrm.aar", os.ModePerm)
 
-	if err = ioutil.WriteFile(filepath.Join("src", "androidTest", "java", "org", "abt", "gethtest", "AndroidTest.java"), []byte(androidTestClass), os.ModePerm); err != nil {
+	if err = ioutil.WriteFile(filepath.Join("src", "androidTest", "java", "org", "abt", "gzrmtest", "AndroidTest.java"), []byte(androidTestClass), os.ModePerm); err != nil {
 		t.Fatalf("failed to write Android test class: %v", err)
 	}
 	// Finish creating the project and run the tests via gradle
@@ -227,7 +227,7 @@ func TestAndroid(t *testing.T) {
 
 const androidManifest = `<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.abt.gethtest"
+          package="org.abt.gzrmtest"
 	  android:versionCode="1"
 	  android:versionName="1.0">
 

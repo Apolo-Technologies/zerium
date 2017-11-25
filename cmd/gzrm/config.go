@@ -76,7 +76,7 @@ type zrmstatsConfig struct {
 	URL string `toml:",omitempty"`
 }
 
-type gethConfig struct {
+type gzrmConfig struct {
 	Eth       zrm.Config
 	Shh       whisper.Config
 	Node      node.Config
@@ -84,7 +84,7 @@ type gethConfig struct {
 	Dashboard dashboard.Config
 }
 
-func loadConfig(file string, cfg *gethConfig) error {
+func loadConfig(file string, cfg *gzrmConfig) error {
 	f, err := os.Open(file)
 	if err != nil {
 		return err
@@ -109,9 +109,9 @@ func defaultNodeConfig() node.Config {
 	return cfg
 }
 
-func makeConfigNode(ctx *cli.Context) (*node.Node, gethConfig) {
+func makeConfigNode(ctx *cli.Context) (*node.Node, gzrmConfig) {
 	// Load defaults.
-	cfg := gethConfig{
+	cfg := gzrmConfig{
 		Eth:       zrm.DefaultConfig,
 		Shh:       whisper.DefaultConfig,
 		Node:      defaultNodeConfig(),
@@ -190,7 +190,7 @@ func makeFullNode(ctx *cli.Context) *node.Node {
 		copy(config.Commit[:], commit)
 		return release.NewReleaseService(ctx, config)
 	}); err != nil {
-		utils.Fatalf("Failed to register the Geth release oracle service: %v", err)
+		utils.Fatalf("Failed to register the Gzrm release oracle service: %v", err)
 	}
 	return stack
 }

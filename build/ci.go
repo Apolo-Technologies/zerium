@@ -63,7 +63,7 @@ import (
 
 var (
 	// Files that end up in the gzrm*.zip archive.
-	gethArchiveFiles = []string{
+	gzrmArchiveFiles = []string{
 		"COPYING",
 		executablePath("gzrm"),
 	}
@@ -340,7 +340,7 @@ func doArchive(cmdline []string) {
 		arch   = flag.String("arch", runtime.GOARCH, "Architecture cross packaging")
 		atype  = flag.String("type", "zip", "Type of archive to write (zip|tar)")
 		signer = flag.String("signer", "", `Environment variable holding the signing key (e.g. LINUX_SIGNING_KEY)`)
-		upload = flag.String("upload", "", `Destination to upload the archives (usually "gethstore/builds")`)
+		upload = flag.String("upload", "", `Destination to upload the archives (usually "gzrmstore/builds")`)
 		ext    string
 	)
 	flag.CommandLine.Parse(cmdline)
@@ -360,7 +360,7 @@ func doArchive(cmdline []string) {
 		alltools = "gzrm-alltools-" + base + ext
 	)
 	maybeSkipArchive(env)
-	if err := build.WriteArchive(gzrm, gethArchiveFiles); err != nil {
+	if err := build.WriteArchive(gzrm, gzrmArchiveFiles); err != nil {
 		log.Fatal(err)
 	}
 	if err := build.WriteArchive(alltools, allToolsArchiveFiles); err != nil {
@@ -630,7 +630,7 @@ func doWindowsInstaller(cmdline []string) {
 	var (
 		arch    = flag.String("arch", runtime.GOARCH, "Architecture for cross build packaging")
 		signer  = flag.String("signer", "", `Environment variable holding the signing key (e.g. WINDOWS_SIGNING_KEY)`)
-		upload  = flag.String("upload", "", `Destination to upload the archives (usually "gethstore/builds")`)
+		upload  = flag.String("upload", "", `Destination to upload the archives (usually "gzrmstore/builds")`)
 		workdir = flag.String("workdir", "", `Output directory for packages (uses temp dir if unset)`)
 	)
 	flag.CommandLine.Parse(cmdline)
@@ -642,7 +642,7 @@ func doWindowsInstaller(cmdline []string) {
 	var (
 		devTools []string
 		allTools []string
-		gethTool string
+		gzrmTool string
 	)
 	for _, file := range allToolsArchiveFiles {
 		if file == "COPYING" { // license, copied later
@@ -650,7 +650,7 @@ func doWindowsInstaller(cmdline []string) {
 		}
 		allTools = append(allTools, filepath.Base(file))
 		if filepath.Base(file) == "gzrm.exe" {
-			gethTool = file
+			gzrmTool = file
 		} else {
 			devTools = append(devTools, file)
 		}
@@ -660,7 +660,7 @@ func doWindowsInstaller(cmdline []string) {
 	// first section contains the gzrm binary, second section holds the dev tools.
 	templateData := map[string]interface{}{
 		"License":  "COPYING",
-		"Geth":     gethTool,
+		"Gzrm":     gzrmTool,
 		"DevTools": devTools,
 	}
 	build.Render("build/nsis.gzrm.nsi", filepath.Join(*workdir, "gzrm.nsi"), 0644, nil)
@@ -701,7 +701,7 @@ func doAndroidArchive(cmdline []string) {
 		local  = flag.Bool("local", false, `Flag whether we're only doing a local build (skip Maven artifacts)`)
 		signer = flag.String("signer", "", `Environment variable holding the signing key (e.g. ANDROID_SIGNING_KEY)`)
 		deploy = flag.String("deploy", "", `Destination to deploy the archive (usually "https://oss.sonatype.org")`)
-		upload = flag.String("upload", "", `Destination to upload the archive (usually "gethstore/builds")`)
+		upload = flag.String("upload", "", `Destination to upload the archive (usually "gzrmstore/builds")`)
 	)
 	flag.CommandLine.Parse(cmdline)
 	env := build.Env()
@@ -828,7 +828,7 @@ func doXCodeFramework(cmdline []string) {
 		local  = flag.Bool("local", false, `Flag whether we're only doing a local build (skip Maven artifacts)`)
 		signer = flag.String("signer", "", `Environment variable holding the signing key (e.g. IOS_SIGNING_KEY)`)
 		deploy = flag.String("deploy", "", `Destination to deploy the archive (usually "trunk")`)
-		upload = flag.String("upload", "", `Destination to upload the archives (usually "gethstore/builds")`)
+		upload = flag.String("upload", "", `Destination to upload the archives (usually "gzrmstore/builds")`)
 	)
 	flag.CommandLine.Parse(cmdline)
 	env := build.Env()
@@ -862,8 +862,8 @@ func doXCodeFramework(cmdline []string) {
 	// Prepare and upload a PodSpec to CocoaPods
 	if *deploy != "" {
 		meta := newPodMetadata(env, archive)
-		build.Render("build/pod.podspec", "Geth.podspec", 0755, meta)
-		build.MustRunCommand("pod", *deploy, "push", "Geth.podspec", "--allow-warnings", "--verbose")
+		build.Render("build/pod.podspec", "Gzrm.podspec", 0755, meta)
+		build.MustRunCommand("pod", *deploy, "push", "Gzrm.podspec", "--allow-warnings", "--verbose")
 	}
 }
 
@@ -968,7 +968,7 @@ func xgoTool(args []string) *exec.Cmd {
 
 func doPurge(cmdline []string) {
 	var (
-		store = flag.String("store", "", `Destination from where to purge archives (usually "gethstore/builds")`)
+		store = flag.String("store", "", `Destination from where to purge archives (usually "gzrmstore/builds")`)
 		limit = flag.Int("days", 30, `Age threshold above which to delete unstalbe archives`)
 	)
 	flag.CommandLine.Parse(cmdline)

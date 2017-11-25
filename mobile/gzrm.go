@@ -37,7 +37,7 @@ import (
 	whisper "github.com/abt/zerium/whisper/whisperv5"
 )
 
-// NodeConfig represents the collection of configuration values to fine tune the Geth
+// NodeConfig represents the collection of configuration values to fine tune the Gzrm
 // node embedded into a mobile process. The available values are a subset of the
 // entire API provided by zerium to reduce the maintenance surface and dev
 // complexity.
@@ -90,12 +90,12 @@ func NewNodeConfig() *NodeConfig {
 	return &config
 }
 
-// Node represents a Geth Zerium node instance.
+// Node represents a Gzrm Zerium node instance.
 type Node struct {
 	node *node.Node
 }
 
-// NewNode creates and configures a new Geth node.
+// NewNode creates and configures a new Gzrm node.
 func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 	// If no or partial configurations were specified, use defaults
 	if config == nil {

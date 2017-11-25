@@ -30,7 +30,7 @@
 CRCCheck on
 
 !define GROUPNAME "Zerium"
-!define APPNAME "Geth"
+!define APPNAME "Gzrm"
 !define DESCRIPTION "Official Go implementation of the Zerium protocol"
 !addplugindir .\
 

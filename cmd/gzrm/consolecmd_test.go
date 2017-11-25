@@ -41,7 +41,7 @@ func TestConsoleWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 
 	// Start a gzrm console, make sure it's cleaned up and terminate the console
-	gzrm := runGeth(t,
+	gzrm := runGzrm(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--etherbase", coinbase, "--shh",
 		"console")
@@ -50,15 +50,15 @@ func TestConsoleWelcome(t *testing.T) {
 	gzrm.SetTemplateFunc("goos", func() string { return runtime.GOOS })
 	gzrm.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
 	gzrm.SetTemplateFunc("gover", runtime.Version)
-	gzrm.SetTemplateFunc("gethver", func() string { return params.Version })
+	gzrm.SetTemplateFunc("gzrmver", func() string { return params.Version })
 	gzrm.SetTemplateFunc("niltime", func() string { return time.Unix(0, 0).Format(time.RFC1123) })
 	gzrm.SetTemplateFunc("apis", func() string { return ipcAPIs })
 
 	// Verify the actual welcome message to the required template
 	gzrm.Expect(`
-Welcome to the Geth JavaScript console!
+Welcome to the Gzrm JavaScript console!
 
-instance: Geth/v{{gethver}}/{{goos}}-{{goarch}}/{{gover}}
+instance: Gzrm/v{{gzrmver}}/{{goos}}-{{goarch}}/{{gover}}
 coinbase: {{.Etherbase}}
 at block: 0 ({{niltime}})
  datadir: {{.Datadir}}
@@ -83,7 +83,7 @@ func TestIPCAttachWelcome(t *testing.T) {
 	}
 	// Note: we need --shh because testAttachWelcome checks for default
 	// list of ipc modules and shh is included there.
-	gzrm := runGeth(t,
+	gzrm := runGzrm(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--etherbase", coinbase, "--shh", "--ipcpath", ipc)
 
@@ -97,7 +97,7 @@ func TestIPCAttachWelcome(t *testing.T) {
 func TestHTTPAttachWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 	port := strconv.Itoa(trulyRandInt(1024, 65536)) // Yeah, sometimes this will fail, sorry :P
-	gzrm := runGeth(t,
+	gzrm := runGzrm(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--etherbase", coinbase, "--rpc", "--rpcport", port)
 
@@ -112,7 +112,7 @@ func TestWSAttachWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 	port := strconv.Itoa(trulyRandInt(1024, 65536)) // Yeah, sometimes this will fail, sorry :P
 
-	gzrm := runGeth(t,
+	gzrm := runGzrm(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--etherbase", coinbase, "--ws", "--wsport", port)
 
@@ -123,9 +123,9 @@ func TestWSAttachWelcome(t *testing.T) {
 	gzrm.ExpectExit()
 }
 
-func testAttachWelcome(t *testing.T, gzrm *testgeth, endpoint, apis string) {
+func testAttachWelcome(t *testing.T, gzrm *testgzrm, endpoint, apis string) {
 	// Attach to a running gzrm note and terminate immediately
-	attach := runGeth(t, "attach", endpoint)
+	attach := runGzrm(t, "attach", endpoint)
 	defer attach.ExpectExit()
 	attach.CloseStdin()
 
@@ -133,7 +133,7 @@ func testAttachWelcome(t *testing.T, gzrm *testgeth, endpoint, apis string) {
 	attach.SetTemplateFunc("goos", func() string { return runtime.GOOS })
 	attach.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
 	attach.SetTemplateFunc("gover", runtime.Version)
-	attach.SetTemplateFunc("gethver", func() string { return params.Version })
+	attach.SetTemplateFunc("gzrmver", func() string { return params.Version })
 	attach.SetTemplateFunc("etherbase", func() string { return gzrm.Etherbase })
 	attach.SetTemplateFunc("niltime", func() string { return time.Unix(0, 0).Format(time.RFC1123) })
 	attach.SetTemplateFunc("ipc", func() bool { return strings.HasPrefix(endpoint, "ipc") })
@@ -142,9 +142,9 @@ func testAttachWelcome(t *testing.T, gzrm *testgeth, endpoint, apis string) {
 
 	// Verify the actual welcome message to the required template
 	attach.Expect(`
-Welcome to the Geth JavaScript console!
+Welcome to the Gzrm JavaScript console!
 
-instance: Geth/v{{gethver}}/{{goos}}-{{goarch}}/{{gover}}
+instance: Gzrm/v{{gzrmver}}/{{goos}}-{{goarch}}/{{gover}}
 coinbase: {{etherbase}}
 at block: 0 ({{niltime}}){{if ipc}}
  datadir: {{datadir}}{{end}}
