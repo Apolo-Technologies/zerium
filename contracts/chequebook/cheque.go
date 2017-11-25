@@ -17,8 +17,8 @@
 // Package chequebook package wraps the 'chequebook' Zerium smart contract.
 //
 // The functions in this package allow using chequebook for
-// issuing, receiving, verifying cheques in ether; (auto)cashing cheques in ether
-// as well as (auto)depositing ether to the chequebook contract.
+// issuing, receiving, verifying cheques in zerium; (auto)cashing cheques in zerium
+// as well as (auto)depositing zerium to the chequebook contract.
 package chequebook
 
 //go:generate abigen --sol contract/chequebook.sol --pkg contract --out contract/chequebook.go
@@ -52,8 +52,8 @@ import (
 // Some functionality requires interacting with the blockchain:
 // * setting current balance on peer's chequebook
 // * sending the transaction to cash the cheque
-// * depositing ether to the chequebook
-// * watching incoming ether
+// * depositing zerium to the chequebook
+// * watching incoming zerium
 
 var (
 	gasToCash = big.NewInt(2000000) // gas cost of a cash transaction using chequebook
