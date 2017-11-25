@@ -209,35 +209,35 @@ var (
 		Usage: "Developer flag to serve the dashboard from the local file system",
 		Value: dashboard.DefaultConfig.Assets,
 	}
-	// Ethash settings
-	EthashCacheDirFlag = DirectoryFlag{
+	// Zrmash settings
+	ZrmashCacheDirFlag = DirectoryFlag{
 		Name:  "zrmash.cachedir",
 		Usage: "Directory to store the zrmash verification caches (default = inside the datadir)",
 	}
-	EthashCachesInMemoryFlag = cli.IntFlag{
+	ZrmashCachesInMemoryFlag = cli.IntFlag{
 		Name:  "zrmash.cachesinmem",
 		Usage: "Number of recent zrmash caches to keep in memory (16MB each)",
-		Value: zrm.DefaultConfig.EthashCachesInMem,
+		Value: zrm.DefaultConfig.ZrmashCachesInMem,
 	}
-	EthashCachesOnDiskFlag = cli.IntFlag{
+	ZrmashCachesOnDiskFlag = cli.IntFlag{
 		Name:  "zrmash.cachesondisk",
 		Usage: "Number of recent zrmash caches to keep on disk (16MB each)",
-		Value: zrm.DefaultConfig.EthashCachesOnDisk,
+		Value: zrm.DefaultConfig.ZrmashCachesOnDisk,
 	}
-	EthashDatasetDirFlag = DirectoryFlag{
+	ZrmashDatasetDirFlag = DirectoryFlag{
 		Name:  "zrmash.dagdir",
 		Usage: "Directory to store the zrmash mining DAGs (default = inside home folder)",
-		Value: DirectoryString{zrm.DefaultConfig.EthashDatasetDir},
+		Value: DirectoryString{zrm.DefaultConfig.ZrmashDatasetDir},
 	}
-	EthashDatasetsInMemoryFlag = cli.IntFlag{
+	ZrmashDatasetsInMemoryFlag = cli.IntFlag{
 		Name:  "zrmash.dagsinmem",
 		Usage: "Number of recent zrmash mining DAGs to keep in memory (1+GB each)",
-		Value: zrm.DefaultConfig.EthashDatasetsInMem,
+		Value: zrm.DefaultConfig.ZrmashDatasetsInMem,
 	}
-	EthashDatasetsOnDiskFlag = cli.IntFlag{
+	ZrmashDatasetsOnDiskFlag = cli.IntFlag{
 		Name:  "zrmash.dagsondisk",
 		Usage: "Number of recent zrmash mining DAGs to keep on disk (1+GB each)",
-		Value: zrm.DefaultConfig.EthashDatasetsOnDisk,
+		Value: zrm.DefaultConfig.ZrmashDatasetsOnDisk,
 	}
 	// Transaction pool settings
 	TxPoolNoLocalsFlag = cli.BoolFlag{
@@ -346,7 +346,7 @@ var (
 		Usage: "Record information useful for VM and contract debugging",
 	}
 	// Logging and debug settings
-	EthStatsURLFlag = cli.StringFlag{
+	ZrmStatsURLFlag = cli.StringFlag{
 		Name:  "zrmstats",
 		Usage: "Reporting URL of a zrmstats service (nodename:secret@host:port)",
 	}
@@ -908,24 +908,24 @@ func setTxPool(ctx *cli.Context, cfg *core.TxPoolConfig) {
 	}
 }
 
-func setEthash(ctx *cli.Context, cfg *zrm.Config) {
-	if ctx.GlobalIsSet(EthashCacheDirFlag.Name) {
-		cfg.EthashCacheDir = ctx.GlobalString(EthashCacheDirFlag.Name)
+func setZrmash(ctx *cli.Context, cfg *zrm.Config) {
+	if ctx.GlobalIsSet(ZrmashCacheDirFlag.Name) {
+		cfg.ZrmashCacheDir = ctx.GlobalString(ZrmashCacheDirFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashDatasetDirFlag.Name) {
-		cfg.EthashDatasetDir = ctx.GlobalString(EthashDatasetDirFlag.Name)
+	if ctx.GlobalIsSet(ZrmashDatasetDirFlag.Name) {
+		cfg.ZrmashDatasetDir = ctx.GlobalString(ZrmashDatasetDirFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashCachesInMemoryFlag.Name) {
-		cfg.EthashCachesInMem = ctx.GlobalInt(EthashCachesInMemoryFlag.Name)
+	if ctx.GlobalIsSet(ZrmashCachesInMemoryFlag.Name) {
+		cfg.ZrmashCachesInMem = ctx.GlobalInt(ZrmashCachesInMemoryFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashCachesOnDiskFlag.Name) {
-		cfg.EthashCachesOnDisk = ctx.GlobalInt(EthashCachesOnDiskFlag.Name)
+	if ctx.GlobalIsSet(ZrmashCachesOnDiskFlag.Name) {
+		cfg.ZrmashCachesOnDisk = ctx.GlobalInt(ZrmashCachesOnDiskFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashDatasetsInMemoryFlag.Name) {
-		cfg.EthashDatasetsInMem = ctx.GlobalInt(EthashDatasetsInMemoryFlag.Name)
+	if ctx.GlobalIsSet(ZrmashDatasetsInMemoryFlag.Name) {
+		cfg.ZrmashDatasetsInMem = ctx.GlobalInt(ZrmashDatasetsInMemoryFlag.Name)
 	}
-	if ctx.GlobalIsSet(EthashDatasetsOnDiskFlag.Name) {
-		cfg.EthashDatasetsOnDisk = ctx.GlobalInt(EthashDatasetsOnDiskFlag.Name)
+	if ctx.GlobalIsSet(ZrmashDatasetsOnDiskFlag.Name) {
+		cfg.ZrmashDatasetsOnDisk = ctx.GlobalInt(ZrmashDatasetsOnDiskFlag.Name)
 	}
 }
 
@@ -951,8 +951,8 @@ func SetShhConfig(ctx *cli.Context, stack *node.Node, cfg *whisper.Config) {
 	}
 }
 
-// SetEthConfig applies zrm-related command line flags to the config.
-func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *zrm.Config) {
+// SetZrmConfig applies zrm-related command line flags to the config.
+func SetZrmConfig(ctx *cli.Context, stack *node.Node, cfg *zrm.Config) {
 	// Avoid conflicting network flags
 	checkExclusive(ctx, DeveloperFlag, TestnetFlag, RinkebyFlag)
 	checkExclusive(ctx, FastSyncFlag, LightModeFlag, SyncModeFlag)
@@ -961,7 +961,7 @@ func SetEthConfig(ctx *cli.Context, stack *node.Node, cfg *zrm.Config) {
 	setZeriumbase(ctx, ks, cfg)
 	setGPO(ctx, &cfg.GPO)
 	setTxPool(ctx, &cfg.TxPool)
-	setEthash(ctx, cfg)
+	setZrmash(ctx, cfg)
 
 	switch {
 	case ctx.GlobalIsSet(SyncModeFlag.Name):
@@ -1053,8 +1053,8 @@ func SetDashboardConfig(ctx *cli.Context, cfg *dashboard.Config) {
 	cfg.Assets = ctx.GlobalString(DashboardAssetsFlag.Name)
 }
 
-// RegisterEthService adds an Zerium client to the stack.
-func RegisterEthService(stack *node.Node, cfg *zrm.Config) {
+// RegisterZrmService adds an Zerium client to the stack.
+func RegisterZrmService(stack *node.Node, cfg *zrm.Config) {
 	var err error
 	if cfg.SyncMode == downloader.LightSync {
 		err = stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
@@ -1091,18 +1091,18 @@ func RegisterShhService(stack *node.Node, cfg *whisper.Config) {
 	}
 }
 
-// RegisterEthStatsService configures the Zerium Stats daemon and adds it to
+// RegisterZrmStatsService configures the Zerium Stats daemon and adds it to
 // th egiven node.
-func RegisterEthStatsService(stack *node.Node, url string) {
+func RegisterZrmStatsService(stack *node.Node, url string) {
 	if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 		// Retrieve both zrm and les services
-		var ethServ *zrm.Zerium
-		ctx.Service(&ethServ)
+		var zrmServ *zrm.Zerium
+		ctx.Service(&zrmServ)
 
 		var lesServ *les.LightZerium
 		ctx.Service(&lesServ)
 
-		return zrmstats.New(url, ethServ, lesServ)
+		return zrmstats.New(url, zrmServ, lesServ)
 	}); err != nil {
 		Fatalf("Failed to register the Zerium Stats service: %v", err)
 	}
@@ -1160,8 +1160,8 @@ func MakeChain(ctx *cli.Context, stack *node.Node) (chain *core.BlockChain, chai
 		engine = zrmash.NewFaker()
 		if !ctx.GlobalBool(FakePoWFlag.Name) {
 			engine = zrmash.New(
-				stack.ResolvePath(zrm.DefaultConfig.EthashCacheDir), zrm.DefaultConfig.EthashCachesInMem, zrm.DefaultConfig.EthashCachesOnDisk,
-				stack.ResolvePath(zrm.DefaultConfig.EthashDatasetDir), zrm.DefaultConfig.EthashDatasetsInMem, zrm.DefaultConfig.EthashDatasetsOnDisk,
+				stack.ResolvePath(zrm.DefaultConfig.ZrmashCacheDir), zrm.DefaultConfig.ZrmashCachesInMem, zrm.DefaultConfig.ZrmashCachesOnDisk,
+				stack.ResolvePath(zrm.DefaultConfig.ZrmashDatasetDir), zrm.DefaultConfig.ZrmashDatasetsInMem, zrm.DefaultConfig.ZrmashDatasetsOnDisk,
 			)
 		}
 	}
