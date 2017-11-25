@@ -68,7 +68,7 @@ main() {
   stop_cluster
   create_network
   start_bootnode
-  start_geth_node
+  start_gzrm_node
   start_swarm_nodes
 }
 
@@ -136,9 +136,9 @@ start_bootnode() {
   start_node "bootnode" "${BOOTNODE_IP}" "$(which bootnode)" ${args[@]}
 }
 
-# start_geth_node starts a gzrm node with --datadir pointing at <base-dir>/gzrm
+# start_gzrm_node starts a gzrm node with --datadir pointing at <base-dir>/gzrm
 # and a single, unlocked account with password "gzrm"
-start_geth_node() {
+start_gzrm_node() {
   local dir="${base_dir}/gzrm"
   mkdir -p "${dir}"
 
