@@ -88,14 +88,14 @@ var AppHelpFlagGroups = []flagGroup{
 		},
 	},
 	{
-		Name: "ZRMHASH",
+		Name: "ZRMASH",
 		Flags: []cli.Flag{
-			utils.ZrmhashCacheDirFlag,
-			utils.ZrmhashCachesInMemoryFlag,
-			utils.ZrmhashCachesOnDiskFlag,
-			utils.ZrmhashDatasetDirFlag,
-			utils.ZrmhashDatasetsInMemoryFlag,
-			utils.ZrmhashDatasetsOnDiskFlag,
+			utils.ZrmashCacheDirFlag,
+			utils.ZrmashCachesInMemoryFlag,
+			utils.ZrmashCachesOnDiskFlag,
+			utils.ZrmashDatasetDirFlag,
+			utils.ZrmashDatasetsInMemoryFlag,
+			utils.ZrmashDatasetsOnDiskFlag,
 		},
 	},
 	//{
