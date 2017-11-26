@@ -14,10 +14,6 @@
   You should have received a copy of the GNU General Public License
   along with zrmash.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** @file mmap.h
- * @author Lefteris Karapetsas <lefteris@ethdev.com>
- * @date 2015
- */
 #pragma once
 #if defined(__MINGW32__) || defined(_WIN32)
 #include <sys/types.h>

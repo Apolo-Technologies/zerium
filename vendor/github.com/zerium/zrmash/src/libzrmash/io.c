@@ -14,10 +14,6 @@
   You should have received a copy of the GNU General Public License
   along with zrmash.  If not, see <http://www.gnu.org/licenses/>.
 */
-/** @file io.c
- * @author Lefteris Karapetsas <lefteris@ethdev.com>
- * @date 2015
- */
 #include "io.h"
 #include <string.h>
 #include <stdio.h>
