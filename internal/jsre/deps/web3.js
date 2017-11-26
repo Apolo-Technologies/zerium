@@ -2570,7 +2570,7 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
                     inputFormatter: utils.toDecimal
                 }),
                 new Property({
-                    name: 'version.abt',
+                    name: 'version.zerium',
                     getter: 'zrm_protocolVersion',
                     inputFormatter: utils.toDecimal
                 }),
