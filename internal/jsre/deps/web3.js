@@ -5109,7 +5109,6 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
             var self = this;
 
             methods().forEach(function (method) {
-                console.warn('method: ' + method.name + ', call: ' + method.call);
                 method.attachToObject(self);
                 method.setRequestManager(self._requestManager);
             });
