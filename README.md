@@ -8,7 +8,7 @@ https://camo.githubusercontent.com/915b7be44ada53c290eb157634330494ebe3e30a/6874
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/abt/zerium?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Automated builds are available for stable releases and the unstable master branch.
-Binary archives are published at https://gzrm.abt.org/downloads/.
+Binary archives are published at https://gzrm.zerium.org/downloads/.
 
 ## Building the source
 
@@ -16,8 +16,8 @@ For prerequisites and detailed build instructions please read the
 [Installation Instructions](https://github.com/abt/zerium/wiki/Building-Zerium)
 on the wiki.
 
-Building gzrm requires both a Go (version 1.7 or later) and a C compiler.
-You can install them using your favourite package manager.
+Building gzrm requires a Go (version 1.7 or later) and a C compiler.
+You can install them using any package manager.
 Once the dependencies are installed, run
 
     make gzrm
@@ -50,10 +50,8 @@ own Gzrm instance.
 
 ### Full node on the main Zerium network
 
-By far the most common scenario is people wanting to simply interact with the Zerium network:
-create accounts; transfer funds; deploy and interact with contracts. For this particular use-case
-the user doesn't care about years-old historical data, so we can fast-sync quickly to the current
-state of the network. To do so:
+The common interaction with the Zerium network:
+create accounts; transfer funds; deploy and interact with contracts. For this particular use:
 
 ```
 $ gzrm --fast --cache=512 console
@@ -74,10 +72,7 @@ This command will:
 
 ### Full node on the Zerium test network
 
-Transitioning towards developers, if you'd like to play around with creating Zerium contracts, you
-almost certainly would like to do that without any real money involved until you get the hang of the
-entire system. In other words, instead of attaching to the main network, you want to join the **test**
-network with your node, which is fully equivalent to the main network, but with play-Zerium only.
+For devs, to create a testnet for creating Zerium contracts:
 
 ```
 $ gzrm --testnet --fast --cache=512 console
@@ -164,11 +159,6 @@ You'll need to use your own programming environments' capabilities (libraries, t
 via HTTP, WS or IPC to a Gzrm node configured with the above flags and you'll need to speak [JSON-RPC](http://www.jsonrpc.org/specification)
 on all transports. You can reuse the same connection for multiple requests!
 
-**Note: Please understand the security implications of opening up an HTTP/WS based transport before
-doing so! Hackers on the internet are actively trying to subvert Zerium nodes with exposed APIs!
-Further, all browser tabs can access locally running webservers, so malicious webpages could try to
-subvert locally available APIs!**
-
 ### Operating a private network
 
 Maintaining your own private network is more involved as a lot of configurations taken for granted in
@@ -199,10 +189,7 @@ and agree upon. This consists of a small JSON file (e.g. call it `genesis.json`)
 }
 ```
 
-The above fields should be fine for most purposes, although we'd recommend changing the `nonce` to
-some random value so you prevent unknown remote nodes from being able to connect to you. If you'd
-like to pre-fund some accounts for easier testing, you can populate the `alloc` field with account
-configs:
+To improve security and privacy we recommend changing the `nonce` to a random value to prevent unknown remote nodes from being able to connect to yours. To pre-fund some accounts for testing, populate the `alloc` field with account configs:
 
 ```json
 "alloc": {
