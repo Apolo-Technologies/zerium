@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/swarm/storage"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/swarm/storage"
 )
 
 func init() {

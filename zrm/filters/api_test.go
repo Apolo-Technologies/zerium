@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/rpc"
 )
 
 func TestUnmarshalJSONNewFilterArgs(t *testing.T) {

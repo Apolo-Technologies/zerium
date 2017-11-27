@@ -17,10 +17,10 @@
 package clique
 
 import (
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/consensus"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/consensus"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/rpc"
 )
 
 // API is a user facing RPC API to allow controlling the signer and voting

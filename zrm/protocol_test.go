@@ -22,12 +22,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/zrm/downloader"
-	"github.com/abt/zerium/p2p"
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/zrm/downloader"
+	"github.com/apolo-technologies/zerium/p2p"
+	"github.com/apolo-technologies/zerium/rlp"
 )
 
 func init() {

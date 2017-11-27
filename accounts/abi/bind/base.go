@@ -22,11 +22,11 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/abt/zerium"
-	"github.com/abt/zerium/accounts/abi"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/crypto"
+	"github.com/apolo-technologies/zerium"
+	"github.com/apolo-technologies/zerium/accounts/abi"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/crypto"
 )
 
 // SignerFn is a signer function callback when a contract requires a method to

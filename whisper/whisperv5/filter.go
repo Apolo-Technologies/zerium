@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 type Filter struct {

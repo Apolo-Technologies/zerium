@@ -20,7 +20,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/abt/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/common/hexutil"
 )
 
 type MyType [5]byte

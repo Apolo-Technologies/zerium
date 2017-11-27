@@ -16,7 +16,7 @@
 
 package zrmclient
 
-import "github.com/abt/zerium"
+import "github.com/apolo-technologies/zerium"
 
 // Verify that Client implements the abt interfaces.
 var (

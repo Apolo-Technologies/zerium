@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 // This table defines supported forks and their chain config.

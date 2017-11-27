@@ -21,9 +21,9 @@ import (
 	"hash"
 	"sync"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto/sha3"
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto/sha3"
+	"github.com/apolo-technologies/zerium/rlp"
 )
 
 type hasher struct {

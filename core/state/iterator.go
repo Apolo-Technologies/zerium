@@ -20,9 +20,9 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/rlp"
-	"github.com/abt/zerium/trie"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/apolo-technologies/zerium/trie"
 )
 
 // NodeIterator is an iterator to traverse the entire state trie post-order,

@@ -30,8 +30,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/abt/zerium/cmd/utils"
-	swarm "github.com/abt/zerium/swarm/api/client"
+	"github.com/apolo-technologies/zerium/cmd/utils"
+	swarm "github.com/apolo-technologies/zerium/swarm/api/client"
 	"gopkg.in/urfave/cli.v1"
 )
 

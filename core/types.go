@@ -19,9 +19,9 @@ package core
 import (
 	"math/big"
 
-	"github.com/abt/zerium/core/state"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/core/vm"
+	"github.com/apolo-technologies/zerium/core/state"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/core/vm"
 )
 
 // Validator is an interface which defines the standard for block validation. It

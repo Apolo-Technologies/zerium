@@ -21,7 +21,7 @@ package whisperv2
 import (
 	"crypto/ecdsa"
 
-	"github.com/abt/zerium/event/filter"
+	"github.com/apolo-technologies/zerium/event/filter"
 )
 
 // Filter is used to subscribe to specific types of whisper messages.

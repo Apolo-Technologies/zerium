@@ -19,8 +19,8 @@ package vm
 import (
 	"math/big"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
 )
 
 // StateDB is an ZVM database for full state querying.

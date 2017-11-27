@@ -21,9 +21,9 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto/sha3"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto/sha3"
+	"github.com/apolo-technologies/zerium/log"
 	"github.com/rcrowley/go-metrics"
 )
 

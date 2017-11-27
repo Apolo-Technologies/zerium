@@ -29,9 +29,9 @@ import (
 
 	"bazil.org/fuse"
 	"bazil.org/fuse/fs"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/swarm/api"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/swarm/api"
 )
 
 var (

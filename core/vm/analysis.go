@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 )
 
 // destinations stores one map per contract (keyed by hash of code).

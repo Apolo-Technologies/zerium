@@ -25,7 +25,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/abt/zerium/internal/build"
+	"github.com/apolo-technologies/zerium/internal/build"
 )
 
 // androidTestClass is a Java class to do some lightweight tests against the Android
@@ -202,7 +202,7 @@ func TestAndroid(t *testing.T) {
 		}
 	}
 	// Generate the mobile bindings for Gzrm and add the tester class
-	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.abt", "github.com/abt/zerium/mobile")
+	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.abt", "github.com/apolo-technologies/zerium/mobile")
 	if output, err := gobind.CombinedOutput(); err != nil {
 		t.Logf("%s", output)
 		t.Fatalf("failed to run gomobile bind: %v", err)

@@ -25,10 +25,10 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 // makeGenesis creates a new genesis struct based on some user input.

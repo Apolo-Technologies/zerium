@@ -27,10 +27,10 @@ import (
 	"errors"
 	"strconv"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/crypto/ecies"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/crypto/ecies"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 // Options specifies the exact way a message should be wrapped into an Envelope.

@@ -41,23 +41,23 @@ import (
 	"sync"
 	"time"
 
-	"github.com/abt/zerium/accounts"
-	"github.com/abt/zerium/accounts/keystore"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/zrm"
-	"github.com/abt/zerium/zrm/downloader"
-	"github.com/abt/zerium/zrmclient"
-	"github.com/abt/zerium/zrmstats"
-	"github.com/abt/zerium/les"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/node"
-	"github.com/abt/zerium/p2p"
-	"github.com/abt/zerium/p2p/discover"
-	"github.com/abt/zerium/p2p/discv5"
-	"github.com/abt/zerium/p2p/nat"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/accounts"
+	"github.com/apolo-technologies/zerium/accounts/keystore"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/zrm"
+	"github.com/apolo-technologies/zerium/zrm/downloader"
+	"github.com/apolo-technologies/zerium/zrmclient"
+	"github.com/apolo-technologies/zerium/zrmstats"
+	"github.com/apolo-technologies/zerium/les"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/node"
+	"github.com/apolo-technologies/zerium/p2p"
+	"github.com/apolo-technologies/zerium/p2p/discover"
+	"github.com/apolo-technologies/zerium/p2p/discv5"
+	"github.com/apolo-technologies/zerium/p2p/nat"
+	"github.com/apolo-technologies/zerium/params"
 	"golang.org/x/net/websocket"
 )
 
@@ -443,7 +443,7 @@ func (f *faucet) apiHandler(conn *websocket.Conn) {
 		case strings.HasPrefix(msg.URL, "https://www.facebook.com/"):
 			username, avatar, address, err = authFacebook(msg.URL)
 		default:
-			err = errors.New("Something funky happened, please open an issue at https://github.com/abt/zerium/issues")
+			err = errors.New("Something funky happened, please open an issue at https://github.com/apolo-technologies/zerium/issues")
 		}
 		if err != nil {
 			if err = sendError(conn, err); err != nil {

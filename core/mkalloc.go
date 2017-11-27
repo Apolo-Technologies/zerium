@@ -34,8 +34,8 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/rlp"
 )
 
 type allocItem struct{ Addr, Balance *big.Int }

@@ -35,10 +35,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/swarm/api"
-	"github.com/abt/zerium/swarm/storage"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/swarm/api"
+	"github.com/apolo-technologies/zerium/swarm/storage"
 	"github.com/rs/cors"
 )
 

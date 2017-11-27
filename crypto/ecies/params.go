@@ -42,7 +42,7 @@ import (
 	"fmt"
 	"hash"
 
-	ethcrypto "github.com/abt/zerium/crypto"
+	ethcrypto "github.com/apolo-technologies/zerium/crypto"
 )
 
 var (

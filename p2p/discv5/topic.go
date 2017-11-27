@@ -23,7 +23,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/abt/zerium/common/mclock"
+	"github.com/apolo-technologies/zerium/common/mclock"
 )
 
 const (

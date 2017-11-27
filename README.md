@@ -4,7 +4,7 @@ Official golang implementation of the Zerium protocol.
 
 [![API Reference](
 https://camo.githubusercontent.com/915b7be44ada53c290eb157634330494ebe3e30a/68747470733a2f2f676f646f632e6f72672f6769746875622e636f6d2f676f6c616e672f6764646f3f7374617475732e737667
-)](https://godoc.org/github.com/abt/zerium)
+)](https://godoc.org/github.com/apolo-technologies/zerium)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/abt/zerium?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Automated builds are available for stable releases and the unstable master branch.
@@ -13,7 +13,7 @@ Binary archives are published at https://gzrm.zerium.org/downloads/.
 ## Building the source
 
 For prerequisites and detailed build instructions please read the
-[Installation Instructions](https://github.com/abt/zerium/wiki/Building-Zerium)
+[Installation Instructions](https://github.com/apolo-technologies/zerium/wiki/Building-Zerium)
 on the wiki.
 
 Building gzrm requires a Go (version 1.7 or later) and a C compiler.
@@ -32,19 +32,19 @@ The zerium project comes with several wrappers/executables found in the `cmd` di
 
 | Command    | Description |
 |:----------:|-------------|
-| **`gzrm`** | Our main Zerium CLI client. It is the entry point into the Zerium network (main-, test- or private net), capable of running as a full node (default) archive node (retaining all historical state) or a light node (retrieving data live). It can be used by other processes as a gateway into the Zerium network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `gzrm --help` and the [CLI Wiki page](https://github.com/abt/zerium/wiki/Command-Line-Options) for command line options. |
-| `abigen` | Source code generator to convert Zerium contract definitions into easy to use, compile-time type-safe Go packages. It operates on plain [Zerium contract ABIs](https://github.com/abt/wiki/wiki/Zerium-Contract-ABI) with expanded functionality if the contract bytecode is also available. However it also accepts Solidity source files, making development much more streamlined. Please see our [Native DApps](https://github.com/abt/zerium/wiki/Native-DApps:-Go-bindings-to-Zerium-contracts) wiki page for details. |
+| **`gzrm`** | Our main Zerium CLI client. It is the entry point into the Zerium network (main-, test- or private net), capable of running as a full node (default) archive node (retaining all historical state) or a light node (retrieving data live). It can be used by other processes as a gateway into the Zerium network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `gzrm --help` and the [CLI Wiki page](https://github.com/apolo-technologies/zerium/wiki/Command-Line-Options) for command line options. |
+| `abigen` | Source code generator to convert Zerium contract definitions into easy to use, compile-time type-safe Go packages. It operates on plain [Zerium contract ABIs](https://github.com/apolo-technologies/wiki/wiki/Zerium-Contract-ABI) with expanded functionality if the contract bytecode is also available. However it also accepts Solidity source files, making development much more streamlined. Please see our [Native DApps](https://github.com/apolo-technologies/zerium/wiki/Native-DApps:-Go-bindings-to-Zerium-contracts) wiki page for details. |
 | `bootnode` | Stripped down version of our Zerium client implementation that only takes part in the network node discovery protocol, but does not run any of the higher level application protocols. It can be used as a lightweight bootstrap node to aid in finding peers in private networks. |
 | `zvm` | Developer utility version of the ZVM (Zerium Virtual Machine) that is capable of running bytecode snippets within a configurable environment and execution mode. Its purpose is to allow isolated, fine-grained debugging of ZVM opcodes (e.g. `zvm --code 60ff60ff --debug`). |
-| `gzrmrpctest` | Developer utility tool to support our [abt/rpc-test](https://github.com/abt/rpc-tests) test suite which validates baseline conformity to the [Zerium JSON RPC](https://github.com/abt/wiki/wiki/JSON-RPC) specs. Please see the [test suite's readme](https://github.com/abt/rpc-tests/blob/master/README.md) for details. |
-| `rlpdump` | Developer utility tool to convert binary RLP ([Recursive Length Prefix](https://github.com/abt/wiki/wiki/RLP)) dumps (data encoding used by the Zerium protocol both network as well as consensus wise) to user friendlier hierarchical representation (e.g. `rlpdump --hex CE0183FFFFFFC4C304050583616263`). |
+| `gzrmrpctest` | Developer utility tool to support our [abt/rpc-test](https://github.com/apolo-technologies/rpc-tests) test suite which validates baseline conformity to the [Zerium JSON RPC](https://github.com/apolo-technologies/wiki/wiki/JSON-RPC) specs. Please see the [test suite's readme](https://github.com/apolo-technologies/rpc-tests/blob/master/README.md) for details. |
+| `rlpdump` | Developer utility tool to convert binary RLP ([Recursive Length Prefix](https://github.com/apolo-technologies/wiki/wiki/RLP)) dumps (data encoding used by the Zerium protocol both network as well as consensus wise) to user friendlier hierarchical representation (e.g. `rlpdump --hex CE0183FFFFFFC4C304050583616263`). |
 | `swarm`    | swarm daemon and tools. This is the entrypoint for the swarm network. `swarm --help` for command line options and subcommands. See https://swarm-guide.readthedocs.io for swarm documentation. |
 | `puppzrm`    | a CLI wizard that aids in creating a new Zerium network. |
 
 ## Running gzrm
 
 Going through all the possible command line flags is out of scope here (please consult our
-[CLI Wiki page](https://github.com/abt/zerium/wiki/Command-Line-Options)), but we've
+[CLI Wiki page](https://github.com/apolo-technologies/zerium/wiki/Command-Line-Options)), but we've
 enumerated a few common parameter combos to get you up to speed quickly on how you can run your
 own Gzrm instance.
 
@@ -64,9 +64,9 @@ This command will:
  * Bump the memory allowance of the database to 512MB (`--cache=512`), which can help significantly in
    sync times especially for HDD users. This flag is optional and you can set it as high or as low as
    you'd like, though we'd recommend the 512MB - 2GB range.
- * Start up Gzrm's built-in interactive [JavaScript console](https://github.com/abt/zerium/wiki/JavaScript-Console),
-   (via the trailing `console` subcommand) through which you can invoke all official [`webze` methods](https://github.com/abt/wiki/wiki/JavaScript-API)
-   as well as Gzrm's own [management APIs](https://github.com/abt/zerium/wiki/Management-APIs).
+ * Start up Gzrm's built-in interactive [JavaScript console](https://github.com/apolo-technologies/zerium/wiki/JavaScript-Console),
+   (via the trailing `console` subcommand) through which you can invoke all official [`webze` methods](https://github.com/apolo-technologies/wiki/wiki/JavaScript-API)
+   as well as Gzrm's own [management APIs](https://github.com/apolo-technologies/zerium/wiki/Management-APIs).
    This too is optional and if you leave it out you can always attach to an already running Gzrm instance
    with `gzrm attach`.
 
@@ -131,8 +131,8 @@ Do not forget `--rpcaddr 0.0.0.0`, if you want to access RPC from other containe
 
 As a developer, sooner rather than later you'll want to start interacting with Gzrm and the Zerium
 network via your own programs and not manually through the console. To aid this, Gzrm has built in
-support for a JSON-RPC based APIs ([standard APIs](https://github.com/abt/wiki/wiki/JSON-RPC) and
-[Gzrm specific APIs](https://github.com/abt/zerium/wiki/Management-APIs)). These can be
+support for a JSON-RPC based APIs ([standard APIs](https://github.com/apolo-technologies/wiki/wiki/JSON-RPC) and
+[Gzrm specific APIs](https://github.com/apolo-technologies/zerium/wiki/Management-APIs)). These can be
 exposed via HTTP, WebSockets and IPC (unix sockets on unix based platforms, and named pipes on Windows).
 
 The IPC interface is enabled by default and exposes all the APIs supported by Gzrm, whereas the HTTP
@@ -216,7 +216,7 @@ $ bootnode --genkey=boot.key
 $ bootnode --nodekey=boot.key
 ```
 
-With the bootnode online, it will display an [`enode` URL](https://github.com/abt/wiki/wiki/enode-url-format)
+With the bootnode online, it will display an [`enode` URL](https://github.com/apolo-technologies/wiki/wiki/enode-url-format)
 that other nodes can use to connect to it and exchange peer information. Make sure to replace the
 displayed IP address information (most probably `[::]`) with your externally accessible IP to get the
 actual `enode` URL.
@@ -277,7 +277,7 @@ Please make sure your contributions adhere to our coding guidelines:
  * Commit messages should be prefixed with the package(s) they modify.
    * E.g. "zrm, rpc: make trace configs optional"
 
-Please see the [Developers' Guide](https://github.com/abt/zerium/wiki/Developers'-Guide)
+Please see the [Developers' Guide](https://github.com/apolo-technologies/zerium/wiki/Developers'-Guide)
 for more details on configuring your environment, managing project dependencies and testing procedures.
 
 ## License

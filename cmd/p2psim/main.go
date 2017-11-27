@@ -29,12 +29,12 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/p2p"
-	"github.com/abt/zerium/p2p/discover"
-	"github.com/abt/zerium/p2p/simulations"
-	"github.com/abt/zerium/p2p/simulations/adapters"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/p2p"
+	"github.com/apolo-technologies/zerium/p2p/discover"
+	"github.com/apolo-technologies/zerium/p2p/simulations"
+	"github.com/apolo-technologies/zerium/p2p/simulations/adapters"
+	"github.com/apolo-technologies/zerium/rpc"
 	"gopkg.in/urfave/cli.v1"
 )
 

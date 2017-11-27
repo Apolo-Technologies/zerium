@@ -20,10 +20,10 @@ import (
 	"bytes"
 	"encoding/json"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/zrmdb"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/zrmdb"
+	"github.com/apolo-technologies/zerium/params"
 	lru "github.com/hashicorp/golang-lru"
 )
 

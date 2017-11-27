@@ -24,12 +24,12 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/contracts/ens"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/swarm/network"
-	"github.com/abt/zerium/swarm/services/swap"
-	"github.com/abt/zerium/swarm/storage"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/contracts/ens"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/swarm/network"
+	"github.com/apolo-technologies/zerium/swarm/services/swap"
+	"github.com/apolo-technologies/zerium/swarm/storage"
 )
 
 const (

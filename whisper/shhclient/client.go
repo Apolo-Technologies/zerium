@@ -19,10 +19,10 @@ package shhclient
 import (
 	"context"
 
-	"github.com/abt/zerium"
-	"github.com/abt/zerium/common/hexutil"
-	"github.com/abt/zerium/rpc"
-	whisper "github.com/abt/zerium/whisper/whisperv5"
+	"github.com/apolo-technologies/zerium"
+	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/rpc"
+	whisper "github.com/apolo-technologies/zerium/whisper/whisperv5"
 )
 
 // Client defines typed wrappers for the Whisper v5 RPC API.

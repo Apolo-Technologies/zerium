@@ -17,7 +17,7 @@
 package api
 
 import (
-	"github.com/abt/zerium/swarm/network"
+	"github.com/apolo-technologies/zerium/swarm/network"
 )
 
 type Control struct {

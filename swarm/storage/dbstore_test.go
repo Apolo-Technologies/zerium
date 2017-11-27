@@ -21,7 +21,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 )
 
 func initDbStore(t *testing.T) *DbStore {

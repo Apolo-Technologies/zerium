@@ -21,8 +21,8 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/crypto"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/crypto"
 )
 
 // Tests that transactions can be added to strict lists and list contents and

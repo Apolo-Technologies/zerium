@@ -22,9 +22,9 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/hexutil"
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/rlp"
 )
 
 //go:generate gencodec -type Receipt -field-override receiptMarshaling -out gen_receipt_json.go

@@ -20,7 +20,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 	"gopkg.in/karalabe/cookiejar.v2/collections/prque"
 )
 

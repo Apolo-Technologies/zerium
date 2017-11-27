@@ -23,8 +23,8 @@ import (
 	"crypto/elliptic"
 	"fmt"
 
-	"github.com/abt/zerium/common/math"
-	"github.com/abt/zerium/crypto/secp256k1"
+	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/apolo-technologies/zerium/crypto/secp256k1"
 )
 
 func Ecrecover(hash, sig []byte) ([]byte, error) {

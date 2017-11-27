@@ -25,8 +25,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/abt/zerium/swarm/api"
-	"github.com/abt/zerium/swarm/testutil"
+	"github.com/apolo-technologies/zerium/swarm/api"
+	"github.com/apolo-technologies/zerium/swarm/testutil"
 )
 
 // TestClientUploadDownloadRaw test uploading and downloading raw data to swarm

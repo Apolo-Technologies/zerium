@@ -27,7 +27,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 const (

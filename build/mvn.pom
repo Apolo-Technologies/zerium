@@ -11,7 +11,7 @@
 
   <name>Android Zerium Client</name>
   <description>Android port of the zerium libraries and node</description>
-  <url>https://github.com/abt/zerium</url>
+  <url>https://github.com/apolo-technologies/zerium</url>
   <inceptionYear>2015</inceptionYear>
 
   <licenses>
@@ -48,10 +48,10 @@
 
   <issueManagement>
     <system>GitHub Issues</system>
-    <url>https://github.com/abt/zerium/issues/</url>
+    <url>https://github.com/apolo-technologies/zerium/issues/</url>
   </issueManagement>
 
   <scm>
-    <url>https://github.com/abt/zerium</url>
+    <url>https://github.com/apolo-technologies/zerium</url>
   </scm>
 </project>

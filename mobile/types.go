@@ -23,9 +23,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/rlp"
 )
 
 // A Nonce is a 64-bit hash which proves (combined with the mix-hash) that

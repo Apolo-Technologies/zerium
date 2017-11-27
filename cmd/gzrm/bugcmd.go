@@ -26,10 +26,10 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/abt/zerium/cmd/internal/browser"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/cmd/internal/browser"
+	"github.com/apolo-technologies/zerium/params"
 
-	"github.com/abt/zerium/cmd/utils"
+	"github.com/apolo-technologies/zerium/cmd/utils"
 	cli "gopkg.in/urfave/cli.v1"
 )
 
@@ -41,7 +41,7 @@ var bugCommand = cli.Command{
 	Category:  "MISCELLANEOUS COMMANDS",
 }
 
-const issueUrl = "https://github.com/abt/zerium/issues/new"
+const issueUrl = "https://github.com/apolo-technologies/zerium/issues/new"
 
 // reportBug reports a bug by opening a new URL to the zerium GH issue
 // tracker and setting default values as the issue body.

@@ -19,7 +19,7 @@ package gzrm
 import (
 	"os"
 
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 // SetVerbosity sets the global verbosity level (between 0 and 6 - see logger/verbosity.go).

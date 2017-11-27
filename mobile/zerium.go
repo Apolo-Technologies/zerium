@@ -22,8 +22,8 @@ import (
 	"errors"
 	"math/big"
 
-	abt "github.com/abt/zerium"
-	"github.com/abt/zerium/common"
+	abt "github.com/apolo-technologies/zerium"
+	"github.com/apolo-technologies/zerium/common"
 )
 
 // Subscription represents an event subscription where events are

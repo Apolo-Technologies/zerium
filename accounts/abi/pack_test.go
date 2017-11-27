@@ -24,7 +24,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 )
 
 func TestPack(t *testing.T) {

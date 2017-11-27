@@ -25,7 +25,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 // nodeDockerfile is the Dockerfile required to run an Zerium node.

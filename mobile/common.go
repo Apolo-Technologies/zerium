@@ -24,7 +24,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 )
 
 // Hash represents the 32 byte Keccak256 hash of arbitrary data.

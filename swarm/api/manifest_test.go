@@ -24,7 +24,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/abt/zerium/swarm/storage"
+	"github.com/apolo-technologies/zerium/swarm/storage"
 )
 
 func manifest(paths ...string) (manifestReader storage.LazySectionReader) {

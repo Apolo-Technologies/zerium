@@ -22,12 +22,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/abt/zerium/accounts/abi/bind"
-	"github.com/abt/zerium/accounts/abi/bind/backends"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/crypto"
+	"github.com/apolo-technologies/zerium/accounts/abi/bind"
+	"github.com/apolo-technologies/zerium/accounts/abi/bind/backends"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/crypto"
 )
 
 var testKey, _ = crypto.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")

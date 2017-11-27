@@ -28,13 +28,13 @@ import (
 
 	cli "gopkg.in/urfave/cli.v1"
 
-	"github.com/abt/zerium/cmd/utils"
-	"github.com/abt/zerium/contracts/release"
-	"github.com/abt/zerium/dashboard"
-	"github.com/abt/zerium/zrm"
-	"github.com/abt/zerium/node"
-	"github.com/abt/zerium/params"
-	whisper "github.com/abt/zerium/whisper/whisperv5"
+	"github.com/apolo-technologies/zerium/cmd/utils"
+	"github.com/apolo-technologies/zerium/contracts/release"
+	"github.com/apolo-technologies/zerium/dashboard"
+	"github.com/apolo-technologies/zerium/zrm"
+	"github.com/apolo-technologies/zerium/node"
+	"github.com/apolo-technologies/zerium/params"
+	whisper "github.com/apolo-technologies/zerium/whisper/whisperv5"
 	"github.com/naoina/toml"
 )
 

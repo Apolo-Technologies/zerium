@@ -27,7 +27,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/abt/zerium/common/math"
+	"github.com/apolo-technologies/zerium/common/math"
 	"gopkg.in/urfave/cli.v1"
 )
 

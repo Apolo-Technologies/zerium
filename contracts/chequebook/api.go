@@ -20,7 +20,7 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 )
 
 const Version = "1.0"

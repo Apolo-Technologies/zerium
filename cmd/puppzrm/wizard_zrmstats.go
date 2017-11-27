@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 // deployZrmstats queries the user for various input on deploying an zrmstats

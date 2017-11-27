@@ -19,9 +19,9 @@ package misc
 import (
 	"fmt"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 // VerifyForkHashes verifies that blocks conforming to network hard-forks do have

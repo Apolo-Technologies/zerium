@@ -20,10 +20,10 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/abt/zerium/consensus/zrmash"
-	"github.com/abt/zerium/core/vm"
-	"github.com/abt/zerium/zrmdb"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/consensus/zrmash"
+	"github.com/apolo-technologies/zerium/core/vm"
+	"github.com/apolo-technologies/zerium/zrmdb"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 // Tests that DAO-fork enabled clients can properly filter out fork-commencing

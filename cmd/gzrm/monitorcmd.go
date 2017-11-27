@@ -25,9 +25,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/abt/zerium/cmd/utils"
-	"github.com/abt/zerium/node"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/cmd/utils"
+	"github.com/apolo-technologies/zerium/node"
+	"github.com/apolo-technologies/zerium/rpc"
 	"github.com/gizak/termui"
 	"gopkg.in/urfave/cli.v1"
 )

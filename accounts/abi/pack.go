@@ -20,8 +20,8 @@ import (
 	"math/big"
 	"reflect"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/math"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/math"
 )
 
 // packBytesSlice packs the given bytes as [L, V] as the canonical representation

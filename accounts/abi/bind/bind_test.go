@@ -26,7 +26,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 	"golang.org/x/tools/imports"
 )
 

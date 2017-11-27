@@ -1,5 +1,5 @@
 language: go
-go_import_path: github.com/abt/zerium
+go_import_path: github.com/apolo-technologies/zerium
 sudo: false
 matrix:
   include:
@@ -158,8 +158,8 @@ matrix:
         - mv android-ndk-r15c $HOME
         - export ANDROID_NDK=$HOME/android-ndk-r15c
 
-        - mkdir -p $GOPATH/src/github.com/abt
-        - ln -s `pwd` $GOPATH/src/github.com/abt
+        - mkdir -p $GOPATH/src/github.com/apolo-technologies
+        - ln -s `pwd` $GOPATH/src/github.com/apolo-technologies
         - go run build/ci.go aar -signer ANDROID_SIGNING_KEY -deploy https://oss.sonatype.org -upload gzrmstore/builds
 
     # This builder does the OSX Azure, iOS CocoaPods and iOS Azure uploads

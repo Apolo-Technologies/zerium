@@ -29,9 +29,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/abt/zerium/accounts"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto"
+	"github.com/apolo-technologies/zerium/accounts"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/pborman/uuid"
 )
 

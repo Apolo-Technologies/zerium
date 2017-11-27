@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 )
 
 // ContractRef is a reference to the contract's backing object

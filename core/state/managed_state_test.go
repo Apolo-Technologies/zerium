@@ -19,8 +19,8 @@ package state
 import (
 	"testing"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/zrmdb"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/zrmdb"
 )
 
 var addr = common.BytesToAddress([]byte("test"))

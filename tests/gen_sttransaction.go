@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"math/big"
 
-	"github.com/abt/zerium/common/hexutil"
-	"github.com/abt/zerium/common/math"
+	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/common/math"
 )
 
 var _ = (*stTransactionMarshaling)(nil)

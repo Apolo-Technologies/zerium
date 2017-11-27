@@ -26,9 +26,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/abt/zerium/accounts"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/event"
+	"github.com/apolo-technologies/zerium/accounts"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/event"
 )
 
 var testSigData = make([]byte, 32)

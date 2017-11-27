@@ -21,11 +21,11 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/abt/zerium/accounts/abi/bind"
-	"github.com/abt/zerium/accounts/abi/bind/backends"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/crypto"
+	"github.com/apolo-technologies/zerium/accounts/abi/bind"
+	"github.com/apolo-technologies/zerium/accounts/abi/bind/backends"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/crypto"
 )
 
 // setupReleaseTest creates a blockchain simulator and deploys a version oracle

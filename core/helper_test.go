@@ -20,9 +20,9 @@ import (
 	"container/list"
 	"fmt"
 
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/zrmdb"
-	"github.com/abt/zerium/event"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/zrmdb"
+	"github.com/apolo-technologies/zerium/event"
 )
 
 // Implement our ZrmTest Manager

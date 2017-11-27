@@ -23,11 +23,11 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/abt/zerium/event"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/p2p"
-	"github.com/abt/zerium/p2p/discover"
-	"github.com/abt/zerium/p2p/simulations/adapters"
+	"github.com/apolo-technologies/zerium/event"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/p2p"
+	"github.com/apolo-technologies/zerium/p2p/discover"
+	"github.com/apolo-technologies/zerium/p2p/simulations/adapters"
 )
 
 // NetworkConfig defines configuration options for starting a Network

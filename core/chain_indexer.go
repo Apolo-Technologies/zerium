@@ -23,11 +23,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/zrmdb"
-	"github.com/abt/zerium/event"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/zrmdb"
+	"github.com/apolo-technologies/zerium/event"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 // ChainIndexerBackend defines the methods needed to process chain segments in

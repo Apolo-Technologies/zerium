@@ -22,8 +22,8 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/zrmdb"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/zrmdb"
 )
 
 func TestIterator(t *testing.T) {

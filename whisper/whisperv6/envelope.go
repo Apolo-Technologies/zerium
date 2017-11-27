@@ -26,11 +26,11 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/math"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/crypto/ecies"
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/crypto/ecies"
+	"github.com/apolo-technologies/zerium/rlp"
 )
 
 // Envelope represents a clear-text data packet to transmit through the Whisper

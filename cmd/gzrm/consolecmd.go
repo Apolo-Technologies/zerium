@@ -21,10 +21,10 @@ import (
 	"os/signal"
 	"strings"
 
-	"github.com/abt/zerium/cmd/utils"
-	"github.com/abt/zerium/console"
-	"github.com/abt/zerium/node"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/cmd/utils"
+	"github.com/apolo-technologies/zerium/console"
+	"github.com/apolo-technologies/zerium/node"
+	"github.com/apolo-technologies/zerium/rpc"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -40,7 +40,7 @@ var (
 		Description: `
 The Gzrm console is an interactive shell for the JavaScript runtime environment
 which exposes a node admin interface as well as the Ðapp JavaScript API.
-See https://github.com/abt/zerium/wiki/Javascipt-Console.`,
+See https://github.com/apolo-technologies/zerium/wiki/Javascipt-Console.`,
 	}
 
 	attachCommand = cli.Command{
@@ -53,7 +53,7 @@ See https://github.com/abt/zerium/wiki/Javascipt-Console.`,
 		Description: `
 The Gzrm console is an interactive shell for the JavaScript runtime environment
 which exposes a node admin interface as well as the Ðapp JavaScript API.
-See https://github.com/abt/zerium/wiki/Javascipt-Console.
+See https://github.com/apolo-technologies/zerium/wiki/Javascipt-Console.
 This command allows to open a console on a running gzrm node.`,
 	}
 
@@ -66,7 +66,7 @@ This command allows to open a console on a running gzrm node.`,
 		Category:  "CONSOLE COMMANDS",
 		Description: `
 The JavaScript VM exposes a node admin interface as well as the Ðapp
-JavaScript API. See https://github.com/abt/zerium/wiki/Javascipt-Console`,
+JavaScript API. See https://github.com/apolo-technologies/zerium/wiki/Javascipt-Console`,
 	}
 )
 

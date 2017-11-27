@@ -30,9 +30,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/crypto/secp256k1"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/crypto/secp256k1"
 )
 
 const NodeIDBits = 512

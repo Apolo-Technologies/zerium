@@ -22,8 +22,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/swarm/storage"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/swarm/storage"
 )
 
 // Handler for storage/retrieval related protocol requests

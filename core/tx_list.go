@@ -22,9 +22,9 @@ import (
 	"math/big"
 	"sort"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 // nonceHeap is a heap.Interface implementation over 64bit unsigned integers for

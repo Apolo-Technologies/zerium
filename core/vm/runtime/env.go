@@ -19,9 +19,9 @@ package runtime
 import (
 	"math/big"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/core/vm"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/core/vm"
 )
 
 func NewEnv(cfg *Config) *vm.ZVM {

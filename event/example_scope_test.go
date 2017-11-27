@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/abt/zerium/event"
+	"github.com/apolo-technologies/zerium/event"
 )
 
 // This example demonstrates how SubscriptionScope can be used to control the lifetime of

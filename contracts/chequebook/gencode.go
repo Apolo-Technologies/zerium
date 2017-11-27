@@ -25,11 +25,11 @@ import (
 	"io/ioutil"
 	"math/big"
 
-	"github.com/abt/zerium/accounts/abi/bind"
-	"github.com/abt/zerium/accounts/abi/bind/backends"
-	"github.com/abt/zerium/contracts/chequebook/contract"
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/crypto"
+	"github.com/apolo-technologies/zerium/accounts/abi/bind"
+	"github.com/apolo-technologies/zerium/accounts/abi/bind/backends"
+	"github.com/apolo-technologies/zerium/contracts/chequebook/contract"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/crypto"
 )
 
 var (

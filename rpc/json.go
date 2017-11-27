@@ -26,7 +26,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 const (

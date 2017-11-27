@@ -25,9 +25,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/hexutil"
-	"github.com/abt/zerium/core/types"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/core/types"
 )
 
 // Tests that verification caches can be correctly generated.

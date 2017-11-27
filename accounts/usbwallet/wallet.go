@@ -25,11 +25,11 @@ import (
 	"sync"
 	"time"
 
-	abt "github.com/abt/zerium"
-	"github.com/abt/zerium/accounts"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/log"
+	abt "github.com/apolo-technologies/zerium"
+	"github.com/apolo-technologies/zerium/accounts"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/log"
 	"github.com/karalabe/hid"
 )
 

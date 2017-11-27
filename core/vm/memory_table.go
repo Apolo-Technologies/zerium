@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"github.com/abt/zerium/common/math"
+	"github.com/apolo-technologies/zerium/common/math"
 )
 
 func memorySha3(stack *Stack) *big.Int {

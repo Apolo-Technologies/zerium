@@ -20,8 +20,8 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 type dummyContractRef struct {

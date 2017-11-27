@@ -22,8 +22,8 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/swarm/storage"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/swarm/storage"
 )
 
 // syncer parameters (global, not peer specific) default values

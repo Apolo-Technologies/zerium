@@ -25,14 +25,14 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/abt/zerium/accounts"
-	"github.com/abt/zerium/accounts/keystore"
-	"github.com/abt/zerium/accounts/usbwallet"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/p2p"
-	"github.com/abt/zerium/p2p/discover"
+	"github.com/apolo-technologies/zerium/accounts"
+	"github.com/apolo-technologies/zerium/accounts/keystore"
+	"github.com/apolo-technologies/zerium/accounts/usbwallet"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/p2p"
+	"github.com/apolo-technologies/zerium/p2p/discover"
 )
 
 const (

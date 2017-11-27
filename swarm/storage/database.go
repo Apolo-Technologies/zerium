@@ -22,7 +22,7 @@ package storage
 import (
 	"fmt"
 
-	"github.com/abt/zerium/compression/rle"
+	"github.com/apolo-technologies/zerium/compression/rle"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/iterator"
 	"github.com/syndtr/goleveldb/leveldb/opt"

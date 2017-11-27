@@ -19,10 +19,10 @@ package downloader
 import (
 	"math/big"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/zrmdb"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/zrmdb"
 )
 
 // FakePeer is a mock downloader peer that operates on a local database instance

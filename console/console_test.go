@@ -26,11 +26,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/zrm"
-	"github.com/abt/zerium/internal/jsre"
-	"github.com/abt/zerium/node"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/zrm"
+	"github.com/apolo-technologies/zerium/internal/jsre"
+	"github.com/apolo-technologies/zerium/node"
 )
 
 const (

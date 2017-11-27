@@ -24,9 +24,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto"
-	whisper "github.com/abt/zerium/whisper/whisperv5"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto"
+	whisper "github.com/apolo-technologies/zerium/whisper/whisperv5"
 )
 
 const powRequirement = 0.00001

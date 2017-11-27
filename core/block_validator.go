@@ -20,11 +20,11 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/abt/zerium/common/math"
-	"github.com/abt/zerium/consensus"
-	"github.com/abt/zerium/core/state"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/apolo-technologies/zerium/consensus"
+	"github.com/apolo-technologies/zerium/core/state"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 // BlockValidator is responsible for validating block headers, uncles and

@@ -30,8 +30,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/abt/zerium/accounts/keystore"
-	"github.com/abt/zerium/core/types"
+	"github.com/apolo-technologies/zerium/accounts/keystore"
+	"github.com/apolo-technologies/zerium/core/types"
 )
 
 // Tests that the account management snippets work correctly.

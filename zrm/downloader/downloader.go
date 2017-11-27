@@ -27,13 +27,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	abt "github.com/abt/zerium"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/zrmdb"
-	"github.com/abt/zerium/event"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/params"
+	abt "github.com/apolo-technologies/zerium"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/zrmdb"
+	"github.com/apolo-technologies/zerium/event"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/params"
 	"github.com/rcrowley/go-metrics"
 )
 

@@ -32,9 +32,9 @@ import (
 	"unsafe"
 
 	mmap "github.com/edsrzf/mmap-go"
-	"github.com/abt/zerium/consensus"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/consensus"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/rpc"
 	metrics "github.com/rcrowley/go-metrics"
 )
 

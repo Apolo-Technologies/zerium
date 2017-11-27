@@ -26,7 +26,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/rlp"
 )
 
 var (

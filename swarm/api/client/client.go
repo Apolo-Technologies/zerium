@@ -33,7 +33,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/abt/zerium/swarm/api"
+	"github.com/apolo-technologies/zerium/swarm/api"
 )
 
 var (

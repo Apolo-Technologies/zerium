@@ -20,10 +20,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/p2p"
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/p2p"
+	"github.com/apolo-technologies/zerium/rlp"
 	set "gopkg.in/fatih/set.v0"
 )
 

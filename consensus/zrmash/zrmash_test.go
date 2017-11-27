@@ -20,7 +20,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/abt/zerium/core/types"
+	"github.com/apolo-technologies/zerium/core/types"
 )
 
 // Tests that zrmash works correctly in test mode.

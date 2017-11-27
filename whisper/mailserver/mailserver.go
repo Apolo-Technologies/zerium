@@ -21,12 +21,12 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"github.com/abt/zerium/cmd/utils"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/rlp"
-	whisper "github.com/abt/zerium/whisper/whisperv5"
+	"github.com/apolo-technologies/zerium/cmd/utils"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/rlp"
+	whisper "github.com/apolo-technologies/zerium/whisper/whisperv5"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/util"
 )

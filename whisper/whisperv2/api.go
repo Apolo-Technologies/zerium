@@ -22,9 +22,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/hexutil"
-	"github.com/abt/zerium/crypto"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/crypto"
 )
 
 // PublicWhisperAPI provides the whisper RPC service.

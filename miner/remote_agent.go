@@ -23,11 +23,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/consensus"
-	"github.com/abt/zerium/consensus/zrmash"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/consensus"
+	"github.com/apolo-technologies/zerium/consensus/zrmash"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 type hashrate struct {

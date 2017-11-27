@@ -22,10 +22,10 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/internal/zrmapi"
-	"github.com/abt/zerium/params"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/internal/zrmapi"
+	"github.com/apolo-technologies/zerium/params"
+	"github.com/apolo-technologies/zerium/rpc"
 )
 
 var maxPrice = big.NewInt(500 * params.Shannon)

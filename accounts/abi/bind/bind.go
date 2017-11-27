@@ -17,7 +17,7 @@
 // Package bind generates Zerium contract Go bindings.
 //
 // Detailed usage document and tutorial available on the zerium Wiki page:
-// https://github.com/abt/zerium/wiki/Native-DApps:-Go-bindings-to-Zerium-contracts
+// https://github.com/apolo-technologies/zerium/wiki/Native-DApps:-Go-bindings-to-Zerium-contracts
 package bind
 
 import (
@@ -28,7 +28,7 @@ import (
 	"text/template"
 	"unicode"
 
-	"github.com/abt/zerium/accounts/abi"
+	"github.com/apolo-technologies/zerium/accounts/abi"
 	"golang.org/x/tools/imports"
 )
 

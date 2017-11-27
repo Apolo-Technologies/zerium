@@ -35,12 +35,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/crypto/ecies"
-	"github.com/abt/zerium/crypto/secp256k1"
-	"github.com/abt/zerium/crypto/sha3"
-	"github.com/abt/zerium/p2p/discover"
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/crypto/ecies"
+	"github.com/apolo-technologies/zerium/crypto/secp256k1"
+	"github.com/apolo-technologies/zerium/crypto/sha3"
+	"github.com/apolo-technologies/zerium/p2p/discover"
+	"github.com/apolo-technologies/zerium/rlp"
 	"github.com/golang/snappy"
 )
 

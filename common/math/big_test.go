@@ -22,7 +22,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 )
 
 func TestHexOrDecimal256(t *testing.T) {

@@ -24,7 +24,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 type brokenLimitedReader struct {

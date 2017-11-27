@@ -19,8 +19,8 @@ package les
 import (
 	"time"
 
-	"github.com/abt/zerium/common/bitutil"
-	"github.com/abt/zerium/light"
+	"github.com/apolo-technologies/zerium/common/bitutil"
+	"github.com/apolo-technologies/zerium/light"
 )
 
 const (

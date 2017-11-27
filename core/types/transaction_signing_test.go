@@ -20,9 +20,9 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/rlp"
 )
 
 func TestEIP155Signing(t *testing.T) {

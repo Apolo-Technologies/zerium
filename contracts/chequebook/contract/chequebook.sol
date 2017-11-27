@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import "https://github.com/abt/solidity/std/mortal.sol";
+import "https://github.com/apolo-technologies/solidity/std/mortal.sol";
 
 /// @title Chequebook for Zerium micropayments
 /// @author Daniel A. Nagy <daniel@abt.org>

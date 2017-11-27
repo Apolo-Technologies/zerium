@@ -19,7 +19,7 @@ package zrmapi
 import (
 	"sync"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 )
 
 type AddrLocker struct {

@@ -27,9 +27,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/abt/zerium/internal/jsre"
-	"github.com/abt/zerium/internal/webzeext"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/internal/jsre"
+	"github.com/apolo-technologies/zerium/internal/webzeext"
+	"github.com/apolo-technologies/zerium/rpc"
 	"github.com/mattn/go-colorable"
 	"github.com/peterh/liner"
 	"github.com/robertkrimen/otto"

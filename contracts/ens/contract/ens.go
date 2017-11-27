@@ -6,10 +6,10 @@ package contract
 import (
 	"strings"
 
-	"github.com/abt/zerium/accounts/abi"
-	"github.com/abt/zerium/accounts/abi/bind"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
+	"github.com/apolo-technologies/zerium/accounts/abi"
+	"github.com/apolo-technologies/zerium/accounts/abi/bind"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
 )
 
 // ENSABI is the input ABI used to generate the binding from.

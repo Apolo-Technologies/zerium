@@ -19,8 +19,8 @@ package runtime_test
 import (
 	"fmt"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/vm/runtime"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/vm/runtime"
 )
 
 func ExampleExecute() {

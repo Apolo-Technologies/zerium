@@ -27,8 +27,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto"
 )
 
 func tmpKeyStoreIface(t *testing.T, encrypted bool) (dir string, ks keyStore) {

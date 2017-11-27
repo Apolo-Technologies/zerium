@@ -19,8 +19,8 @@
 package whisperv6
 
 import (
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/hexutil"
 )
 
 // Topic represents a cryptographically secure, probabilistic partial

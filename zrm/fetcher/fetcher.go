@@ -22,10 +22,10 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/consensus"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/consensus"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/log"
 	"gopkg.in/karalabe/cookiejar.v2/collections/prque"
 )
 

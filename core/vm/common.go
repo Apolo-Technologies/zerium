@@ -19,8 +19,8 @@ package vm
 import (
 	"math/big"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/math"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/math"
 )
 
 // calculates the memory size required for a step

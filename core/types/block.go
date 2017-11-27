@@ -26,10 +26,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/hexutil"
-	"github.com/abt/zerium/crypto/sha3"
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/crypto/sha3"
+	"github.com/apolo-technologies/zerium/rlp"
 )
 
 var (

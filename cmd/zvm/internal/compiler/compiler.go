@@ -20,7 +20,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/abt/zerium/core/asm"
+	"github.com/apolo-technologies/zerium/core/asm"
 )
 
 func Compile(fn string, src []byte, debug bool) (string, error) {

@@ -24,13 +24,13 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/math"
-	"github.com/abt/zerium/consensus"
-	"github.com/abt/zerium/consensus/misc"
-	"github.com/abt/zerium/core/state"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/apolo-technologies/zerium/consensus"
+	"github.com/apolo-technologies/zerium/consensus/misc"
+	"github.com/apolo-technologies/zerium/core/state"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/params"
 	set "gopkg.in/fatih/set.v0"
 )
 
@@ -314,7 +314,7 @@ var (
 // the difficulty that a new block should have when created at time given the
 // parent block's time and difficulty. The calculation uses the Byzantium rules.
 func calcDifficultyByzantium(time uint64, parent *types.Header) *big.Int {
-	// https://github.com/abt/EIPs/issues/100.
+	// https://github.com/apolo-technologies/EIPs/issues/100.
 	// algorithm:
 	// diff = (parent_diff +
 	//         (parent_diff / 2048 * max((2 if len(parent.uncles) else 1) - ((timestamp - parent.timestamp) // 9), -99))
@@ -349,7 +349,7 @@ func calcDifficultyByzantium(time uint64, parent *types.Header) *big.Int {
 		x.Set(params.MinimumDifficulty)
 	}
 	// calculate a fake block numer for the ice-age delay:
-	//   https://github.com/abt/EIPs/pull/669
+	//   https://github.com/apolo-technologies/EIPs/pull/669
 	//   fake_block_number = min(0, block.number - 3_000_000
 	fakeBlockNumber := new(big.Int)
 	if parent.Number.Cmp(big2999999) >= 0 {
@@ -373,7 +373,7 @@ func calcDifficultyByzantium(time uint64, parent *types.Header) *big.Int {
 // the difficulty that a new block should have when created at time given the
 // parent block's time and difficulty. The calculation uses the Homestead rules.
 func calcDifficultyHomestead(time uint64, parent *types.Header) *big.Int {
-	// https://github.com/abt/EIPs/blob/master/EIPS/eip-2.mediawiki
+	// https://github.com/apolo-technologies/EIPs/blob/master/EIPS/eip-2.mediawiki
 	// algorithm:
 	// diff = (parent_diff +
 	//         (parent_diff / 2048 * max(1 - (block_timestamp - parent_timestamp) // 10, -99))

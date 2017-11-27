@@ -24,8 +24,8 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/abt/zerium/common/math"
-	"github.com/abt/zerium/crypto/randentropy"
+	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/apolo-technologies/zerium/crypto/randentropy"
 )
 
 const TestCount = 1000

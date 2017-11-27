@@ -20,12 +20,12 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/abt/zerium/accounts"
-	"github.com/abt/zerium/accounts/keystore"
-	"github.com/abt/zerium/cmd/utils"
-	"github.com/abt/zerium/console"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/accounts"
+	"github.com/apolo-technologies/zerium/accounts/keystore"
+	"github.com/apolo-technologies/zerium/cmd/utils"
+	"github.com/apolo-technologies/zerium/console"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/log"
 	"gopkg.in/urfave/cli.v1"
 )
 

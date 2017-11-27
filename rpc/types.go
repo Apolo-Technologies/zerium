@@ -23,7 +23,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/abt/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/common/hexutil"
 	"gopkg.in/fatih/set.v0"
 )
 

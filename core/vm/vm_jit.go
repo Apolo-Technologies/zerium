@@ -25,7 +25,7 @@ int   zvmjit_run(void* _jit, void* _data, void* _env);
 void  zvmjit_destroy(void* _jit);
 
 // Shared library zvmjit (e.g. libzvmjit.so) is expected to be installed in /usr/local/lib
-// More: https://github.com/abt/zvmjit
+// More: https://github.com/apolo-technologies/zvmjit
 #cgo LDFLAGS: -lzvmjit
 */
 import "C"
@@ -38,9 +38,9 @@ import (
 	"math/big"
 	"unsafe"
 
-	"github.com/abt/zerium/core/state"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/core/state"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 type JitVm struct {

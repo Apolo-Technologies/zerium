@@ -22,8 +22,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/log"
 	"github.com/olekukonko/tablewriter"
 )
 

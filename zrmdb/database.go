@@ -22,8 +22,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/metrics"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/metrics"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/errors"
 	"github.com/syndtr/goleveldb/leveldb/filter"

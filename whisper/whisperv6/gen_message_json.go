@@ -5,7 +5,7 @@ package whisperv6
 import (
 	"encoding/json"
 
-	"github.com/abt/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/common/hexutil"
 )
 
 var _ = (*messageOverride)(nil)

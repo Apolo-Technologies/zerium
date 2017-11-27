@@ -30,8 +30,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto"
 )
 
 // Node represents a host on the network.

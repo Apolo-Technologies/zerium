@@ -20,10 +20,10 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/rlp"
-	"github.com/abt/zerium/trie"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/apolo-technologies/zerium/trie"
 )
 
 // NodeSet stores a set of trie nodes. It implements trie.Database and can also

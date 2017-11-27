@@ -20,7 +20,7 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 type (

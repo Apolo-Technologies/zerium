@@ -22,9 +22,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/abt/zerium/swarm/api"
-	httpapi "github.com/abt/zerium/swarm/api/http"
-	"github.com/abt/zerium/swarm/storage"
+	"github.com/apolo-technologies/zerium/swarm/api"
+	httpapi "github.com/apolo-technologies/zerium/swarm/api/http"
+	"github.com/apolo-technologies/zerium/swarm/storage"
 )
 
 func NewTestSwarmServer(t *testing.T) *TestSwarmServer {

@@ -20,9 +20,9 @@ import (
 	"context"
 	"sync"
 
-	abt "github.com/abt/zerium"
-	"github.com/abt/zerium/event"
-	"github.com/abt/zerium/rpc"
+	abt "github.com/apolo-technologies/zerium"
+	"github.com/apolo-technologies/zerium/event"
+	"github.com/apolo-technologies/zerium/rpc"
 )
 
 // PublicDownloaderAPI provides an API which gives information about the current synchronisation status.

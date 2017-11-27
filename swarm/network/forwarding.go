@@ -21,8 +21,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/swarm/storage"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/swarm/storage"
 )
 
 const requesterCount = 3

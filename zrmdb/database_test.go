@@ -25,7 +25,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/abt/zerium/zrmdb"
+	"github.com/apolo-technologies/zerium/zrmdb"
 )
 
 func newTestLDB() (*zrmdb.LDBDatabase, func()) {

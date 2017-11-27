@@ -25,15 +25,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/abt/zerium/accounts/abi/bind"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/zrm"
-	"github.com/abt/zerium/internal/zrmapi"
-	"github.com/abt/zerium/les"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/node"
-	"github.com/abt/zerium/p2p"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/accounts/abi/bind"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/zrm"
+	"github.com/apolo-technologies/zerium/internal/zrmapi"
+	"github.com/apolo-technologies/zerium/les"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/node"
+	"github.com/apolo-technologies/zerium/p2p"
+	"github.com/apolo-technologies/zerium/rpc"
 )
 
 // Interval to check for new releases
@@ -149,7 +149,7 @@ func (r *ReleaseService) checkVersion() {
 
 		warning := fmt.Sprintf("Client v%d.%d.%d-%x seems older than the latest upstream release v%d.%d.%d-%x",
 			r.config.Major, r.config.Minor, r.config.Patch, r.config.Commit[:4], version.Major, version.Minor, version.Patch, version.Commit[:4])
-		howtofix := fmt.Sprintf("Please check https://github.com/abt/zerium/releases for new releases")
+		howtofix := fmt.Sprintf("Please check https://github.com/apolo-technologies/zerium/releases for new releases")
 		separator := strings.Repeat("-", len(warning))
 
 		log.Warn(separator)

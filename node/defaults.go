@@ -22,8 +22,8 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/abt/zerium/p2p"
-	"github.com/abt/zerium/p2p/nat"
+	"github.com/apolo-technologies/zerium/p2p"
+	"github.com/apolo-technologies/zerium/p2p/nat"
 )
 
 const (

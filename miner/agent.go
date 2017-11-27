@@ -21,8 +21,8 @@ import (
 
 	"sync/atomic"
 
-	"github.com/abt/zerium/consensus"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/consensus"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 type CpuAgent struct {

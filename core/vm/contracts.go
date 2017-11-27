@@ -21,11 +21,11 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/math"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/crypto/bn256"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/crypto/bn256"
+	"github.com/apolo-technologies/zerium/params"
 	"golang.org/x/crypto/ripemd160"
 )
 

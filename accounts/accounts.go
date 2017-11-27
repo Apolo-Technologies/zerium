@@ -20,10 +20,10 @@ package accounts
 import (
 	"math/big"
 
-	abt "github.com/abt/zerium"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/event"
+	abt "github.com/apolo-technologies/zerium"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/event"
 )
 
 // Account represents an Zerium account located at a specific location defined

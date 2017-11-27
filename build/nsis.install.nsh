@@ -3,9 +3,9 @@ InstallDir "$InstDir"
 OutFile "${OUTPUTFILE}" # set through command line arguments
 
 # Links for "Add/Remove Programs"
-!define HELPURL "https://github.com/abt/zerium/issues"
-!define UPDATEURL "https://github.com/abt/zerium/releases"
-!define ABOUTURL "https://github.com/abt/zerium#abt-go"
+!define HELPURL "https://github.com/apolo-technologies/zerium/issues"
+!define UPDATEURL "https://github.com/apolo-technologies/zerium/releases"
+!define ABOUTURL "https://github.com/apolo-technologies/zerium#abt-go"
 !define /date NOW "%Y%m%d"
 
 PageEx license
@@ -33,7 +33,7 @@ Section "Gzrm" GZRM_IDX
   SimpleFC::AdvAddRule "Gzrm outgoing peers (TCP:32310)" ""  6 2 1 2147483647 1 "$INSTDIR\gzrm.exe" "" "" "Zerium" "" 32310 "" ""
   SimpleFC::AdvAddRule "Gzrm UDP discovery (UDP:32310)" "" 17 2 1 2147483647 1 "$INSTDIR\gzrm.exe" "" "" "Zerium" "" 32310 "" ""
 
-  # Set default IPC endpoint (https://github.com/abt/EIPs/issues/147)
+  # Set default IPC endpoint (https://github.com/apolo-technologies/EIPs/issues/147)
   ${EnvVarUpdate} $0 "ZERIUM_SOCKET" "R" "HKLM" "\\.\pipe\gzrm.ipc"
   ${EnvVarUpdate} $0 "ZERIUM_SOCKET" "A" "HKLM" "\\.\pipe\gzrm.ipc"
 

@@ -17,8 +17,8 @@
 package les
 
 import (
-	"github.com/abt/zerium/metrics"
-	"github.com/abt/zerium/p2p"
+	"github.com/apolo-technologies/zerium/metrics"
+	"github.com/apolo-technologies/zerium/p2p"
 )
 
 var (

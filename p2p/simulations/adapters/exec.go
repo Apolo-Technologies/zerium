@@ -36,11 +36,11 @@ import (
 	"time"
 
 	"github.com/docker/docker/pkg/reexec"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/node"
-	"github.com/abt/zerium/p2p"
-	"github.com/abt/zerium/p2p/discover"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/node"
+	"github.com/apolo-technologies/zerium/p2p"
+	"github.com/apolo-technologies/zerium/p2p/discover"
+	"github.com/apolo-technologies/zerium/rpc"
 	"golang.org/x/net/websocket"
 )
 

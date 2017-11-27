@@ -21,7 +21,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 )
 
 type testInPayment struct {

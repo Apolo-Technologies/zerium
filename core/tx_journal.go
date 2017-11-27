@@ -21,10 +21,10 @@ import (
 	"io"
 	"os"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/rlp"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/rlp"
 )
 
 // errNoActiveJournal is returned if a transaction is attempted to be inserted

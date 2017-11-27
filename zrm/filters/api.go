@@ -25,12 +25,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/hexutil"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/zrmdb"
-	"github.com/abt/zerium/event"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/zrmdb"
+	"github.com/apolo-technologies/zerium/event"
+	"github.com/apolo-technologies/zerium/rpc"
 )
 
 var (
@@ -100,7 +100,7 @@ func (api *PublicFilterAPI) timeoutLoop() {
 // It is part of the filter package because this filter can be used throug the
 // `zrm_getFilterChanges` polling method that is also used for log filters.
 //
-// https://github.com/abt/wiki/wiki/JSON-RPC#zrm_newpendingtransactionfilter
+// https://github.com/apolo-technologies/wiki/wiki/JSON-RPC#zrm_newpendingtransactionfilter
 func (api *PublicFilterAPI) NewPendingTransactionFilter() rpc.ID {
 	var (
 		pendingTxs   = make(chan common.Hash)
@@ -166,7 +166,7 @@ func (api *PublicFilterAPI) NewPendingTransactions(ctx context.Context) (*rpc.Su
 // NewBlockFilter creates a filter that fetches blocks that are imported into the chain.
 // It is part of the filter package since polling goes with zrm_getFilterChanges.
 //
-// https://github.com/abt/wiki/wiki/JSON-RPC#zrm_newblockfilter
+// https://github.com/apolo-technologies/wiki/wiki/JSON-RPC#zrm_newblockfilter
 func (api *PublicFilterAPI) NewBlockFilter() rpc.ID {
 	var (
 		headers   = make(chan *types.Header)
@@ -286,7 +286,7 @@ type FilterCriteria struct {
 //
 // In case "fromBlock" > "toBlock" an error is returned.
 //
-// https://github.com/abt/wiki/wiki/JSON-RPC#zrm_newfilter
+// https://github.com/apolo-technologies/wiki/wiki/JSON-RPC#zrm_newfilter
 func (api *PublicFilterAPI) NewFilter(crit FilterCriteria) (rpc.ID, error) {
 	logs := make(chan []*types.Log)
 	logsSub, err := api.events.SubscribeLogs(crit, logs)
@@ -321,7 +321,7 @@ func (api *PublicFilterAPI) NewFilter(crit FilterCriteria) (rpc.ID, error) {
 
 // GetLogs returns logs matching the given argument that are stored within the state.
 //
-// https://github.com/abt/wiki/wiki/JSON-RPC#zrm_getlogs
+// https://github.com/apolo-technologies/wiki/wiki/JSON-RPC#zrm_getlogs
 func (api *PublicFilterAPI) GetLogs(ctx context.Context, crit FilterCriteria) ([]*types.Log, error) {
 	// Convert the RPC block numbers into internal representations
 	if crit.FromBlock == nil {
@@ -342,7 +342,7 @@ func (api *PublicFilterAPI) GetLogs(ctx context.Context, crit FilterCriteria) ([
 
 // UninstallFilter removes the filter with the given filter id.
 //
-// https://github.com/abt/wiki/wiki/JSON-RPC#zrm_uninstallfilter
+// https://github.com/apolo-technologies/wiki/wiki/JSON-RPC#zrm_uninstallfilter
 func (api *PublicFilterAPI) UninstallFilter(id rpc.ID) bool {
 	api.filtersMu.Lock()
 	f, found := api.filters[id]
@@ -360,7 +360,7 @@ func (api *PublicFilterAPI) UninstallFilter(id rpc.ID) bool {
 // GetFilterLogs returns the logs for the filter with the given id.
 // If the filter could not be found an empty array of logs is returned.
 //
-// https://github.com/abt/wiki/wiki/JSON-RPC#zrm_getfilterlogs
+// https://github.com/apolo-technologies/wiki/wiki/JSON-RPC#zrm_getfilterlogs
 func (api *PublicFilterAPI) GetFilterLogs(ctx context.Context, id rpc.ID) ([]*types.Log, error) {
 	api.filtersMu.Lock()
 	f, found := api.filters[id]
@@ -394,7 +394,7 @@ func (api *PublicFilterAPI) GetFilterLogs(ctx context.Context, id rpc.ID) ([]*ty
 // For pending transaction and block filters the result is []common.Hash.
 // (pending)Log filters return []Log.
 //
-// https://github.com/abt/wiki/wiki/JSON-RPC#zrm_getfilterchanges
+// https://github.com/apolo-technologies/wiki/wiki/JSON-RPC#zrm_getfilterchanges
 func (api *PublicFilterAPI) GetFilterChanges(id rpc.ID) (interface{}, error) {
 	api.filtersMu.Lock()
 	defer api.filtersMu.Unlock()

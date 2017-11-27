@@ -21,7 +21,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/abt/zerium/core/types"
+	"github.com/apolo-technologies/zerium/core/types"
 )
 
 // Tests that batched bloom bits are correctly rotated from the input bloom

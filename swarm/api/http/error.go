@@ -28,8 +28,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/swarm/api"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/swarm/api"
 )
 
 //templateMap holds a mapping of an HTTP error code to a template

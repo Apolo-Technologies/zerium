@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/abt/zerium/accounts/keystore"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/accounts/keystore"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 // deployNode creates a new node configuration based on some user input.

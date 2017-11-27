@@ -5,11 +5,11 @@ package zrm
 import (
 	"math/big"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/hexutil"
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/zrm/downloader"
-	"github.com/abt/zerium/zrm/gasprice"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/zrm/downloader"
+	"github.com/apolo-technologies/zerium/zrm/gasprice"
 )
 
 func (c Config) MarshalTOML() (interface{}, error) {

@@ -20,13 +20,13 @@ import (
 	"context"
 	"math/big"
 
-	"github.com/abt/zerium"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/hexutil"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/internal/zrmapi"
-	"github.com/abt/zerium/rlp"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/internal/zrmapi"
+	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/apolo-technologies/zerium/rpc"
 )
 
 // ContractBackend implements bind.ContractBackend with direct calls to Zerium

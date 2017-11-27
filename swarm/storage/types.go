@@ -24,9 +24,9 @@ import (
 	"io"
 	"sync"
 
-	"github.com/abt/zerium/bmt"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/crypto/sha3"
+	"github.com/apolo-technologies/zerium/bmt"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/crypto/sha3"
 )
 
 type Hasher func() hash.Hash

@@ -19,7 +19,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/abt/zerium/core/vm"
+	"github.com/apolo-technologies/zerium/core/vm"
 )
 
 func TestVM(t *testing.T) {

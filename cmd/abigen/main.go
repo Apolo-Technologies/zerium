@@ -24,8 +24,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/abt/zerium/accounts/abi/bind"
-	"github.com/abt/zerium/common/compiler"
+	"github.com/apolo-technologies/zerium/accounts/abi/bind"
+	"github.com/apolo-technologies/zerium/common/compiler"
 )
 
 var (

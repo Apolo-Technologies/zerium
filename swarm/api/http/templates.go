@@ -20,7 +20,7 @@ import (
 	"html/template"
 	"path"
 
-	"github.com/abt/zerium/swarm/api"
+	"github.com/apolo-technologies/zerium/swarm/api"
 )
 
 type htmlListData struct {

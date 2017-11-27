@@ -24,8 +24,8 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/p2p"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/p2p"
 )
 
 // Tests that datadirs can be successfully created, be them manually configured

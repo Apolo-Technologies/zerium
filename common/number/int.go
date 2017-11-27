@@ -19,7 +19,7 @@ package number
 import (
 	"math/big"
 
-	"github.com/abt/zerium/common"
+	"github.com/apolo-technologies/zerium/common"
 )
 
 var tt256 = new(big.Int).Lsh(big.NewInt(1), 256)

@@ -23,12 +23,12 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/hexutil"
-	"github.com/abt/zerium/core"
-	"github.com/abt/zerium/zrm/downloader"
-	"github.com/abt/zerium/zrm/gasprice"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/core"
+	"github.com/apolo-technologies/zerium/zrm/downloader"
+	"github.com/apolo-technologies/zerium/zrm/gasprice"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 // DefaultConfig contains default settings for use on the Zerium main net.

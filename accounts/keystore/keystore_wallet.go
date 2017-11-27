@@ -19,9 +19,9 @@ package keystore
 import (
 	"math/big"
 
-	abt "github.com/abt/zerium"
-	"github.com/abt/zerium/accounts"
-	"github.com/abt/zerium/core/types"
+	abt "github.com/apolo-technologies/zerium"
+	"github.com/apolo-technologies/zerium/accounts"
+	"github.com/apolo-technologies/zerium/core/types"
 )
 
 // keystoreWallet implements the accounts.Wallet interface for the original

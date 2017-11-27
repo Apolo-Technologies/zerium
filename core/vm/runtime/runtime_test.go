@@ -21,11 +21,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/abt/zerium/accounts/abi"
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/core/state"
-	"github.com/abt/zerium/core/vm"
-	"github.com/abt/zerium/zrmdb"
+	"github.com/apolo-technologies/zerium/accounts/abi"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/core/state"
+	"github.com/apolo-technologies/zerium/core/vm"
+	"github.com/apolo-technologies/zerium/zrmdb"
 )
 
 func TestDefaults(t *testing.T) {

@@ -19,10 +19,10 @@ package core
 import (
 	"math/big"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/consensus"
-	"github.com/abt/zerium/core/types"
-	"github.com/abt/zerium/core/vm"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/consensus"
+	"github.com/apolo-technologies/zerium/core/types"
+	"github.com/apolo-technologies/zerium/core/vm"
 )
 
 // ChainContext supports retrieving headers and consensus parameters from the

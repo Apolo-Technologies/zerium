@@ -22,11 +22,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/abt/zerium/common/hexutil"
-	"github.com/abt/zerium/crypto"
-	"github.com/abt/zerium/p2p"
-	"github.com/abt/zerium/p2p/discover"
-	"github.com/abt/zerium/rpc"
+	"github.com/apolo-technologies/zerium/common/hexutil"
+	"github.com/apolo-technologies/zerium/crypto"
+	"github.com/apolo-technologies/zerium/p2p"
+	"github.com/apolo-technologies/zerium/p2p/discover"
+	"github.com/apolo-technologies/zerium/rpc"
 	"github.com/rcrowley/go-metrics"
 )
 

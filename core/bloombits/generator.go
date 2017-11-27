@@ -19,7 +19,7 @@ package bloombits
 import (
 	"errors"
 
-	"github.com/abt/zerium/core/types"
+	"github.com/apolo-technologies/zerium/core/types"
 )
 
 // errSectionOutOfBounds is returned if the user tried to add more bloom filters

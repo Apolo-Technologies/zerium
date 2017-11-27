@@ -20,7 +20,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 func TestTransaction(t *testing.T) {

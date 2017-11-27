@@ -20,11 +20,11 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/common/math"
-	"github.com/abt/zerium/core/vm"
-	"github.com/abt/zerium/log"
-	"github.com/abt/zerium/params"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/common/math"
+	"github.com/apolo-technologies/zerium/core/vm"
+	"github.com/apolo-technologies/zerium/log"
+	"github.com/apolo-technologies/zerium/params"
 )
 
 var (

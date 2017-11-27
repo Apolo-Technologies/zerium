@@ -19,8 +19,8 @@ package trie
 import (
 	"fmt"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/log"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/log"
 )
 
 var secureKeyPrefix = []byte("secure-key-")

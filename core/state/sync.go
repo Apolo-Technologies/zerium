@@ -19,9 +19,9 @@ package state
 import (
 	"bytes"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/rlp"
-	"github.com/abt/zerium/trie"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/apolo-technologies/zerium/trie"
 )
 
 // NewStateSync create a new state trie download scheduler.

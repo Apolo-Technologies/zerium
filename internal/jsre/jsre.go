@@ -26,8 +26,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/abt/zerium/common"
-	"github.com/abt/zerium/internal/jsre/deps"
+	"github.com/apolo-technologies/zerium/common"
+	"github.com/apolo-technologies/zerium/internal/jsre/deps"
 	"github.com/robertkrimen/otto"
 )
 
