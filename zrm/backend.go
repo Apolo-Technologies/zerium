@@ -117,7 +117,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Zerium, error) {
 	if _, ok := genesisErr.(*params.ConfigCompatError); genesisErr != nil && !ok {
 		return nil, genesisErr
 	}
-	log.Info("Initialised chain configuration", "config", chainConfig)
+	log.Info("[ZRM]: Initialised chain configuration", "config", chainConfig)
 
 	zrm := &Zerium{
 		config:         config,

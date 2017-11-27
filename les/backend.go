@@ -86,7 +86,7 @@ func New(ctx *node.ServiceContext, config *zrm.Config) (*LightZerium, error) {
 	if _, isCompat := genesisErr.(*params.ConfigCompatError); genesisErr != nil && !isCompat {
 		return nil, genesisErr
 	}
-	log.Info("Initialised chain configuration", "config", chainConfig)
+	log.Info("[LES]: Initialised chain configuration", "config", chainConfig)
 
 	peers := newPeerSet()
 	quitSync := make(chan struct{})
