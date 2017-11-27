@@ -235,7 +235,7 @@ func newCanonical(n int, full bool) (zrmdb.Database, *BlockChain, error) {
 	db, _ := zrmdb.NewMemDatabase()
 	genesis := gspec.MustCommit(db)
 
-	blockchain, _ := NewBlockChain(db, params.AllEthashProtocolChanges, zrmash.NewFaker(), vm.Config{})
+	blockchain, _ := NewBlockChain(db, params.AllZrmashProtocolChanges, zrmash.NewFaker(), vm.Config{})
 	// Create and inject the requested chain
 	if n == 0 {
 		return db, blockchain, nil

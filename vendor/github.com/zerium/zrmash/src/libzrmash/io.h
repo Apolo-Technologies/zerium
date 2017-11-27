@@ -34,7 +34,7 @@ extern "C" {
 // 10 is for maximum number of digits of a uint32_t (for REVISION)
 // 1 is for - and 16 is for the first 16 hex digits for first 8 bytes of
 // the seedhash and last 1 is for the null terminating character
-// Reference: https://github.com/abt/wiki/wiki/Ethash-DAG
+// Reference: https://github.com/abt/wiki/wiki/Zrmash-DAG
 #define DAG_MUTABLE_NAME_MAX_SIZE (6 + 10 + 1 + 16 + 1)
 /// Possible return values of @see zrmash_io_prepare
 enum zrmash_io_rc {
@@ -76,7 +76,7 @@ enum zrmash_io_rc {
  *                           data directory. If it does not exist it's created.
  * @param[in] seedhash       The seedhash of the current block number, used in the
  *                           naming of the file as can be seen from the spec at:
- *                           https://github.com/abt/wiki/wiki/Ethash-DAG
+ *                           https://github.com/abt/wiki/wiki/Zrmash-DAG
  * @param[out] output_file   If there was no failure then this will point to an open
  *                           file descriptor. User is responsible for closing it.
  *                           In the case of memo match then the file is open on read
@@ -171,7 +171,7 @@ char* zrmash_io_create_filename(
 /**
  * Gets the default directory name for the DAG depending on the system
  *
- * The spec defining this directory is here: https://github.com/abt/wiki/wiki/Ethash-DAG
+ * The spec defining this directory is here: https://github.com/abt/wiki/wiki/Zrmash-DAG
  *
  * @param[out] strbuf          A string buffer of sufficient size to keep the
  *                             null termninated string of the directory name

@@ -44,8 +44,8 @@ var (
 	// maxUint256 is a big integer representing 2^256-1
 	maxUint256 = new(big.Int).Exp(big.NewInt(2), big.NewInt(256), big.NewInt(0))
 
-	// sharedEthash is a full instance that can be shared between multiple users.
-	sharedEthash = New("", 3, 0, "", 1, 0)
+	// sharedZrmash is a full instance that can be shared between multiple users.
+	sharedZrmash = New("", 3, 0, "", 1, 0)
 
 	// algorithmRevision is the data structure version used for file naming.
 	algorithmRevision = 23
@@ -320,9 +320,9 @@ func MakeDataset(block uint64, dir string) {
 	d.release()
 }
 
-// Ethash is a consensus engine based on proot-of-work implementing the zrmash
+// Zrmash is a consensus engine based on proot-of-work implementing the zrmash
 // algorithm.
-type Ethash struct {
+type Zrmash struct {
 	cachedir     string // Data directory to store the verification caches
 	cachesinmem  int    // Number of caches to keep in memory
 	cachesondisk int    // Number of caches to keep on disk
@@ -343,7 +343,7 @@ type Ethash struct {
 
 	// The fields below are hooks for testing
 	tester    bool          // Flag whether to use a smaller test dataset
-	shared    *Ethash       // Shared PoW verifier to avoid cache regeneration
+	shared    *Zrmash       // Shared PoW verifier to avoid cache regeneration
 	fakeMode  bool          // Flag whether to disable PoW checking
 	fakeFull  bool          // Flag whether to disable all consensus rules
 	fakeFail  uint64        // Block number which fails PoW check even in fake mode
@@ -353,7 +353,7 @@ type Ethash struct {
 }
 
 // New creates a full sized zrmash PoW scheme.
-func New(cachedir string, cachesinmem, cachesondisk int, dagdir string, dagsinmem, dagsondisk int) *Ethash {
+func New(cachedir string, cachesinmem, cachesondisk int, dagdir string, dagsinmem, dagsondisk int) *Zrmash {
 	if cachesinmem <= 0 {
 		log.Warn("One zrmash cache must always be in memory", "requested", cachesinmem)
 		cachesinmem = 1
@@ -364,7 +364,7 @@ func New(cachedir string, cachesinmem, cachesondisk int, dagdir string, dagsinme
 	if dagdir != "" && dagsondisk > 0 {
 		log.Info("Disk storage enabled for zrmash DAGs", "dir", dagdir, "count", dagsondisk)
 	}
-	return &Ethash{
+	return &Zrmash{
 		cachedir:     cachedir,
 		cachesinmem:  cachesinmem,
 		cachesondisk: cachesondisk,
@@ -380,8 +380,8 @@ func New(cachedir string, cachesinmem, cachesondisk int, dagdir string, dagsinme
 
 // NewTester creates a small sized zrmash PoW scheme useful only for testing
 // purposes.
-func NewTester() *Ethash {
-	return &Ethash{
+func NewTester() *Zrmash {
+	return &Zrmash{
 		cachesinmem: 1,
 		caches:      make(map[uint64]*cache),
 		datasets:    make(map[uint64]*dataset),
@@ -394,40 +394,40 @@ func NewTester() *Ethash {
 // NewFaker creates a zrmash consensus engine with a fake PoW scheme that accepts
 // all blocks' seal as valid, though they still have to conform to the Zerium
 // consensus rules.
-func NewFaker() *Ethash {
-	return &Ethash{fakeMode: true}
+func NewFaker() *Zrmash {
+	return &Zrmash{fakeMode: true}
 }
 
 // NewFakeFailer creates a zrmash consensus engine with a fake PoW scheme that
 // accepts all blocks as valid apart from the single one specified, though they
 // still have to conform to the Zerium consensus rules.
-func NewFakeFailer(fail uint64) *Ethash {
-	return &Ethash{fakeMode: true, fakeFail: fail}
+func NewFakeFailer(fail uint64) *Zrmash {
+	return &Zrmash{fakeMode: true, fakeFail: fail}
 }
 
 // NewFakeDelayer creates a zrmash consensus engine with a fake PoW scheme that
 // accepts all blocks as valid, but delays verifications by some time, though
 // they still have to conform to the Zerium consensus rules.
-func NewFakeDelayer(delay time.Duration) *Ethash {
-	return &Ethash{fakeMode: true, fakeDelay: delay}
+func NewFakeDelayer(delay time.Duration) *Zrmash {
+	return &Zrmash{fakeMode: true, fakeDelay: delay}
 }
 
 // NewFullFaker creates an zrmash consensus engine with a full fake scheme that
 // accepts all blocks as valid, without checking any consensus rules whatsoever.
-func NewFullFaker() *Ethash {
-	return &Ethash{fakeMode: true, fakeFull: true}
+func NewFullFaker() *Zrmash {
+	return &Zrmash{fakeMode: true, fakeFull: true}
 }
 
 // NewShared creates a full sized zrmash PoW shared between all requesters running
 // in the same process.
-func NewShared() *Ethash {
-	return &Ethash{shared: sharedEthash}
+func NewShared() *Zrmash {
+	return &Zrmash{shared: sharedZrmash}
 }
 
 // cache tries to retrieve a verification cache for the specified block number
 // by first checking against a list of in-memory caches, then against caches
 // stored on disk, and finally generating one if none can be found.
-func (zrmash *Ethash) cache(block uint64) []uint32 {
+func (zrmash *Zrmash) cache(block uint64) []uint32 {
 	epoch := block / epochLength
 
 	// If we have a PoW for that epoch, use that
@@ -489,7 +489,7 @@ func (zrmash *Ethash) cache(block uint64) []uint32 {
 // dataset tries to retrieve a mining dataset for the specified block number
 // by first checking against a list of in-memory datasets, then against DAGs
 // stored on disk, and finally generating one if none can be found.
-func (zrmash *Ethash) dataset(block uint64) []uint32 {
+func (zrmash *Zrmash) dataset(block uint64) []uint32 {
 	epoch := block / epochLength
 
 	// If we have a PoW for that epoch, use that
@@ -551,7 +551,7 @@ func (zrmash *Ethash) dataset(block uint64) []uint32 {
 
 // Threads returns the number of mining threads currently enabled. This doesn't
 // necessarily mean that mining is running!
-func (zrmash *Ethash) Threads() int {
+func (zrmash *Zrmash) Threads() int {
 	zrmash.lock.Lock()
 	defer zrmash.lock.Unlock()
 
@@ -563,7 +563,7 @@ func (zrmash *Ethash) Threads() int {
 // specified, the miner will use all cores of the machine. Setting a thread
 // count below zero is allowed and will cause the miner to idle, without any
 // work being done.
-func (zrmash *Ethash) SetThreads(threads int) {
+func (zrmash *Zrmash) SetThreads(threads int) {
 	zrmash.lock.Lock()
 	defer zrmash.lock.Unlock()
 
@@ -582,13 +582,13 @@ func (zrmash *Ethash) SetThreads(threads int) {
 
 // Hashrate implements PoW, returning the measured rate of the search invocations
 // per second over the last minute.
-func (zrmash *Ethash) Hashrate() float64 {
+func (zrmash *Zrmash) Hashrate() float64 {
 	return zrmash.hashrate.Rate1()
 }
 
 // APIs implements consensus.Engine, returning the user facing RPC APIs. Currently
 // that is empty.
-func (zrmash *Ethash) APIs(chain consensus.ChainReader) []rpc.API {
+func (zrmash *Zrmash) APIs(chain consensus.ChainReader) []rpc.API {
 	return nil
 }
 

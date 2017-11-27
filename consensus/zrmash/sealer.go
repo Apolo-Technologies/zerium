@@ -32,7 +32,7 @@ import (
 
 // Seal implements consensus.Engine, attempting to find a nonce that satisfies
 // the block's difficulty requirements.
-func (zrmash *Ethash) Seal(chain consensus.ChainReader, block *types.Block, stop <-chan struct{}) (*types.Block, error) {
+func (zrmash *Zrmash) Seal(chain consensus.ChainReader, block *types.Block, stop <-chan struct{}) (*types.Block, error) {
 	// If we're running a fake PoW, simply return a 0 nonce immediately
 	if zrmash.fakeMode {
 		header := block.Header()
@@ -94,7 +94,7 @@ func (zrmash *Ethash) Seal(chain consensus.ChainReader, block *types.Block, stop
 
 // mine is the actual proof-of-work miner that searches for a nonce starting from
 // seed that results in correct final block difficulty.
-func (zrmash *Ethash) mine(block *types.Block, id int, seed uint64, abort chan struct{}, found chan *types.Block) {
+func (zrmash *Zrmash) mine(block *types.Block, id int, seed uint64, abort chan struct{}, found chan *types.Block) {
 	// Extract some data from the header
 	var (
 		header = block.Header()
@@ -115,7 +115,7 @@ func (zrmash *Ethash) mine(block *types.Block, id int, seed uint64, abort chan s
 		select {
 		case <-abort:
 			// Mining terminated, update stats and abort
-			logger.Trace("Ethash nonce search aborted", "attempts", nonce-seed)
+			logger.Trace("Zrmash nonce search aborted", "attempts", nonce-seed)
 			zrmash.hashrate.Mark(attempts)
 			return
 
@@ -137,9 +137,9 @@ func (zrmash *Ethash) mine(block *types.Block, id int, seed uint64, abort chan s
 				// Seal and return a block (if still needed)
 				select {
 				case found <- block.WithSeal(header):
-					logger.Trace("Ethash nonce found and reported", "attempts", nonce-seed, "nonce", nonce)
+					logger.Trace("Zrmash nonce found and reported", "attempts", nonce-seed, "nonce", nonce)
 				case <-abort:
-					logger.Trace("Ethash nonce found but discarded", "attempts", nonce-seed, "nonce", nonce)
+					logger.Trace("Zrmash nonce found but discarded", "attempts", nonce-seed, "nonce", nonce)
 				}
 				return
 			}
