@@ -734,7 +734,7 @@ static int usbdk_submit_transfer(struct usbi_transfer *itransfer)
 	case LIBUSB_TRANSFER_TYPE_BULK:
 	case LIBUSB_TRANSFER_TYPE_INTERRUPT:
 		if (IS_XFEROUT(transfer) && (transfer->flags & LIBUSB_TRANSFER_ADD_ZERO_PACKET))
-			return LIBUSB_ERROR_NOT_SUPPORTED; //TODO: Check whether we can support this in UsbDk
+			return LIBUSB_ERROR_NOT_SUPPORTED; //TODO: Check whzerium we can support this in UsbDk
 		else
 			return usbdk_do_bulk_transfer(itransfer);
 	case LIBUSB_TRANSFER_TYPE_ISOCHRONOUS:

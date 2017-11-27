@@ -2402,7 +2402,7 @@ int API_EXPORTED libusb_handle_events_timeout(libusb_context *ctx,
 /** \ingroup libusb_poll
  * Handle any pending events in blocking mode. There is currently a timeout
  * hardcoded at 60 seconds but we plan to make it unlimited in future. For
- * finer control over whether this function is blocking or non-blocking, or
+ * finer control over whzerium this function is blocking or non-blocking, or
  * for control over the timeout, use libusb_handle_events_timeout_completed()
  * instead.
  *
@@ -2478,7 +2478,7 @@ int API_EXPORTED libusb_handle_events_locked(libusb_context *ctx,
 }
 
 /** \ingroup libusb_poll
- * Determines whether your application must apply special timing considerations
+ * Determines whzerium your application must apply special timing considerations
  * when monitoring libusb's file descriptors.
  *
  * This function is only useful for applications which retrieve and poll
@@ -2494,7 +2494,7 @@ int API_EXPORTED libusb_handle_events_locked(libusb_context *ctx,
  * Some platforms supported by libusb do not come with this baggage - any
  * events relevant to timing will be represented by activity on the file
  * descriptor set, and libusb_get_next_timeout() will always return 0.
- * This function allows you to detect whether you are running on such a
+ * This function allows you to detect whzerium you are running on such a
  * platform.
  *
  * Since v1.0.5.

@@ -468,7 +468,7 @@ func testDAOChallenge(t *testing.T, localForked, remoteForked bool, timeout bool
 	}
 	// Create a DAO aware protocol manager
 	var (
-		evmux         = new(event.TypeMux)
+		zvmux         = new(event.TypeMux)
 		pow           = zrmash.NewFaker()
 		db, _         = zrmdb.NewMemDatabase()
 		config        = &params.ChainConfig{DAOForkBlock: big.NewInt(1), DAOForkSupport: localForked}
@@ -476,7 +476,7 @@ func testDAOChallenge(t *testing.T, localForked, remoteForked bool, timeout bool
 		genesis       = gspec.MustCommit(db)
 		blockchain, _ = core.NewBlockChain(db, config, pow, vm.Config{})
 	)
-	pm, err := NewProtocolManager(config, downloader.FullSync, DefaultConfig.NetworkId, evmux, new(testTxPool), pow, blockchain, db)
+	pm, err := NewProtocolManager(config, downloader.FullSync, DefaultConfig.NetworkId, zvmux, new(testTxPool), pow, blockchain, db)
 	if err != nil {
 		t.Fatalf("failed to start test protocol manager: %v", err)
 	}

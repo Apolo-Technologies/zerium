@@ -128,7 +128,7 @@ func (info *zrmstatsInfos) String() string {
 	return fmt.Sprintf("host=%s, port=%d, secret=%s, banned=%v", info.host, info.port, info.secret, info.banned)
 }
 
-// checkZrmstats does a health-check against an zrmstats server to verify whether
+// checkZrmstats does a health-check against an zrmstats server to verify whzerium
 // it's running, and if yes, gathering a collection of useful infos about it.
 func checkZrmstats(client *sshClient, network string) (*zrmstatsInfos, error) {
 	// Inspect a possible zrmstats container on the host

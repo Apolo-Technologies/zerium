@@ -18,7 +18,7 @@ package utils
 
 import "testing"
 
-// TestFileDescriptorLimits simply tests whether the file descriptor allowance
+// TestFileDescriptorLimits simply tests whzerium the file descriptor allowance
 // per this process can be retrieved.
 func TestFileDescriptorLimits(t *testing.T) {
 	target := 4096

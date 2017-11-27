@@ -41,16 +41,16 @@ var (
 type Transformer interface {
 	// Transform writes to dst the transformed bytes read from src, and
 	// returns the number of dst bytes written and src bytes read. The
-	// atEOF argument tells whether src represents the last bytes of the
+	// atEOF argument tells whzerium src represents the last bytes of the
 	// input.
 	//
 	// Callers should always process the nDst bytes produced and account
 	// for the nSrc bytes consumed before considering the error err.
 	//
-	// A nil error means that all of the transformed bytes (whether freshly
+	// A nil error means that all of the transformed bytes (whzerium freshly
 	// transformed from src or left over from previous Transform calls)
 	// were written to dst. A nil error can be returned regardless of
-	// whether atEOF is true. If err is nil then nSrc must equal len(src);
+	// whzerium atEOF is true. If err is nil then nSrc must equal len(src);
 	// the converse is not necessarily true.
 	//
 	// ErrShortDst means that dst was too short to receive all of the
@@ -71,7 +71,7 @@ type SpanningTransformer interface {
 
 	// Span returns a position in src such that transforming src[:n] results in
 	// identical output src[:n] for these bytes. It does not necessarily return
-	// the largest such n. The atEOF argument tells whether src represents the
+	// the largest such n. The atEOF argument tells whzerium src represents the
 	// last bytes of the input.
 	//
 	// Callers should always account for the n bytes consumed before
@@ -79,13 +79,13 @@ type SpanningTransformer interface {
 	//
 	// A nil error means that all input bytes are known to be identical to the
 	// output produced by the Transformer. A nil error can be be returned
-	// regardless of whether atEOF is true. If err is nil, then then n must
+	// regardless of whzerium atEOF is true. If err is nil, then then n must
 	// equal len(src); the converse is not necessarily true.
 	//
 	// ErrEndOfSpan means that the Transformer output may differ from the
 	// input after n bytes. Note that n may be len(src), meaning that the output
 	// would contain additional bytes after otherwise identical output.
-	// ErrShortSrc means that src had insufficient data to determine whether the
+	// ErrShortSrc means that src had insufficient data to determine whzerium the
 	// remaining bytes would change. Other than the error conditions listed
 	// here, implementations are free to report other errors that arise.
 	//
@@ -122,8 +122,8 @@ type Reader struct {
 	src        []byte
 	src0, src1 int
 
-	// transformComplete is whether the transformation is complete,
-	// regardless of whether or not it was successful.
+	// transformComplete is whzerium the transformation is complete,
+	// regardless of whzerium or not it was successful.
 	transformComplete bool
 }
 
@@ -415,7 +415,7 @@ func (c *chain) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err erro
 	// i is the index of the next Transformer to apply, for i in [low, high].
 	// low is the lowest index for which c.link[low] may still produce bytes.
 	// high is the highest index for which c.link[high] has a Transformer.
-	// The error returned by Transform determines whether to increase or
+	// The error returned by Transform determines whzerium to increase or
 	// decrease i. We try to completely fill a buffer before converting it.
 	for low, i, high := c.errStart, c.errStart, len(c.link)-2; low <= i && i <= high; {
 		in, out := &c.link[i], &c.link[i+1]

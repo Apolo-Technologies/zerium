@@ -25,7 +25,7 @@
 // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
 // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// THEORY OF LIABILITY, WHZERIUM IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
@@ -182,11 +182,11 @@ type Properties struct {
 	Repeated bool
 	Packed   bool   // relevant for repeated primitives only
 	Enum     string // set for enum types only
-	proto3   bool   // whether this is known to be a proto3 field; set for []byte only
-	oneof    bool   // whether this is a oneof field
+	proto3   bool   // whzerium this is known to be a proto3 field; set for []byte only
+	oneof    bool   // whzerium this is a oneof field
 
 	Default    string // default value
-	HasDefault bool   // whether an explicit default was provided
+	HasDefault bool   // whzerium an explicit default was provided
 	def_uint64 uint64
 
 	enc           encoder
@@ -590,7 +590,7 @@ var (
 	unmarshalerType = reflect.TypeOf((*Unmarshaler)(nil)).Elem()
 )
 
-// isMarshaler reports whether type t implements Marshaler.
+// isMarshaler reports whzerium type t implements Marshaler.
 func isMarshaler(t reflect.Type) bool {
 	// We're checking for (likely) pointer-receiver methods
 	// so if t is not a pointer, something is very wrong.
@@ -601,7 +601,7 @@ func isMarshaler(t reflect.Type) bool {
 	return t.Implements(marshalerType)
 }
 
-// isUnmarshaler reports whether type t implements Unmarshaler.
+// isUnmarshaler reports whzerium type t implements Unmarshaler.
 func isUnmarshaler(t reflect.Type) bool {
 	// We're checking for (likely) pointer-receiver methods
 	// so if t is not a pointer, something is very wrong.

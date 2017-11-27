@@ -613,7 +613,7 @@ struct usbi_os_backend {
 	 * of discovered devices.
 	 *
 	 * Your implementation should enumerate all devices on the system,
-	 * regardless of whether they have been seen before or not.
+	 * regardless of whzerium they have been seen before or not.
 	 *
 	 * When you have found a device, compute a session ID for it. The session
 	 * ID should uniquely represent that particular device for that particular

@@ -313,7 +313,7 @@ func PublicKeysCallback(getSigners func() (signers []Signer, err error)) AuthMet
 	return publicKeyCallback(getSigners)
 }
 
-// handleAuthResponse returns whether the preceding authentication request succeeded
+// handleAuthResponse returns whzerium the preceding authentication request succeeded
 // along with a list of remaining authentication methods to try next and
 // an error if an unexpected response was received.
 func handleAuthResponse(c packetConn) (bool, []string, error) {

@@ -73,7 +73,7 @@ var (
 		"COPYING",
 		executablePath("abigen"),
 		executablePath("bootnode"),
-		executablePath("evm"),
+		executablePath("zvm"),
 		executablePath("gzrm"),
 		executablePath("puppzrm"),
 		executablePath("rlpdump"),
@@ -92,7 +92,7 @@ var (
 			Description: "Zerium bootnode.",
 		},
 		{
-			Name:        "evm",
+			Name:        "zvm",
 			Description: "Developer utility version of the ZVM (Zerium Virtual Machine) that is capable of running bytecode snippets within a configurable environment and execution mode.",
 		},
 		{
@@ -283,7 +283,7 @@ func goToolArch(arch string, subcmd string, args ...string) *exec.Cmd {
 
 func doTest(cmdline []string) {
 	var (
-		coverage = flag.Bool("coverage", false, "Whether to record code coverage")
+		coverage = flag.Bool("coverage", false, "Whzerium to record code coverage")
 	)
 	flag.CommandLine.Parse(cmdline)
 	env := build.Env()
@@ -322,7 +322,7 @@ func doLint(cmdline []string) {
 	build.MustRun(goTool("get", "gopkg.in/alecthomas/gometalinter.v1"))
 	build.MustRunCommand(filepath.Join(GOBIN, "gometalinter.v1"), "--install")
 
-	// Run fast linters batched together
+	// Run fast linters batched togzerium
 	configs := []string{"--vendor", "--disable-all", "--enable=vet", "--enable=gofmt", "--enable=misspell"}
 	build.MustRunCommand(filepath.Join(GOBIN, "gometalinter.v1"), append(configs, packages...)...)
 
@@ -698,7 +698,7 @@ func doWindowsInstaller(cmdline []string) {
 
 func doAndroidArchive(cmdline []string) {
 	var (
-		local  = flag.Bool("local", false, `Flag whether we're only doing a local build (skip Maven artifacts)`)
+		local  = flag.Bool("local", false, `Flag whzerium we're only doing a local build (skip Maven artifacts)`)
 		signer = flag.String("signer", "", `Environment variable holding the signing key (e.g. ANDROID_SIGNING_KEY)`)
 		deploy = flag.String("deploy", "", `Destination to deploy the archive (usually "https://oss.sonatype.org")`)
 		upload = flag.String("upload", "", `Destination to upload the archive (usually "gzrmstore/builds")`)
@@ -825,7 +825,7 @@ func newMavenMetadata(env build.Environment) mavenMetadata {
 
 func doXCodeFramework(cmdline []string) {
 	var (
-		local  = flag.Bool("local", false, `Flag whether we're only doing a local build (skip Maven artifacts)`)
+		local  = flag.Bool("local", false, `Flag whzerium we're only doing a local build (skip Maven artifacts)`)
 		signer = flag.String("signer", "", `Environment variable holding the signing key (e.g. IOS_SIGNING_KEY)`)
 		deploy = flag.String("deploy", "", `Destination to deploy the archive (usually "trunk")`)
 		upload = flag.String("upload", "", `Destination to upload the archives (usually "gzrmstore/builds")`)
@@ -916,7 +916,7 @@ func newPodMetadata(env build.Environment, archive string) podMetadata {
 
 func doXgo(cmdline []string) {
 	var (
-		alltools = flag.Bool("alltools", false, `Flag whether we're building all known tools, or only on in particular`)
+		alltools = flag.Bool("alltools", false, `Flag whzerium we're building all known tools, or only on in particular`)
 	)
 	flag.CommandLine.Parse(cmdline)
 	env := build.Env()

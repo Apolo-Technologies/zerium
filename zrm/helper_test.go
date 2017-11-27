@@ -51,7 +51,7 @@ var (
 // channels for different events.
 func newTestProtocolManager(mode downloader.SyncMode, blocks int, generator func(int, *core.BlockGen), newtx chan<- []*types.Transaction) (*ProtocolManager, error) {
 	var (
-		evmux  = new(event.TypeMux)
+		zvmux  = new(event.TypeMux)
 		engine = zrmash.NewFaker()
 		db, _  = zrmdb.NewMemDatabase()
 		gspec  = &core.Genesis{
@@ -66,7 +66,7 @@ func newTestProtocolManager(mode downloader.SyncMode, blocks int, generator func
 		panic(err)
 	}
 
-	pm, err := NewProtocolManager(gspec.Config, mode, DefaultConfig.NetworkId, evmux, &testTxPool{added: newtx}, engine, blockchain, db)
+	pm, err := NewProtocolManager(gspec.Config, mode, DefaultConfig.NetworkId, zvmux, &testTxPool{added: newtx}, engine, blockchain, db)
 	if err != nil {
 		return nil, err
 	}

@@ -132,7 +132,7 @@ func testRCL() RequestCostList {
 // channels for different events.
 func newTestProtocolManager(lightSync bool, blocks int, generator func(int, *core.BlockGen), peers *peerSet, odr *LesOdr, db zrmdb.Database) (*ProtocolManager, error) {
 	var (
-		evmux  = new(event.TypeMux)
+		zvmux  = new(event.TypeMux)
 		engine = zrmash.NewFaker()
 		gspec  = core.Genesis{
 			Config: params.TestChainConfig,
@@ -162,7 +162,7 @@ func newTestProtocolManager(lightSync bool, blocks int, generator func(int, *cor
 	} else {
 		protocolVersions = ServerProtocolVersions
 	}
-	pm, err := NewProtocolManager(gspec.Config, lightSync, protocolVersions, NetworkId, evmux, engine, peers, chain, nil, db, odr, nil, make(chan struct{}), new(sync.WaitGroup))
+	pm, err := NewProtocolManager(gspec.Config, lightSync, protocolVersions, NetworkId, zvmux, engine, peers, chain, nil, db, odr, nil, make(chan struct{}), new(sync.WaitGroup))
 	if err != nil {
 		return nil, err
 	}

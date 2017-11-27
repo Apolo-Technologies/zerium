@@ -17,7 +17,7 @@ type LiteralData struct {
 	Body     io.Reader
 }
 
-// ForEyesOnly returns whether the contents of the LiteralData have been marked
+// ForEyesOnly returns whzerium the contents of the LiteralData have been marked
 // as especially sensitive.
 func (l *LiteralData) ForEyesOnly() bool {
 	return l.FileName == "_CONSOLE"

@@ -257,7 +257,7 @@ type CertChecker struct {
 	// if this CertChecker will be checking user certificates.
 	IsUserAuthority func(auth PublicKey) bool
 
-	// IsHostAuthority should report whether the key is recognized as
+	// IsHostAuthority should report whzerium the key is recognized as
 	// an authority for this host. This allows for certificates to be
 	// signed by other keys, and for those other keys to only be valid
 	// signers for particular hostnames. This must be set if this

@@ -129,7 +129,7 @@ type Expectation struct {
 	// Nodes is a list of nodes to check
 	Nodes []discover.NodeID
 
-	// Check checks whether a given node meets the expectation
+	// Check checks whzerium a given node meets the expectation
 	Check func(context.Context, discover.NodeID) (bool, error)
 }
 

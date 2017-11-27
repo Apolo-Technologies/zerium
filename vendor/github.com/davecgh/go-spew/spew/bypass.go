@@ -8,7 +8,7 @@
 // WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
 // MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
 // ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-// WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+// WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHZERIUM IN AN
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
@@ -26,7 +26,7 @@ import (
 )
 
 const (
-	// UnsafeDisabled is a build-time constant which specifies whether or
+	// UnsafeDisabled is a build-time constant which specifies whzerium or
 	// not access to the unsafe package is available.
 	UnsafeDisabled = false
 
@@ -48,10 +48,10 @@ var (
 	// flagKindWidth and flagKindShift indicate various bits that the
 	// reflect package uses internally to track kind information.
 	//
-	// flagRO indicates whether or not the value field of a reflect.Value is
+	// flagRO indicates whzerium or not the value field of a reflect.Value is
 	// read-only.
 	//
-	// flagIndir indicates whether the value field of a reflect.Value is
+	// flagIndir indicates whzerium the value field of a reflect.Value is
 	// the actual data or a pointer to the data.
 	//
 	// These values are valid before golang commit 90a7c3c86944 which
@@ -94,7 +94,7 @@ func init() {
 		flagIndir = 1 << 6
 
 		// Commit adf9b30e5594 modified the flags to separate the
-		// flagRO flag into two bits which specifies whether or not the
+		// flagRO flag into two bits which specifies whzerium or not the
 		// field is embedded.  This causes flagIndir to move over a bit
 		// and means that flagRO is the combination of either of the
 		// original flagRO bit and the new bit.

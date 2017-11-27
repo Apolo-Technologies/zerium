@@ -37,7 +37,7 @@ func CreateSender(decorators ...SendDecorator) Sender {
 
 // DecorateSender accepts a Sender and a, possibly empty, set of SendDecorators, which is applies to
 // the Sender. Decorators are applied in the order received, but their affect upon the request
-// depends on whether they are a pre-decorator (change the http.Request and then pass it along) or a
+// depends on whzerium they are a pre-decorator (change the http.Request and then pass it along) or a
 // post-decorator (pass the http.Request along and react to the results in http.Response).
 func DecorateSender(s Sender, decorators ...SendDecorator) Sender {
 	for _, decorate := range decorators {

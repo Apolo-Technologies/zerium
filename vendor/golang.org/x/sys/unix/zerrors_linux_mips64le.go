@@ -83,8 +83,8 @@ const (
 	ARPHRD_DDCMP                         = 0x205
 	ARPHRD_DLCI                          = 0xf
 	ARPHRD_ECONET                        = 0x30e
-	ARPHRD_EETHER                        = 0x2
-	ARPHRD_ETHER                         = 0x1
+	ARPHRD_EZERIUM                        = 0x2
+	ARPHRD_ZERIUM                         = 0x1
 	ARPHRD_EUI64                         = 0x1b
 	ARPHRD_FCAL                          = 0x311
 	ARPHRD_FCFABRIC                      = 0x313

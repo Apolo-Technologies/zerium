@@ -38,23 +38,23 @@ type (
 )
 
 // run runs the given contract and takes care of running precompiles with a fallback to the byte code interpreter.
-func run(evm *ZVM, snapshot int, contract *Contract, input []byte) ([]byte, error) {
+func run(zvm *ZVM, snapshot int, contract *Contract, input []byte) ([]byte, error) {
 	if contract.CodeAddr != nil {
 		precompiles := PrecompiledContractsHomestead
-		if evm.ChainConfig().IsByzantium(evm.BlockNumber) {
+		if zvm.ChainConfig().IsByzantium(zvm.BlockNumber) {
 			precompiles = PrecompiledContractsByzantium
 		}
 		if p := precompiles[*contract.CodeAddr]; p != nil {
 			return RunPrecompiledContract(p, input, contract)
 		}
 	}
-	return evm.interpreter.Run(snapshot, contract, input)
+	return zvm.interpreter.Run(snapshot, contract, input)
 }
 
 // Context provides the ZVM with auxiliary information. Once provided
 // it shouldn't be modified.
 type Context struct {
-	// CanTransfer returns whether the account contains
+	// CanTransfer returns whzerium the account contains
 	// sufficient zerium to transfer the value
 	CanTransfer CanTransferFunc
 	// Transfer transfers zerium from one account to the other
@@ -96,7 +96,7 @@ type ZVM struct {
 	// chain rules contains the chain rules for the current epoch
 	chainRules params.Rules
 	// virtual machine configuration options used to initialise the
-	// evm.
+	// zvm.
 	vmConfig Config
 	// global (to this context) abt virtual machine
 	// used throughout the execution of the tx.
@@ -109,7 +109,7 @@ type ZVM struct {
 // NewZVM retutrns a new ZVM . The returned ZVM is not thread safe and should
 // only ever be used *once*.
 func NewZVM(ctx Context, statedb StateDB, chainConfig *params.ChainConfig, vmConfig Config) *ZVM {
-	evm := &ZVM{
+	zvm := &ZVM{
 		Context:     ctx,
 		StateDB:     statedb,
 		vmConfig:    vmConfig,
@@ -117,62 +117,62 @@ func NewZVM(ctx Context, statedb StateDB, chainConfig *params.ChainConfig, vmCon
 		chainRules:  chainConfig.Rules(ctx.BlockNumber),
 	}
 
-	evm.interpreter = NewInterpreter(evm, vmConfig)
-	return evm
+	zvm.interpreter = NewInterpreter(zvm, vmConfig)
+	return zvm
 }
 
 // Cancel cancels any running ZVM operation. This may be called concurrently and
 // it's safe to be called multiple times.
-func (evm *ZVM) Cancel() {
-	atomic.StoreInt32(&evm.abort, 1)
+func (zvm *ZVM) Cancel() {
+	atomic.StoreInt32(&zvm.abort, 1)
 }
 
 // Call executes the contract associated with the addr with the given input as
 // parameters. It also handles any necessary value transfer required and takes
 // the necessary steps to create accounts and reverses the state in case of an
 // execution error or failed value transfer.
-func (evm *ZVM) Call(caller ContractRef, addr common.Address, input []byte, gas uint64, value *big.Int) (ret []byte, leftOverGas uint64, err error) {
-	if evm.vmConfig.NoRecursion && evm.depth > 0 {
+func (zvm *ZVM) Call(caller ContractRef, addr common.Address, input []byte, gas uint64, value *big.Int) (ret []byte, leftOverGas uint64, err error) {
+	if zvm.vmConfig.NoRecursion && zvm.depth > 0 {
 		return nil, gas, nil
 	}
 
 	// Fail if we're trying to execute above the call depth limit
-	if evm.depth > int(params.CallCreateDepth) {
+	if zvm.depth > int(params.CallCreateDepth) {
 		return nil, gas, ErrDepth
 	}
 	// Fail if we're trying to transfer more than the available balance
-	if !evm.Context.CanTransfer(evm.StateDB, caller.Address(), value) {
+	if !zvm.Context.CanTransfer(zvm.StateDB, caller.Address(), value) {
 		return nil, gas, ErrInsufficientBalance
 	}
 
 	var (
 		to       = AccountRef(addr)
-		snapshot = evm.StateDB.Snapshot()
+		snapshot = zvm.StateDB.Snapshot()
 	)
-	if !evm.StateDB.Exist(addr) {
+	if !zvm.StateDB.Exist(addr) {
 		precompiles := PrecompiledContractsHomestead
-		if evm.ChainConfig().IsByzantium(evm.BlockNumber) {
+		if zvm.ChainConfig().IsByzantium(zvm.BlockNumber) {
 			precompiles = PrecompiledContractsByzantium
 		}
-		if precompiles[addr] == nil && evm.ChainConfig().IsEIP158(evm.BlockNumber) && value.Sign() == 0 {
+		if precompiles[addr] == nil && zvm.ChainConfig().IsEIP158(zvm.BlockNumber) && value.Sign() == 0 {
 			return nil, gas, nil
 		}
-		evm.StateDB.CreateAccount(addr)
+		zvm.StateDB.CreateAccount(addr)
 	}
-	evm.Transfer(evm.StateDB, caller.Address(), to.Address(), value)
+	zvm.Transfer(zvm.StateDB, caller.Address(), to.Address(), value)
 
 	// initialise a new contract and set the code that is to be used by the
 	// E The contract is a scoped environment for this execution context
 	// only.
 	contract := NewContract(caller, to, value, gas)
-	contract.SetCallCode(&addr, evm.StateDB.GetCodeHash(addr), evm.StateDB.GetCode(addr))
+	contract.SetCallCode(&addr, zvm.StateDB.GetCodeHash(addr), zvm.StateDB.GetCode(addr))
 
-	ret, err = run(evm, snapshot, contract, input)
+	ret, err = run(zvm, snapshot, contract, input)
 	// When an error was returned by the ZVM or when setting the creation code
 	// above we revert to the snapshot and consume any gas remaining. Additionally
 	// when we're in homestead this also counts for code storage gas errors.
 	if err != nil {
-		evm.StateDB.RevertToSnapshot(snapshot)
+		zvm.StateDB.RevertToSnapshot(snapshot)
 		if err != errExecutionReverted {
 			contract.UseGas(contract.Gas)
 		}
@@ -187,33 +187,33 @@ func (evm *ZVM) Call(caller ContractRef, addr common.Address, input []byte, gas 
 //
 // CallCode differs from Call in the sense that it executes the given address'
 // code with the caller as context.
-func (evm *ZVM) CallCode(caller ContractRef, addr common.Address, input []byte, gas uint64, value *big.Int) (ret []byte, leftOverGas uint64, err error) {
-	if evm.vmConfig.NoRecursion && evm.depth > 0 {
+func (zvm *ZVM) CallCode(caller ContractRef, addr common.Address, input []byte, gas uint64, value *big.Int) (ret []byte, leftOverGas uint64, err error) {
+	if zvm.vmConfig.NoRecursion && zvm.depth > 0 {
 		return nil, gas, nil
 	}
 
 	// Fail if we're trying to execute above the call depth limit
-	if evm.depth > int(params.CallCreateDepth) {
+	if zvm.depth > int(params.CallCreateDepth) {
 		return nil, gas, ErrDepth
 	}
 	// Fail if we're trying to transfer more than the available balance
-	if !evm.CanTransfer(evm.StateDB, caller.Address(), value) {
+	if !zvm.CanTransfer(zvm.StateDB, caller.Address(), value) {
 		return nil, gas, ErrInsufficientBalance
 	}
 
 	var (
-		snapshot = evm.StateDB.Snapshot()
+		snapshot = zvm.StateDB.Snapshot()
 		to       = AccountRef(caller.Address())
 	)
 	// initialise a new contract and set the code that is to be used by the
-	// E The contract is a scoped evmironment for this execution context
+	// E The contract is a scoped zvmironment for this execution context
 	// only.
 	contract := NewContract(caller, to, value, gas)
-	contract.SetCallCode(&addr, evm.StateDB.GetCodeHash(addr), evm.StateDB.GetCode(addr))
+	contract.SetCallCode(&addr, zvm.StateDB.GetCodeHash(addr), zvm.StateDB.GetCode(addr))
 
-	ret, err = run(evm, snapshot, contract, input)
+	ret, err = run(zvm, snapshot, contract, input)
 	if err != nil {
-		evm.StateDB.RevertToSnapshot(snapshot)
+		zvm.StateDB.RevertToSnapshot(snapshot)
 		if err != errExecutionReverted {
 			contract.UseGas(contract.Gas)
 		}
@@ -226,27 +226,27 @@ func (evm *ZVM) CallCode(caller ContractRef, addr common.Address, input []byte, 
 //
 // DelegateCall differs from CallCode in the sense that it executes the given address'
 // code with the caller as context and the caller is set to the caller of the caller.
-func (evm *ZVM) DelegateCall(caller ContractRef, addr common.Address, input []byte, gas uint64) (ret []byte, leftOverGas uint64, err error) {
-	if evm.vmConfig.NoRecursion && evm.depth > 0 {
+func (zvm *ZVM) DelegateCall(caller ContractRef, addr common.Address, input []byte, gas uint64) (ret []byte, leftOverGas uint64, err error) {
+	if zvm.vmConfig.NoRecursion && zvm.depth > 0 {
 		return nil, gas, nil
 	}
 	// Fail if we're trying to execute above the call depth limit
-	if evm.depth > int(params.CallCreateDepth) {
+	if zvm.depth > int(params.CallCreateDepth) {
 		return nil, gas, ErrDepth
 	}
 
 	var (
-		snapshot = evm.StateDB.Snapshot()
+		snapshot = zvm.StateDB.Snapshot()
 		to       = AccountRef(caller.Address())
 	)
 
 	// Initialise a new contract and make initialise the delegate values
 	contract := NewContract(caller, to, nil, gas).AsDelegate()
-	contract.SetCallCode(&addr, evm.StateDB.GetCodeHash(addr), evm.StateDB.GetCode(addr))
+	contract.SetCallCode(&addr, zvm.StateDB.GetCodeHash(addr), zvm.StateDB.GetCode(addr))
 
-	ret, err = run(evm, snapshot, contract, input)
+	ret, err = run(zvm, snapshot, contract, input)
 	if err != nil {
-		evm.StateDB.RevertToSnapshot(snapshot)
+		zvm.StateDB.RevertToSnapshot(snapshot)
 		if err != errExecutionReverted {
 			contract.UseGas(contract.Gas)
 		}
@@ -258,38 +258,38 @@ func (evm *ZVM) DelegateCall(caller ContractRef, addr common.Address, input []by
 // as parameters while disallowing any modifications to the state during the call.
 // Opcodes that attempt to perform such modifications will result in exceptions
 // instead of performing the modifications.
-func (evm *ZVM) StaticCall(caller ContractRef, addr common.Address, input []byte, gas uint64) (ret []byte, leftOverGas uint64, err error) {
-	if evm.vmConfig.NoRecursion && evm.depth > 0 {
+func (zvm *ZVM) StaticCall(caller ContractRef, addr common.Address, input []byte, gas uint64) (ret []byte, leftOverGas uint64, err error) {
+	if zvm.vmConfig.NoRecursion && zvm.depth > 0 {
 		return nil, gas, nil
 	}
 	// Fail if we're trying to execute above the call depth limit
-	if evm.depth > int(params.CallCreateDepth) {
+	if zvm.depth > int(params.CallCreateDepth) {
 		return nil, gas, ErrDepth
 	}
 	// Make sure the readonly is only set if we aren't in readonly yet
 	// this makes also sure that the readonly flag isn't removed for
 	// child calls.
-	if !evm.interpreter.readOnly {
-		evm.interpreter.readOnly = true
-		defer func() { evm.interpreter.readOnly = false }()
+	if !zvm.interpreter.readOnly {
+		zvm.interpreter.readOnly = true
+		defer func() { zvm.interpreter.readOnly = false }()
 	}
 
 	var (
 		to       = AccountRef(addr)
-		snapshot = evm.StateDB.Snapshot()
+		snapshot = zvm.StateDB.Snapshot()
 	)
 	// Initialise a new contract and set the code that is to be used by the
 	// ZVM. The contract is a scoped environment for this execution context
 	// only.
 	contract := NewContract(caller, to, new(big.Int), gas)
-	contract.SetCallCode(&addr, evm.StateDB.GetCodeHash(addr), evm.StateDB.GetCode(addr))
+	contract.SetCallCode(&addr, zvm.StateDB.GetCodeHash(addr), zvm.StateDB.GetCode(addr))
 
 	// When an error was returned by the ZVM or when setting the creation code
 	// above we revert to the snapshot and consume any gas remaining. Additionally
 	// when we're in Homestead this also counts for code storage gas errors.
-	ret, err = run(evm, snapshot, contract, input)
+	ret, err = run(zvm, snapshot, contract, input)
 	if err != nil {
-		evm.StateDB.RevertToSnapshot(snapshot)
+		zvm.StateDB.RevertToSnapshot(snapshot)
 		if err != errExecutionReverted {
 			contract.UseGas(contract.Gas)
 		}
@@ -298,45 +298,45 @@ func (evm *ZVM) StaticCall(caller ContractRef, addr common.Address, input []byte
 }
 
 // Create creates a new contract using code as deployment code.
-func (evm *ZVM) Create(caller ContractRef, code []byte, gas uint64, value *big.Int) (ret []byte, contractAddr common.Address, leftOverGas uint64, err error) {
+func (zvm *ZVM) Create(caller ContractRef, code []byte, gas uint64, value *big.Int) (ret []byte, contractAddr common.Address, leftOverGas uint64, err error) {
 
 	// Depth check execution. Fail if we're trying to execute above the
 	// limit.
-	if evm.depth > int(params.CallCreateDepth) {
+	if zvm.depth > int(params.CallCreateDepth) {
 		return nil, common.Address{}, gas, ErrDepth
 	}
-	if !evm.CanTransfer(evm.StateDB, caller.Address(), value) {
+	if !zvm.CanTransfer(zvm.StateDB, caller.Address(), value) {
 		return nil, common.Address{}, gas, ErrInsufficientBalance
 	}
 	// Ensure there's no existing contract already at the designated address
-	nonce := evm.StateDB.GetNonce(caller.Address())
-	evm.StateDB.SetNonce(caller.Address(), nonce+1)
+	nonce := zvm.StateDB.GetNonce(caller.Address())
+	zvm.StateDB.SetNonce(caller.Address(), nonce+1)
 
 	contractAddr = crypto.CreateAddress(caller.Address(), nonce)
-	contractHash := evm.StateDB.GetCodeHash(contractAddr)
-	if evm.StateDB.GetNonce(contractAddr) != 0 || (contractHash != (common.Hash{}) && contractHash != emptyCodeHash) {
+	contractHash := zvm.StateDB.GetCodeHash(contractAddr)
+	if zvm.StateDB.GetNonce(contractAddr) != 0 || (contractHash != (common.Hash{}) && contractHash != emptyCodeHash) {
 		return nil, common.Address{}, 0, ErrContractAddressCollision
 	}
 	// Create a new account on the state
-	snapshot := evm.StateDB.Snapshot()
-	evm.StateDB.CreateAccount(contractAddr)
-	if evm.ChainConfig().IsEIP158(evm.BlockNumber) {
-		evm.StateDB.SetNonce(contractAddr, 1)
+	snapshot := zvm.StateDB.Snapshot()
+	zvm.StateDB.CreateAccount(contractAddr)
+	if zvm.ChainConfig().IsEIP158(zvm.BlockNumber) {
+		zvm.StateDB.SetNonce(contractAddr, 1)
 	}
-	evm.Transfer(evm.StateDB, caller.Address(), contractAddr, value)
+	zvm.Transfer(zvm.StateDB, caller.Address(), contractAddr, value)
 
 	// initialise a new contract and set the code that is to be used by the
-	// E The contract is a scoped evmironment for this execution context
+	// E The contract is a scoped zvmironment for this execution context
 	// only.
 	contract := NewContract(caller, AccountRef(contractAddr), value, gas)
 	contract.SetCallCode(&contractAddr, crypto.Keccak256Hash(code), code)
 
-	if evm.vmConfig.NoRecursion && evm.depth > 0 {
+	if zvm.vmConfig.NoRecursion && zvm.depth > 0 {
 		return nil, contractAddr, gas, nil
 	}
-	ret, err = run(evm, snapshot, contract, nil)
-	// check whether the max code size has been exceeded
-	maxCodeSizeExceeded := evm.ChainConfig().IsEIP158(evm.BlockNumber) && len(ret) > params.MaxCodeSize
+	ret, err = run(zvm, snapshot, contract, nil)
+	// check whzerium the max code size has been exceeded
+	maxCodeSizeExceeded := zvm.ChainConfig().IsEIP158(zvm.BlockNumber) && len(ret) > params.MaxCodeSize
 	// if the contract creation ran successfully and no errors were returned
 	// calculate the gas required to store the code. If the code could not
 	// be stored due to not enough gas set an error and let it be handled
@@ -344,7 +344,7 @@ func (evm *ZVM) Create(caller ContractRef, code []byte, gas uint64, value *big.I
 	if err == nil && !maxCodeSizeExceeded {
 		createDataGas := uint64(len(ret)) * params.CreateDataGas
 		if contract.UseGas(createDataGas) {
-			evm.StateDB.SetCode(contractAddr, ret)
+			zvm.StateDB.SetCode(contractAddr, ret)
 		} else {
 			err = ErrCodeStoreOutOfGas
 		}
@@ -353,8 +353,8 @@ func (evm *ZVM) Create(caller ContractRef, code []byte, gas uint64, value *big.I
 	// When an error was returned by the ZVM or when setting the creation code
 	// above we revert to the snapshot and consume any gas remaining. Additionally
 	// when we're in homestead this also counts for code storage gas errors.
-	if maxCodeSizeExceeded || (err != nil && (evm.ChainConfig().IsHomestead(evm.BlockNumber) || err != ErrCodeStoreOutOfGas)) {
-		evm.StateDB.RevertToSnapshot(snapshot)
+	if maxCodeSizeExceeded || (err != nil && (zvm.ChainConfig().IsHomestead(zvm.BlockNumber) || err != ErrCodeStoreOutOfGas)) {
+		zvm.StateDB.RevertToSnapshot(snapshot)
 		if err != errExecutionReverted {
 			contract.UseGas(contract.Gas)
 		}
@@ -366,8 +366,8 @@ func (evm *ZVM) Create(caller ContractRef, code []byte, gas uint64, value *big.I
 	return ret, contractAddr, contract.Gas, err
 }
 
-// ChainConfig returns the evmironment's chain configuration
-func (evm *ZVM) ChainConfig() *params.ChainConfig { return evm.chainConfig }
+// ChainConfig returns the zvmironment's chain configuration
+func (zvm *ZVM) ChainConfig() *params.ChainConfig { return zvm.chainConfig }
 
 // Interpreter returns the ZVM interpreter
-func (evm *ZVM) Interpreter() *Interpreter { return evm.interpreter }
+func (zvm *ZVM) Interpreter() *Interpreter { return zvm.interpreter }

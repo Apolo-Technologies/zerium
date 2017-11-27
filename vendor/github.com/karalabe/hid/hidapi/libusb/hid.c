@@ -157,7 +157,7 @@ struct hid_device_ {
 	int product_index;
 	int serial_index;
 
-	/* Whether blocking reads are used */
+	/* Whzerium blocking reads are used */
 	int blocking; /* boolean */
 
 	/* Read thread objects */
@@ -956,7 +956,7 @@ hid_device * HID_API_EXPORT hid_open_path(const char *path)
 								(ep->bEndpointAddress & LIBUSB_ENDPOINT_DIR_MASK)
 							      == LIBUSB_ENDPOINT_IN;
 
-							/* Decide whether to use it for input or output. */
+							/* Decide whzerium to use it for input or output. */
 							if (dev->input_endpoint == 0 &&
 							    is_interrupt && is_input) {
 								/* Use this endpoint for INPUT */
@@ -1341,7 +1341,7 @@ static struct lang_map_entry lang_map[] = {
 	LANG("Croatian", "hr", 0x041A),
 	LANG("Czech", "cs", 0x0405),
 	LANG("Danish", "da", 0x0406),
-	LANG("Dutch - Netherlands", "nl_nl", 0x0413),
+	LANG("Dutch - Nzeriumlands", "nl_nl", 0x0413),
 	LANG("Dutch - Belgium", "nl_be", 0x0813),
 	LANG("English - Australia", "en_au", 0x0C09),
 	LANG("English - Belize", "en_bz", 0x2809),

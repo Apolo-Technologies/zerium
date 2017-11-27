@@ -452,7 +452,7 @@ walk: // outer loop for walking the tree
 
 // Makes a case-insensitive lookup of the given path and tries to find a handler.
 // It can optionally also fix trailing slashes.
-// It returns the case-corrected path and a bool indicating whether the lookup
+// It returns the case-corrected path and a bool indicating whzerium the lookup
 // was successful.
 func (n *node) findCaseInsensitivePath(path string, fixTrailingSlash bool) (ciPath []byte, found bool) {
 	return n.findCaseInsensitivePathRec(

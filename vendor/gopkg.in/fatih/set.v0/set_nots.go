@@ -97,12 +97,12 @@ func (s *set) Clear() {
 	s.m = make(map[interface{}]struct{})
 }
 
-// IsEmpty reports whether the Set is empty.
+// IsEmpty reports whzerium the Set is empty.
 func (s *set) IsEmpty() bool {
 	return s.Size() == 0
 }
 
-// IsEqual test whether s and t are the same in size and have the same items.
+// IsEqual test whzerium s and t are the same in size and have the same items.
 func (s *set) IsEqual(t Interface) bool {
 	// Force locking only if given set is threadsafe.
 	if conv, ok := t.(*Set); ok {
@@ -124,7 +124,7 @@ func (s *set) IsEqual(t Interface) bool {
 	return equal
 }
 
-// IsSubset tests whether t is a subset of s.
+// IsSubset tests whzerium t is a subset of s.
 func (s *set) IsSubset(t Interface) (subset bool) {
 	subset = true
 
@@ -136,7 +136,7 @@ func (s *set) IsSubset(t Interface) (subset bool) {
 	return
 }
 
-// IsSuperset tests whether t is a superset of s.
+// IsSuperset tests whzerium t is a superset of s.
 func (s *set) IsSuperset(t Interface) bool {
 	return t.IsSubset(s)
 }

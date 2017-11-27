@@ -45,7 +45,7 @@ my @headers = qw (
 	netinet/ip_carp.h
 	netinet/ip_divert.h
 	netinet/ip_esp.h
-	netinet/ip_ether.h
+	netinet/ip_zerium.h
 	netinet/ip_gre.h
 	netinet/ip_ipcomp.h
 	netinet/ip_ipip.h
@@ -87,7 +87,7 @@ my @ctls = qw (
 	net.inet.carp
 	net.inet.divert
 	net.inet.esp
-	net.inet.etherip
+	net.inet.zeriumip
 	net.inet.gre
 	net.inet.icmp
 	net.inet.igmp

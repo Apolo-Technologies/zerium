@@ -160,7 +160,7 @@ func openDB(s *session) (*DB, error) {
 // os.ErrExist error.
 //
 // Open will return an error with type of ErrCorrupted if corruption
-// detected in the DB. Use errors.IsCorrupted to test whether an error is
+// detected in the DB. Use errors.IsCorrupted to test whzerium an error is
 // due to corruption. Corrupted DB can be recovered with Recover function.
 //
 // The returned DB instance is safe for concurrent use.
@@ -203,7 +203,7 @@ func Open(stor storage.Storage, o *opt.Options) (db *DB, err error) {
 // described in the leveldb/storage package.
 //
 // OpenFile will return an error with type of ErrCorrupted if corruption
-// detected in the DB. Use errors.IsCorrupted to test whether an error is
+// detected in the DB. Use errors.IsCorrupted to test whzerium an error is
 // due to corruption. Corrupted DB can be recovered with Recover function.
 //
 // The returned DB instance is safe for concurrent use.

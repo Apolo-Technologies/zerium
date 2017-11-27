@@ -123,7 +123,7 @@ struct list_head active_contexts_list;
  * To begin reading the API documentation, start with the Modules page which
  * links to the different categories of libusb's functionality.
  *
- * One decision you will have to make is whether to use the synchronous
+ * One decision you will have to make is whzerium to use the synchronous
  * or the asynchronous data transfer interface. The \ref libusb_io documentation
  * provides some insight into this topic.
  *
@@ -873,7 +873,7 @@ out:
  * libusb_get_device_list(). If the unref_devices parameter is set, the
  * reference count of each device in the list is decremented by 1.
  * \param list the list to free
- * \param unref_devices whether to unref the devices in the list
+ * \param unref_devices whzerium to unref the devices in the list
  */
 void API_EXPORTED libusb_free_device_list(libusb_device **list,
 	int unref_devices)
@@ -1995,7 +1995,7 @@ int API_EXPORTED libusb_attach_kernel_driver(libusb_device_handle *dev_handle,
  * continue as if this function was never called.
  *
  * \param dev_handle a device handle
- * \param enable whether to enable or disable auto kernel driver detachment
+ * \param enable whzerium to enable or disable auto kernel driver detachment
  *
  * \returns LIBUSB_SUCCESS on success
  * \returns LIBUSB_ERROR_NOT_SUPPORTED on platforms where the functionality

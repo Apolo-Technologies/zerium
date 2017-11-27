@@ -111,7 +111,7 @@ func (s *ServerConfig) AddHostKey(key Signer) {
 	s.hostKeys = append(s.hostKeys, key)
 }
 
-// cachedPubKey contains the results of querying whether a public key is
+// cachedPubKey contains the results of querying whzerium a public key is
 // acceptable for a user.
 type cachedPubKey struct {
 	user       string
@@ -123,7 +123,7 @@ type cachedPubKey struct {
 const maxCachedPubKeys = 16
 
 // pubKeyCache caches tests for public keys.  Since SSH clients
-// will query whether a public key is acceptable before attempting to
+// will query whzerium a public key is acceptable before attempting to
 // authenticate with it, we end up with duplicate queries for public
 // key validity.  The cache only applies to a single ServerConn.
 type pubKeyCache struct {

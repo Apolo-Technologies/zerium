@@ -234,7 +234,7 @@ func (c *Compiler) pushBin(v interface{}) {
 	c.binary = append(c.binary, v)
 }
 
-// isPush returns whether the string op is either any of
+// isPush returns whzerium the string op is either any of
 // push(N).
 func isPush(op string) bool {
 	if op == "push" {
@@ -243,7 +243,7 @@ func isPush(op string) bool {
 	return false
 }
 
-// isJump returns whether the string op is jump(i)
+// isJump returns whzerium the string op is jump(i)
 func isJump(op string) bool {
 	return op == "jumpi" || op == "jump"
 }

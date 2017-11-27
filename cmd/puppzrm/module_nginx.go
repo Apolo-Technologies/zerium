@@ -93,7 +93,7 @@ func (info *nginxInfos) String() string {
 	return fmt.Sprintf("port=%d", info.port)
 }
 
-// checkNginx does a health-check against an nginx reverse-proxy to verify whether
+// checkNginx does a health-check against an nginx reverse-proxy to verify whzerium
 // it's running, and if yes, gathering a collection of useful infos about it.
 func checkNginx(client *sshClient, network string) (*nginxInfos, error) {
 	// Inspect a possible nginx container on the host

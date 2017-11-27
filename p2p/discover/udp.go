@@ -205,7 +205,7 @@ type reply struct {
 	from  NodeID
 	ptype byte
 	data  interface{}
-	// loop indicates whether there was
+	// loop indicates whzerium there was
 	// a matching request by sending on this channel.
 	matched chan<- bool
 }

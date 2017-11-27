@@ -51,7 +51,7 @@ type Node struct {
 	// with ID.
 	sha common.Hash
 
-	// whether this node is currently being pinged in order to replace
+	// whzerium this node is currently being pinged in order to replace
 	// it in a bucket
 	contested bool
 }
@@ -80,7 +80,7 @@ func (n *Node) Incomplete() bool {
 	return n.IP == nil
 }
 
-// checks whether n is a valid complete node.
+// checks whzerium n is a valid complete node.
 func (n *Node) validateComplete() error {
 	if n.Incomplete() {
 		return errors.New("incomplete node")

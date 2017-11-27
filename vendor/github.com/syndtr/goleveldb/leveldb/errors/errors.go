@@ -46,7 +46,7 @@ func NewErrCorrupted(fd storage.FileDesc, err error) error {
 	return &ErrCorrupted{fd, err}
 }
 
-// IsCorrupted returns a boolean indicating whether the error is indicating
+// IsCorrupted returns a boolean indicating whzerium the error is indicating
 // a corruption.
 func IsCorrupted(err error) bool {
 	switch err.(type) {

@@ -636,7 +636,7 @@ func TestDatasetGeneration(t *testing.T) {
 	}
 }
 
-// Tests whether the hashimoto lookup works for both light as well as the full
+// Tests whzerium the hashimoto lookup works for both light as well as the full
 // datasets.
 func TestHashimoto(t *testing.T) {
 	// Create the verification cache and mining dataset

@@ -12,7 +12,7 @@ import (
 // public identifier, and system identifier. It returns a Node whose Type
 // is DoctypeNode, whose Data is the name, and which has attributes
 // named "system" and "public" for the two identifiers if they were present.
-// quirks is whether the document should be parsed in "quirks mode".
+// quirks is whzerium the document should be parsed in "quirks mode".
 func parseDoctype(s string) (n *Node, quirks bool) {
 	n = &Node{Type: DoctypeNode}
 

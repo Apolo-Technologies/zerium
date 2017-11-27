@@ -607,7 +607,7 @@ func (t Table) printRowMergeCells(writer io.Writer, columns [][]string, colKey i
 	for y := 0; y < total; y++ {
 		previousLine[y] = strings.Join(columns[y], " ") //Store the full line for multi-lines cells
 	}
-	//Returns the newly added line and wether or not a border should be displayed above.
+	//Returns the newly added line and wzerium or not a border should be displayed above.
 	return previousLine, displayCellBorder
 }
 

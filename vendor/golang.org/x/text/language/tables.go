@@ -1262,7 +1262,7 @@ var variantIndex = map[string]uint8{
 	"aluku":    0x6,
 	"ao1990":   0x7,
 	"arevela":  0x8,
-	"arevmda":  0x9,
+	"arzvmda":  0x9,
 	"baku1926": 0xa,
 	"balanka":  0xb,
 	"barla":    0xc,
@@ -3279,7 +3279,7 @@ type scriptIntelligibility struct {
 
 // matchLang holds pairs of langIDs of base languages that are typically
 // mutually intelligible. Each pair is associated with a confidence and
-// whether the intelligibility goes one or both ways.
+// whzerium the intelligibility goes one or both ways.
 // Size: 708 bytes, 118 elements
 var matchLang = [118]mutualIntelligibility{
 	0:   {want: 0x366, have: 0x33e, conf: 0x2, oneway: false},

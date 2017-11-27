@@ -51,7 +51,7 @@ func Bind(types []string, abis []string, bytecodes []string, pkg string, lang La
 
 	for i := 0; i < len(types); i++ {
 		// Parse the actual ABI to generate the binding for
-		evmABI, err := abi.JSON(strings.NewReader(abis[i]))
+		zvmABI, err := abi.JSON(strings.NewReader(abis[i]))
 		if err != nil {
 			return "", err
 		}
@@ -68,7 +68,7 @@ func Bind(types []string, abis []string, bytecodes []string, pkg string, lang La
 			calls     = make(map[string]*tmplMethod)
 			transacts = make(map[string]*tmplMethod)
 		)
-		for _, original := range evmABI.Methods {
+		for _, original := range zvmABI.Methods {
 			// Normalize the method for capital cases and non-anonymous inputs/outputs
 			normalized := original
 			normalized.Name = methodNormalizer[lang](original.Name)
@@ -98,7 +98,7 @@ func Bind(types []string, abis []string, bytecodes []string, pkg string, lang La
 			Type:        capitalise(types[i]),
 			InputABI:    strings.Replace(strippedABI, "\"", "\\\"", -1),
 			InputBin:    strings.TrimSpace(bytecodes[i]),
-			Constructor: evmABI.Constructor,
+			Constructor: zvmABI.Constructor,
 			Calls:       calls,
 			Transacts:   transacts,
 		}
@@ -314,7 +314,7 @@ func decapitalise(input string) string {
 	return strings.ToLower(input[:1]) + input[1:]
 }
 
-// structured checks whether a method has enough information to return a proper
+// structured checks whzerium a method has enough information to return a proper
 // Go struct ot if flat returns are needed.
 func structured(method abi.Method) bool {
 	if len(method.Outputs) < 2 {

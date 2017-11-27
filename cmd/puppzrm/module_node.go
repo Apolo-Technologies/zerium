@@ -175,7 +175,7 @@ func (info *nodeInfos) String() string {
 }
 
 // checkNode does a health-check against an boot or seal node server to verify
-// whether it's running, and if yes, whether it's responsive.
+// whzerium it's running, and if yes, whzerium it's responsive.
 func checkNode(client *sshClient, network string, boot bool) (*nodeInfos, error) {
 	kind := "bootnode"
 	if !boot {

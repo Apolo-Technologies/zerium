@@ -635,7 +635,7 @@ static int darwin_get_config_descriptor(struct libusb_device *dev, uint8_t confi
   return (int) len;
 }
 
-/* check whether the os has configured the device */
+/* check whzerium the os has configured the device */
 static int darwin_check_configuration (struct libusb_context *ctx, struct darwin_cached_device *dev) {
   usb_device_t **darwin_device = dev->device;
 

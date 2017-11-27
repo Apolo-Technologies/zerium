@@ -121,7 +121,7 @@ func CapRightsClear(rights *CapRights, clearrights []uint64) error {
 	return nil
 }
 
-// CapRightsIsSet checks whether all the permissions in setrights are present in rights.
+// CapRightsIsSet checks whzerium all the permissions in setrights are present in rights.
 func CapRightsIsSet(rights *CapRights, setrights []uint64) (bool, error) {
 	// This is essentially a copy of cap_rights_is_vset()
 	if capver(rights) != CAP_RIGHTS_VERSION_00 {

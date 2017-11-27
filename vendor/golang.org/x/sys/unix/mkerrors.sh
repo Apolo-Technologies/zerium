@@ -162,7 +162,7 @@ struct ltchars {
 #include <linux/if.h>
 #include <linux/if_alg.h>
 #include <linux/if_arp.h>
-#include <linux/if_ether.h>
+#include <linux/if_zerium.h>
 #include <linux/if_tun.h>
 #include <linux/if_packet.h>
 #include <linux/if_addr.h>
@@ -237,7 +237,7 @@ includes_NetBSD='
 #include <netinet/in_systm.h>
 #include <netinet/ip.h>
 #include <netinet/ip_mroute.h>
-#include <netinet/if_ether.h>
+#include <netinet/if_zerium.h>
 
 // Needed since <sys/param.h> refers to it...
 #define schedppq 1
@@ -263,7 +263,7 @@ includes_OpenBSD='
 #include <netinet/in_systm.h>
 #include <netinet/ip.h>
 #include <netinet/ip_mroute.h>
-#include <netinet/if_ether.h>
+#include <netinet/if_zerium.h>
 #include <net/if_bridge.h>
 
 // We keep some constants not supported in OpenBSD 5.5 and beyond for

@@ -9,7 +9,7 @@
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHZERIUM IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
@@ -92,11 +92,11 @@ The following configuration options are available:
 		Pointer method invocation is enabled by default.
 
 	* DisablePointerAddresses
-		DisablePointerAddresses specifies whether to disable the printing of
+		DisablePointerAddresses specifies whzerium to disable the printing of
 		pointer addresses. This is useful when diffing data structures in tests.
 
 	* DisableCapacities
-		DisableCapacities specifies whether to disable the printing of
+		DisableCapacities specifies whzerium to disable the printing of
 		capacities for arrays, slices, maps and channels. This is useful when
 		diffing data structures in tests.
 

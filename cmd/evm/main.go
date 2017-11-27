@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with zerium. If not, see <http://www.gnu.org/licenses/>.
 
-// evm executes ZVM code snippets.
+// zvm executes ZVM code snippets.
 package main
 
 import (
@@ -29,7 +29,7 @@ import (
 var gitCommit = "" // Git SHA1 commit hash of the release (set via linker flags)
 
 var (
-	app = utils.NewApp(gitCommit, "the evm command line interface")
+	app = utils.NewApp(gitCommit, "the zvm command line interface")
 
 	DebugFlag = cli.BoolFlag{
 		Name:  "debug",
@@ -57,17 +57,17 @@ var (
 	}
 	GasFlag = cli.Uint64Flag{
 		Name:  "gas",
-		Usage: "gas limit for the evm",
+		Usage: "gas limit for the zvm",
 		Value: 10000000000,
 	}
 	PriceFlag = utils.BigFlag{
 		Name:  "price",
-		Usage: "price set for the evm",
+		Usage: "price set for the zvm",
 		Value: new(big.Int),
 	}
 	ValueFlag = utils.BigFlag{
 		Name:  "value",
-		Usage: "value set for the evm",
+		Usage: "value set for the zvm",
 		Value: new(big.Int),
 	}
 	DumpFlag = cli.BoolFlag{

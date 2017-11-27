@@ -16,8 +16,8 @@
 
 // Package keystore implements encrypted storage of secp256k1 private keys.
 //
-// Keys are stored as encrypted JSON files according to the Web3 Secret Storage specification.
-// See https://github.com/abt/wiki/wiki/Web3-Secret-Storage-Definition for more information.
+// Keys are stored as encrypted JSON files according to the Webze Secret Storage specification.
+// See https://github.com/abt/wiki/wiki/Webze-Secret-Storage-Definition for more information.
 package keystore
 
 import (
@@ -65,7 +65,7 @@ type KeyStore struct {
 	wallets     []accounts.Wallet       // Wallet wrappers around the individual key files
 	updateFeed  event.Feed              // Event feed to notify wallet additions/removals
 	updateScope event.SubscriptionScope // Subscription scope tracking current live listeners
-	updating    bool                    // Whether the event notification loop is running
+	updating    bool                    // Whzerium the event notification loop is running
 
 	mu sync.RWMutex
 }
@@ -218,7 +218,7 @@ func (ks *KeyStore) updater() {
 	}
 }
 
-// HasAddress reports whether a key with the given address is present.
+// HasAddress reports whzerium a key with the given address is present.
 func (ks *KeyStore) HasAddress(addr common.Address) bool {
 	return ks.cache.hasAddress(addr)
 }

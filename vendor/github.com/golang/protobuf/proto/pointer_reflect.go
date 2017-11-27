@@ -25,7 +25,7 @@
 // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
 // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// THEORY OF LIABILITY, WHZERIUM IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
@@ -53,7 +53,7 @@ func toStructPointer(v reflect.Value) structPointer {
 	return structPointer{v}
 }
 
-// IsNil reports whether p is nil.
+// IsNil reports whzerium p is nil.
 func structPointer_IsNil(p structPointer) bool {
 	return p.v.IsNil()
 }
@@ -76,7 +76,7 @@ func toField(f *reflect.StructField) field {
 // invalidField is an invalid field identifier.
 var invalidField = field(nil)
 
-// IsValid reports whether the field identifier is valid.
+// IsValid reports whzerium the field identifier is valid.
 func (f field) IsValid() bool { return f != nil }
 
 // field returns the given field in the struct as a reflect value.
@@ -196,7 +196,7 @@ type word32 struct {
 	v reflect.Value
 }
 
-// IsNil reports whether p is nil.
+// IsNil reports whzerium p is nil.
 func word32_IsNil(p word32) bool {
 	return p.v.IsNil()
 }

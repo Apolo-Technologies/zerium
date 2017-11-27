@@ -58,7 +58,7 @@ type StateTransition struct {
 	value      *big.Int
 	data       []byte
 	state      vm.StateDB
-	evm        *vm.ZVM
+	zvm        *vm.ZVM
 }
 
 // Message represents a message sent to a contract.
@@ -105,16 +105,16 @@ func IntrinsicGas(data []byte, contractCreation, homestead bool) *big.Int {
 }
 
 // NewStateTransition initialises and returns a new state transition object.
-func NewStateTransition(evm *vm.ZVM, msg Message, gp *GasPool) *StateTransition {
+func NewStateTransition(zvm *vm.ZVM, msg Message, gp *GasPool) *StateTransition {
 	return &StateTransition{
 		gp:         gp,
-		evm:        evm,
+		zvm:        zvm,
 		msg:        msg,
 		gasPrice:   msg.GasPrice(),
 		initialGas: new(big.Int),
 		value:      msg.Value(),
 		data:       msg.Data(),
-		state:      evm.StateDB,
+		state:      zvm.StateDB,
 	}
 }
 
@@ -125,8 +125,8 @@ func NewStateTransition(evm *vm.ZVM, msg Message, gp *GasPool) *StateTransition 
 // the gas used (which includes gas refunds) and an error if it failed. An error always
 // indicates a core error meaning that the message would always fail for that particular
 // state and would never be accepted within a block.
-func ApplyMessage(evm *vm.ZVM, msg Message, gp *GasPool) ([]byte, *big.Int, bool, error) {
-	st := NewStateTransition(evm, msg, gp)
+func ApplyMessage(zvm *vm.ZVM, msg Message, gp *GasPool) ([]byte, *big.Int, bool, error) {
+	st := NewStateTransition(zvm, msg, gp)
 
 	ret, _, gasUsed, failed, err := st.TransitionDb()
 	return ret, gasUsed, failed, err
@@ -216,7 +216,7 @@ func (st *StateTransition) TransitionDb() (ret []byte, requiredGas, usedGas *big
 	msg := st.msg
 	sender := st.from() // err checked in preCheck
 
-	homestead := st.evm.ChainConfig().IsHomestead(st.evm.BlockNumber)
+	homestead := st.zvm.ChainConfig().IsHomestead(st.zvm.BlockNumber)
 	contractCreation := msg.To() == nil
 
 	// Pay intrinsic gas
@@ -230,18 +230,18 @@ func (st *StateTransition) TransitionDb() (ret []byte, requiredGas, usedGas *big
 	}
 
 	var (
-		evm = st.evm
+		zvm = st.zvm
 		// vm errors do not effect consensus and are therefor
 		// not assigned to err, except for insufficient balance
 		// error.
 		vmerr error
 	)
 	if contractCreation {
-		ret, _, st.gas, vmerr = evm.Create(sender, st.data, st.gas, st.value)
+		ret, _, st.gas, vmerr = zvm.Create(sender, st.data, st.gas, st.value)
 	} else {
 		// Increment the nonce for the next transaction
 		st.state.SetNonce(sender.Address(), st.state.GetNonce(sender.Address())+1)
-		ret, st.gas, vmerr = evm.Call(sender, st.to().Address(), st.data, st.gas, st.value)
+		ret, st.gas, vmerr = zvm.Call(sender, st.to().Address(), st.data, st.gas, st.value)
 	}
 	if vmerr != nil {
 		log.Debug("VM returned with error", "err", vmerr)
@@ -255,7 +255,7 @@ func (st *StateTransition) TransitionDb() (ret []byte, requiredGas, usedGas *big
 	requiredGas = new(big.Int).Set(st.gasUsed())
 
 	st.refundGas()
-	st.state.AddBalance(st.evm.Coinbase, new(big.Int).Mul(st.gasUsed(), st.gasPrice))
+	st.state.AddBalance(st.zvm.Coinbase, new(big.Int).Mul(st.gasUsed(), st.gasPrice))
 
 	return ret, requiredGas, st.gasUsed(), vmerr != nil, err
 }

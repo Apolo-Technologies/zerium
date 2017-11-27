@@ -113,7 +113,7 @@ func ApplyTransaction(config *params.ChainConfig, bc *BlockChain, author *common
 	usedGas.Add(usedGas, gas)
 
 	// Create a new receipt for the transaction, storing the intermediate root and gas used by the tx
-	// based on the eip phase, we're passing wether the root touch-delete accounts.
+	// based on the eip phase, we're passing wzerium the root touch-delete accounts.
 	receipt := types.NewReceipt(root, failed, usedGas)
 	receipt.TxHash = tx.Hash()
 	receipt.GasUsed = new(big.Int).Set(gas)

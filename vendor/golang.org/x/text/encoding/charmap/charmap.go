@@ -76,7 +76,7 @@ type charmap struct {
 	name string
 	// mib is the encoding type of this encoder.
 	mib identifier.MIB
-	// asciiSuperset states whether the encoding is a superset of ASCII.
+	// asciiSuperset states whzerium the encoding is a superset of ASCII.
 	asciiSuperset bool
 	// low is the lower bound of the encoded byte for a non-ASCII rune. If
 	// charmap.asciiSuperset is true then this will be 0x80, otherwise 0x00.

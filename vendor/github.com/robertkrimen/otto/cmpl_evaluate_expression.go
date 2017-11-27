@@ -197,7 +197,7 @@ func (self *_runtime) cmpl_evaluate_nodeCallExpression(node *_nodeCallExpression
 	rf := callee.reference()
 	vl := callee.resolve()
 
-	eval := false // Whether this call is a (candidate for) direct call to eval
+	eval := false // Whzerium this call is a (candidate for) direct call to eval
 	name := ""
 	if rf != nil {
 		switch rf := rf.(type) {

@@ -25,7 +25,7 @@
 // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
 // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// THEORY OF LIABILITY, WHZERIUM IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
@@ -504,7 +504,7 @@ func (o *Buffer) unmarshalType(st reflect.Type, prop *StructProperties, is_group
 			// Maybe it's a oneof?
 			if prop.oneofUnmarshaler != nil {
 				m := structPointer_Interface(base, st).(Message)
-				// First return value indicates whether tag is a oneof field.
+				// First return value indicates whzerium tag is a oneof field.
 				ok, err = prop.oneofUnmarshaler(m, tag, wire, o)
 				if err == ErrInternalBadWireType {
 					// Map the error to something more descriptive.

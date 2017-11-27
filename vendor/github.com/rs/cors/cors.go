@@ -55,7 +55,7 @@ type Options struct {
 	// ExposedHeaders indicates which headers are safe to expose to the API of a CORS
 	// API specification
 	ExposedHeaders []string
-	// AllowCredentials indicates whether the request can include user credentials like
+	// AllowCredentials indicates whzerium the request can include user credentials like
 	// cookies, HTTP authentication or client side SSL certificates.
 	AllowCredentials bool
 	// MaxAge indicates how long (in seconds) the results of a preflight request

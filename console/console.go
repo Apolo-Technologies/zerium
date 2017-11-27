@@ -28,7 +28,7 @@ import (
 	"strings"
 
 	"github.com/abt/zerium/internal/jsre"
-	"github.com/abt/zerium/internal/web3ext"
+	"github.com/abt/zerium/internal/webzeext"
 	"github.com/abt/zerium/rpc"
 	"github.com/mattn/go-colorable"
 	"github.com/peterh/liner"
@@ -103,11 +103,11 @@ func New(config Config) (*Console, error) {
 func (c *Console) init(preload []string) error {
 	// Initialize the JavaScript <-> Go RPC bridge
 	bridge := newBridge(c.client, c.prompter, c.printer)
-	c.jsre.Set("jeth", struct{}{})
+	c.jsre.Set("jzrm", struct{}{})
 
-	jethObj, _ := c.jsre.Get("jeth")
-	jethObj.Object().Set("send", bridge.Send)
-	jethObj.Object().Set("sendAsync", bridge.Send)
+	jzrmObj, _ := c.jsre.Get("jzrm")
+	jzrmObj.Object().Set("send", bridge.Send)
+	jzrmObj.Object().Set("sendAsync", bridge.Send)
 
 	consoleObj, _ := c.jsre.Get("console")
 	consoleObj.Object().Set("log", c.consoleOutput)
@@ -117,34 +117,34 @@ func (c *Console) init(preload []string) error {
 	if err := c.jsre.Compile("bignumber.js", jsre.BigNumber_JS); err != nil {
 		return fmt.Errorf("bignumber.js: %v", err)
 	}
-	if err := c.jsre.Compile("web3.js", jsre.Web3_JS); err != nil {
-		return fmt.Errorf("web3.js: %v", err)
+	if err := c.jsre.Compile("webze.js", jsre.Webze_JS); err != nil {
+		return fmt.Errorf("webze.js: %v", err)
 	}
-	if _, err := c.jsre.Run("var Web3 = require('web3');"); err != nil {
-		return fmt.Errorf("web3 require: %v", err)
+	if _, err := c.jsre.Run("var Webze = require('webze');"); err != nil {
+		return fmt.Errorf("webze require: %v", err)
 	}
-	if _, err := c.jsre.Run("var web3 = new Web3(jeth);"); err != nil {
-		return fmt.Errorf("web3 provider: %v", err)
+	if _, err := c.jsre.Run("var webze = new Webze(jzrm);"); err != nil {
+		return fmt.Errorf("webze provider: %v", err)
 	}
 	// Load the supported APIs into the JavaScript runtime environment
 	apis, err := c.client.SupportedModules()
 	if err != nil {
 		return fmt.Errorf("api modules: %v", err)
 	}
-	flatten := "var zrm = web3.zrm; var personal = web3.personal; "
+	flatten := "var zrm = webze.zrm; var personal = webze.personal; "
 	for api := range apis {
-		if api == "web3" {
+		if api == "webze" {
 			continue // manually mapped or ignore
 		}
-		if file, ok := web3ext.Modules[api]; ok {
+		if file, ok := webzeext.Modules[api]; ok {
 			// Load our extension for the module.
 			if err = c.jsre.Compile(fmt.Sprintf("%s.js", api), file); err != nil {
 				return fmt.Errorf("%s.js: %v", api, err)
 			}
-			flatten += fmt.Sprintf("var %s = web3.%s; ", api, api)
-		} else if obj, err := c.jsre.Run("web3." + api); err == nil && obj.IsObject() {
-			// Enable web3.js built-in extension if available.
-			flatten += fmt.Sprintf("var %s = web3.%s; ", api, api)
+			flatten += fmt.Sprintf("var %s = webze.%s; ", api, api)
+		} else if obj, err := c.jsre.Run("webze." + api); err == nil && obj.IsObject() {
+			// Enable webze.js built-in extension if available.
+			flatten += fmt.Sprintf("var %s = webze.%s; ", api, api)
 		}
 	}
 	if _, err = c.jsre.Run(flatten); err != nil {
@@ -162,20 +162,20 @@ func (c *Console) init(preload []string) error {
 		}
 		// Override the openWallet, unlockAccount, newAccount and sign methods since
 		// these require user interaction. Assign these method in the Console the
-		// original web3 callbacks. These will be called by the jeth.* methods after
-		// they got the password from the user and send the original web3 request to
+		// original webze callbacks. These will be called by the jzrm.* methods after
+		// they got the password from the user and send the original webze request to
 		// the backend.
 		if obj := personal.Object(); obj != nil { // make sure the personal api is enabled over the interface
-			if _, err = c.jsre.Run(`jeth.openWallet = personal.openWallet;`); err != nil {
+			if _, err = c.jsre.Run(`jzrm.openWallet = personal.openWallet;`); err != nil {
 				return fmt.Errorf("personal.openWallet: %v", err)
 			}
-			if _, err = c.jsre.Run(`jeth.unlockAccount = personal.unlockAccount;`); err != nil {
+			if _, err = c.jsre.Run(`jzrm.unlockAccount = personal.unlockAccount;`); err != nil {
 				return fmt.Errorf("personal.unlockAccount: %v", err)
 			}
-			if _, err = c.jsre.Run(`jeth.newAccount = personal.newAccount;`); err != nil {
+			if _, err = c.jsre.Run(`jzrm.newAccount = personal.newAccount;`); err != nil {
 				return fmt.Errorf("personal.newAccount: %v", err)
 			}
-			if _, err = c.jsre.Run(`jeth.sign = personal.sign;`); err != nil {
+			if _, err = c.jsre.Run(`jzrm.sign = personal.sign;`); err != nil {
 				return fmt.Errorf("personal.sign: %v", err)
 			}
 			obj.Set("openWallet", bridge.OpenWallet)
@@ -242,8 +242,8 @@ func (c *Console) AutoCompleteInput(line string, pos int) (string, []string, str
 		if line[start] == '.' || (line[start] >= 'a' && line[start] <= 'z') || (line[start] >= 'A' && line[start] <= 'Z') {
 			continue
 		}
-		// Handle web3 in a special way (i.e. other numbers aren't auto completed)
-		if start >= 3 && line[start-3:start] == "web3" {
+		// Handle webze in a special way (i.e. other numbers aren't auto completed)
+		if start >= 3 && line[start-3:start] == "webze" {
 			start -= 3
 			continue
 		}
@@ -260,7 +260,7 @@ func (c *Console) Welcome() {
 	// Print some generic Gzrm metadata
 	fmt.Fprintf(c.printer, "Welcome to the Gzrm JavaScript console!\n\n")
 	c.jsre.Run(`
-		console.log("instance: " + web3.version.node);
+		console.log("instance: " + webze.version.node);
 		console.log("coinbase: " + zrm.coinbase);
 		console.log("at block: " + zrm.blockNumber + " (" + new Date(1000 * zrm.getBlock(zrm.blockNumber).timestamp) + ")");
 		console.log(" datadir: " + admin.datadir);

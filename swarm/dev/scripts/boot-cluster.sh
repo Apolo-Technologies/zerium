@@ -111,7 +111,7 @@ stop_cluster() {
 }
 
 # create_network creates a Linux bridge which is used to connect the node
-# network namespaces together
+# network namespaces togzerium
 create_network() {
   local subnet="${BRIDGE_IP}/24"
 

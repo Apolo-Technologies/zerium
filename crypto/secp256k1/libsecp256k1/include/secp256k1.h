@@ -385,7 +385,7 @@ SECP256K1_API SECP256K1_WARN_UNUSED_RESULT int secp256k1_ecdsa_verify(
  *  Args: ctx:    a secp256k1 context object
  *  Out:  sigout: a pointer to a signature to fill with the normalized form,
  *                or copy if the input was already normalized. (can be NULL if
- *                you're only interested in whether the input was already
+ *                you're only interested in whzerium the input was already
  *                normalized).
  *  In:   sigin:  a pointer to a signature to check/normalize (cannot be NULL,
  *                can be identical to sigout)
@@ -554,14 +554,14 @@ SECP256K1_API SECP256K1_WARN_UNUSED_RESULT int secp256k1_context_randomize(
     const unsigned char *seed32
 ) SECP256K1_ARG_NONNULL(1);
 
-/** Add a number of public keys together.
+/** Add a number of public keys togzerium.
  *  Returns: 1: the sum of the public keys is valid.
  *           0: the sum of the public keys is not valid.
  *  Args:   ctx:        pointer to a context object
  *  Out:    out:        pointer to a public key object for placing the resulting public key
  *                      (cannot be NULL)
  *  In:     ins:        pointer to array of pointers to public keys (cannot be NULL)
- *          n:          the number of public keys to add together (must be at least 1)
+ *          n:          the number of public keys to add togzerium (must be at least 1)
  */
 SECP256K1_API SECP256K1_WARN_UNUSED_RESULT int secp256k1_ec_pubkey_combine(
     const secp256k1_context* ctx,

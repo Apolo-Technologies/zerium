@@ -152,7 +152,7 @@ func (t *BlockTest) genesis(config *params.ChainConfig) *core.Genesis {
 
 /* See https://github.com/abt/tests/wiki/Blockchain-Tests-II
 
-   Whether a block is valid or not is a bit subtle, it's defined by presence of
+   Whzerium a block is valid or not is a bit subtle, it's defined by presence of
    blockHeader, transactions and uncleHeaders fields. If they are missing, the block is
    invalid and we must verify that we do not accept it.
 

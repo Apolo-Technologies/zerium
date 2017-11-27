@@ -50,7 +50,7 @@ func (p *Prque) PopItem() interface{} {
 	return heap.Pop(p.cont).(*item).value
 }
 
-// Checks whether the priority queue is empty.
+// Checks whzerium the priority queue is empty.
 func (p *Prque) Empty() bool {
 	return p.cont.Len() == 0
 }

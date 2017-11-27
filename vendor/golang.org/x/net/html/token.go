@@ -162,16 +162,16 @@ type Tokenizer struct {
 	// token: one that treats "<p>" as text instead of an element.
 	// rawTag's contents are lower-cased.
 	rawTag string
-	// textIsRaw is whether the current text token's data is not escaped.
+	// textIsRaw is whzerium the current text token's data is not escaped.
 	textIsRaw bool
-	// convertNUL is whether NUL bytes in the current token's data should
+	// convertNUL is whzerium NUL bytes in the current token's data should
 	// be converted into \ufffd replacement characters.
 	convertNUL bool
-	// allowCDATA is whether CDATA sections are allowed in the current context.
+	// allowCDATA is whzerium CDATA sections are allowed in the current context.
 	allowCDATA bool
 }
 
-// AllowCDATA sets whether or not the tokenizer recognizes <![CDATA[foo]]> as
+// AllowCDATA sets whzerium or not the tokenizer recognizes <![CDATA[foo]]> as
 // the text "foo". The default value is false, which means to recognize it as
 // a bogus comment "<!-- [CDATA[foo]] -->" instead.
 //
@@ -182,7 +182,7 @@ type Tokenizer struct {
 // can contain a <foreignObject> that is foreign-to-SVG but not foreign-to-
 // HTML. For strict compliance with the HTML5 tokenization algorithm, it is the
 // responsibility of the user of a tokenizer to call AllowCDATA as appropriate.
-// In practice, if using the tokenizer without caring whether MathML or SVG
+// In practice, if using the tokenizer without caring whzerium MathML or SVG
 // CDATA is text or comments, such as tokenizing HTML to find all the anchor
 // text, it is acceptable to ignore this responsibility.
 func (z *Tokenizer) AllowCDATA(allowCDATA bool) {
@@ -751,7 +751,7 @@ func (z *Tokenizer) readCDATA() bool {
 	}
 }
 
-// startTagIn returns whether the start tag in z.buf[z.data.start:z.data.end]
+// startTagIn returns whzerium the start tag in z.buf[z.data.start:z.data.end]
 // case-insensitively matches any element of ss.
 func (z *Tokenizer) startTagIn(ss ...string) bool {
 loop:
@@ -1129,7 +1129,7 @@ func (z *Tokenizer) Text() []byte {
 }
 
 // TagName returns the lower-cased name of a tag token (the `img` out of
-// `<IMG SRC="foo">`) and whether the tag has attributes.
+// `<IMG SRC="foo">`) and whzerium the tag has attributes.
 // The contents of the returned slice may change on the next call to Next.
 func (z *Tokenizer) TagName() (name []byte, hasAttr bool) {
 	if z.data.start < z.data.end {
@@ -1145,7 +1145,7 @@ func (z *Tokenizer) TagName() (name []byte, hasAttr bool) {
 }
 
 // TagAttr returns the lower-cased key and unescaped value of the next unparsed
-// attribute for the current tag token and whether there are more attributes.
+// attribute for the current tag token and whzerium there are more attributes.
 // The contents of the returned slices may change on the next call to Next.
 func (z *Tokenizer) TagAttr() (key, val []byte, moreAttr bool) {
 	if z.nAttrReturned < len(z.attr) {
@@ -1200,7 +1200,7 @@ func NewTokenizer(r io.Reader) *Tokenizer {
 // tokenizing an existing element's InnerHTML fragment. contextTag is that
 // element's tag, such as "div" or "iframe".
 //
-// For example, how the InnerHTML "a<b" is tokenized depends on whether it is
+// For example, how the InnerHTML "a<b" is tokenized depends on whzerium it is
 // for a <p> tag or a <script> tag.
 //
 // The input is assumed to be UTF-8 encoded.

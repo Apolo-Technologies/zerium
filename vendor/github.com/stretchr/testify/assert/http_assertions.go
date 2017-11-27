@@ -24,7 +24,7 @@ func httpCode(handler http.HandlerFunc, method, url string, values url.Values) (
 //
 //  assert.HTTPSuccess(t, myHandler, "POST", "http://www.google.com", nil)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func HTTPSuccess(t TestingT, handler http.HandlerFunc, method, url string, values url.Values) bool {
 	code, err := httpCode(handler, method, url, values)
 	if err != nil {
@@ -44,7 +44,7 @@ func HTTPSuccess(t TestingT, handler http.HandlerFunc, method, url string, value
 //
 //  assert.HTTPRedirect(t, myHandler, "GET", "/a/b/c", url.Values{"a": []string{"b", "c"}}
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func HTTPRedirect(t TestingT, handler http.HandlerFunc, method, url string, values url.Values) bool {
 	code, err := httpCode(handler, method, url, values)
 	if err != nil {
@@ -64,7 +64,7 @@ func HTTPRedirect(t TestingT, handler http.HandlerFunc, method, url string, valu
 //
 //  assert.HTTPError(t, myHandler, "POST", "/a/b/c", url.Values{"a": []string{"b", "c"}}
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func HTTPError(t TestingT, handler http.HandlerFunc, method, url string, values url.Values) bool {
 	code, err := httpCode(handler, method, url, values)
 	if err != nil {
@@ -97,7 +97,7 @@ func HTTPBody(handler http.HandlerFunc, method, url string, values url.Values) s
 //
 //  assert.HTTPBodyContains(t, myHandler, "www.google.com", nil, "I'm Feeling Lucky")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func HTTPBodyContains(t TestingT, handler http.HandlerFunc, method, url string, values url.Values, str interface{}) bool {
 	body := HTTPBody(handler, method, url, values)
 
@@ -114,7 +114,7 @@ func HTTPBodyContains(t TestingT, handler http.HandlerFunc, method, url string, 
 //
 //  assert.HTTPBodyNotContains(t, myHandler, "www.google.com", nil, "I'm Feeling Lucky")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func HTTPBodyNotContains(t TestingT, handler http.HandlerFunc, method, url string, values url.Values, str interface{}) bool {
 	body := HTTPBody(handler, method, url, values)
 

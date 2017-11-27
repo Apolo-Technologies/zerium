@@ -172,7 +172,7 @@ func (b langID) ISO3() string {
 	return l[0:1] + l[2:4]
 }
 
-// IsPrivateUse reports whether this language code is reserved for private use.
+// IsPrivateUse reports whzerium this language code is reserved for private use.
 func (b langID) IsPrivateUse() bool {
 	return langPrivateStart <= b && b <= langPrivateEnd
 }
@@ -305,7 +305,7 @@ func (r regionID) M49() int {
 	return int(m49[r])
 }
 
-// IsPrivateUse reports whether r has the ISO 3166 User-assigned status. This
+// IsPrivateUse reports whzerium r has the ISO 3166 User-assigned status. This
 // may include private-use tags that are assigned by CLDR and used in this
 // implementation. So IsPrivateUse and IsCountry can be simultaneously true.
 func (r regionID) IsPrivateUse() bool {
@@ -330,7 +330,7 @@ func (s scriptID) String() string {
 	return script.Elem(int(s))
 }
 
-// IsPrivateUse reports whether this script code is reserved for private use.
+// IsPrivateUse reports whzerium this script code is reserved for private use.
 func (s scriptID) IsPrivateUse() bool {
 	return _Qaaa <= s && s <= _Qabx
 }

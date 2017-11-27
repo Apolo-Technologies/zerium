@@ -40,7 +40,7 @@ type NetworkConfig struct {
 // simulated nodes and the connections which exist between them.
 //
 // The Network has a single NodeAdapter which is responsible for actually
-// starting nodes and connecting them together.
+// starting nodes and connecting them togzerium.
 //
 // The Network emits events when nodes are started and stopped, when they are
 // connected and disconnected, and also when messages are sent between nodes.
@@ -267,7 +267,7 @@ func (self *Network) Stop(id discover.NodeID) error {
 	return nil
 }
 
-// Connect connects two nodes together by calling the "admin_addPeer" RPC
+// Connect connects two nodes togzerium by calling the "admin_addPeer" RPC
 // method on the "one" node so that it connects to the "other" node
 func (self *Network) Connect(oneID, otherID discover.NodeID) error {
 	log.Debug(fmt.Sprintf("connecting %s to %s", oneID, otherID))
@@ -467,7 +467,7 @@ type Node struct {
 	// Config if the config used to created the node
 	Config *adapters.NodeConfig `json:"config"`
 
-	// Up tracks whether or not the node is running
+	// Up tracks whzerium or not the node is running
 	Up bool `json:"up"`
 }
 
@@ -514,14 +514,14 @@ type Conn struct {
 	// Other is the node which the connection was made to
 	Other discover.NodeID `json:"other"`
 
-	// Up tracks whether or not the connection is active
+	// Up tracks whzerium or not the connection is active
 	Up bool `json:"up"`
 
 	one   *Node
 	other *Node
 }
 
-// nodesUp returns whether both nodes are currently up
+// nodesUp returns whzerium both nodes are currently up
 func (self *Conn) nodesUp() error {
 	if !self.one.Up {
 		return fmt.Errorf("one %v is not up", self.One)

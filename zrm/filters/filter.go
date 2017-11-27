@@ -56,7 +56,7 @@ type Filter struct {
 	matcher *bloombits.Matcher
 }
 
-// New creates a new filter which uses a bloom filter on blocks to figure out whether
+// New creates a new filter which uses a bloom filter on blocks to figure out whzerium
 // a particular block is interesting or not.
 func New(backend Backend, begin, end int64, addresses []common.Address, topics [][]common.Hash) *Filter {
 	// Flatten the address and topic filter clauses into a single bloombits filter

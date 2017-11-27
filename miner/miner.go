@@ -53,8 +53,8 @@ type Miner struct {
 	zrm      Backend
 	engine   consensus.Engine
 
-	canStart    int32 // can start indicates whether we can start the mining operation
-	shouldStart int32 // should start indicates whether we should start after sync
+	canStart    int32 // can start indicates whzerium we can start the mining operation
+	shouldStart int32 // should start indicates whzerium we should start after sync
 }
 
 func New(zrm Backend, config *params.ChainConfig, mux *event.TypeMux, engine consensus.Engine) *Miner {

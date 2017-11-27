@@ -9,7 +9,7 @@
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHZERIUM IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
@@ -159,7 +159,7 @@ func (d *dumpState) dumpPtr(v reflect.Value) {
 // dumpSlice handles formatting of arrays and slices.  Byte (uint8 under
 // reflection) arrays and slices are dumped in hexdump -C fashion.
 func (d *dumpState) dumpSlice(v reflect.Value) {
-	// Determine whether this type should be hex dumped or not.  Also,
+	// Determine whzerium this type should be hex dumped or not.  Also,
 	// for types which should be hexdumped, try to use the underlying data
 	// first, then fall back to trying to convert them to a uint8 slice.
 	var buf []uint8

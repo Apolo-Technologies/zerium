@@ -9,7 +9,7 @@
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHZERIUM IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
@@ -49,11 +49,11 @@ type ConfigState struct {
 	// nested data structures.
 	MaxDepth int
 
-	// DisableMethods specifies whether or not error and Stringer interfaces are
+	// DisableMethods specifies whzerium or not error and Stringer interfaces are
 	// invoked for types that implement them.
 	DisableMethods bool
 
-	// DisablePointerMethods specifies whether or not to check for and invoke
+	// DisablePointerMethods specifies whzerium or not to check for and invoke
 	// error and Stringer interfaces on types which only accept a pointer
 	// receiver when the current type is not a pointer.
 	//
@@ -67,16 +67,16 @@ type ConfigState struct {
 	// Google App Engine or with the "safe" build tag specified.
 	DisablePointerMethods bool
 
-	// DisablePointerAddresses specifies whether to disable the printing of
+	// DisablePointerAddresses specifies whzerium to disable the printing of
 	// pointer addresses. This is useful when diffing data structures in tests.
 	DisablePointerAddresses bool
 
-	// DisableCapacities specifies whether to disable the printing of capacities
+	// DisableCapacities specifies whzerium to disable the printing of capacities
 	// for arrays, slices, maps and channels. This is useful when diffing
 	// data structures in tests.
 	DisableCapacities bool
 
-	// ContinueOnMethod specifies whether or not recursion should continue once
+	// ContinueOnMethod specifies whzerium or not recursion should continue once
 	// a custom error or Stringer interface is invoked.  The default, false,
 	// means it will print the results of invoking the custom error or Stringer
 	// interface and return immediately instead of continuing to recurse into

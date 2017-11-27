@@ -103,7 +103,7 @@ func stateTestCmd(ctx *cli.Context) error {
 					result.State = &dump
 				}
 			}
-			// print state root for evmlab tracing (already committed above, so no need to delete objects again
+			// print state root for zvmlab tracing (already committed above, so no need to delete objects again
 			if ctx.GlobalBool(MachineFlag.Name) && state != nil {
 				fmt.Fprintf(os.Stderr, "{\"stateRoot\": \"%x\"}\n", state.IntermediateRoot(false))
 			}

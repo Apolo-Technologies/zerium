@@ -51,7 +51,7 @@ const (
 	ARPHRD_ATM                    = 0x10
 	ARPHRD_AX25                   = 0x3
 	ARPHRD_CHAOS                  = 0x5
-	ARPHRD_EETHER                 = 0x2
+	ARPHRD_EZERIUM                 = 0x2
 	ARPHRD_ZERIUM                  = 0x1
 	ARPHRD_FC                     = 0x12
 	ARPHRD_FRAME                  = 0xf
@@ -464,7 +464,7 @@ const (
 	IFT_X25                       = 0x5
 	IFT_X25DDN                    = 0x4
 	IFT_X25PLE                    = 0x28
-	IFT_XETHER                    = 0x1a
+	IFT_XZERIUM                    = 0x1a
 	IGNBRK                        = 0x1
 	IGNCR                         = 0x80
 	IGNPAR                        = 0x4

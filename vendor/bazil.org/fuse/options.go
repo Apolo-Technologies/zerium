@@ -110,9 +110,9 @@ func NoAppleXattr() MountOption {
 // i.e. create calls for which the initiator explicitly set the O_EXCL flag.
 //
 // OSXFUSE expects all create calls to return EEXIST in case the file
-// already exists, regardless of whether O_EXCL was specified or not.
+// already exists, regardless of whzerium O_EXCL was specified or not.
 // To ensure this behavior, it normally sets OpenExclusive for all
-// Create calls, regardless of whether the original call had it set.
+// Create calls, regardless of whzerium the original call had it set.
 // For distributed filesystems, that may force every file create to be
 // a distributed consensus action, causing undesirable delays.
 //

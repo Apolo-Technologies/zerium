@@ -23,7 +23,7 @@ const readBufferSize = 4096
 
 // Since all operations which go through the Windows completion routine are done
 // asynchronously, filter may set one of the constants belor. They were defined
-// in order to distinguish whether current folder should be re-registered in
+// in order to distinguish whzerium current folder should be re-registered in
 // ReadDirectoryChangesW function or some control operations need to be executed.
 const (
 	stateRewatch uint32 = 1 << (28 + iota)
@@ -145,7 +145,7 @@ func encode(filter uint32) uint32 {
 	return uint32(e)
 }
 
-// watched is made in order to check whether an action comes from a directory or
+// watched is made in order to check whzerium an action comes from a directory or
 // file. This approach requires two file handlers per single monitored folder. The
 // second grip handles actions which include creating or deleting a directory. If
 // these processes are not monitored, only the first grip is created.
@@ -556,7 +556,7 @@ func decode(filter, action uint32) (Event, Event) {
 	panic(`notify: cannot decode internal mask`)
 }
 
-// gensys decides whether the Windows action, system-independent event or both
+// gensys decides whzerium the Windows action, system-independent event or both
 // of them should be returned. Since the grip's filter may be atomically changed
 // during watcher lifetime, it is possible that neither Windows nor notify masks
 // are watched by the user when this function is called.

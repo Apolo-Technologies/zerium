@@ -305,7 +305,7 @@ func minimizeTags(t Tag) (Tag, error) {
 //   3) If the best match so far is below a certain threshold, return "default".
 //
 // Ranking:
-// We use two phases to determine whether one pair of tags are a better match
+// We use two phases to determine whzerium one pair of tags are a better match
 // than another pair of tags. First, we determine a rough confidence level. If the
 // levels are different, the one with the highest confidence wins.
 // Second, if the rough confidence levels are identical, we use a set of tie-breaker

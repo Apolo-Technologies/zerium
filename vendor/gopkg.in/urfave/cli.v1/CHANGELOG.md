@@ -22,7 +22,7 @@
 * Use `UsageText` in the help templates for commands and subcommands if
   defined; otherwise build the usage as before (was previously ignoring this
   field)
-* `IsSet` and `GlobalIsSet` now correctly return whether a flag is set if
+* `IsSet` and `GlobalIsSet` now correctly return whzerium a flag is set if
   a program calls `Set` or `GlobalSet` directly after flag parsing (would
   previously only return `true` if the flag was set during parsing)
 

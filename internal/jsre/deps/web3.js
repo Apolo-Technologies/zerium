@@ -603,20 +603,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "./formatters": 9, "./type": 14 }], 7: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var f = require('./formatters');
@@ -885,20 +885,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "./formatters": 9, "./type": 14 }], 9: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var BigNumber = require('bignumber.js');
@@ -1168,20 +1168,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "./formatters": 9, "./type": 14 }], 11: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var utils = require('../utils/utils');
@@ -1217,7 +1217,7 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
         };
 
         /**
-         * This method should be used to combine solidity params together
+         * This method should be used to combine solidity params togzerium
          * eg. when appending an array
          *
          * @method combine
@@ -1709,20 +1709,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, {}], 18: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         /**
@@ -1785,20 +1785,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "bignumber.js": "bignumber.js" }], 19: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var CryptoJS = require('crypto-js');
@@ -1820,20 +1820,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "crypto-js": 59, "crypto-js/sha3": 80 }], 20: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         /**
@@ -2451,44 +2451,44 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, {}], 22: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
-        var RequestManager = require('./web3/requestmanager');
-        var Iban = require('./web3/iban');
-        var Zrm = require('./web3/methods/zrm');
-        var DB = require('./web3/methods/db');
-        var Shh = require('./web3/methods/shh');
-        var Net = require('./web3/methods/net');
-        var Personal = require('./web3/methods/personal');
-        var Swarm = require('./web3/methods/swarm');
-        var Settings = require('./web3/settings');
+        var RequestManager = require('./webze/requestmanager');
+        var Iban = require('./webze/iban');
+        var Zrm = require('./webze/methods/zrm');
+        var DB = require('./webze/methods/db');
+        var Shh = require('./webze/methods/shh');
+        var Net = require('./webze/methods/net');
+        var Personal = require('./webze/methods/personal');
+        var Swarm = require('./webze/methods/swarm');
+        var Settings = require('./webze/settings');
         var version = require('./version.json');
         var utils = require('./utils/utils');
         var sha3 = require('./utils/sha3');
-        var extend = require('./web3/extend');
-        var Batch = require('./web3/batch');
-        var Property = require('./web3/property');
-        var HttpProvider = require('./web3/httpprovider');
-        var IpcProvider = require('./web3/ipcprovider');
+        var extend = require('./webze/extend');
+        var Batch = require('./webze/batch');
+        var Property = require('./webze/property');
+        var HttpProvider = require('./webze/httpprovider');
+        var IpcProvider = require('./webze/ipcprovider');
         var BigNumber = require('bignumber.js');
 
 
 
-        function Web3(provider) {
+        function Webze(provider) {
             this._requestManager = new RequestManager(provider);
             this.currentProvider = provider;
             this.zrm = new Zrm(this);
@@ -2512,48 +2512,48 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
         }
 
         // expose providers on the class
-        Web3.providers = {
+        Webze.providers = {
             HttpProvider: HttpProvider,
             IpcProvider: IpcProvider
         };
 
-        Web3.prototype.setProvider = function (provider) {
+        Webze.prototype.setProvider = function (provider) {
             this._requestManager.setProvider(provider);
             this.currentProvider = provider;
         };
 
-        Web3.prototype.reset = function (keepIsSyncing) {
+        Webze.prototype.reset = function (keepIsSyncing) {
             this._requestManager.reset(keepIsSyncing);
             this.settings = new Settings();
         };
 
-        Web3.prototype.BigNumber = BigNumber;
-        Web3.prototype.toHex = utils.toHex;
-        Web3.prototype.toAscii = utils.toAscii;
-        Web3.prototype.toUtf8 = utils.toUtf8;
-        Web3.prototype.fromAscii = utils.fromAscii;
-        Web3.prototype.fromUtf8 = utils.fromUtf8;
-        Web3.prototype.toDecimal = utils.toDecimal;
-        Web3.prototype.fromDecimal = utils.fromDecimal;
-        Web3.prototype.toBigNumber = utils.toBigNumber;
-        Web3.prototype.toWei = utils.toWei;
-        Web3.prototype.fromWei = utils.fromWei;
-        Web3.prototype.isAddress = utils.isAddress;
-        Web3.prototype.isChecksumAddress = utils.isChecksumAddress;
-        Web3.prototype.toChecksumAddress = utils.toChecksumAddress;
-        Web3.prototype.isIBAN = utils.isIBAN;
-        Web3.prototype.padLeft = utils.padLeft;
-        Web3.prototype.padRight = utils.padRight;
+        Webze.prototype.BigNumber = BigNumber;
+        Webze.prototype.toHex = utils.toHex;
+        Webze.prototype.toAscii = utils.toAscii;
+        Webze.prototype.toUtf8 = utils.toUtf8;
+        Webze.prototype.fromAscii = utils.fromAscii;
+        Webze.prototype.fromUtf8 = utils.fromUtf8;
+        Webze.prototype.toDecimal = utils.toDecimal;
+        Webze.prototype.fromDecimal = utils.fromDecimal;
+        Webze.prototype.toBigNumber = utils.toBigNumber;
+        Webze.prototype.toWei = utils.toWei;
+        Webze.prototype.fromWei = utils.fromWei;
+        Webze.prototype.isAddress = utils.isAddress;
+        Webze.prototype.isChecksumAddress = utils.isChecksumAddress;
+        Webze.prototype.toChecksumAddress = utils.toChecksumAddress;
+        Webze.prototype.isIBAN = utils.isIBAN;
+        Webze.prototype.padLeft = utils.padLeft;
+        Webze.prototype.padRight = utils.padRight;
 
 
-        Web3.prototype.sha3 = function (string, options) {
+        Webze.prototype.sha3 = function (string, options) {
             return '0x' + sha3(string, options);
         };
 
         /**
          * Transforms direct icap to address
          */
-        Web3.prototype.fromICAP = function (icap) {
+        Webze.prototype.fromICAP = function (icap) {
             var iban = new Iban(icap);
             return iban.address();
         };
@@ -2562,7 +2562,7 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
             return [
                 new Property({
                     name: 'version.node',
-                    getter: 'web3_clientVersion'
+                    getter: 'webze_clientVersion'
                 }),
                 new Property({
                     name: 'version.network',
@@ -2582,33 +2582,33 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
             ];
         };
 
-        Web3.prototype.isConnected = function () {
+        Webze.prototype.isConnected = function () {
             return (this.currentProvider && this.currentProvider.isConnected());
         };
 
-        Web3.prototype.createBatch = function () {
+        Webze.prototype.createBatch = function () {
             return new Batch(this);
         };
 
-        module.exports = Web3;
+        module.exports = Webze;
 
 
-    }, { "./utils/sha3": 19, "./utils/utils": 20, "./version.json": 21, "./web3/batch": 24, "./web3/extend": 28, "./web3/httpprovider": 32, "./web3/iban": 33, "./web3/ipcprovider": 34, "./web3/methods/db": 37, "./web3/methods/zrm": 38, "./web3/methods/net": 39, "./web3/methods/personal": 40, "./web3/methods/shh": 41, "./web3/methods/swarm": 42, "./web3/property": 45, "./web3/requestmanager": 46, "./web3/settings": 47, "bignumber.js": "bignumber.js" }], 23: [function (require, module, exports) {
+    }, { "./utils/sha3": 19, "./utils/utils": 20, "./version.json": 21, "./webze/batch": 24, "./webze/extend": 28, "./webze/httpprovider": 32, "./webze/iban": 33, "./webze/ipcprovider": 34, "./webze/methods/db": 37, "./webze/methods/zrm": 38, "./webze/methods/net": 39, "./webze/methods/personal": 40, "./webze/methods/shh": 41, "./webze/methods/swarm": 42, "./webze/property": 45, "./webze/requestmanager": 46, "./webze/settings": 47, "bignumber.js": "bignumber.js" }], 23: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var sha3 = require('../utils/sha3');
@@ -2680,27 +2680,27 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../utils/sha3": 19, "../utils/utils": 20, "./event": 27, "./filter": 29, "./formatters": 30, "./methods/watches": 43 }], 24: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var Jsonrpc = require('./jsonrpc');
         var errors = require('./errors');
 
-        var Batch = function (web3) {
-            this.requestManager = web3._requestManager;
+        var Batch = function (webze) {
+            this.requestManager = webze._requestManager;
             this.requests = [];
         };
 
@@ -2743,20 +2743,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "./errors": 26, "./jsonrpc": 35 }], 25: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var utils = require('../utils/utils');
@@ -3050,20 +3050,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../solidity/coder": 7, "../utils/utils": 20, "./allevents": 23, "./event": 27, "./function": 31 }], 26: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         module.exports = {
@@ -3090,20 +3090,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, {}], 27: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var utils = require('../utils/utils');
@@ -3175,7 +3175,7 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
          * @method encode
          * @param {Object} indexed
          * @param {Object} options
-         * @return {Object} everything combined together and encoded
+         * @return {Object} everything combined togzerium and encoded
          */
         SolidityEvent.prototype.encode = function (indexed, options) {
             indexed = indexed || {};
@@ -3301,31 +3301,31 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
         // TODO: refactor, so the input params are not altered.
         // it's necessary to make same 'extension' work with multiple providers
-        var extend = function (web3) {
+        var extend = function (webze) {
             /* jshint maxcomplexity:5 */
             var ex = function (extension) {
 
                 var extendedObject;
                 if (extension.property) {
-                    if (!web3[extension.property]) {
-                        web3[extension.property] = {};
+                    if (!webze[extension.property]) {
+                        webze[extension.property] = {};
                     }
-                    extendedObject = web3[extension.property];
+                    extendedObject = webze[extension.property];
                 } else {
-                    extendedObject = web3;
+                    extendedObject = webze;
                 }
 
                 if (extension.methods) {
                     extension.methods.forEach(function (method) {
                         method.attachToObject(extendedObject);
-                        method.setRequestManager(web3._requestManager);
+                        method.setRequestManager(webze._requestManager);
                     });
                 }
 
                 if (extension.properties) {
                     extension.properties.forEach(function (property) {
                         property.attachToObject(extendedObject);
-                        property.setRequestManager(web3._requestManager);
+                        property.setRequestManager(webze._requestManager);
                     });
                 }
             };
@@ -3345,20 +3345,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "./../utils/utils": 20, "./formatters": 30, "./method": 36, "./property": 45 }], 29: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var formatters = require('./formatters');
@@ -3585,20 +3585,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
         'use strict'
 
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var utils = require('../utils/utils');
@@ -3887,20 +3887,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../utils/config": 18, "../utils/utils": 20, "./iban": 33 }], 31: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var coder = require('../solidity/coder');
@@ -4167,20 +4167,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../solidity/coder": 7, "../utils/sha3": 19, "../utils/utils": 20, "./errors": 26, "./formatters": 30 }], 32: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var errors = require('./errors');
@@ -4319,20 +4319,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "./errors": 26, "xhr2": 86, "xmlhttprequest": 17 }], 33: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var BigNumber = require('bignumber.js');
@@ -4543,20 +4543,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "bignumber.js": "bignumber.js" }], 34: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         "use strict";
@@ -4747,20 +4747,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../utils/utils": 20, "./errors": 26 }], 35: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         // Initialize Jsonrpc as a simple object with utility functions.
@@ -4828,20 +4828,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, {}], 36: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var utils = require('../utils/utils');
@@ -4989,32 +4989,32 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../utils/utils": 20, "./errors": 26 }], 37: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var Method = require('../method');
 
-        var DB = function (web3) {
-            this._requestManager = web3._requestManager;
+        var DB = function (webze) {
+            this._requestManager = webze._requestManager;
 
             var self = this;
 
             methods().forEach(function (method) {
                 method.attachToObject(self);
-                method.setRequestManager(web3._requestManager);
+                method.setRequestManager(webze._requestManager);
             });
         };
 
@@ -5052,20 +5052,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../method": 36 }], 38: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         "use strict";
@@ -5103,8 +5103,8 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
             return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'zrm_getUncleCountByBlockHash' : 'zrm_getUncleCountByBlockNumber';
         };
 
-        function Zrm(web3) {
-            this._requestManager = web3._requestManager;
+        function Zrm(webze) {
+            this._requestManager = webze._requestManager;
 
             var self = this;
 
@@ -5402,37 +5402,37 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../../utils/config": 18, "../../utils/utils": 20, "../contract": 25, "../filter": 29, "../formatters": 30, "../iban": 33, "../method": 36, "../namereg": 44, "../property": 45, "../syncing": 48, "../transfer": 49, "./watches": 43 }], 39: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var utils = require('../../utils/utils');
         var Property = require('../property');
 
-        var Net = function (web3) {
-            this._requestManager = web3._requestManager;
+        var Net = function (webze) {
+            this._requestManager = webze._requestManager;
 
             var self = this;
 
             properties().forEach(function (p) {
                 p.attachToObject(self);
-                p.setRequestManager(web3._requestManager);
+                p.setRequestManager(webze._requestManager);
             });
         };
 
-        /// @returns an array of objects describing web3.zrm api properties
+        /// @returns an array of objects describing webze.zrm api properties
         var properties = function () {
             return [
                 new Property({
@@ -5451,20 +5451,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../../utils/utils": 20, "../property": 45 }], 40: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         "use strict";
@@ -5473,8 +5473,8 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
         var Property = require('../property');
         var formatters = require('../formatters');
 
-        function Personal(web3) {
-            this._requestManager = web3._requestManager;
+        function Personal(webze) {
+            this._requestManager = webze._requestManager;
 
             var self = this;
 
@@ -5562,28 +5562,28 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../formatters": 30, "../method": 36, "../property": 45 }], 41: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var Method = require('../method');
         var Filter = require('../filter');
         var watches = require('./watches');
 
-        var Shh = function (web3) {
-            this._requestManager = web3._requestManager;
+        var Shh = function (webze) {
+            this._requestManager = webze._requestManager;
 
             var self = this;
 
@@ -5702,20 +5702,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../filter": 29, "../method": 36, "./watches": 43 }], 42: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         "use strict";
@@ -5723,8 +5723,8 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
         var Method = require('../method');
         var Property = require('../property');
 
-        function Swarm(web3) {
-            this._requestManager = web3._requestManager;
+        function Swarm(webze) {
+            this._requestManager = webze._requestManager;
 
             var self = this;
 
@@ -5842,25 +5842,25 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../method": 36, "../property": 45 }], 43: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var Method = require('../method');
 
-        /// @returns an array of objects describing web3.zrm.filter api methods
+        /// @returns an array of objects describing webze.zrm.filter api methods
         var zrm = function () {
             var newFilterCall = function (args) {
                 var type = args[0];
@@ -5911,7 +5911,7 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
             ];
         };
 
-        /// @returns an array of objects describing web3.shh.watch api methods
+        /// @returns an array of objects describing webze.shh.watch api methods
         var shh = function () {
 
             return [
@@ -5946,20 +5946,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../method": 36 }], 44: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var globalRegistrarAbi = require('../contracts/GlobalRegistrar.json');
@@ -5982,20 +5982,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../contracts/GlobalRegistrar.json": 1, "../contracts/ICAPRegistrar.json": 2 }], 45: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var utils = require('../utils/utils');
@@ -6122,20 +6122,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../utils/utils": 20 }], 46: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var Jsonrpc = require('./jsonrpc');
@@ -6391,20 +6391,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, {}], 48: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var formatters = require('./formatters');
@@ -6481,20 +6481,20 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
 
     }, { "../utils/utils": 20, "./formatters": 30 }], 49: [function (require, module, exports) {
         /*
-            This file is part of web3.js.
+            This file is part of webze.js.
         
-            web3.js is free software: you can redistribute it and/or modify
+            webze.js is free software: you can redistribute it and/or modify
             it under the terms of the GNU Lesser General Public License as published by
             the Free Software Foundation, either version 3 of the License, or
             (at your option) any later version.
         
-            web3.js is distributed in the hope that it will be useful,
+            webze.js is distributed in the hope that it will be useful,
             but WITHOUT ANY WARRANTY; without even the implied warranty of
             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
             GNU Lesser General Public License for more details.
         
             You should have received a copy of the GNU Lesser General Public License
-            along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
+            along with webze.js.  If not, see <http://www.gnu.org/licenses/>.
         */
 
         var Iban = require('./iban');
@@ -8226,7 +8226,7 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
                      *
                      * This method invokes _doProcessBlock(offset), which must be implemented by a concrete subtype.
                      *
-                     * @param {boolean} doFlush Whether all blocks and partial blocks should be processed.
+                     * @param {boolean} doFlush Whzerium all blocks and partial blocks should be processed.
                      *
                      * @return {WordArray} The processed data.
                      *
@@ -10684,7 +10684,7 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
                 - Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
                 - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
         
-            THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+            THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHZERIUM IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             */
 
             (function (Math) {
@@ -13423,16 +13423,16 @@ require = (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { va
         module.exports = BigNumber; // jshint ignore:line
 
 
-    }, {}], "web3": [function (require, module, exports) {
-        var Web3 = require('./lib/web3');
+    }, {}], "webze": [function (require, module, exports) {
+        var Webze = require('./lib/webze');
 
         // dont override global variable
-        if (typeof window !== 'undefined' && typeof window.Web3 === 'undefined') {
-            window.Web3 = Web3;
+        if (typeof window !== 'undefined' && typeof window.Webze === 'undefined') {
+            window.Webze = Webze;
         }
 
-        module.exports = Web3;
+        module.exports = Webze;
 
-    }, { "./lib/web3": 22 }]
-}, {}, ["web3"])
-//# sourceMappingURL=web3-light.js.map
+    }, { "./lib/webze": 22 }]
+}, {}, ["webze"])
+//# sourceMappingURL=webze-light.js.map

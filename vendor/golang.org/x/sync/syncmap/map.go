@@ -47,7 +47,7 @@ type Map struct {
 	dirty map[interface{}]*entry
 
 	// misses counts the number of loads since the read map was last updated that
-	// needed to lock mu to determine whether the key was present.
+	// needed to lock mu to determine whzerium the key was present.
 	//
 	// Once enough misses have occurred to cover the cost of copying the dirty
 	// map, the dirty map will be promoted to the read map (in the unamended
@@ -94,7 +94,7 @@ func newEntry(i interface{}) *entry {
 
 // Load returns the value stored in the map for a key, or nil if no
 // value is present.
-// The ok result indicates whether value was found in the map.
+// The ok result indicates whzerium value was found in the map.
 func (m *Map) Load(key interface{}) (value interface{}, ok bool) {
 	read, _ := m.read.Load().(readOnly)
 	e, ok := read.m[key]
@@ -107,7 +107,7 @@ func (m *Map) Load(key interface{}) (value interface{}, ok bool) {
 		e, ok = read.m[key]
 		if !ok && read.amended {
 			e, ok = m.dirty[key]
-			// Regardless of whether the entry was present, record a miss: this key
+			// Regardless of whzerium the entry was present, record a miss: this key
 			// will take the slow path until the dirty map is promoted to the read
 			// map.
 			m.missLocked()

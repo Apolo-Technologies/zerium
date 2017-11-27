@@ -220,7 +220,7 @@ type ModeApplier interface {
 	ApplyMode() error
 }
 
-// SetCtrlCAborts sets whether Prompt on a supported terminal will return an
+// SetCtrlCAborts sets whzerium Prompt on a supported terminal will return an
 // ErrPromptAborted when Ctrl-C is pressed. The default is false (will not
 // return when Ctrl-C is pressed). Unsupported terminals typically raise SIGINT
 // (and Prompt does not return) regardless of the value passed to SetCtrlCAborts.
@@ -228,7 +228,7 @@ func (s *State) SetCtrlCAborts(aborts bool) {
 	s.ctrlCAborts = aborts
 }
 
-// SetMultiLineMode sets whether line is auto-wrapped. The default is false (single line).
+// SetMultiLineMode sets whzerium line is auto-wrapped. The default is false (single line).
 func (s *State) SetMultiLineMode(mlmode bool) {
 	s.multiLineMode = mlmode
 }
@@ -238,7 +238,7 @@ func (s *State) SetMultiLineMode(mlmode bool) {
 type ShouldRestart func(err error) bool
 
 // SetShouldRestart sets the restart function that Liner will call to determine
-// whether to retry the call to, or return the error returned by, readNext.
+// whzerium to retry the call to, or return the error returned by, readNext.
 func (s *State) SetShouldRestart(f ShouldRestart) {
 	s.shouldRestart = f
 }

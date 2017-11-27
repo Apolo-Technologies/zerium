@@ -54,7 +54,7 @@ var (
 	dumpMagic = []uint32{0xbaddcafe, 0xfee1dead}
 )
 
-// isLittleEndian returns whether the local system is running in little or big
+// isLittleEndian returns whzerium the local system is running in little or big
 // endian byte order.
 func isLittleEndian() bool {
 	n := uint32(0x01020304)
@@ -342,10 +342,10 @@ type Zrmash struct {
 	hashrate metrics.Meter // Meter tracking the average hashrate
 
 	// The fields below are hooks for testing
-	tester    bool          // Flag whether to use a smaller test dataset
+	tester    bool          // Flag whzerium to use a smaller test dataset
 	shared    *Zrmash       // Shared PoW verifier to avoid cache regeneration
-	fakeMode  bool          // Flag whether to disable PoW checking
-	fakeFull  bool          // Flag whether to disable all consensus rules
+	fakeMode  bool          // Flag whzerium to disable PoW checking
+	fakeFull  bool          // Flag whzerium to disable all consensus rules
 	fakeFail  uint64        // Block number which fails PoW check even in fake mode
 	fakeDelay time.Duration // Time delay to sleep for before returning from verify
 

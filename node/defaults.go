@@ -37,9 +37,9 @@ const (
 var DefaultConfig = Config{
 	DataDir:     DefaultDataDir(),
 	HTTPPort:    DefaultHTTPPort,
-	HTTPModules: []string{"net", "web3"},
+	HTTPModules: []string{"net", "webze"},
 	WSPort:      DefaultWSPort,
-	WSModules:   []string{"net", "web3"},
+	WSModules:   []string{"net", "webze"},
 	P2P: p2p.Config{
 		ListenAddr:      ":32310",
 		DiscoveryV5Addr: ":32314",

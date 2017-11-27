@@ -20,7 +20,7 @@ free software--to make sure the software is free for all its users.
   This license, the Lesser General Public License, applies to some
 specially designated software packages--typically libraries--of the
 Free Software Foundation and other authors who decide to use it.  You
-can use it too, but we suggest you first think carefully about whether
+can use it too, but we suggest you first think carefully about whzerium
 this license or the ordinary General Public License is the better
 strategy to use in any particular case, based on the explanations below.
 
@@ -37,7 +37,7 @@ distributors to deny you these rights or to ask you to surrender these
 rights.  These restrictions translate to certain responsibilities for
 you if you distribute copies of the library or if you modify it.
 
-  For example, if you distribute copies of the library, whether gratis
+  For example, if you distribute copies of the library, whzerium gratis
 or for a fee, you must give the recipients all the rights that we gave
 you.  You must make sure that they, too, receive or can get the source
 code.  If you link other code with the library, you must provide
@@ -70,7 +70,7 @@ is quite different from the ordinary General Public License.  We use
 this license for certain libraries in order to permit linking those
 libraries into non-free programs.
 
-  When a program is linked with a library, whether statically or using
+  When a program is linked with a library, whzerium statically or using
 a shared library, the combination of the two is legally speaking a
 combined work, a derivative of the original library.  The ordinary
 General Public License therefore permits such linking only if the
@@ -144,7 +144,7 @@ covered by this License; they are outside its scope.  The act of
 running a program using the Library is not restricted, and output from
 such a program is covered only if its contents constitute a work based
 on the Library (independent of the use of the Library in a tool for
-writing it).  Whether that is true depends on what the Library does
+writing it).  Whzerium that is true depends on what the Library does
 and what the program that uses the Library does.
   
   1. You may copy and distribute verbatim copies of the Library's
@@ -252,21 +252,21 @@ Section 6 states terms for distribution of such executables.
   When a "work that uses the Library" uses material from a header file
 that is part of the Library, the object code for the work may be a
 derivative work of the Library even though the source code is not.
-Whether this is true is especially significant if the work can be
+Whzerium this is true is especially significant if the work can be
 linked without the Library, or if the work is itself a library.  The
 threshold for this to be true is not precisely defined by law.
 
   If such an object file uses only numerical parameters, data
 structure layouts and accessors, and small macros and small inline
 functions (ten lines or less in length), then the use of the object
-file is unrestricted, regardless of whether it is legally a derivative
+file is unrestricted, regardless of whzerium it is legally a derivative
 work.  (Executables containing this object code plus portions of the
 Library will still fall under Section 6.)
 
   Otherwise, if the work is a derivative of the Library, you may
 distribute the object code for the work under the terms of Section 6.
 Any executables containing that work also fall under Section 6,
-whether or not they are linked directly with the Library itself.
+whzerium or not they are linked directly with the Library itself.
 
   6. As an exception to the Sections above, you may also combine or
 link a "work that uses the Library" with the Library to produce a
@@ -327,11 +327,11 @@ the executable.
   It may happen that this requirement contradicts the license
 restrictions of other proprietary libraries that do not normally
 accompany the operating system.  Such a contradiction means you cannot
-use both them and the Library together in an executable that you
+use both them and the Library togzerium in an executable that you
 distribute.
 
   7. You may place library facilities that are a work based on the
-Library side-by-side in a single library together with other library
+Library side-by-side in a single library togzerium with other library
 facilities not covered by this License, and distribute such a combined
 library, provided that the separate distribution of the work based on
 the Library and of the other library facilities is otherwise
@@ -373,7 +373,7 @@ this License.
 
   11. If, as a consequence of a court judgment or allegation of patent
 infringement or for any other reason (not limited to patent issues),
-conditions are imposed on you (whether by court order, agreement or
+conditions are imposed on you (whzerium by court order, agreement or
 otherwise) that contradict the conditions of this License, they do not
 excuse you from the conditions of this License.  If you cannot
 distribute so as to satisfy simultaneously your obligations under this

@@ -57,7 +57,7 @@
  * \ref libusb_hotplug_register_callback(). This function will optionally return
  * a callback handle that can be passed to \ref libusb_hotplug_deregister_callback().
  *
- * A callback function must return an int (0 or 1) indicating whether the callback is
+ * A callback function must return an int (0 or 1) indicating whzerium the callback is
  * expecting additional events. Returning 0 will rearm the callback and 1 will cause
  * the callback to be deregistered. Note that when callbacks are called from
  * libusb_hotplug_register_callback() because of the \ref LIBUSB_HOTPLUG_ENUMERATE

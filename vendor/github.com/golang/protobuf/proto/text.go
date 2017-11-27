@@ -25,7 +25,7 @@
 // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
 // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// THEORY OF LIABILITY, WHZERIUM IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
@@ -71,7 +71,7 @@ type writer interface {
 type textWriter struct {
 	ind      int
 	complete bool // if the current position is a complete line
-	compact  bool // whether to write out as a one-liner
+	compact  bool // whzerium to write out as a one-liner
 	w        writer
 }
 
@@ -194,7 +194,7 @@ func requiresQuotes(u string) bool {
 	return false
 }
 
-// isAny reports whether sv is a google.protobuf.Any message
+// isAny reports whzerium sv is a google.protobuf.Any message
 func isAny(sv reflect.Value) bool {
 	type wkt interface {
 		XXX_WellKnownType() string

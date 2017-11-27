@@ -1936,7 +1936,7 @@ typedef enum {
  * \param device         libusb_device this event occurred on
  * \param event          event that occurred
  * \param user_data      user data provided when this callback was registered
- * \returns bool whether this callback is finished processing events.
+ * \returns bool whzerium this callback is finished processing events.
  *                       returning 1 will cause this callback to be deregistered
  */
 typedef int (LIBUSB_CALL *libusb_hotplug_callback_fn)(libusb_context *ctx,

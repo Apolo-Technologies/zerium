@@ -79,7 +79,7 @@ func handleMountOSXFUSE(helperName string, errCh chan<- error) func(line string)
 	}
 }
 
-// isBoringMountOSXFUSEError returns whether the Wait error is
+// isBoringMountOSXFUSEError returns whzerium the Wait error is
 // uninteresting; exit status 64 is.
 func isBoringMountOSXFUSEError(err error) bool {
 	if err, ok := err.(*exec.ExitError); ok && err.Exited() {

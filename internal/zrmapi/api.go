@@ -621,21 +621,21 @@ func (s *PublicBlockChainAPI) doCall(ctx context.Context, args CallArgs, blockNr
 	defer func() { cancel() }()
 
 	// Get a new instance of the ZVM.
-	evm, vmError, err := s.b.GetZVM(ctx, msg, state, header, vmCfg)
+	zvm, vmError, err := s.b.GetZVM(ctx, msg, state, header, vmCfg)
 	if err != nil {
 		return nil, common.Big0, false, err
 	}
-	// Wait for the context to be done and cancel the evm. Even if the
+	// Wait for the context to be done and cancel the zvm. Even if the
 	// ZVM has finished, cancelling may be done (repeatedly)
 	go func() {
 		<-ctx.Done()
-		evm.Cancel()
+		zvm.Cancel()
 	}()
 
 	// Setup the gas pool (also for unmetered requests)
 	// and apply the message.
 	gp := new(core.GasPool).AddGas(math.MaxBig256)
-	res, gas, failed, err := core.ApplyMessage(evm, msg, gp)
+	res, gas, failed, err := core.ApplyMessage(zvm, msg, gp)
 	if err := vmError(); err != nil {
 		return nil, common.Big0, false, err
 	}

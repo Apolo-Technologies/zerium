@@ -35,7 +35,7 @@ The zerium project comes with several wrappers/executables found in the `cmd` di
 | **`gzrm`** | Our main Zerium CLI client. It is the entry point into the Zerium network (main-, test- or private net), capable of running as a full node (default) archive node (retaining all historical state) or a light node (retrieving data live). It can be used by other processes as a gateway into the Zerium network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `gzrm --help` and the [CLI Wiki page](https://github.com/abt/zerium/wiki/Command-Line-Options) for command line options. |
 | `abigen` | Source code generator to convert Zerium contract definitions into easy to use, compile-time type-safe Go packages. It operates on plain [Zerium contract ABIs](https://github.com/abt/wiki/wiki/Zerium-Contract-ABI) with expanded functionality if the contract bytecode is also available. However it also accepts Solidity source files, making development much more streamlined. Please see our [Native DApps](https://github.com/abt/zerium/wiki/Native-DApps:-Go-bindings-to-Zerium-contracts) wiki page for details. |
 | `bootnode` | Stripped down version of our Zerium client implementation that only takes part in the network node discovery protocol, but does not run any of the higher level application protocols. It can be used as a lightweight bootstrap node to aid in finding peers in private networks. |
-| `evm` | Developer utility version of the ZVM (Zerium Virtual Machine) that is capable of running bytecode snippets within a configurable environment and execution mode. Its purpose is to allow isolated, fine-grained debugging of ZVM opcodes (e.g. `evm --code 60ff60ff --debug`). |
+| `zvm` | Developer utility version of the ZVM (Zerium Virtual Machine) that is capable of running bytecode snippets within a configurable environment and execution mode. Its purpose is to allow isolated, fine-grained debugging of ZVM opcodes (e.g. `zvm --code 60ff60ff --debug`). |
 | `gzrmrpctest` | Developer utility tool to support our [abt/rpc-test](https://github.com/abt/rpc-tests) test suite which validates baseline conformity to the [Zerium JSON RPC](https://github.com/abt/wiki/wiki/JSON-RPC) specs. Please see the [test suite's readme](https://github.com/abt/rpc-tests/blob/master/README.md) for details. |
 | `rlpdump` | Developer utility tool to convert binary RLP ([Recursive Length Prefix](https://github.com/abt/wiki/wiki/RLP)) dumps (data encoding used by the Zerium protocol both network as well as consensus wise) to user friendlier hierarchical representation (e.g. `rlpdump --hex CE0183FFFFFFC4C304050583616263`). |
 | `swarm`    | swarm daemon and tools. This is the entrypoint for the swarm network. `swarm --help` for command line options and subcommands. See https://swarm-guide.readthedocs.io for swarm documentation. |
@@ -65,7 +65,7 @@ This command will:
    sync times especially for HDD users. This flag is optional and you can set it as high or as low as
    you'd like, though we'd recommend the 512MB - 2GB range.
  * Start up Gzrm's built-in interactive [JavaScript console](https://github.com/abt/zerium/wiki/JavaScript-Console),
-   (via the trailing `console` subcommand) through which you can invoke all official [`web3` methods](https://github.com/abt/wiki/wiki/JavaScript-API)
+   (via the trailing `console` subcommand) through which you can invoke all official [`webze` methods](https://github.com/abt/wiki/wiki/JavaScript-API)
    as well as Gzrm's own [management APIs](https://github.com/abt/zerium/wiki/Management-APIs).
    This too is optional and if you leave it out you can always attach to an already running Gzrm instance
    with `gzrm attach`.
@@ -144,15 +144,15 @@ HTTP based JSON-RPC API options:
   * `--rpc` Enable the HTTP-RPC server
   * `--rpcaddr` HTTP-RPC server listening interface (default: "localhost")
   * `--rpcport` HTTP-RPC server listening port (default: 8545)
-  * `--rpcapi` API's offered over the HTTP-RPC interface (default: "zrm,net,web3")
+  * `--rpcapi` API's offered over the HTTP-RPC interface (default: "zrm,net,webze")
   * `--rpccorsdomain` Comma separated list of domains from which to accept cross origin requests (browser enforced)
   * `--ws` Enable the WS-RPC server
   * `--wsaddr` WS-RPC server listening interface (default: "localhost")
   * `--wsport` WS-RPC server listening port (default: 8546)
-  * `--wsapi` API's offered over the WS-RPC interface (default: "zrm,net,web3")
+  * `--wsapi` API's offered over the WS-RPC interface (default: "zrm,net,webze")
   * `--wsorigins` Origins from which to accept websockets requests
   * `--ipcdisable` Disable the IPC-RPC server
-  * `--ipcapi` API's offered over the IPC-RPC interface (default: "admin,debug,zrm,miner,net,personal,shh,txpool,web3")
+  * `--ipcapi` API's offered over the IPC-RPC interface (default: "admin,debug,zrm,miner,net,personal,shh,txpool,webze")
   * `--ipcpath` Filename for IPC socket/pipe within the datadir (explicit paths escape it)
 
 You'll need to use your own programming environments' capabilities (libraries, tools, etc) to connect

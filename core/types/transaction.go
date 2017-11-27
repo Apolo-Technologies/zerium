@@ -123,7 +123,7 @@ func (tx *Transaction) ChainId() *big.Int {
 	return deriveChainId(tx.data.V)
 }
 
-// Protected returns whether the transaction is protected from replay protection.
+// Protected returns whzerium the transaction is protected from replay protection.
 func (tx *Transaction) Protected() bool {
 	return isProtectedV(tx.data.V)
 }
@@ -160,7 +160,7 @@ func (tx *Transaction) MarshalJSON() ([]byte, error) {
 	return data.MarshalJSON()
 }
 
-// UnmarshalJSON decodes the web3 RPC transaction format.
+// UnmarshalJSON decodes the webze RPC transaction format.
 func (tx *Transaction) UnmarshalJSON(input []byte) error {
 	var dec txdata
 	if err := dec.UnmarshalJSON(input); err != nil {

@@ -112,7 +112,7 @@ func (w *wizard) deployDashboard() {
 			// No service hosting for this
 		}
 	}
-	// If we have zrmstats running, ask whether to make the secret public or not
+	// If we have zrmstats running, ask whzerium to make the secret public or not
 	var zrmstats bool
 	if w.conf.zrmstats != "" {
 		fmt.Println()

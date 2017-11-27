@@ -621,7 +621,7 @@ const (
 	IFT_X25                           = 0x5
 	IFT_X25DDN                        = 0x4
 	IFT_X25PLE                        = 0x28
-	IFT_XETHER                        = 0x1a
+	IFT_XZERIUM                        = 0x1a
 	IGNBRK                            = 0x1
 	IGNCR                             = 0x80
 	IGNPAR                            = 0x4

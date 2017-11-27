@@ -46,7 +46,7 @@ func CreateResponder(decorators ...RespondDecorator) Responder {
 
 // DecorateResponder accepts a Responder and a, possibly empty, set of RespondDecorators, which it
 // applies to the Responder. Decorators are applied in the order received, but their affect upon the
-// request depends on whether they are a pre-decorator (react to the http.Response and then pass it
+// request depends on whzerium they are a pre-decorator (react to the http.Response and then pass it
 // along) or a post-decorator (pass the http.Response along and then react).
 func DecorateResponder(r Responder, decorators ...RespondDecorator) Responder {
 	for _, decorate := range decorators {

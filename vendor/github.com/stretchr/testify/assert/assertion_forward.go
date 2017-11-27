@@ -28,7 +28,7 @@ func (a *Assertions) Conditionf(comp Comparison, msg string, args ...interface{}
 //    a.Contains(["Hello", "World"], "World")
 //    a.Contains({"Hello": "World"}, "Hello")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Contains(s interface{}, contains interface{}, msgAndArgs ...interface{}) bool {
 	return Contains(a.t, s, contains, msgAndArgs...)
 }
@@ -40,7 +40,7 @@ func (a *Assertions) Contains(s interface{}, contains interface{}, msgAndArgs ..
 //    a.Containsf(["Hello", "World"], "World", "error message %s", "formatted")
 //    a.Containsf({"Hello": "World"}, "Hello", "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Containsf(s interface{}, contains interface{}, msg string, args ...interface{}) bool {
 	return Containsf(a.t, s, contains, msg, args...)
 }
@@ -50,7 +50,7 @@ func (a *Assertions) Containsf(s interface{}, contains interface{}, msg string, 
 //
 //  a.Empty(obj)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Empty(object interface{}, msgAndArgs ...interface{}) bool {
 	return Empty(a.t, object, msgAndArgs...)
 }
@@ -60,7 +60,7 @@ func (a *Assertions) Empty(object interface{}, msgAndArgs ...interface{}) bool {
 //
 //  a.Emptyf(obj, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Emptyf(object interface{}, msg string, args ...interface{}) bool {
 	return Emptyf(a.t, object, msg, args...)
 }
@@ -69,7 +69,7 @@ func (a *Assertions) Emptyf(object interface{}, msg string, args ...interface{})
 //
 //    a.Equal(123, 123)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 //
 // Pointer variable equality is determined based on the equality of the
 // referenced values (as opposed to the memory addresses). Function equality
@@ -84,7 +84,7 @@ func (a *Assertions) Equal(expected interface{}, actual interface{}, msgAndArgs 
 //   actualObj, err := SomeFunction()
 //   a.EqualError(err,  expectedErrorString)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) EqualError(theError error, errString string, msgAndArgs ...interface{}) bool {
 	return EqualError(a.t, theError, errString, msgAndArgs...)
 }
@@ -95,7 +95,7 @@ func (a *Assertions) EqualError(theError error, errString string, msgAndArgs ...
 //   actualObj, err := SomeFunction()
 //   a.EqualErrorf(err,  expectedErrorString, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) EqualErrorf(theError error, errString string, msg string, args ...interface{}) bool {
 	return EqualErrorf(a.t, theError, errString, msg, args...)
 }
@@ -105,7 +105,7 @@ func (a *Assertions) EqualErrorf(theError error, errString string, msg string, a
 //
 //    a.EqualValues(uint32(123), int32(123))
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) EqualValues(expected interface{}, actual interface{}, msgAndArgs ...interface{}) bool {
 	return EqualValues(a.t, expected, actual, msgAndArgs...)
 }
@@ -115,7 +115,7 @@ func (a *Assertions) EqualValues(expected interface{}, actual interface{}, msgAn
 //
 //    a.EqualValuesf(uint32(123, "error message %s", "formatted"), int32(123))
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) EqualValuesf(expected interface{}, actual interface{}, msg string, args ...interface{}) bool {
 	return EqualValuesf(a.t, expected, actual, msg, args...)
 }
@@ -124,7 +124,7 @@ func (a *Assertions) EqualValuesf(expected interface{}, actual interface{}, msg 
 //
 //    a.Equalf(123, 123, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 //
 // Pointer variable equality is determined based on the equality of the
 // referenced values (as opposed to the memory addresses). Function equality
@@ -140,7 +140,7 @@ func (a *Assertions) Equalf(expected interface{}, actual interface{}, msg string
 // 	   assert.Equal(t, expectedError, err)
 //   }
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Error(err error, msgAndArgs ...interface{}) bool {
 	return Error(a.t, err, msgAndArgs...)
 }
@@ -152,7 +152,7 @@ func (a *Assertions) Error(err error, msgAndArgs ...interface{}) bool {
 // 	   assert.Equal(t, expectedErrorf, err)
 //   }
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Errorf(err error, msg string, args ...interface{}) bool {
 	return Errorf(a.t, err, msg, args...)
 }
@@ -161,7 +161,7 @@ func (a *Assertions) Errorf(err error, msg string, args ...interface{}) bool {
 //
 //    a.Exactly(int32(123), int64(123))
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Exactly(expected interface{}, actual interface{}, msgAndArgs ...interface{}) bool {
 	return Exactly(a.t, expected, actual, msgAndArgs...)
 }
@@ -170,7 +170,7 @@ func (a *Assertions) Exactly(expected interface{}, actual interface{}, msgAndArg
 //
 //    a.Exactlyf(int32(123, "error message %s", "formatted"), int64(123))
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Exactlyf(expected interface{}, actual interface{}, msg string, args ...interface{}) bool {
 	return Exactlyf(a.t, expected, actual, msg, args...)
 }
@@ -199,7 +199,7 @@ func (a *Assertions) Failf(failureMessage string, msg string, args ...interface{
 //
 //    a.False(myBool)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) False(value bool, msgAndArgs ...interface{}) bool {
 	return False(a.t, value, msgAndArgs...)
 }
@@ -208,7 +208,7 @@ func (a *Assertions) False(value bool, msgAndArgs ...interface{}) bool {
 //
 //    a.Falsef(myBool, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Falsef(value bool, msg string, args ...interface{}) bool {
 	return Falsef(a.t, value, msg, args...)
 }
@@ -218,7 +218,7 @@ func (a *Assertions) Falsef(value bool, msg string, args ...interface{}) bool {
 //
 //  a.HTTPBodyContains(myHandler, "www.google.com", nil, "I'm Feeling Lucky")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) HTTPBodyContains(handler http.HandlerFunc, method string, url string, values url.Values, str interface{}) bool {
 	return HTTPBodyContains(a.t, handler, method, url, values, str)
 }
@@ -228,7 +228,7 @@ func (a *Assertions) HTTPBodyContains(handler http.HandlerFunc, method string, u
 //
 //  a.HTTPBodyContainsf(myHandler, "www.google.com", nil, "I'm Feeling Lucky", "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) HTTPBodyContainsf(handler http.HandlerFunc, method string, url string, values url.Values, str interface{}) bool {
 	return HTTPBodyContainsf(a.t, handler, method, url, values, str)
 }
@@ -238,7 +238,7 @@ func (a *Assertions) HTTPBodyContainsf(handler http.HandlerFunc, method string, 
 //
 //  a.HTTPBodyNotContains(myHandler, "www.google.com", nil, "I'm Feeling Lucky")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) HTTPBodyNotContains(handler http.HandlerFunc, method string, url string, values url.Values, str interface{}) bool {
 	return HTTPBodyNotContains(a.t, handler, method, url, values, str)
 }
@@ -248,7 +248,7 @@ func (a *Assertions) HTTPBodyNotContains(handler http.HandlerFunc, method string
 //
 //  a.HTTPBodyNotContainsf(myHandler, "www.google.com", nil, "I'm Feeling Lucky", "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) HTTPBodyNotContainsf(handler http.HandlerFunc, method string, url string, values url.Values, str interface{}) bool {
 	return HTTPBodyNotContainsf(a.t, handler, method, url, values, str)
 }
@@ -257,7 +257,7 @@ func (a *Assertions) HTTPBodyNotContainsf(handler http.HandlerFunc, method strin
 //
 //  a.HTTPError(myHandler, "POST", "/a/b/c", url.Values{"a": []string{"b", "c"}}
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) HTTPError(handler http.HandlerFunc, method string, url string, values url.Values) bool {
 	return HTTPError(a.t, handler, method, url, values)
 }
@@ -266,7 +266,7 @@ func (a *Assertions) HTTPError(handler http.HandlerFunc, method string, url stri
 //
 //  a.HTTPErrorf(myHandler, "POST", "/a/b/c", url.Values{"a": []string{"b", "c"}}
 //
-// Returns whether the assertion was successful (true, "error message %s", "formatted") or not (false).
+// Returns whzerium the assertion was successful (true, "error message %s", "formatted") or not (false).
 func (a *Assertions) HTTPErrorf(handler http.HandlerFunc, method string, url string, values url.Values) bool {
 	return HTTPErrorf(a.t, handler, method, url, values)
 }
@@ -275,7 +275,7 @@ func (a *Assertions) HTTPErrorf(handler http.HandlerFunc, method string, url str
 //
 //  a.HTTPRedirect(myHandler, "GET", "/a/b/c", url.Values{"a": []string{"b", "c"}}
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) HTTPRedirect(handler http.HandlerFunc, method string, url string, values url.Values) bool {
 	return HTTPRedirect(a.t, handler, method, url, values)
 }
@@ -284,7 +284,7 @@ func (a *Assertions) HTTPRedirect(handler http.HandlerFunc, method string, url s
 //
 //  a.HTTPRedirectf(myHandler, "GET", "/a/b/c", url.Values{"a": []string{"b", "c"}}
 //
-// Returns whether the assertion was successful (true, "error message %s", "formatted") or not (false).
+// Returns whzerium the assertion was successful (true, "error message %s", "formatted") or not (false).
 func (a *Assertions) HTTPRedirectf(handler http.HandlerFunc, method string, url string, values url.Values) bool {
 	return HTTPRedirectf(a.t, handler, method, url, values)
 }
@@ -293,7 +293,7 @@ func (a *Assertions) HTTPRedirectf(handler http.HandlerFunc, method string, url 
 //
 //  a.HTTPSuccess(myHandler, "POST", "http://www.google.com", nil)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) HTTPSuccess(handler http.HandlerFunc, method string, url string, values url.Values) bool {
 	return HTTPSuccess(a.t, handler, method, url, values)
 }
@@ -302,7 +302,7 @@ func (a *Assertions) HTTPSuccess(handler http.HandlerFunc, method string, url st
 //
 //  a.HTTPSuccessf(myHandler, "POST", "http://www.google.com", nil, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) HTTPSuccessf(handler http.HandlerFunc, method string, url string, values url.Values) bool {
 	return HTTPSuccessf(a.t, handler, method, url, values)
 }
@@ -325,7 +325,7 @@ func (a *Assertions) Implementsf(interfaceObject interface{}, object interface{}
 //
 // 	 a.InDelta(math.Pi, (22 / 7.0), 0.01)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) InDelta(expected interface{}, actual interface{}, delta float64, msgAndArgs ...interface{}) bool {
 	return InDelta(a.t, expected, actual, delta, msgAndArgs...)
 }
@@ -344,14 +344,14 @@ func (a *Assertions) InDeltaSlicef(expected interface{}, actual interface{}, del
 //
 // 	 a.InDeltaf(math.Pi, (22 / 7.0, "error message %s", "formatted"), 0.01)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) InDeltaf(expected interface{}, actual interface{}, delta float64, msg string, args ...interface{}) bool {
 	return InDeltaf(a.t, expected, actual, delta, msg, args...)
 }
 
 // InEpsilon asserts that expected and actual have a relative error less than epsilon
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) InEpsilon(expected interface{}, actual interface{}, epsilon float64, msgAndArgs ...interface{}) bool {
 	return InEpsilon(a.t, expected, actual, epsilon, msgAndArgs...)
 }
@@ -368,7 +368,7 @@ func (a *Assertions) InEpsilonSlicef(expected interface{}, actual interface{}, e
 
 // InEpsilonf asserts that expected and actual have a relative error less than epsilon
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) InEpsilonf(expected interface{}, actual interface{}, epsilon float64, msg string, args ...interface{}) bool {
 	return InEpsilonf(a.t, expected, actual, epsilon, msg, args...)
 }
@@ -387,7 +387,7 @@ func (a *Assertions) IsTypef(expectedType interface{}, object interface{}, msg s
 //
 //  a.JSONEq(`{"hello": "world", "foo": "bar"}`, `{"foo": "bar", "hello": "world"}`)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) JSONEq(expected string, actual string, msgAndArgs ...interface{}) bool {
 	return JSONEq(a.t, expected, actual, msgAndArgs...)
 }
@@ -396,7 +396,7 @@ func (a *Assertions) JSONEq(expected string, actual string, msgAndArgs ...interf
 //
 //  a.JSONEqf(`{"hello": "world", "foo": "bar"}`, `{"foo": "bar", "hello": "world"}`, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) JSONEqf(expected string, actual string, msg string, args ...interface{}) bool {
 	return JSONEqf(a.t, expected, actual, msg, args...)
 }
@@ -406,7 +406,7 @@ func (a *Assertions) JSONEqf(expected string, actual string, msg string, args ..
 //
 //    a.Len(mySlice, 3)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Len(object interface{}, length int, msgAndArgs ...interface{}) bool {
 	return Len(a.t, object, length, msgAndArgs...)
 }
@@ -416,7 +416,7 @@ func (a *Assertions) Len(object interface{}, length int, msgAndArgs ...interface
 //
 //    a.Lenf(mySlice, 3, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Lenf(object interface{}, length int, msg string, args ...interface{}) bool {
 	return Lenf(a.t, object, length, msg, args...)
 }
@@ -425,7 +425,7 @@ func (a *Assertions) Lenf(object interface{}, length int, msg string, args ...in
 //
 //    a.Nil(err)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Nil(object interface{}, msgAndArgs ...interface{}) bool {
 	return Nil(a.t, object, msgAndArgs...)
 }
@@ -434,7 +434,7 @@ func (a *Assertions) Nil(object interface{}, msgAndArgs ...interface{}) bool {
 //
 //    a.Nilf(err, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Nilf(object interface{}, msg string, args ...interface{}) bool {
 	return Nilf(a.t, object, msg, args...)
 }
@@ -446,7 +446,7 @@ func (a *Assertions) Nilf(object interface{}, msg string, args ...interface{}) b
 // 	   assert.Equal(t, expectedObj, actualObj)
 //   }
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NoError(err error, msgAndArgs ...interface{}) bool {
 	return NoError(a.t, err, msgAndArgs...)
 }
@@ -458,7 +458,7 @@ func (a *Assertions) NoError(err error, msgAndArgs ...interface{}) bool {
 // 	   assert.Equal(t, expectedObj, actualObj)
 //   }
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NoErrorf(err error, msg string, args ...interface{}) bool {
 	return NoErrorf(a.t, err, msg, args...)
 }
@@ -470,7 +470,7 @@ func (a *Assertions) NoErrorf(err error, msg string, args ...interface{}) bool {
 //    a.NotContains(["Hello", "World"], "Earth")
 //    a.NotContains({"Hello": "World"}, "Earth")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotContains(s interface{}, contains interface{}, msgAndArgs ...interface{}) bool {
 	return NotContains(a.t, s, contains, msgAndArgs...)
 }
@@ -482,7 +482,7 @@ func (a *Assertions) NotContains(s interface{}, contains interface{}, msgAndArgs
 //    a.NotContainsf(["Hello", "World"], "Earth", "error message %s", "formatted")
 //    a.NotContainsf({"Hello": "World"}, "Earth", "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotContainsf(s interface{}, contains interface{}, msg string, args ...interface{}) bool {
 	return NotContainsf(a.t, s, contains, msg, args...)
 }
@@ -494,7 +494,7 @@ func (a *Assertions) NotContainsf(s interface{}, contains interface{}, msg strin
 //    assert.Equal(t, "two", obj[1])
 //  }
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotEmpty(object interface{}, msgAndArgs ...interface{}) bool {
 	return NotEmpty(a.t, object, msgAndArgs...)
 }
@@ -506,7 +506,7 @@ func (a *Assertions) NotEmpty(object interface{}, msgAndArgs ...interface{}) boo
 //    assert.Equal(t, "two", obj[1])
 //  }
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotEmptyf(object interface{}, msg string, args ...interface{}) bool {
 	return NotEmptyf(a.t, object, msg, args...)
 }
@@ -515,7 +515,7 @@ func (a *Assertions) NotEmptyf(object interface{}, msg string, args ...interface
 //
 //    a.NotEqual(obj1, obj2)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 //
 // Pointer variable equality is determined based on the equality of the
 // referenced values (as opposed to the memory addresses).
@@ -527,7 +527,7 @@ func (a *Assertions) NotEqual(expected interface{}, actual interface{}, msgAndAr
 //
 //    a.NotEqualf(obj1, obj2, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 //
 // Pointer variable equality is determined based on the equality of the
 // referenced values (as opposed to the memory addresses).
@@ -539,7 +539,7 @@ func (a *Assertions) NotEqualf(expected interface{}, actual interface{}, msg str
 //
 //    a.NotNil(err)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotNil(object interface{}, msgAndArgs ...interface{}) bool {
 	return NotNil(a.t, object, msgAndArgs...)
 }
@@ -548,7 +548,7 @@ func (a *Assertions) NotNil(object interface{}, msgAndArgs ...interface{}) bool 
 //
 //    a.NotNilf(err, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotNilf(object interface{}, msg string, args ...interface{}) bool {
 	return NotNilf(a.t, object, msg, args...)
 }
@@ -557,7 +557,7 @@ func (a *Assertions) NotNilf(object interface{}, msg string, args ...interface{}
 //
 //   a.NotPanics(func(){ RemainCalm() })
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotPanics(f PanicTestFunc, msgAndArgs ...interface{}) bool {
 	return NotPanics(a.t, f, msgAndArgs...)
 }
@@ -566,7 +566,7 @@ func (a *Assertions) NotPanics(f PanicTestFunc, msgAndArgs ...interface{}) bool 
 //
 //   a.NotPanicsf(func(){ RemainCalm() }, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotPanicsf(f PanicTestFunc, msg string, args ...interface{}) bool {
 	return NotPanicsf(a.t, f, msg, args...)
 }
@@ -576,7 +576,7 @@ func (a *Assertions) NotPanicsf(f PanicTestFunc, msg string, args ...interface{}
 //  a.NotRegexp(regexp.MustCompile("starts"), "it's starting")
 //  a.NotRegexp("^start", "it's not starting")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotRegexp(rx interface{}, str interface{}, msgAndArgs ...interface{}) bool {
 	return NotRegexp(a.t, rx, str, msgAndArgs...)
 }
@@ -586,7 +586,7 @@ func (a *Assertions) NotRegexp(rx interface{}, str interface{}, msgAndArgs ...in
 //  a.NotRegexpf(regexp.MustCompile("starts", "error message %s", "formatted"), "it's starting")
 //  a.NotRegexpf("^start", "it's not starting", "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotRegexpf(rx interface{}, str interface{}, msg string, args ...interface{}) bool {
 	return NotRegexpf(a.t, rx, str, msg, args...)
 }
@@ -596,7 +596,7 @@ func (a *Assertions) NotRegexpf(rx interface{}, str interface{}, msg string, arg
 //
 //    a.NotSubset([1, 3, 4], [1, 2], "But [1, 3, 4] does not contain [1, 2]")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotSubset(list interface{}, subset interface{}, msgAndArgs ...interface{}) bool {
 	return NotSubset(a.t, list, subset, msgAndArgs...)
 }
@@ -606,7 +606,7 @@ func (a *Assertions) NotSubset(list interface{}, subset interface{}, msgAndArgs 
 //
 //    a.NotSubsetf([1, 3, 4], [1, 2], "But [1, 3, 4] does not contain [1, 2]", "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) NotSubsetf(list interface{}, subset interface{}, msg string, args ...interface{}) bool {
 	return NotSubsetf(a.t, list, subset, msg, args...)
 }
@@ -625,7 +625,7 @@ func (a *Assertions) NotZerof(i interface{}, msg string, args ...interface{}) bo
 //
 //   a.Panics(func(){ GoCrazy() })
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Panics(f PanicTestFunc, msgAndArgs ...interface{}) bool {
 	return Panics(a.t, f, msgAndArgs...)
 }
@@ -635,7 +635,7 @@ func (a *Assertions) Panics(f PanicTestFunc, msgAndArgs ...interface{}) bool {
 //
 //   a.PanicsWithValue("crazy error", func(){ GoCrazy() })
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) PanicsWithValue(expected interface{}, f PanicTestFunc, msgAndArgs ...interface{}) bool {
 	return PanicsWithValue(a.t, expected, f, msgAndArgs...)
 }
@@ -645,7 +645,7 @@ func (a *Assertions) PanicsWithValue(expected interface{}, f PanicTestFunc, msgA
 //
 //   a.PanicsWithValuef("crazy error", func(){ GoCrazy() }, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) PanicsWithValuef(expected interface{}, f PanicTestFunc, msg string, args ...interface{}) bool {
 	return PanicsWithValuef(a.t, expected, f, msg, args...)
 }
@@ -654,7 +654,7 @@ func (a *Assertions) PanicsWithValuef(expected interface{}, f PanicTestFunc, msg
 //
 //   a.Panicsf(func(){ GoCrazy() }, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Panicsf(f PanicTestFunc, msg string, args ...interface{}) bool {
 	return Panicsf(a.t, f, msg, args...)
 }
@@ -664,7 +664,7 @@ func (a *Assertions) Panicsf(f PanicTestFunc, msg string, args ...interface{}) b
 //  a.Regexp(regexp.MustCompile("start"), "it's starting")
 //  a.Regexp("start...$", "it's not starting")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Regexp(rx interface{}, str interface{}, msgAndArgs ...interface{}) bool {
 	return Regexp(a.t, rx, str, msgAndArgs...)
 }
@@ -674,7 +674,7 @@ func (a *Assertions) Regexp(rx interface{}, str interface{}, msgAndArgs ...inter
 //  a.Regexpf(regexp.MustCompile("start", "error message %s", "formatted"), "it's starting")
 //  a.Regexpf("start...$", "it's not starting", "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Regexpf(rx interface{}, str interface{}, msg string, args ...interface{}) bool {
 	return Regexpf(a.t, rx, str, msg, args...)
 }
@@ -684,7 +684,7 @@ func (a *Assertions) Regexpf(rx interface{}, str interface{}, msg string, args .
 //
 //    a.Subset([1, 2, 3], [1, 2], "But [1, 2, 3] does contain [1, 2]")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Subset(list interface{}, subset interface{}, msgAndArgs ...interface{}) bool {
 	return Subset(a.t, list, subset, msgAndArgs...)
 }
@@ -694,7 +694,7 @@ func (a *Assertions) Subset(list interface{}, subset interface{}, msgAndArgs ...
 //
 //    a.Subsetf([1, 2, 3], [1, 2], "But [1, 2, 3] does contain [1, 2]", "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Subsetf(list interface{}, subset interface{}, msg string, args ...interface{}) bool {
 	return Subsetf(a.t, list, subset, msg, args...)
 }
@@ -703,7 +703,7 @@ func (a *Assertions) Subsetf(list interface{}, subset interface{}, msg string, a
 //
 //    a.True(myBool)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) True(value bool, msgAndArgs ...interface{}) bool {
 	return True(a.t, value, msgAndArgs...)
 }
@@ -712,7 +712,7 @@ func (a *Assertions) True(value bool, msgAndArgs ...interface{}) bool {
 //
 //    a.Truef(myBool, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) Truef(value bool, msg string, args ...interface{}) bool {
 	return Truef(a.t, value, msg, args...)
 }
@@ -721,7 +721,7 @@ func (a *Assertions) Truef(value bool, msg string, args ...interface{}) bool {
 //
 //   a.WithinDuration(time.Now(), time.Now(), 10*time.Second)
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) WithinDuration(expected time.Time, actual time.Time, delta time.Duration, msgAndArgs ...interface{}) bool {
 	return WithinDuration(a.t, expected, actual, delta, msgAndArgs...)
 }
@@ -730,7 +730,7 @@ func (a *Assertions) WithinDuration(expected time.Time, actual time.Time, delta 
 //
 //   a.WithinDurationf(time.Now(), time.Now(), 10*time.Second, "error message %s", "formatted")
 //
-// Returns whether the assertion was successful (true) or not (false).
+// Returns whzerium the assertion was successful (true) or not (false).
 func (a *Assertions) WithinDurationf(expected time.Time, actual time.Time, delta time.Duration, msg string, args ...interface{}) bool {
 	return WithinDurationf(a.t, expected, actual, delta, msg, args...)
 }

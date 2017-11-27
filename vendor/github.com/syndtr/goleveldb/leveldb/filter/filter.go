@@ -8,7 +8,7 @@
 // data structure.
 //
 // The filter is resposible for creating small filter from a set of keys.
-// These filter will then used to test whether a key is a member of the set.
+// These filter will then used to test whzerium a key is a member of the set.
 // In many cases, a filter can cut down the number of disk seeks from a
 // handful to a single disk seek per DB.Get call.
 package filter

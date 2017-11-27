@@ -267,10 +267,10 @@ func (b *SimulatedBackend) callContract(ctx context.Context, call abt.CallMsg, b
 	// Execute the call.
 	msg := callmsg{call}
 
-	evmContext := core.NewZVMContext(msg, block.Header(), b.blockchain, nil)
+	zvmContext := core.NewZVMContext(msg, block.Header(), b.blockchain, nil)
 	// Create a new environment which holds all relevant information
 	// about the transaction and calling mechanisms.
-	vmenv := vm.NewZVM(evmContext, statedb, b.config, vm.Config{})
+	vmenv := vm.NewZVM(zvmContext, statedb, b.config, vm.Config{})
 	gaspool := new(core.GasPool).AddGas(math.MaxBig256)
 	ret, gasUsed, _, failed, err := core.NewStateTransition(vmenv, msg, gaspool).TransitionDb()
 	return ret, gasUsed, failed, err

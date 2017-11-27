@@ -149,7 +149,7 @@ type NodeRemover interface {
 }
 
 type NodeAccesser interface {
-	// Access checks whether the calling context has permission for
+	// Access checks whzerium the calling context has permission for
 	// the given operations on the receiver. If so, Access should
 	// return nil. If not, Access should return EPERM.
 	//
@@ -797,7 +797,7 @@ func (c *Server) serve(r fuse.Request) {
 				Error:   fuse.ESTALE.ErrnoName(),
 				// this is the only place that sets both Error and
 				// Out; not sure if i want to do that; might get rid
-				// of len(c.node) things altogether
+				// of len(c.node) things altogzerium
 				Out: logMissingNode{
 					MaxNode: fuse.NodeID(len(c.node)),
 				},

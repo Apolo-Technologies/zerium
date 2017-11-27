@@ -14,19 +14,19 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-// +build evmjit
+// +build zvmjit
 
 package vm
 
 /*
 
-void* evmjit_create();
-int   evmjit_run(void* _jit, void* _data, void* _env);
-void  evmjit_destroy(void* _jit);
+void* zvmjit_create();
+int   zvmjit_run(void* _jit, void* _data, void* _env);
+void  zvmjit_destroy(void* _jit);
 
-// Shared library evmjit (e.g. libevmjit.so) is expected to be installed in /usr/local/lib
-// More: https://github.com/abt/evmjit
-#cgo LDFLAGS: -levmjit
+// Shared library zvmjit (e.g. libzvmjit.so) is expected to be installed in /usr/local/lib
+// More: https://github.com/abt/zvmjit
+#cgo LDFLAGS: -lzvmjit
 */
 import "C"
 
@@ -202,8 +202,8 @@ func (self *JitVm) Run(me, caller ContextRef, code []byte, value, gas, price *bi
 	self.data.codeSize = uint64(len(code))
 	self.data.codeHash = hash2llvm(crypto.Keccak256(code)) // TODO: Get already computed hash?
 
-	jit := C.evmjit_create()
-	retCode := C.evmjit_run(jit, unsafe.Pointer(&self.data), unsafe.Pointer(self))
+	jit := C.zvmjit_create()
+	retCode := C.zvmjit_run(jit, unsafe.Pointer(&self.data), unsafe.Pointer(self))
 
 	if retCode < 0 {
 		err = errors.New("OOG from JIT")
@@ -223,7 +223,7 @@ func (self *JitVm) Run(me, caller ContextRef, code []byte, value, gas, price *bi
 		}
 	}
 
-	C.evmjit_destroy(jit)
+	C.zvmjit_destroy(jit)
 	return
 }
 

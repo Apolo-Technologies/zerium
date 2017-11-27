@@ -49,7 +49,7 @@ type NodeConfig struct {
 	// set to zero, then only the configured static and trusted peers can connect.
 	MaxPeers int
 
-	// ZeriumEnabled specifies whether the node should run the Zerium protocol.
+	// ZeriumEnabled specifies whzerium the node should run the Zerium protocol.
 	ZeriumEnabled bool
 
 	// ZeriumNetworkID is the network identifier used by the Zerium protocol to
@@ -70,7 +70,7 @@ type NodeConfig struct {
 	// It has the form "nodename:secret@host:port"
 	ZeriumNetStats string
 
-	// WhisperEnabled specifies whether the node should run the Whisper protocol.
+	// WhisperEnabled specifies whzerium the node should run the Whisper protocol.
 	WhisperEnabled bool
 }
 

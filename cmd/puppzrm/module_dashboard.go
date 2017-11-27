@@ -219,7 +219,7 @@ var dashboardContent = `
 										<div class="clearfix"></div>
 									</div>
 									<div class="x_content">
-										<p>The Mist browser is an <a href="https://electron.atom.io/" target="about:blank">Electron</a> based desktop application to load and interact with Zerium enabled third party web DApps. Beside all the functionality provided by the Zerium Wallet, Mist is an extended web-browser where loaded pages have access to the Zerium network via a web3.js provider, and may also interact with users' own accounts (given proper authorization and confirmation of course).</p>
+										<p>The Mist browser is an <a href="https://electron.atom.io/" target="about:blank">Electron</a> based desktop application to load and interact with Zerium enabled third party web DApps. Beside all the functionality provided by the Zerium Wallet, Mist is an extended web-browser where loaded pages have access to the Zerium network via a webze.js provider, and may also interact with users' own accounts (given proper authorization and confirmation of course).</p>
 										<p>Under the hood the browser is backed by a zerium full node, meaning that a mid range machine is assumed. Similarly, synchronization is based on <strong>fast-sync</strong>, which will download all blockchain data from the network and make it available to the wallet. Light nodes cannot currently fully back the wallet, but it's a target actively pursued.</p>
 										<br/>
 										<p>To connect with the Mist browser, you'll need to initialize your private network first via Gzrm as Mist does not currently support calling Gzrm directly. To initialize your local chain, download <a href="/{{.GzrmGenesis}}"><code>{{.GzrmGenesis}}</code></a> and run:

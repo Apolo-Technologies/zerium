@@ -27,7 +27,7 @@ import (
 
 	goruntime "runtime"
 
-	"github.com/abt/zerium/cmd/evm/internal/compiler"
+	"github.com/abt/zerium/cmd/zvm/internal/compiler"
 	"github.com/abt/zerium/cmd/utils"
 	"github.com/abt/zerium/common"
 	"github.com/abt/zerium/core"
@@ -43,7 +43,7 @@ import (
 var runCommand = cli.Command{
 	Action:      runCmd,
 	Name:        "run",
-	Usage:       "run arbitrary evm binary",
+	Usage:       "run arbitrary zvm binary",
 	ArgsUsage:   "<code>",
 	Description: `The run command runs arbitrary ZVM code.`,
 }
@@ -224,7 +224,7 @@ func runCmd(ctx *cli.Context) error {
 	if ctx.GlobalBool(StatDumpFlag.Name) {
 		var mem goruntime.MemStats
 		goruntime.ReadMemStats(&mem)
-		fmt.Fprintf(os.Stderr, `evm execution time: %v
+		fmt.Fprintf(os.Stderr, `zvm execution time: %v
 heap objects:       %d
 allocations:        %d
 total allocations:  %d

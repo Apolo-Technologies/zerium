@@ -2,7 +2,7 @@
 # with Go source code. If you know what GOPATH is then you probably
 # don't need to bother with make.
 
-.PHONY: gzrm android ios gzrm-cross swarm evm all test clean
+.PHONY: gzrm android ios gzrm-cross swarm zvm all test clean
 .PHONY: gzrm-linux gzrm-linux-386 gzrm-linux-amd64 gzrm-linux-mips64 gzrm-linux-mips64le
 .PHONY: gzrm-linux-arm gzrm-linux-arm-5 gzrm-linux-arm-6 gzrm-linux-arm-7 gzrm-linux-arm64
 .PHONY: gzrm-darwin gzrm-darwin-386 gzrm-darwin-amd64

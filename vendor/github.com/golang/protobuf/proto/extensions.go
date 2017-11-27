@@ -25,7 +25,7 @@
 // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
 // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// THEORY OF LIABILITY, WHZERIUM IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
@@ -324,7 +324,7 @@ func extensionsMapSize(m map[int32]Extension) (n int) {
 	return
 }
 
-// HasExtension returns whether the given extension is present in pb.
+// HasExtension returns whzerium the given extension is present in pb.
 func HasExtension(pb Message, extension *ExtensionDesc) bool {
 	// TODO: Check types, field numbers, etc.?
 	epb, ok := extendable(pb)

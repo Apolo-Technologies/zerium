@@ -363,23 +363,23 @@ func (api *PublicDebugAPI) Metrics(raw bool) (map[string]interface{}, error) {
 	return counters, nil
 }
 
-// PublicWeb3API offers helper utils
-type PublicWeb3API struct {
+// PublicWebzeAPI offers helper utils
+type PublicWebzeAPI struct {
 	stack *Node
 }
 
-// NewPublicWeb3API creates a new Web3Service instance
-func NewPublicWeb3API(stack *Node) *PublicWeb3API {
-	return &PublicWeb3API{stack}
+// NewPublicWebzeAPI creates a new WebzeService instance
+func NewPublicWebzeAPI(stack *Node) *PublicWebzeAPI {
+	return &PublicWebzeAPI{stack}
 }
 
 // ClientVersion returns the node name
-func (s *PublicWeb3API) ClientVersion() string {
+func (s *PublicWebzeAPI) ClientVersion() string {
 	return s.stack.Server().Name
 }
 
 // Sha3 applies the abt sha3 implementation on the input.
 // It assumes the input is hex encoded.
-func (s *PublicWeb3API) Sha3(input hexutil.Bytes) hexutil.Bytes {
+func (s *PublicWebzeAPI) Sha3(input hexutil.Bytes) hexutil.Bytes {
 	return crypto.Keccak256(input)
 }

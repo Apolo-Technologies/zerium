@@ -163,11 +163,11 @@ options. See the ConfigState documentation for more details.
 	Pointer method invocation is enabled by default.
 
 * DisablePointerAddresses
-	DisablePointerAddresses specifies whether to disable the printing of
+	DisablePointerAddresses specifies whzerium to disable the printing of
 	pointer addresses. This is useful when diffing data structures in tests.
 
 * DisableCapacities
-	DisableCapacities specifies whether to disable the printing of capacities
+	DisableCapacities specifies whzerium to disable the printing of capacities
 	for arrays, slices, maps and channels. This is useful when diffing data
 	structures in tests.
 

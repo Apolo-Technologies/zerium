@@ -36,7 +36,7 @@ var ErrAlreadyProcessed = errors.New("already processed")
 type request struct {
 	hash common.Hash // Hash of the node data content to retrieve
 	data []byte      // Data content of the node, cached until all subtrees complete
-	raw  bool        // Whether this is a raw entry (code) or a trie node
+	raw  bool        // Whzerium this is a raw entry (code) or a trie node
 
 	parents []*request // Parent state nodes referencing this entry (notify all upon completion)
 	depth   int        // Depth level within the trie the node is located to prioritise DFS
@@ -114,7 +114,7 @@ func (s *TrieSync) AddSubTrie(root common.Hash, depth int, parent common.Hash, c
 		depth:    depth,
 		callback: callback,
 	}
-	// If this sub-trie has a designated parent, link them together
+	// If this sub-trie has a designated parent, link them togzerium
 	if parent != (common.Hash{}) {
 		ancestor := s.requests[parent]
 		if ancestor == nil {
@@ -147,7 +147,7 @@ func (s *TrieSync) AddRawEntry(hash common.Hash, depth int, parent common.Hash) 
 		raw:   true,
 		depth: depth,
 	}
-	// If this sub-trie has a designated parent, link them together
+	// If this sub-trie has a designated parent, link them togzerium
 	if parent != (common.Hash{}) {
 		ancestor := s.requests[parent]
 		if ancestor == nil {
@@ -253,7 +253,7 @@ func (s *TrieSync) schedule(req *request) {
 // children retrieves all the missing children of a state trie entry for future
 // retrieval scheduling.
 func (s *TrieSync) children(req *request, object node) ([]*request, error) {
-	// Gather all the children of the node, irrelevant whether known or not
+	// Gather all the children of the node, irrelevant whzerium known or not
 	type child struct {
 		node  node
 		depth int

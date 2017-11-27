@@ -65,7 +65,7 @@ type MessageDetails struct {
 
 // A PromptFunction is used as a callback by functions that may need to decrypt
 // a private key, or prompt for a passphrase. It is called with a list of
-// acceptable, encrypted private keys and a boolean that indicates whether a
+// acceptable, encrypted private keys and a boolean that indicates whzerium a
 // passphrase is usable. It should either decrypt a private key or return a
 // passphrase to try. If the decrypted private key or given passphrase isn't
 // correct, the function will be called again, forever. Any error returned will

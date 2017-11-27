@@ -18,7 +18,7 @@ var TimeFunc = time.Now
 // Header of the token (such as `kid`) to identify which key to use.
 type Keyfunc func(*Token) (interface{}, error)
 
-// A JWT Token.  Different fields will be used depending on whether you're
+// A JWT Token.  Different fields will be used depending on whzerium you're
 // creating or parsing/verifying a token.
 type Token struct {
 	Raw       string                 // The raw token.  Populated when you Parse a token

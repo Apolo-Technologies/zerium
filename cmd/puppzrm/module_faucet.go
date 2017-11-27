@@ -167,7 +167,7 @@ func (info *faucetInfos) String() string {
 	return fmt.Sprintf("host=%s, api=%d, zrm=%d, amount=%d, minutes=%d, tiers=%d, github=%s, captcha=%v, zrmstats=%s", info.host, info.port, info.node.portFull, info.amount, info.minutes, info.tiers, info.githubUser, info.captchaToken != "", info.node.zrmstats)
 }
 
-// checkFaucet does a health-check against an faucet server to verify whether
+// checkFaucet does a health-check against an faucet server to verify whzerium
 // it's running, and if yes, gathering a collection of useful infos about it.
 func checkFaucet(client *sshClient, network string) (*faucetInfos, error) {
 	// Inspect a possible faucet container on the host

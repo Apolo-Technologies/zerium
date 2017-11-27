@@ -125,7 +125,7 @@ func main() {
 		fmt.Printf("// encode%d: %5d entries for runes in [%5d, %5d).\n", i, v.len(), v.low, v.high)
 	}
 	fmt.Printf("//\n")
-	fmt.Printf("// The high two bits of the value record whether the JIS code comes from the\n")
+	fmt.Printf("// The high two bits of the value record whzerium the JIS code comes from the\n")
 	fmt.Printf("// JIS0208 table (high bits == 1) or the JIS0212 table (high bits == 2).\n")
 	fmt.Printf("// The low 14 bits are two 7-bit unsigned integers j1 and j2 that form the\n")
 	fmt.Printf("// JIS code (94*j1 + j2) within that table.\n")

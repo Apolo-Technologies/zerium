@@ -793,7 +793,7 @@ func ParsePrivateKeyWithPassphrase(pemBytes, passPhrase []byte) (Signer, error) 
 	return NewSignerFromKey(key)
 }
 
-// encryptedBlock tells whether a private key is
+// encryptedBlock tells whzerium a private key is
 // encrypted by examining its Proc-Type header
 // for a mention of ENCRYPTED
 // according to RFC 1421 Section 4.6.1.1.

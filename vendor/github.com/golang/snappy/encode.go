@@ -153,7 +153,7 @@ type Writer struct {
 	// obuf is a buffer for the outgoing (compressed) bytes.
 	obuf []byte
 
-	// wroteStreamHeader is whether we have written the stream header.
+	// wroteStreamHeader is whzerium we have written the stream header.
 	wroteStreamHeader bool
 }
 

@@ -68,11 +68,11 @@ func (c *Context) IsSet(name string) bool {
 		// XXX hack to support IsSet for flags with EnvVar
 		//
 		// There isn't an easy way to do this with the current implementation since
-		// whether a flag was set via an environment variable is very difficult to
+		// whzerium a flag was set via an environment variable is very difficult to
 		// determine here. Instead, we intend to introduce a backwards incompatible
 		// change in version 2 to add `IsSet` to the Flag interface to push the
 		// responsibility closer to where the information required to determine
-		// whether a flag is set by non-standard means such as environment
+		// whzerium a flag is set by non-standard means such as environment
 		// variables is avaliable.
 		//
 		// See https://github.com/urfave/cli/issues/294 for additional discussion

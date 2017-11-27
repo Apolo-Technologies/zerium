@@ -440,8 +440,8 @@ const (
 	IFT_ZERIUM                         = 0x6
 	IFT_FAITH                         = 0xf2
 	IFT_FAST                          = 0x7d
-	IFT_FASTETHER                     = 0x3e
-	IFT_FASTETHERFX                   = 0x45
+	IFT_FASTZERIUM                     = 0x3e
+	IFT_FASTZERIUMFX                   = 0x45
 	IFT_FDDI                          = 0xf
 	IFT_FIBRECHANNEL                  = 0x38
 	IFT_FRAMERELAYINTERCONNECT        = 0x3a
@@ -454,7 +454,7 @@ const (
 	IFT_G703AT2MB                     = 0x43
 	IFT_G703AT64K                     = 0x42
 	IFT_GIF                           = 0xf0
-	IFT_GIGABITETHERNET               = 0x75
+	IFT_GIGABITZERIUMNET               = 0x75
 	IFT_GR303IDT                      = 0xb2
 	IFT_GR303RDT                      = 0xb1
 	IFT_H323GATEKEEPER                = 0xa4
@@ -589,7 +589,7 @@ const (
 	IFT_X25HUNTGROUP                  = 0x7a
 	IFT_X25MLP                        = 0x79
 	IFT_X25PLE                        = 0x28
-	IFT_XETHER                        = 0x1a
+	IFT_XZERIUM                        = 0x1a
 	IGNBRK                            = 0x1
 	IGNCR                             = 0x80
 	IGNPAR                            = 0x4

@@ -50,29 +50,29 @@ type Config struct {
 }
 
 // Interpreter is used to run Zerium based contracts and will utilise the
-// passed evmironment to query external sources for state information.
+// passed zvmironment to query external sources for state information.
 // The Interpreter will run the byte code VM or JIT VM based on the passed
 // configuration.
 type Interpreter struct {
-	evm      *ZVM
+	zvm      *ZVM
 	cfg      Config
 	gasTable params.GasTable
 	intPool  *intPool
 
-	readOnly   bool   // Whether to throw on stateful modifications
+	readOnly   bool   // Whzerium to throw on stateful modifications
 	returnData []byte // Last CALL's return data for subsequent reuse
 }
 
 // NewInterpreter returns a new instance of the Interpreter.
-func NewInterpreter(evm *ZVM, cfg Config) *Interpreter {
-	// We use the STOP instruction whether to see
+func NewInterpreter(zvm *ZVM, cfg Config) *Interpreter {
+	// We use the STOP instruction whzerium to see
 	// the jump table was initialised. If it was not
 	// we'll set the default jump table.
 	if !cfg.JumpTable[STOP].valid {
 		switch {
-		case evm.ChainConfig().IsByzantium(evm.BlockNumber):
+		case zvm.ChainConfig().IsByzantium(zvm.BlockNumber):
 			cfg.JumpTable = byzantiumInstructionSet
-		case evm.ChainConfig().IsHomestead(evm.BlockNumber):
+		case zvm.ChainConfig().IsHomestead(zvm.BlockNumber):
 			cfg.JumpTable = homesteadInstructionSet
 		default:
 			cfg.JumpTable = frontierInstructionSet
@@ -80,15 +80,15 @@ func NewInterpreter(evm *ZVM, cfg Config) *Interpreter {
 	}
 
 	return &Interpreter{
-		evm:      evm,
+		zvm:      zvm,
 		cfg:      cfg,
-		gasTable: evm.ChainConfig().GasTable(evm.BlockNumber),
+		gasTable: zvm.ChainConfig().GasTable(zvm.BlockNumber),
 		intPool:  newIntPool(),
 	}
 }
 
 func (in *Interpreter) enforceRestrictions(op OpCode, operation operation, stack *Stack) error {
-	if in.evm.chainRules.IsByzantium {
+	if in.zvm.chainRules.IsByzantium {
 		if in.readOnly {
 			// If the interpreter is operating in readonly mode, make sure no
 			// state-modifying operation is performed. The 3rd stack item
@@ -111,8 +111,8 @@ func (in *Interpreter) enforceRestrictions(op OpCode, operation operation, stack
 // should be handled to reduce complexity and errors further down the in.
 func (in *Interpreter) Run(snapshot int, contract *Contract, input []byte) (ret []byte, err error) {
 	// Increment the call depth which is restricted to 1024
-	in.evm.depth++
-	defer func() { in.evm.depth-- }()
+	in.zvm.depth++
+	defer func() { in.zvm.depth-- }()
 
 	// Reset the previous call's return data. It's unimportant to preserve the old buffer
 	// as every returning call will return new data anyway.
@@ -147,7 +147,7 @@ func (in *Interpreter) Run(snapshot int, contract *Contract, input []byte) (ret 
 
 	defer func() {
 		if err != nil && !logged && in.cfg.Debug {
-			in.cfg.Tracer.CaptureState(in.evm, pcCopy, op, gasCopy, cost, mem, stackCopy, contract, in.evm.depth, err)
+			in.cfg.Tracer.CaptureState(in.zvm, pcCopy, op, gasCopy, cost, mem, stackCopy, contract, in.zvm.depth, err)
 		}
 	}()
 
@@ -155,7 +155,7 @@ func (in *Interpreter) Run(snapshot int, contract *Contract, input []byte) (ret 
 	// explicit STOP, RETURN or SELFDESTRUCT is executed, an error occurred during
 	// the execution of one of the operations or until the done flag is set by the
 	// parent context.
-	for atomic.LoadInt32(&in.evm.abort) == 0 {
+	for atomic.LoadInt32(&in.zvm.abort) == 0 {
 		// Get the memory location of pc
 		op = contract.GetOp(pc)
 
@@ -201,7 +201,7 @@ func (in *Interpreter) Run(snapshot int, contract *Contract, input []byte) (ret 
 		if !in.cfg.DisableGasMetering {
 			// consume the gas and return an error if not enough gas is available.
 			// cost is explicitly set so that the capture state defer method cas get the proper cost
-			cost, err = operation.gasCost(in.gasTable, in.evm, contract, stack, mem, memorySize)
+			cost, err = operation.gasCost(in.gasTable, in.zvm, contract, stack, mem, memorySize)
 			if err != nil || !contract.UseGas(cost) {
 				return nil, ErrOutOfGas
 			}
@@ -211,12 +211,12 @@ func (in *Interpreter) Run(snapshot int, contract *Contract, input []byte) (ret 
 		}
 
 		if in.cfg.Debug {
-			in.cfg.Tracer.CaptureState(in.evm, pc, op, gasCopy, cost, mem, stackCopy, contract, in.evm.depth, err)
+			in.cfg.Tracer.CaptureState(in.zvm, pc, op, gasCopy, cost, mem, stackCopy, contract, in.zvm.depth, err)
 			logged = true
 		}
 
 		// execute the operation
-		res, err := operation.execute(&pc, in.evm, contract, mem, stack)
+		res, err := operation.execute(&pc, in.zvm, contract, mem, stack)
 		// verifyPool is a build flag. Pool verification makes sure the integrity
 		// of the integer pool by comparing values to a default value.
 		if verifyPool {

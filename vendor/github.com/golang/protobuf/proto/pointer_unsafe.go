@@ -25,7 +25,7 @@
 // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
 // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// THEORY OF LIABILITY, WHZERIUM IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
@@ -57,7 +57,7 @@ func toStructPointer(v reflect.Value) structPointer {
 	return structPointer(unsafe.Pointer(v.Pointer()))
 }
 
-// IsNil reports whether p is nil.
+// IsNil reports whzerium p is nil.
 func structPointer_IsNil(p structPointer) bool {
 	return p == nil
 }
@@ -80,7 +80,7 @@ func toField(f *reflect.StructField) field {
 // invalidField is an invalid field identifier.
 const invalidField = ^field(0)
 
-// IsValid reports whether the field identifier is valid.
+// IsValid reports whzerium the field identifier is valid.
 func (f field) IsValid() bool {
 	return f != ^field(0)
 }
@@ -164,7 +164,7 @@ func (v *structPointerSlice) Append(p structPointer)    { *v = append(*v, p) }
 // A word32 is the address of a "pointer to 32-bit value" field.
 type word32 **uint32
 
-// IsNil reports whether *v is nil.
+// IsNil reports whzerium *v is nil.
 func word32_IsNil(p word32) bool {
 	return *p == nil
 }

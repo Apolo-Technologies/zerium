@@ -151,7 +151,7 @@ func NewEmulatorClient() (Client, error) {
 }
 
 // NewClient constructs a Client. This should be used if the caller wants
-// to specify whether to use HTTPS, a specific REST API version or a custom
+// to specify whzerium to use HTTPS, a specific REST API version or a custom
 // storage endpoint than Azure Public Cloud.
 func NewClient(accountName, accountKey, blobServiceBaseURL, apiVersion string, useHTTPS bool) (Client, error) {
 	var c Client

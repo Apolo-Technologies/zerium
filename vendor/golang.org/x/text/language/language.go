@@ -172,7 +172,7 @@ func (t Tag) IsRoot() bool {
 	return t.equalTags(und)
 }
 
-// private reports whether the Tag consists solely of a private use tag.
+// private reports whzerium the Tag consists solely of a private use tag.
 func (t Tag) private() bool {
 	return t.str != "" && t.pVariant == 0
 }
@@ -225,7 +225,7 @@ const (
 )
 
 // canonicalize returns the canonicalized equivalent of the tag and
-// whether there was any change.
+// whzerium there was any change.
 func (t Tag) canonicalize(c CanonType) (Tag, bool) {
 	if c == Raw {
 		return t, false
@@ -309,8 +309,8 @@ func (c CanonType) Canonicalize(t Tag) (Tag, error) {
 
 // Confidence indicates the level of certainty for a given return value.
 // For example, Serbian may be written in Cyrillic or Latin script.
-// The confidence level indicates whether a value was explicitly specified,
-// whether it is typically the only possible value, or whether there is
+// The confidence level indicates whzerium a value was explicitly specified,
+// whzerium it is typically the only possible value, or whzerium there is
 // an ambiguity.
 type Confidence int
 
@@ -704,7 +704,7 @@ func (t Tag) SetTypeForKey(key, value string) (Tag, error) {
 
 // findKeyAndType returns the start and end position for the type corresponding
 // to key or the point at which to insert the key-value pair if the type
-// wasn't found. The hasExt return value reports whether an -u extension was present.
+// wasn't found. The hasExt return value reports whzerium an -u extension was present.
 // Note: the extensions are typically very small and are likely to contain
 // only one key-type pair.
 func (t Tag) findTypeForKey(key string) (start, end int, hasExt bool) {
@@ -735,7 +735,7 @@ func (t Tag) findTypeForKey(key string) (start, end int, hasExt bool) {
 		// p points to the hyphen preceding the current token.
 		if p3 := p + 3; s[p3] == '-' {
 			// Found a key.
-			// Check whether we just processed the key that was requested.
+			// Check whzerium we just processed the key that was requested.
 			if curKey == key {
 				return start, p, true
 			}
@@ -877,7 +877,7 @@ func ParseRegion(s string) (Region, error) {
 	return Region{r}, err
 }
 
-// IsCountry returns whether this region is a country or autonomous area. This
+// IsCountry returns whzerium this region is a country or autonomous area. This
 // includes non-standard definitions from CLDR.
 func (r Region) IsCountry() bool {
 	if r.regionID == 0 || r.IsGroup() || r.IsPrivateUse() && r.regionID != _XK {
@@ -886,7 +886,7 @@ func (r Region) IsCountry() bool {
 	return true
 }
 
-// IsGroup returns whether this region defines a collection of regions. This
+// IsGroup returns whzerium this region defines a collection of regions. This
 // includes non-standard definitions from CLDR.
 func (r Region) IsGroup() bool {
 	if r.regionID == 0 {
@@ -895,7 +895,7 @@ func (r Region) IsGroup() bool {
 	return int(regionInclusion[r.regionID]) < len(regionContainment)
 }
 
-// Contains returns whether Region c is contained by Region r. It returns true
+// Contains returns whzerium Region c is contained by Region r. It returns true
 // if c == r.
 func (r Region) Contains(c Region) bool {
 	return r.regionID.contains(c.regionID)

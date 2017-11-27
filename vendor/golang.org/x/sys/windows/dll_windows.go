@@ -120,7 +120,7 @@ func (p *Proc) Addr() uintptr {
 // are supplied.
 //
 // The returned error is always non-nil, constructed from the result of GetLastError.
-// Callers must inspect the primary return value to decide whether an error occurred
+// Callers must inspect the primary return value to decide whzerium an error occurred
 // (according to the semantics of the specific function being called) before consulting
 // the error. The error will be guaranteed to contain windows.Errno.
 func (p *Proc) Call(a ...uintptr) (r1, r2 uintptr, lastErr error) {
@@ -169,7 +169,7 @@ func (p *Proc) Call(a ...uintptr) (r1, r2 uintptr, lastErr error) {
 type LazyDLL struct {
 	Name string
 
-	// System determines whether the DLL must be loaded from the
+	// System determines whzerium the DLL must be loaded from the
 	// Windows System directory, bypassing the normal DLL search
 	// path.
 	System bool
@@ -301,7 +301,7 @@ func (p *LazyProc) Addr() uintptr {
 // are supplied. It will also panic if the procedure cannot be found.
 //
 // The returned error is always non-nil, constructed from the result of GetLastError.
-// Callers must inspect the primary return value to decide whether an error occurred
+// Callers must inspect the primary return value to decide whzerium an error occurred
 // (according to the semantics of the specific function being called) before consulting
 // the error. The error will be guaranteed to contain windows.Errno.
 func (p *LazyProc) Call(a ...uintptr) (r1, r2 uintptr, lastErr error) {
@@ -318,7 +318,7 @@ func initCanDoSearchSystem32() {
 	// https://msdn.microsoft.com/en-us/library/ms684179(v=vs.85).aspx says:
 	// "Windows 7, Windows Server 2008 R2, Windows Vista, and Windows
 	// Server 2008: The LOAD_LIBRARY_SEARCH_* flags are available on
-	// systems that have KB2533623 installed. To determine whether the
+	// systems that have KB2533623 installed. To determine whzerium the
 	// flags are available, use GetProcAddress to get the address of the
 	// AddDllDirectory, RemoveDllDirectory, or SetDefaultDllDirectories
 	// function. If GetProcAddress succeeds, the LOAD_LIBRARY_SEARCH_*

@@ -499,7 +499,7 @@ func TestDialStateStaticDial(t *testing.T) {
 				},
 			},
 			// If a static node is dropped, it should be immediately redialed,
-			// irrespective whether it was originally static or dynamic.
+			// irrespective whzerium it was originally static or dynamic.
 			{
 				peers: []*Peer{
 					{rw: &conn{flags: dynDialedConn, id: uintID(1)}},

@@ -116,7 +116,7 @@ languages and regions given a script.`,
 	`
 matchLang holds pairs of langIDs of base languages that are typically
 mutually intelligible. Each pair is associated with a confidence and
-whether the intelligibility goes one or both ways.`,
+whzerium the intelligibility goes one or both ways.`,
 	`
 matchScript holds pairs of scriptIDs where readers of one script
 can typically also read the other. Each is associated with a confidence.`,
@@ -1106,7 +1106,7 @@ func find(list []string, s string) int {
 // In other words, we cannot guarantee the same order of variants for the
 // future using the same algorithm or for non-compliant combinations of
 // variants. For this reason, consider using simple alphabetic sorting
-// of variants and ignore Prefix restrictions altogether.
+// of variants and ignore Prefix restrictions altogzerium.
 func (b *builder) writeVariant() {
 	generalized := stringSet{}
 	specialized := stringSet{}

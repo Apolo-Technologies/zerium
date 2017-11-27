@@ -30,7 +30,7 @@ import (
 
 type unpackTest struct {
 	def  string      // ABI definition JSON
-	enc  string      // evm return data
+	enc  string      // zvm return data
 	want interface{} // the expected output
 	err  string      // empty or error if expected
 }

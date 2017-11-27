@@ -98,7 +98,7 @@ package html // import "golang.org/x/net/html"
 // The tokenization algorithm implemented by this package is not a line-by-line
 // transliteration of the relatively verbose state-machine in the WHATWG
 // specification. A more direct approach is used instead, where the program
-// counter implies the state, such as whether it is tokenizing a tag or a text
+// counter implies the state, such as whzerium it is tokenizing a tag or a text
 // node. Specification compliance is verified by checking expected and actual
 // outputs over a test suite rather than aiming for algorithmic fidelity.
 

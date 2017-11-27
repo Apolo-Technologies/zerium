@@ -13823,7 +13823,7 @@ const numEncodeTables = 6
 // encode4:   261 entries for runes in [63785, 64046).
 // encode5:   229 entries for runes in [65281, 65510).
 //
-// The high two bits of the value record whether the JIS code comes from the
+// The high two bits of the value record whzerium the JIS code comes from the
 // JIS0208 table (high bits == 1) or the JIS0212 table (high bits == 2).
 // The low 14 bits are two 7-bit unsigned integers j1 and j2 that form the
 // JIS code (94*j1 + j2) within that table.

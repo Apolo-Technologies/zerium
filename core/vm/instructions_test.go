@@ -41,7 +41,7 @@ func TestByteOp(t *testing.T) {
 	}
 }
 
-func opBenchmark(bench *testing.B, op func(pc *uint64, evm *ZVM, contract *Contract, memory *Memory, stack *Stack) ([]byte, error), args ...string) {
+func opBenchmark(bench *testing.B, op func(pc *uint64, zvm *ZVM, contract *Contract, memory *Memory, stack *Stack) ([]byte, error), args ...string) {
 	var (
 		env   = NewZVM(Context{}, nil, params.TestChainConfig, Config{EnableJit: false, ForceJit: false})
 		stack = newstack()
