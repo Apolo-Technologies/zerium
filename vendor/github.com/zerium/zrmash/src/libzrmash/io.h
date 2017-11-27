@@ -38,10 +38,10 @@ extern "C" {
 #define DAG_MUTABLE_NAME_MAX_SIZE (6 + 10 + 1 + 16 + 1)
 /// Possible return values of @see zrmash_io_prepare
 enum zrmash_io_rc {
-	ETHASH_IO_FAIL = 0,           ///< There has been an IO failure
-	ETHASH_IO_MEMO_SIZE_MISMATCH, ///< DAG with revision/hash match, but file size was wrong.
-	ETHASH_IO_MEMO_MISMATCH,      ///< The DAG file did not exist or there was revision/hash mismatch
-	ETHASH_IO_MEMO_MATCH,         ///< DAG file existed and revision/hash matched. No need to do anything
+	ZRMASH_IO_FAIL = 0,           ///< There has been an IO failure
+	ZRMASH_IO_MEMO_SIZE_MISMATCH, ///< DAG with revision/hash match, but file size was wrong.
+	ZRMASH_IO_MEMO_MISMATCH,      ///< The DAG file did not exist or there was revision/hash mismatch
+	ZRMASH_IO_MEMO_MATCH,         ///< DAG file existed and revision/hash matched. No need to do anything
 };
 
 // small hack for windows. I don't feel I should use va_args and forward just
@@ -55,8 +55,8 @@ enum zrmash_io_rc {
  * figure out what kind of problem (I/O, memory e.t.c.) causes a NULL
  * zrmash_full_t
  */
-#ifdef ETHASH_PRINT_CRITICAL_OUTPUT
-#define ETHASH_CRITICAL(...)							\
+#ifdef ZRMASH_PRINT_CRITICAL_OUTPUT
+#define ZRMASH_CRITICAL(...)							\
 	do													\
 	{													\
 		printf("ETHASH CRITICAL ERROR: "__VA_ARGS__);	\
@@ -64,7 +64,7 @@ enum zrmash_io_rc {
 		fflush(stdout);									\
 	} while (0)
 #else
-#define ETHASH_CRITICAL(...)          
+#define ZRMASH_CRITICAL(...)          
 #endif
 
 /**

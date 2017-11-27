@@ -91,8 +91,8 @@ func (w *wizard) deployNode(boot bool) {
 	}
 	// If the node is a miner/signer, load up needed credentials
 	if !boot {
-		if w.conf.genesis.Config.Ethash != nil {
-			// Ethash based miners only need an zeriumbase to mine against
+		if w.conf.genesis.Config.Zrmash != nil {
+			// Zrmash based miners only need an zeriumbase to mine against
 			fmt.Println()
 			if infos.zeriumbase == "" {
 				fmt.Printf("What address should the miner user?\n")

@@ -28,20 +28,20 @@ enum zrmash_io_rc zrmash_io_prepare(
 )
 {
 	char mutable_name[DAG_MUTABLE_NAME_MAX_SIZE];
-	enum zrmash_io_rc ret = ETHASH_IO_FAIL;
+	enum zrmash_io_rc ret = ZRMASH_IO_FAIL;
 	// reset errno before io calls
 	errno = 0;
 
 	// assert directory exists
 	if (!zrmash_mkdir(dirname)) {
-		ETHASH_CRITICAL("Could not create the zrmash directory");
+		ZRMASH_CRITICAL("Could not create the zrmash directory");
 		goto end;
 	}
 
-	zrmash_io_mutable_name(ETHASH_REVISION, &seedhash, mutable_name);
+	zrmash_io_mutable_name(ZRMASH_REVISION, &seedhash, mutable_name);
 	char* tmpfile = zrmash_io_create_filename(dirname, mutable_name, strlen(mutable_name));
 	if (!tmpfile) {
-		ETHASH_CRITICAL("Could not create the full DAG pathname");
+		ZRMASH_CRITICAL("Could not create the full DAG pathname");
 		goto end;
 	}
 
@@ -53,29 +53,29 @@ enum zrmash_io_rc zrmash_io_prepare(
 			size_t found_size;
 			if (!zrmash_file_size(f, &found_size)) {
 				fclose(f);
-				ETHASH_CRITICAL("Could not query size of DAG file: \"%s\"", tmpfile);
+				ZRMASH_CRITICAL("Could not query size of DAG file: \"%s\"", tmpfile);
 				goto free_memo;
 			}
-			if (file_size != found_size - ETHASH_DAG_MAGIC_NUM_SIZE) {
+			if (file_size != found_size - ZRMASH_DAG_MAGIC_NUM_SIZE) {
 				fclose(f);
-				ret = ETHASH_IO_MEMO_SIZE_MISMATCH;
+				ret = ZRMASH_IO_MEMO_SIZE_MISMATCH;
 				goto free_memo;
 			}
 			// compare the magic number, no need to care about endianess since it's local
 			uint64_t magic_num;
-			if (fread(&magic_num, ETHASH_DAG_MAGIC_NUM_SIZE, 1, f) != 1) {
+			if (fread(&magic_num, ZRMASH_DAG_MAGIC_NUM_SIZE, 1, f) != 1) {
 				// I/O error
 				fclose(f);
-				ETHASH_CRITICAL("Could not read from DAG file: \"%s\"", tmpfile);
-				ret = ETHASH_IO_MEMO_SIZE_MISMATCH;
+				ZRMASH_CRITICAL("Could not read from DAG file: \"%s\"", tmpfile);
+				ret = ZRMASH_IO_MEMO_SIZE_MISMATCH;
 				goto free_memo;
 			}
-			if (magic_num != ETHASH_DAG_MAGIC_NUM) {
+			if (magic_num != ZRMASH_DAG_MAGIC_NUM) {
 				fclose(f);
-				ret = ETHASH_IO_MEMO_SIZE_MISMATCH;
+				ret = ZRMASH_IO_MEMO_SIZE_MISMATCH;
 				goto free_memo;
 			}
-			ret = ETHASH_IO_MEMO_MATCH;
+			ret = ZRMASH_IO_MEMO_MATCH;
 			goto set_file;
 		}
 	}
@@ -83,29 +83,29 @@ enum zrmash_io_rc zrmash_io_prepare(
 	// file does not exist, will need to be created
 	f = zrmash_fopen(tmpfile, "wb+");
 	if (!f) {
-		ETHASH_CRITICAL("Could not create DAG file: \"%s\"", tmpfile);
+		ZRMASH_CRITICAL("Could not create DAG file: \"%s\"", tmpfile);
 		goto free_memo;
 	}
 	// make sure it's of the proper size
-	if (fseek(f, (long int)(file_size + ETHASH_DAG_MAGIC_NUM_SIZE - 1), SEEK_SET) != 0) {
+	if (fseek(f, (long int)(file_size + ZRMASH_DAG_MAGIC_NUM_SIZE - 1), SEEK_SET) != 0) {
 		fclose(f);
-		ETHASH_CRITICAL("Could not seek to the end of DAG file: \"%s\". Insufficient space?", tmpfile);
+		ZRMASH_CRITICAL("Could not seek to the end of DAG file: \"%s\". Insufficient space?", tmpfile);
 		goto free_memo;
 	}
 	if (fputc('\n', f) == EOF) {
 		fclose(f);
-		ETHASH_CRITICAL("Could not write in the end of DAG file: \"%s\". Insufficient space?", tmpfile);
+		ZRMASH_CRITICAL("Could not write in the end of DAG file: \"%s\". Insufficient space?", tmpfile);
 		goto free_memo;
 	}
 	if (fflush(f) != 0) {
 		fclose(f);
-		ETHASH_CRITICAL("Could not flush at end of DAG file: \"%s\". Insufficient space?", tmpfile);
+		ZRMASH_CRITICAL("Could not flush at end of DAG file: \"%s\". Insufficient space?", tmpfile);
 		goto free_memo;
 	}
-	ret = ETHASH_IO_MEMO_MISMATCH;
+	ret = ZRMASH_IO_MEMO_MISMATCH;
 	goto set_file;
 
-	ret = ETHASH_IO_MEMO_MATCH;
+	ret = ZRMASH_IO_MEMO_MATCH;
 set_file:
 	*output_file = f;
 free_memo:
