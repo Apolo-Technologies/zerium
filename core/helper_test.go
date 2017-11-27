@@ -25,7 +25,7 @@ import (
 	"github.com/abt/zerium/event"
 )
 
-// Implement our EthTest Manager
+// Implement our ZrmTest Manager
 type TestManager struct {
 	// stateManager *StateManager
 	eventMux *event.TypeMux

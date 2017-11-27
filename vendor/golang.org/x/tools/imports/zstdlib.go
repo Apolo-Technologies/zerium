@@ -8869,7 +8869,7 @@ var stdlib = map[string]string{
 	"unicode.Duployan":                            "unicode",
 	"unicode.Egyptian_Hieroglyphs":                "unicode",
 	"unicode.Elbasan":                             "unicode",
-	"unicode.Ethiopic":                            "unicode",
+	"unicode.Zrmiopic":                            "unicode",
 	"unicode.Extender":                            "unicode",
 	"unicode.FoldCategory":                        "unicode",
 	"unicode.FoldScript":                          "unicode",
