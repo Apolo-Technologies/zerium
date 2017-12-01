@@ -24,9 +24,9 @@ dependencies:
 test:
   override:
     # Build Gzrm and move into a known folder
-    - make gzrm
-    - cp ./build/bin/gzrm $HOME/gzrm
+    - make zeriumd
+    - cp ./build/bin/zeriumd $HOME/zeriumd
 
     # Run hive and move all generated logs into the public artifacts folder
-    - (cd ~/.go_workspace/src/github.com/karalabe/hive && hive --docker-noshell --client=zerium:local --override=$HOME/gzrm --test=. --sim=.)
+    - (cd ~/.go_workspace/src/github.com/karalabe/hive && hive --docker-noshell --client=zerium:local --override=$HOME/zeriumd --test=. --sim=.)
     - cp -r ~/.go_workspace/src/github.com/karalabe/hive/workspace/logs/* $CIRCLE_ARTIFACTS

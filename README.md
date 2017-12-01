@@ -8,7 +8,7 @@ https://camo.githubusercontent.com/915b7be44ada53c290eb157634330494ebe3e30a/6874
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/abt/zerium?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Automated builds are available for stable releases and the unstable master branch.
-Binary archives are published at https://gzrm.zerium.org/downloads/.
+Binary archives are published at https://zeriumd.zerium.org/downloads/.
 
 ## Building the source
 
@@ -16,11 +16,11 @@ For prerequisites and detailed build instructions please read the
 [Installation Instructions](https://github.com/apolo-technologies/zerium/wiki/Building-Zerium)
 on the wiki.
 
-Building gzrm requires a Go (version 1.7 or later) and a C compiler.
+Building zeriumd requires a Go (version 1.7 or later) and a C compiler.
 You can install them using any package manager.
 Once the dependencies are installed, run
 
-    make gzrm
+    make zeriumd
 
 or, to build the full suite of utilities:
 
@@ -32,16 +32,16 @@ The zerium project comes with several wrappers/executables found in the `cmd` di
 
 | Command    | Description |
 |:----------:|-------------|
-| **`gzrm`** | Our main Zerium CLI client. It is the entry point into the Zerium network (main-, test- or private net), capable of running as a full node (default) archive node (retaining all historical state) or a light node (retrieving data live). It can be used by other processes as a gateway into the Zerium network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `gzrm --help` and the [CLI Wiki page](https://github.com/apolo-technologies/zerium/wiki/Command-Line-Options) for command line options. |
+| **`zeriumd`** | Our main Zerium CLI client. It is the entry point into the Zerium network (main-, test- or private net), capable of running as a full node (default) archive node (retaining all historical state) or a light node (retrieving data live). It can be used by other processes as a gateway into the Zerium network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `zeriumd --help` and the [CLI Wiki page](https://github.com/apolo-technologies/zerium/wiki/Command-Line-Options) for command line options. |
 | `abigen` | Source code generator to convert Zerium contract definitions into easy to use, compile-time type-safe Go packages. It operates on plain [Zerium contract ABIs](https://github.com/apolo-technologies/wiki/wiki/Zerium-Contract-ABI) with expanded functionality if the contract bytecode is also available. However it also accepts Solidity source files, making development much more streamlined. Please see our [Native DApps](https://github.com/apolo-technologies/zerium/wiki/Native-DApps:-Go-bindings-to-Zerium-contracts) wiki page for details. |
 | `bootnode` | Stripped down version of our Zerium client implementation that only takes part in the network node discovery protocol, but does not run any of the higher level application protocols. It can be used as a lightweight bootstrap node to aid in finding peers in private networks. |
 | `zvm` | Developer utility version of the ZVM (Zerium Virtual Machine) that is capable of running bytecode snippets within a configurable environment and execution mode. Its purpose is to allow isolated, fine-grained debugging of ZVM opcodes (e.g. `zvm --code 60ff60ff --debug`). |
-| `gzrmrpctest` | Developer utility tool to support our [abt/rpc-test](https://github.com/apolo-technologies/rpc-tests) test suite which validates baseline conformity to the [Zerium JSON RPC](https://github.com/apolo-technologies/wiki/wiki/JSON-RPC) specs. Please see the [test suite's readme](https://github.com/apolo-technologies/rpc-tests/blob/master/README.md) for details. |
+| `zeriumdrpctest` | Developer utility tool to support our [abt/rpc-test](https://github.com/apolo-technologies/rpc-tests) test suite which validates baseline conformity to the [Zerium JSON RPC](https://github.com/apolo-technologies/wiki/wiki/JSON-RPC) specs. Please see the [test suite's readme](https://github.com/apolo-technologies/rpc-tests/blob/master/README.md) for details. |
 | `rlpdump` | Developer utility tool to convert binary RLP ([Recursive Length Prefix](https://github.com/apolo-technologies/wiki/wiki/RLP)) dumps (data encoding used by the Zerium protocol both network as well as consensus wise) to user friendlier hierarchical representation (e.g. `rlpdump --hex CE0183FFFFFFC4C304050583616263`). |
 | `swarm`    | swarm daemon and tools. This is the entrypoint for the swarm network. `swarm --help` for command line options and subcommands. See https://swarm-guide.readthedocs.io for swarm documentation. |
 | `puppzrm`    | a CLI wizard that aids in creating a new Zerium network. |
 
-## Running gzrm
+## Running zeriumd
 
 Going through all the possible command line flags is out of scope here (please consult our
 [CLI Wiki page](https://github.com/apolo-technologies/zerium/wiki/Command-Line-Options)), but we've
@@ -54,12 +54,12 @@ The common interaction with the Zerium network:
 create accounts; transfer funds; deploy and interact with contracts. For this particular use:
 
 ```
-$ gzrm --fast --cache=512 console
+$ zeriumd --fast --cache=512 console
 ```
 
 This command will:
 
- * Start gzrm in fast sync mode (`--fast`), causing it to download more data in exchange for avoiding
+ * Start zeriumd in fast sync mode (`--fast`), causing it to download more data in exchange for avoiding
    processing the entire history of the Zerium network, which is very CPU intensive.
  * Bump the memory allowance of the database to 512MB (`--cache=512`), which can help significantly in
    sync times especially for HDD users. This flag is optional and you can set it as high or as low as
@@ -68,14 +68,14 @@ This command will:
    (via the trailing `console` subcommand) through which you can invoke all official [`webze` methods](https://github.com/apolo-technologies/wiki/wiki/JavaScript-API)
    as well as Gzrm's own [management APIs](https://github.com/apolo-technologies/zerium/wiki/Management-APIs).
    This too is optional and if you leave it out you can always attach to an already running Gzrm instance
-   with `gzrm attach`.
+   with `zeriumd attach`.
 
 ### Full node on the Zerium test network
 
 For devs, to create a testnet for creating Zerium contracts:
 
 ```
-$ gzrm --testnet --fast --cache=512 console
+$ zeriumd --testnet --fast --cache=512 console
 ```
 
 The `--fast`, `--cache` flags and `console` subcommand have the exact same meaning as above and they
@@ -87,8 +87,8 @@ Specifying the `--testnet` flag however will reconfigure your Gzrm instance a bi
  * Instead of using the default data directory (`~/.abt` on Linux for example), Gzrm will nest
    itself one level deeper into a `testnet` subfolder (`~/.abt/testnet` on Linux). Note, on OSX
    and Linux this also means that attaching to a running testnet node requires the use of a custom
-   endpoint since `gzrm attach` will try to attach to a production node endpoint by default. E.g.
-   `gzrm attach <datadir>/testnet/gzrm.ipc`. Windows users are not affected by this.
+   endpoint since `zeriumd attach` will try to attach to a production node endpoint by default. E.g.
+   `zeriumd attach <datadir>/testnet/zeriumd.ipc`. Windows users are not affected by this.
  * Instead of connecting the main Zerium network, the client will connect to the test network,
    which uses different P2P bootnodes, different network IDs and genesis states.
    
@@ -99,19 +99,19 @@ separate the two networks and will not make any accounts available between them.
 
 ### Configuration
 
-As an alternative to passing the numerous flags to the `gzrm` binary, you can also pass a configuration file via:
+As an alternative to passing the numerous flags to the `zeriumd` binary, you can also pass a configuration file via:
 
 ```
-$ gzrm --config /path/to/your_config.toml
+$ zeriumd --config /path/to/your_config.toml
 ```
 
 To get an idea how the file should look like you can use the `dumpconfig` subcommand to export your existing configuration:
 
 ```
-$ gzrm --your-favourite-flags dumpconfig
+$ zeriumd --your-favourite-flags dumpconfig
 ```
 
-*Note: This works only with gzrm v1.6.0 and above.*
+*Note: This works only with zeriumd v1.6.0 and above.*
 
 #### Docker quick start
 
@@ -123,9 +123,9 @@ docker run -d --name abt-node -v /Users/alice/abt:/root \
            abt/client-go --fast --cache=512
 ```
 
-This will start gzrm in fast sync mode with a DB memory allowance of 512MB just as the above command does.  It will also create a persistent volume in your home directory for saving your blockchain as well as map the default ports. There is also an `alpine` tag available for a slim version of the image.
+This will start zeriumd in fast sync mode with a DB memory allowance of 512MB just as the above command does.  It will also create a persistent volume in your home directory for saving your blockchain as well as map the default ports. There is also an `alpine` tag available for a slim version of the image.
 
-Do not forget `--rpcaddr 0.0.0.0`, if you want to access RPC from other containers and/or hosts. By default, `gzrm` binds to the local interface and RPC endpoints is not accessible from the outside.
+Do not forget `--rpcaddr 0.0.0.0`, if you want to access RPC from other containers and/or hosts. By default, `zeriumd` binds to the local interface and RPC endpoints is not accessible from the outside.
 
 ### Programatically interfacing Gzrm nodes
 
@@ -202,7 +202,7 @@ With the genesis state defined in the above JSON file, you'll need to initialize
 with it prior to starting it up to ensure all blockchain parameters are correctly set:
 
 ```
-$ gzrm init path/to/genesis.json
+$ zeriumd init path/to/genesis.json
 ```
 
 #### Creating the rendezvous point
@@ -231,7 +231,7 @@ via the `--bootnodes` flag. It will probably also be desirable to keep the data 
 private network separated, so do also specify a custom `--datadir` flag.
 
 ```
-$ gzrm --datadir=path/to/custom/data/folder --bootnodes=<bootnode-enode-url-from-above>
+$ zeriumd --datadir=path/to/custom/data/folder --bootnodes=<bootnode-enode-url-from-above>
 ```
 
 *Note: Since your network will be completely cut off from the main and test networks, you'll also
@@ -250,7 +250,7 @@ resources (consider running on a single thread, no need for multiple ones either
 instance for mining, run it with all your usual flags, extended by:
 
 ```
-$ gzrm <usual-flags> --mine --minerthreads=1 --zeriumbase=0x0000000000000000000000000000000000000000
+$ zeriumd <usual-flags> --mine --minerthreads=1 --zeriumbase=0x0000000000000000000000000000000000000000
 ```
 
 Which will start mining blocks and transactions on a single CPU thread, crediting all proceedings to
