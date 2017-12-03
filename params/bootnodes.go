@@ -20,7 +20,7 @@ package params
 // the main Zerium network.
 var MainnetBootnodes = []string{
 	// Zerium Foundation Go Bootnodes
-	"enode://054d4b4557ec77eff3e996dcb07569256403adf1f035e9d5d94aa5d1f6c94ae6ac447c0d52d60c7561a013da138b5f1e62a7f942405ce2cad3935dd7e435e0c0@[192.168.32.133]:32310",
+	"enode://d75b2b0d2eaf7ad531618fbb16a95a1ce0f135ad7e949f3e829fac559e7a86391a64b2d1d425384e7faaeabc2a68d345a45d42c0e45c22296c59ef7a73d9f9e8@[192.168.32.133]:32310",
 }
 // TestnetBootnodes are the enode URLs of the P2P bootstrap nodes running on the
 // Ropsten test network.
