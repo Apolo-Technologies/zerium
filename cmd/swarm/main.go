@@ -39,7 +39,7 @@ import (
 	"github.com/apolo-technologies/zerium/contracts/ens"
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/zrmclient"
-	"github.com/apolo-technologies/zerium/internal/debug"
+	"github.com/apolo-technologies/zerium/my/debug"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/p2p"

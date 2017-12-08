@@ -26,7 +26,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/apolo-technologies/zerium/cmd/internal/browser"
+	"github.com/apolo-technologies/zerium/cmd/my/browser"
 	"github.com/apolo-technologies/zerium/params"
 
 	"github.com/apolo-technologies/zerium/cmd/utils"

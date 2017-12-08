@@ -23,7 +23,7 @@ import (
 	"sort"
 
 	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/internal/debug"
+	"github.com/apolo-technologies/zerium/my/debug"
 	"gopkg.in/urfave/cli.v1"
 	"strings"
 )

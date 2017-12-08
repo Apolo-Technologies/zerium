@@ -18,7 +18,7 @@ import (
 	"sort"
 	"strings"
 
-	"golang.org/x/text/internal/gen"
+	"golang.org/x/text/my/gen"
 	"golang.org/x/text/language"
 	"golang.org/x/text/unicode/cldr"
 )

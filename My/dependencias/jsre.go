@@ -27,7 +27,7 @@ import (
 	"time"
 
 	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/internal/jsre/deps"
+	"github.com/apolo-technologies/zerium/my/jsre/dependencias"
 	"github.com/robertkrimen/otto"
 )
 

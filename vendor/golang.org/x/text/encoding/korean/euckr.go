@@ -10,7 +10,7 @@ import (
 
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/internal"
-	"golang.org/x/text/encoding/internal/identifier"
+	"golang.org/x/text/encoding/my/identifier"
 	"golang.org/x/text/transform"
 )
 

@@ -35,7 +35,7 @@ imports:
   version: 84e98f45760e87786b7f24603b8166a6fa09811d
   subpackages:
   - pkcs12
-  - pkcs12/internal/rc2
+  - pkcs12/my/rc2
   - ssh/terminal
 - name: golang.org/x/sys
   version: c200b10b5d5e122be351b67af224adc6128af5bf

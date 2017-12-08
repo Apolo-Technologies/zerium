@@ -24,7 +24,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/common/hexutil"
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/internal/zrmapi"
+	"github.com/apolo-technologies/zerium/my/zrmapi"
 	"github.com/apolo-technologies/zerium/rlp"
 	"github.com/apolo-technologies/zerium/rpc"
 )

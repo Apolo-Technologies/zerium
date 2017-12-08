@@ -7,7 +7,7 @@ package htmlindex
 import (
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/charmap"
-	"golang.org/x/text/encoding/internal/identifier"
+	"golang.org/x/text/encoding/my/identifier"
 	"golang.org/x/text/encoding/japanese"
 	"golang.org/x/text/encoding/korean"
 	"golang.org/x/text/encoding/simplifiedchinese"

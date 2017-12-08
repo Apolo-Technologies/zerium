@@ -28,7 +28,7 @@ import (
 	"math/big"
 
 	"github.com/apolo-technologies/zerium/accounts"
-	"github.com/apolo-technologies/zerium/accounts/usbwallet/internal/trezor"
+	"github.com/apolo-technologies/zerium/accounts/usbwallet/my/trezor"
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/common/hexutil"
 	"github.com/apolo-technologies/zerium/core/types"

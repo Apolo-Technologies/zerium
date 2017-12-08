@@ -23,7 +23,7 @@ import (
 	"testing"
 
 	"github.com/docker/docker/pkg/reexec"
-	"github.com/apolo-technologies/zerium/internal/cmdtest"
+	"github.com/apolo-technologies/zerium/my/cmdtest"
 )
 
 func tmpdir(t *testing.T) string {

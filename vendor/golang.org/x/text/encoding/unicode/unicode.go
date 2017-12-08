@@ -12,8 +12,8 @@ import (
 
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/internal"
-	"golang.org/x/text/encoding/internal/identifier"
-	"golang.org/x/text/internal/utf8internal"
+	"golang.org/x/text/encoding/my/identifier"
+	"golang.org/x/text/my/utf8internal"
 	"golang.org/x/text/runes"
 	"golang.org/x/text/transform"
 )

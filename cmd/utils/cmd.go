@@ -28,7 +28,7 @@ import (
 
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/internal/debug"
+	"github.com/apolo-technologies/zerium/my/debug"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/rlp"

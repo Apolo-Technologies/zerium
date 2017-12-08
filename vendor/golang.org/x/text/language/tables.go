@@ -2,7 +2,7 @@
 
 package language
 
-import "golang.org/x/text/internal/tag"
+import "golang.org/x/text/my/tag"
 
 // CLDRVersion is the CLDR version from which the tables in this package are derived.
 const CLDRVersion = "30"

@@ -32,7 +32,7 @@ import (
 	"github.com/apolo-technologies/zerium/console"
 	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/zrmclient"
-	"github.com/apolo-technologies/zerium/internal/debug"
+	"github.com/apolo-technologies/zerium/my/debug"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/metrics"
 	"github.com/apolo-technologies/zerium/node"

@@ -16,7 +16,7 @@ import (
 	"unicode/utf8"
 
 	"golang.org/x/text/encoding"
-	"golang.org/x/text/internal/gen"
+	"golang.org/x/text/my/gen"
 )
 
 const ascii = "\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f" +
@@ -468,7 +468,7 @@ func main() {
 
 	printf("import (\n")
 	printf("\t\"golang.org/x/text/encoding\"\n")
-	printf("\t\"golang.org/x/text/encoding/internal/identifier\"\n")
+	printf("\t\"golang.org/x/text/encoding/my/identifier\"\n")
 	printf(")\n\n")
 	for _, e := range encodings {
 		varNames := strings.Split(e.varName, ",")

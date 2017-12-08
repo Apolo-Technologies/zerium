@@ -25,7 +25,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/apolo-technologies/zerium/internal/build"
+	"github.com/apolo-technologies/zerium/my/build"
 )
 
 // androidTestClass is a Java class to do some lightweight tests against the Android

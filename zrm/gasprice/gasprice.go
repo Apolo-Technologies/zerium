@@ -23,7 +23,7 @@ import (
 	"sync"
 
 	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/internal/zrmapi"
+	"github.com/apolo-technologies/zerium/my/zrmapi"
 	"github.com/apolo-technologies/zerium/params"
 	"github.com/apolo-technologies/zerium/rpc"
 )

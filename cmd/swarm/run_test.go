@@ -28,7 +28,7 @@ import (
 
 	"github.com/docker/docker/pkg/reexec"
 	"github.com/apolo-technologies/zerium/accounts/keystore"
-	"github.com/apolo-technologies/zerium/internal/cmdtest"
+	"github.com/apolo-technologies/zerium/my/cmdtest"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/p2p"
 	"github.com/apolo-technologies/zerium/rpc"

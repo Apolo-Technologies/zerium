@@ -27,7 +27,7 @@ import (
 
 	goruntime "runtime"
 
-	"github.com/apolo-technologies/zerium/cmd/zvm/internal/compiler"
+	"github.com/apolo-technologies/zerium/cmd/zvm/my/compiler"
 	"github.com/apolo-technologies/zerium/cmd/utils"
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/core"

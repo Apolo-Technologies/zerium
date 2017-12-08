@@ -58,7 +58,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/apolo-technologies/zerium/internal/build"
+	"github.com/apolo-technologies/zerium/my/build"
 )
 
 var (

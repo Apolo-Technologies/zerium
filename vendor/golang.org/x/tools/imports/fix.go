@@ -894,7 +894,7 @@ func canUse(filename, dir string) bool {
 	}
 
 	dirSlash := filepath.ToSlash(dir)
-	if !strings.Contains(dirSlash, "/vendor/") && !strings.Contains(dirSlash, "/internal/") && !strings.HasSuffix(dirSlash, "/internal") {
+	if !strings.Contains(dirSlash, "/vendor/") && !strings.Contains(dirSlash, "/my/") && !strings.HasSuffix(dirSlash, "/internal") {
 		return true
 	}
 	// Vendor or internal directory only visible from children of parent.
@@ -919,7 +919,7 @@ func canUse(filename, dir string) bool {
 	if i := strings.LastIndex(relSlash, "../"); i >= 0 {
 		relSlash = relSlash[i+len("../"):]
 	}
-	return !strings.Contains(relSlash, "/vendor/") && !strings.Contains(relSlash, "/internal/") && !strings.HasSuffix(relSlash, "/internal")
+	return !strings.Contains(relSlash, "/vendor/") && !strings.Contains(relSlash, "/my/") && !strings.HasSuffix(relSlash, "/internal")
 }
 
 // lastTwoComponents returns at most the last two path components

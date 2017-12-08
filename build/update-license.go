@@ -47,13 +47,13 @@ var (
 		// boring stuff
 		"vendor/", "tests/testdata/", "build/",
 		// don't relicense vendored sources
-		"cmd/internal/browser",
+		"cmd/my/browser",
 		"consensus/zrmash/xor.go",
 		"crypto/bn256/",
 		"crypto/ecies/",
 		"crypto/secp256k1/curve.go",
 		"crypto/sha3/",
-		"internal/jsre/deps",
+		"internal/jsre/dependencias",
 		"log/",
 		// don't license generated files
 		"contracts/chequebook/contract/",

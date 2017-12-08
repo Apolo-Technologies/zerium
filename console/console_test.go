@@ -29,7 +29,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/zrm"
-	"github.com/apolo-technologies/zerium/internal/jsre"
+	"github.com/apolo-technologies/zerium/my/jsre"
 	"github.com/apolo-technologies/zerium/node"
 )
 
