@@ -1,6 +1,6 @@
 // +build !windows,!plan9
 
-package zrm_log
+package ourconsole
 
 import (
 	"log/syslog"

@@ -1,4 +1,4 @@
-package zrm_log
+package ourconsole
 
 import (
 	"os"

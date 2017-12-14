@@ -22,7 +22,8 @@ import (
 
 	"github.com/apolo-technologies/zerium/zrmcom"
 	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/rlp"
+	"github.com/apolo-technologies/zerium/rlp"	
+	"github.com/apolo-technologies/zerium/ourconsole"
 )
 
 // Prove constructs a merkle proof for key. The result contains all

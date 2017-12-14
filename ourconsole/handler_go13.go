@@ -1,6 +1,6 @@
 // +build !go1.4
 
-package zrm_log
+package ourconsole
 
 import (
 	"sync/atomic"

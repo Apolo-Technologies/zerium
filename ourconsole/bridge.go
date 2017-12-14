@@ -24,7 +24,6 @@ import (
 	"time"
 
 	"github.com/apolo-technologies/zerium/accounts/usbwallet"
-	"github.com/apolo-technologies/zerium/ourconsole"
 	"github.com/apolo-technologies/zerium/rpc"
 	"github.com/robertkrimen/otto"
 )
