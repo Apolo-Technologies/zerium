@@ -35,8 +35,8 @@ RUN curl -fSLo docker.tar.gz https://get.docker.com/builds/Linux/x86_64/docker-1
 RUN curl -fSLo /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
     chmod +x /usr/local/bin/jq
 
-# install gothirdparty
-RUN go get -u github.com/kardianos/gothirdparty
+# install govendor
+RUN go get -u github.com/kardianos/govendor
 
 # add custom bashrc
 ADD bashrc /root/.bashrc

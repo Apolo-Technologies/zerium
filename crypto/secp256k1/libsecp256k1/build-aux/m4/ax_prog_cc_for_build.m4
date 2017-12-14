@@ -60,12 +60,12 @@ pushdef([LDFLAGS], LDFLAGS_FOR_BUILD)dnl
 pushdef([host], build)dnl
 pushdef([host_alias], build_alias)dnl
 pushdef([host_cpu], build_cpu)dnl
-pushdef([host_thirdparty], build_thirdparty)dnl
+pushdef([host_vendor], build_vendor)dnl
 pushdef([host_os], build_os)dnl
 pushdef([ac_cv_host], ac_cv_build)dnl
 pushdef([ac_cv_host_alias], ac_cv_build_alias)dnl
 pushdef([ac_cv_host_cpu], ac_cv_build_cpu)dnl
-pushdef([ac_cv_host_thirdparty], ac_cv_build_thirdparty)dnl
+pushdef([ac_cv_host_vendor], ac_cv_build_vendor)dnl
 pushdef([ac_cv_host_os], ac_cv_build_os)dnl
 pushdef([ac_cpp], ac_build_cpp)dnl
 pushdef([ac_compile], ac_build_compile)dnl
@@ -89,12 +89,12 @@ popdef([ac_link])dnl
 popdef([ac_compile])dnl
 popdef([ac_cpp])dnl
 popdef([ac_cv_host_os])dnl
-popdef([ac_cv_host_thirdparty])dnl
+popdef([ac_cv_host_vendor])dnl
 popdef([ac_cv_host_cpu])dnl
 popdef([ac_cv_host_alias])dnl
 popdef([ac_cv_host])dnl
 popdef([host_os])dnl
-popdef([host_thirdparty])dnl
+popdef([host_vendor])dnl
 popdef([host_cpu])dnl
 popdef([host_alias])dnl
 popdef([host])dnl

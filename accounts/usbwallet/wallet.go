@@ -40,7 +40,7 @@ const heartbeatCycle = time.Second
 // requesting accounts like crazy.
 const selfDeriveThrottling = time.Second
 
-// driver defines the thirdparty specific functionality hardware wallets instances
+// driver defines the vendor specific functionality hardware wallets instances
 // must implement to allow using them with the wallet lifecycle management.
 type driver interface {
 	// Status returns a textual status to aid the user in the current state of the
@@ -70,7 +70,7 @@ type driver interface {
 
 // wallet represents the zrmcom functionality shared by all USB hardware
 // wallets to prevent reimplementing the same complex maintenance mechanisms
-// for different thirdpartys.
+// for different vendors.
 type wallet struct {
 	hub    *Hub          // USB hub scanning
 	driver driver        // Hardware implementation of the low level device operations
@@ -121,7 +121,7 @@ func (w *wallet) URL() accounts.URL {
 }
 
 // Status implements accounts.Wallet, returning a custom status message from the
-// underlying thirdparty-specific hardware wallet implementation.
+// underlying vendor-specific hardware wallet implementation.
 func (w *wallet) Status() (string, error) {
 	w.stateLock.RLock() // No device communication, state lock is enough
 	defer w.stateLock.RUnlock()

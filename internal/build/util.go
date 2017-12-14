@@ -162,7 +162,7 @@ func GoTool(tool string, args ...string) *exec.Cmd {
 }
 
 // ExpandPackagesNoVendor expands a cmd/go import path pattern, skipping
-// thirdpartyed packages.
+// vendored packages.
 func ExpandPackagesNoVendor(patterns []string) []string {
 	expand := false
 	for _, pkg := range patterns {
@@ -178,7 +178,7 @@ func ExpandPackagesNoVendor(patterns []string) []string {
 		}
 		var packages []string
 		for _, line := range strings.Split(string(out), "\n") {
-			if !strings.Contains(line, "/thirdparty/") {
+			if !strings.Contains(line, "/vendor/") {
 				packages = append(packages, strings.TrimSpace(line))
 			}
 		}

@@ -45,11 +45,11 @@ const refreshThrottling = 500 * time.Millisecond
 // Hub is a accounts.Backend that can find and handle generic USB hardware wallets.
 type Hub struct {
 	scheme     string                  // Protocol scheme prefixing account and wallet URLs.
-	thirdpartyID   uint16                  // USB thirdparty identifier used for device discovery
+	vendorID   uint16                  // USB vendor identifier used for device discovery
 	productIDs []uint16                // USB product identifiers used for device discovery
 	usageID    uint16                  // USB usage page identifier used for macOS device discovery
 	endpointID int                     // USB endpoint identifier used for non-macOS device discovery
-	makeDriver func(log.Logger) driver // Factory method to construct a thirdparty specific driver
+	makeDriver func(log.Logger) driver // Factory method to construct a vendor specific driver
 
 	refreshed   time.Time               // Time instance when the list of wallets was last refreshed
 	wallets     []accounts.Wallet       // List of USB wallet devices currently tracking
@@ -77,13 +77,13 @@ func NewTrezorHub() (*Hub, error) {
 }
 
 // newHub creates a new hardware wallet manager for generic USB devices.
-func newHub(scheme string, thirdpartyID uint16, productIDs []uint16, usageID uint16, endpointID int, makeDriver func(log.Logger) driver) (*Hub, error) {
+func newHub(scheme string, vendorID uint16, productIDs []uint16, usageID uint16, endpointID int, makeDriver func(log.Logger) driver) (*Hub, error) {
 	if !hid.Supported() {
 		return nil, errors.New("unsupported platform")
 	}
 	hub := &Hub{
 		scheme:     scheme,
-		thirdpartyID:   thirdpartyID,
+		vendorID:   vendorID,
 		productIDs: productIDs,
 		usageID:    usageID,
 		endpointID: endpointID,
@@ -135,7 +135,7 @@ func (hub *Hub) refreshWallets() {
 			return
 		}
 	}
-	for _, info := range hid.Enumerate(hub.thirdpartyID, 0) {
+	for _, info := range hid.Enumerate(hub.vendorID, 0) {
 		for _, id := range hub.productIDs {
 			if info.ProductID == id && (info.UsagePage == hub.usageID || info.Interface == hub.endpointID) {
 				devices = append(devices, info)

@@ -290,7 +290,7 @@ func (*GetFeatures) Descriptor() ([]byte, []int) { return fileDescriptor1, []int
 // @prev Initialize
 // @prev GetFeatures
 type Features struct {
-	Vendor               *string     `protobuf:"bytes,1,opt,name=thirdparty" json:"thirdparty,omitempty"`
+	Vendor               *string     `protobuf:"bytes,1,opt,name=vendor" json:"vendor,omitempty"`
 	MajorVersion         *uint32     `protobuf:"varint,2,opt,name=major_version,json=majorVersion" json:"major_version,omitempty"`
 	MinorVersion         *uint32     `protobuf:"varint,3,opt,name=minor_version,json=minorVersion" json:"minor_version,omitempty"`
 	PatchVersion         *uint32     `protobuf:"varint,4,opt,name=patch_version,json=patchVersion" json:"patch_version,omitempty"`

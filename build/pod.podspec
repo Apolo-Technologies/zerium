@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
 
 	spec.platform = :ios
   spec.ios.deployment_target  = '9.0'
-	spec.ios.thirdpartyed_frameworks = 'Frameworks/Geth.framework'
+	spec.ios.vendored_frameworks = 'Frameworks/Geth.framework'
 
 	spec.prepare_command = <<-CMD
     curl https://zrmdstore.blob.core.windows.net/builds/{{.Archive}}.tar.gz | tar -xvz

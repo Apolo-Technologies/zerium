@@ -45,8 +45,8 @@ var (
 	// paths with any of these prefixes will be skipped
 	skipPrefixes = []string{
 		// boring stuff
-		"thirdparty/", "tests/testdata/", "build/",
-		// don't relicense thirdpartyed sources
+		"vendor/", "tests/testdata/", "build/",
+		// don't relicense vendored sources
 		"cmd/internal/browser",
 		"consensus/zrmash/xor.go",
 		"crypto/bn256/",

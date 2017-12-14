@@ -115,7 +115,7 @@ message GetFeatures {
  * @prev GetFeatures
  */
 message Features {
-	optional string thirdparty = 1;			// name of the manufacturer, e.g. "bitcointrezor.com"
+	optional string vendor = 1;			// name of the manufacturer, e.g. "bitcointrezor.com"
 	optional uint32 major_version = 2;		// major version of the device, e.g. 1
 	optional uint32 minor_version = 3;		// minor version of the device, e.g. 0
 	optional uint32 patch_version = 4;		// patch version of the device, e.g. 0

@@ -13,7 +13,7 @@
 .ethtest
 */**/*tx_database*
 */**/*dapps*
-build/_thirdparty/pkg
+build/_vendor/pkg
 
 #*
 .#*

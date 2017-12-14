@@ -16,7 +16,7 @@ Package log15 provides an opinionated, simple toolkit for best-practice logging 
 
 ## Versioning
 The API of the master branch of log15 should always be considered unstable. If you want to rely on a stable API,
-you must thirdparty the library.
+you must vendor the library.
 
 ## Importing
 
