@@ -36,7 +36,7 @@ import (
 
 	"github.com/apolo-technologies/zerium/cmd/utils"
 	"github.com/apolo-technologies/zerium/zrmcom"
-	"github.com/apolo-technologies/zerium/console"
+	"github.com/apolo-technologies/zerium/ourconsole"
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/ourconsole"
 	"github.com/apolo-technologies/zerium/peertopeer"

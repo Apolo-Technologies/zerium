@@ -24,7 +24,7 @@ import (
 	"strings"
 
 	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/console"
+	"github.com/apolo-technologies/zerium/ourconsole"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/rpc"
 	"gopkg.in/urfave/cli.v1"

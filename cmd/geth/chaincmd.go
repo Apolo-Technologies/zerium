@@ -27,7 +27,7 @@ import (
 
 	"github.com/apolo-technologies/zerium/cmd/utils"
 	"github.com/apolo-technologies/zerium/zrmcom"
-	"github.com/apolo-technologies/zerium/console"
+	"github.com/apolo-technologies/zerium/ourconsole"
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/types"

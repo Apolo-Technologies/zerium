@@ -29,7 +29,7 @@ import (
 	"github.com/apolo-technologies/zerium/accounts/keystore"
 	"github.com/apolo-technologies/zerium/cmd/utils"
 	"github.com/apolo-technologies/zerium/zrmcom"
-	"github.com/apolo-technologies/zerium/console"
+	"github.com/apolo-technologies/zerium/ourconsole"
 	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/zrmclient"
 	"github.com/apolo-technologies/zerium/internal/debug"

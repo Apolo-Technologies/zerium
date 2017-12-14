@@ -26,7 +26,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/vm"
 	"github.com/apolo-technologies/zerium/ourconsole"
-	"github.com/apolo-technologies/zerium/tests"
+	//"github.com/apolo-technologies/zerium/tests"
 
 	cli "gopkg.in/urfave/cli.v1"
 )
