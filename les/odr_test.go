@@ -29,7 +29,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/eth"
+	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/light"
 	"github.com/apolo-technologies/zerium/params"

@@ -25,7 +25,7 @@ import (
 
 	"github.com/apolo-technologies/zerium/zrmcom"
 	"github.com/apolo-technologies/zerium/zrmcom/hexutil"
-	"github.com/apolo-technologies/zerium/consensus/ethash"
+	"github.com/apolo-technologies/zerium/consensus/zrmash"
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
 	"github.com/apolo-technologies/zerium/zrm/gasprice"

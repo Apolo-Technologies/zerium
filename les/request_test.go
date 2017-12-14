@@ -24,7 +24,7 @@ import (
 	"github.com/apolo-technologies/zerium/zrmcom"
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/eth"
+	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/light"
 )

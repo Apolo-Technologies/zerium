@@ -2508,7 +2508,7 @@ module.exports={
 
 var RequestManager = require('./abt17/requestmanager');
 var Iban = require('./abt17/iban');
-var Eth = require('./abt17/methods/eth');
+var Eth = require('./abt17/methods/zrm');
 var DB = require('./abt17/methods/db');
 var Shh = require('./abt17/methods/shh');
 var Net = require('./abt17/methods/net');
@@ -2632,7 +2632,7 @@ ABT17.prototype.createBatch = function () {
 module.exports = ABT17;
 
 
-},{"./utils/sha3":19,"./utils/utils":20,"./version.json":21,"./abt17/batch":24,"./abt17/extend":28,"./abt17/httpprovider":32,"./abt17/iban":33,"./abt17/ipcprovider":34,"./abt17/methods/db":37,"./abt17/methods/eth":38,"./abt17/methods/net":39,"./abt17/methods/personal":40,"./abt17/methods/shh":41,"./abt17/methods/swarm":42,"./abt17/property":45,"./abt17/requestmanager":46,"./abt17/settings":47,"bignumber.js":"bignumber.js"}],23:[function(require,module,exports){
+},{"./utils/sha3":19,"./utils/utils":20,"./version.json":21,"./abt17/batch":24,"./abt17/extend":28,"./abt17/httpprovider":32,"./abt17/iban":33,"./abt17/ipcprovider":34,"./abt17/methods/db":37,"./abt17/methods/zrm":38,"./abt17/methods/net":39,"./abt17/methods/personal":40,"./abt17/methods/shh":41,"./abt17/methods/swarm":42,"./abt17/property":45,"./abt17/requestmanager":46,"./abt17/settings":47,"bignumber.js":"bignumber.js"}],23:[function(require,module,exports){
 /*
     This file is part of abt17.js.
 

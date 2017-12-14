@@ -357,7 +357,7 @@ try! node?.start();
 											<pre>./gradlew runCustom -DgenesisFile={{.HarmonyGenesis}} -Dpeer.networkId={{.NetworkID}} -Ddatabase.dir=$HOME/.harmony/{{.Network}} {{.HarmonyBootnodes}} </pre>
 										</p>
 										<br/>
-										<p>You can find Zerium Harmony at <a href="https://github.com/ether-camp/zerium-harmony/" target="about:blank">https://github.com/ether-camp/zerium-harmony/</a>.</p>
+										<p>You can find Zerium Harmony at <a href="https://github.com/zrmer-camp/zerium-harmony/" target="about:blank">https://github.com/zrmer-camp/zerium-harmony/</a>.</p>
 									</div>
 								</div>
 							</div>

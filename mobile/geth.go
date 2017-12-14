@@ -25,10 +25,10 @@ import (
 	"path/filepath"
 
 	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/eth"
+	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/zrm/downloader"
-	"github.com/apolo-technologies/zerium/ethclient"
-	"github.com/apolo-technologies/zerium/ethstats"
+	"github.com/apolo-technologies/zerium/zrmclient"
+	"github.com/apolo-technologies/zerium/zrmstats"
 	"github.com/apolo-technologies/zerium/les"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/peertopeer"

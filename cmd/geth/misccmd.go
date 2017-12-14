@@ -24,8 +24,8 @@ import (
 	"strings"
 
 	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/consensus/ethash"
-	"github.com/apolo-technologies/zerium/eth"
+	"github.com/apolo-technologies/zerium/consensus/zrmash"
+	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/params"
 	"gopkg.in/urfave/cli.v1"
 )

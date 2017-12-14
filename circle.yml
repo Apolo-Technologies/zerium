@@ -13,13 +13,13 @@ dependencies:
 
     # Pull in and hive, restore cached ethash DAGs and do a dry run
     - go get -u github.com/karalabe/hive
-    - (cd ~/.go_workspace/src/github.com/karalabe/hive && mkdir -p workspace/ethash/ ~/.ethash)
-    - (cd ~/.go_workspace/src/github.com/karalabe/hive && cp -r ~/.ethash/. workspace/ethash/)
+    - (cd ~/.go_workspace/src/github.com/karalabe/hive && mkdir -p workspace/zrmash/ ~/.ethash)
+    - (cd ~/.go_workspace/src/github.com/karalabe/hive && cp -r ~/.ethash/. workspace/zrmash/)
     - (cd ~/.go_workspace/src/github.com/karalabe/hive && hive --docker-noshell --client=NONE --test=. --sim=. --loglevel=6)
 
     # Cache all the docker images and the ethash DAGs
     - for img in `docker images | grep -v "^<none>" | tail -n +2 | awk '{print $1}'`; do docker save $img > ~/.docker/`echo $img | tr '/' ':'`.tar; done
-    - cp -r ~/.go_workspace/src/github.com/karalabe/hive/workspace/ethash/. ~/.ethash
+    - cp -r ~/.go_workspace/src/github.com/karalabe/hive/workspace/zrmash/. ~/.ethash
 
 test:
   override:

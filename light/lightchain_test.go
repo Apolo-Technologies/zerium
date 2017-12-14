@@ -22,7 +22,7 @@ import (
 	"testing"
 
 	"github.com/apolo-technologies/zerium/zrmcom"
-	"github.com/apolo-technologies/zerium/consensus/ethash"
+	"github.com/apolo-technologies/zerium/consensus/zrmash"
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/zrmdb"

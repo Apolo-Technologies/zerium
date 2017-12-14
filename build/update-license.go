@@ -48,7 +48,7 @@ var (
 		"thirdparty/", "tests/testdata/", "build/",
 		// don't relicense thirdpartyed sources
 		"cmd/internal/browser",
-		"consensus/ethash/xor.go",
+		"consensus/zrmash/xor.go",
 		"crypto/bn256/",
 		"crypto/ecies/",
 		"crypto/secp256k1/curve.go",

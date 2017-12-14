@@ -22,7 +22,7 @@ import (
 	"math/big"
 
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/ethclient"
+	"github.com/apolo-technologies/zerium/zrmclient"
 )
 
 // ZeriumClient provides access to the Zerium APIs.

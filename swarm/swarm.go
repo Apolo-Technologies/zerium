@@ -28,7 +28,7 @@ import (
 	"github.com/apolo-technologies/zerium/contracts/chequebook"
 	"github.com/apolo-technologies/zerium/contracts/ens"
 	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/ethclient"
+	"github.com/apolo-technologies/zerium/zrmclient"
 	"github.com/apolo-technologies/zerium/ourconsole"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/peertopeer"

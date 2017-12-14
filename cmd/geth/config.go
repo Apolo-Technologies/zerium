@@ -31,7 +31,7 @@ import (
 	"github.com/apolo-technologies/zerium/cmd/utils"
 	"github.com/apolo-technologies/zerium/contracts/release"
 	"github.com/apolo-technologies/zerium/dashboard"
-	"github.com/apolo-technologies/zerium/eth"
+	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/params"
 	whisper "github.com/apolo-technologies/zerium/whisper/whisperv5"

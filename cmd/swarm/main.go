@@ -38,7 +38,7 @@ import (
 	"github.com/apolo-technologies/zerium/console"
 	"github.com/apolo-technologies/zerium/contracts/ens"
 	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/ethclient"
+	"github.com/apolo-technologies/zerium/zrmclient"
 	"github.com/apolo-technologies/zerium/internal/debug"
 	"github.com/apolo-technologies/zerium/ourconsole"
 	"github.com/apolo-technologies/zerium/node"

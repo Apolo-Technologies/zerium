@@ -40,11 +40,11 @@ RUN \
 	echo $'zrmd --networkid {{.NetworkID}} --port {{.NodePort}} --bootnodes {{.Bootnodes}} --ethstats \'{{.Ethstats}}\' --cache=512 --rpc --rpcaddr=0.0.0.0 --rpccorsdomain "*"' >> wallet.sh
 
 RUN \
-	sed -i 's/PuppethNetworkID/{{.NetworkID}}/g' dist/js/etherwallet-master.js && \
-	sed -i 's/PuppethNetwork/{{.Network}}/g'     dist/js/etherwallet-master.js && \
-	sed -i 's/PuppethDenom/{{.Denom}}/g'         dist/js/etherwallet-master.js && \
-	sed -i 's/PuppethHost/{{.Host}}/g'           dist/js/etherwallet-master.js && \
-	sed -i 's/PuppethRPCPort/{{.RPCPort}}/g'     dist/js/etherwallet-master.js
+	sed -i 's/PuppethNetworkID/{{.NetworkID}}/g' dist/js/zrmerwallet-master.js && \
+	sed -i 's/PuppethNetwork/{{.Network}}/g'     dist/js/zrmerwallet-master.js && \
+	sed -i 's/PuppethDenom/{{.Denom}}/g'         dist/js/zrmerwallet-master.js && \
+	sed -i 's/PuppethHost/{{.Host}}/g'           dist/js/zrmerwallet-master.js && \
+	sed -i 's/PuppethRPCPort/{{.RPCPort}}/g'     dist/js/zrmerwallet-master.js
 
 ENTRYPOINT ["/bin/sh", "wallet.sh"]
 `

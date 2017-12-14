@@ -34,7 +34,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/core/vm"
-	"github.com/apolo-technologies/zerium/internal/ethapi"
+	"github.com/apolo-technologies/zerium/internal/zrmapi"
 	"github.com/apolo-technologies/zerium/ourconsole"
 	"github.com/apolo-technologies/zerium/miner"
 	"github.com/apolo-technologies/zerium/params"

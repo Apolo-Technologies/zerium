@@ -27,8 +27,8 @@ import (
 
 	"github.com/apolo-technologies/zerium/accounts/abi/bind"
 	"github.com/apolo-technologies/zerium/zrmcom"
-	"github.com/apolo-technologies/zerium/eth"
-	"github.com/apolo-technologies/zerium/internal/ethapi"
+	"github.com/apolo-technologies/zerium/zrm"
+	"github.com/apolo-technologies/zerium/internal/zrmapi"
 	"github.com/apolo-technologies/zerium/les"
 	"github.com/apolo-technologies/zerium/ourconsole"
 	"github.com/apolo-technologies/zerium/node"

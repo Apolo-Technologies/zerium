@@ -27,9 +27,9 @@ import (
 	"time"
 
 	"github.com/apolo-technologies/zerium/zrmcom"
-	"github.com/apolo-technologies/zerium/consensus/ethash"
+	"github.com/apolo-technologies/zerium/consensus/zrmash"
 	"github.com/apolo-technologies/zerium/core"
-	"github.com/apolo-technologies/zerium/eth"
+	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/internal/javascript_runtime_enviroment"
 	"github.com/apolo-technologies/zerium/node"
 )
