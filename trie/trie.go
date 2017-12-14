@@ -23,7 +23,6 @@ import (
 
 	"github.com/apolo-technologies/zerium/zrmcom"
 	"github.com/apolo-technologies/zerium/crypto/sha3"
-	//"github.com/apolo-technologies/zerium/ourconsole"
 	"github.com/rcrowley/go-metrics"
 )
 
