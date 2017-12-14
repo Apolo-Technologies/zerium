@@ -20,7 +20,7 @@ import (
 	"fmt"
 
 	"github.com/apolo-technologies/zerium/zrmcom"
-	"github.com/apolo-technologies/zerium/ourconsole"
+	//"github.com/apolo-technologies/zerium/ourconsole"
 )
 
 var secureKeyPrefix = []byte("secure-key-")
