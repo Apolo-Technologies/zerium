@@ -109,7 +109,7 @@ type worker struct {
 	zrm     Backend
 	chain   *core.BlockChain
 	proc    core.Validator
-	chainDb ethdb.Database
+	chainDb zrmdb.Database
 
 	coinbase common.Address
 	extra    []byte

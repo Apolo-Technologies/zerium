@@ -30,7 +30,7 @@ import (
 )
 
 type Backend interface {
-	ChainDb() ethdb.Database
+	ChainDb() zrmdb.Database
 	EventMux() *event.TypeMux
 	HeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Header, error)
 	GetReceipts(ctx context.Context, blockHash common.Hash) (types.Receipts, error)
@@ -48,7 +48,7 @@ type Backend interface {
 type Filter struct {
 	backend Backend
 
-	db         ethdb.Database
+	db         zrmdb.Database
 	begin, end int64
 	addresses  []common.Address
 	topics     [][]common.Hash

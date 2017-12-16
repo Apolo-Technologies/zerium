@@ -16,7 +16,7 @@
 
 package storage
 
-// this is a clone of an earlier state of the zerium ethdb/database
+// this is a clone of an earlier state of the zerium zrmdb/database
 // no need for queueing/caching
 
 import (

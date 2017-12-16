@@ -28,12 +28,12 @@ import (
 	"github.com/apolo-technologies/zerium/zrmdb"
 )
 
-func newTestLDB() (*ethdb.LDBDatabase, func()) {
-	dirname, err := ioutil.TempDir(os.TempDir(), "ethdb_test_")
+func newTestLDB() (*zrmdb.LDBDatabase, func()) {
+	dirname, err := ioutil.TempDir(os.TempDir(), "zrmdb_test_")
 	if err != nil {
 		panic("failed to create test file: " + err.Error())
 	}
-	db, err := ethdb.NewLDBDatabase(dirname, 0, 0)
+	db, err := zrmdb.NewLDBDatabase(dirname, 0, 0)
 	if err != nil {
 		panic("failed to create test database: " + err.Error())
 	}
@@ -53,11 +53,11 @@ func TestLDB_PutGet(t *testing.T) {
 }
 
 func TestMemoryDB_PutGet(t *testing.T) {
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	testPutGet(db, t)
 }
 
-func testPutGet(db ethdb.Database, t *testing.T) {
+func testPutGet(db zrmdb.Database, t *testing.T) {
 	t.Parallel()
 
 	for _, v := range test_values {
@@ -131,11 +131,11 @@ func TestLDB_ParallelPutGet(t *testing.T) {
 }
 
 func TestMemoryDB_ParallelPutGet(t *testing.T) {
-	db, _ := ethdb.NewMemDatabase()
+	db, _ := zrmdb.NewMemDatabase()
 	testParallelPutGet(db, t)
 }
 
-func testParallelPutGet(db ethdb.Database, t *testing.T) {
+func testParallelPutGet(db zrmdb.Database, t *testing.T) {
 	const n = 8
 	var pending sync.WaitGroup
 

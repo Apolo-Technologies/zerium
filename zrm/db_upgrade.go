@@ -34,7 +34,7 @@ var deduplicateData = []byte("dbUpgrade_20170714deduplicateData")
 // starts a background process to make upgrades if necessary.
 // Returns a stop function that blocks until the process has
 // been safely stopped.
-func upgradeDeduplicateData(db ethdb.Database) func() error {
+func upgradeDeduplicateData(db zrmdb.Database) func() error {
 	// If the database is already converted or empty, bail out
 	data, _ := db.Get(deduplicateData)
 	if len(data) > 0 && data[0] == 42 {
@@ -50,7 +50,7 @@ func upgradeDeduplicateData(db ethdb.Database) func() error {
 
 	go func() {
 		// Create an iterator to read the entire database and covert old lookup entires
-		it := db.(*ethdb.LDBDatabase).NewIterator()
+		it := db.(*zrmdb.LDBDatabase).NewIterator()
 		defer func() {
 			if it != nil {
 				it.Release()
@@ -100,7 +100,7 @@ func upgradeDeduplicateData(db ethdb.Database) func() error {
 			converted++
 			if converted%100000 == 0 {
 				it.Release()
-				it = db.(*ethdb.LDBDatabase).NewIterator()
+				it = db.(*zrmdb.LDBDatabase).NewIterator()
 				it.Seek(key)
 
 				log.Info("Deduplicating database entries", "deduped", converted)

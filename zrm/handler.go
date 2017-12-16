@@ -71,7 +71,7 @@ type ProtocolManager struct {
 
 	txpool      txPool
 	blockchain  *core.BlockChain
-	chaindb     ethdb.Database
+	chaindb     zrmdb.Database
 	chainconfig *params.ChainConfig
 	maxPeers    int
 
@@ -99,7 +99,7 @@ type ProtocolManager struct {
 
 // NewProtocolManager returns a new zerium sub protocol manager. The Zerium sub protocol manages peers capable
 // with the zerium network.
-func NewProtocolManager(config *params.ChainConfig, mode downloader.SyncMode, networkId uint64, mux *event.TypeMux, txpool txPool, engine consensus.Engine, blockchain *core.BlockChain, chaindb ethdb.Database) (*ProtocolManager, error) {
+func NewProtocolManager(config *params.ChainConfig, mode downloader.SyncMode, networkId uint64, mux *event.TypeMux, txpool txPool, engine consensus.Engine, blockchain *core.BlockChain, chaindb zrmdb.Database) (*ProtocolManager, error) {
 	// Create the protocol manager with the base fields
 	manager := &ProtocolManager{
 		networkId:   networkId,

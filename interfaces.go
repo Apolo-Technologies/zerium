@@ -15,7 +15,7 @@
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
 // Package zerium defines interfaces for interacting with Zerium.
-package zrmereum
+package zerium
 
 import (
 	"context"

@@ -184,7 +184,7 @@ func (b *ZrmApiBackend) SuggestPrice(ctx context.Context) (*big.Int, error) {
 	return b.gpo.SuggestPrice(ctx)
 }
 
-func (b *ZrmApiBackend) ChainDb() ethdb.Database {
+func (b *ZrmApiBackend) ChainDb() zrmdb.Database {
 	return b.zrm.ChainDb()
 }
 
