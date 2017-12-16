@@ -155,15 +155,15 @@ func (self *FileSystem) Upload(lpath, index string) (string, error) {
 				ContentType: entry.ContentType,
 			}, nil)
 			ientry.Hash = entry.Hash
-			pkg2310.addEntry(ientry, quitC)
+			trie.addEntry(ientry, quitC)
 		}
-		pkg2310.addEntry(entry, quitC)
+		trie.addEntry(entry, quitC)
 	}
 
-	err2 := pkg2310.recalcAndStore()
+	err2 := trie.recalcAndStore()
 	var hs string
 	if err2 == nil {
-		hs = pkg2310.hash.String()
+		hs = trie.hash.String()
 	}
 	awg.Wait()
 	return hs, err2
@@ -214,7 +214,7 @@ func (self *FileSystem) Download(bzzpath, localpath string) error {
 	var mde error
 
 	prevPath := lpath
-	err = pkg2310.listWithPrefix(path, quitC, func(entry *manifestTrieEntry, suffix string) {
+	err = trie.listWithPrefix(path, quitC, func(entry *manifestTrieEntry, suffix string) {
 		log.Trace(fmt.Sprintf("fs.Download: %#v", entry))
 
 		key = common.Hex2Bytes(entry.Hash)

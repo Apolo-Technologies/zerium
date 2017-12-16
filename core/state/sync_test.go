@@ -24,7 +24,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/pkg2310"
+	"github.com/apolo-technologies/zerium/trie"
 )
 
 // testAccount is the data associated with an account used by the state tests.
@@ -96,11 +96,11 @@ func checkTrieConsistency(db zrmdb.Database, root common.Hash) error {
 	if v, _ := db.Get(root[:]); v == nil {
 		return nil // Consider a non existent state consistent.
 	}
-	trie, err := pkg2310.New(root, db)
+	trie, err := trie.New(root, db)
 	if err != nil {
 		return err
 	}
-	it := pkg2310.NodeIterator(nil)
+	it := trie.NodeIterator(nil)
 	for it.Next(true) {
 	}
 	return it.Error()
@@ -146,13 +146,13 @@ func testIterativeStateSync(t *testing.T, batch int) {
 
 	queue := append([]common.Hash{}, sched.Missing(batch)...)
 	for len(queue) > 0 {
-		results := make([]pkg2310.SyncResult, len(queue))
+		results := make([]trie.SyncResult, len(queue))
 		for i, hash := range queue {
 			data, err := srcMem.Get(hash.Bytes())
 			if err != nil {
 				t.Fatalf("failed to retrieve node data for %x: %v", hash, err)
 			}
-			results[i] = pkg2310.SyncResult{Hash: hash, Data: data}
+			results[i] = trie.SyncResult{Hash: hash, Data: data}
 		}
 		if _, index, err := sched.Process(results); err != nil {
 			t.Fatalf("failed to process result #%d: %v", index, err)
@@ -179,13 +179,13 @@ func TestIterativeDelayedStateSync(t *testing.T) {
 	queue := append([]common.Hash{}, sched.Missing(0)...)
 	for len(queue) > 0 {
 		// Sync only half of the scheduled nodes
-		results := make([]pkg2310.SyncResult, len(queue)/2+1)
+		results := make([]trie.SyncResult, len(queue)/2+1)
 		for i, hash := range queue[:len(results)] {
 			data, err := srcMem.Get(hash.Bytes())
 			if err != nil {
 				t.Fatalf("failed to retrieve node data for %x: %v", hash, err)
 			}
-			results[i] = pkg2310.SyncResult{Hash: hash, Data: data}
+			results[i] = trie.SyncResult{Hash: hash, Data: data}
 		}
 		if _, index, err := sched.Process(results); err != nil {
 			t.Fatalf("failed to process result #%d: %v", index, err)
@@ -219,13 +219,13 @@ func testIterativeRandomStateSync(t *testing.T, batch int) {
 	}
 	for len(queue) > 0 {
 		// Fetch all the queued nodes in a random order
-		results := make([]pkg2310.SyncResult, 0, len(queue))
+		results := make([]trie.SyncResult, 0, len(queue))
 		for hash := range queue {
 			data, err := srcMem.Get(hash.Bytes())
 			if err != nil {
 				t.Fatalf("failed to retrieve node data for %x: %v", hash, err)
 			}
-			results = append(results, pkg2310.SyncResult{Hash: hash, Data: data})
+			results = append(results, trie.SyncResult{Hash: hash, Data: data})
 		}
 		// Feed the retrieved results back and queue new tasks
 		if _, index, err := sched.Process(results); err != nil {
@@ -259,7 +259,7 @@ func TestIterativeRandomDelayedStateSync(t *testing.T) {
 	}
 	for len(queue) > 0 {
 		// Sync only half of the scheduled nodes, even those in random order
-		results := make([]pkg2310.SyncResult, 0, len(queue)/2+1)
+		results := make([]trie.SyncResult, 0, len(queue)/2+1)
 		for hash := range queue {
 			delete(queue, hash)
 
@@ -267,7 +267,7 @@ func TestIterativeRandomDelayedStateSync(t *testing.T) {
 			if err != nil {
 				t.Fatalf("failed to retrieve node data for %x: %v", hash, err)
 			}
-			results = append(results, pkg2310.SyncResult{Hash: hash, Data: data})
+			results = append(results, trie.SyncResult{Hash: hash, Data: data})
 
 			if len(results) >= cap(results) {
 				break
@@ -304,13 +304,13 @@ func TestIncompleteStateSync(t *testing.T) {
 	queue := append([]common.Hash{}, sched.Missing(1)...)
 	for len(queue) > 0 {
 		// Fetch a batch of state nodes
-		results := make([]pkg2310.SyncResult, len(queue))
+		results := make([]trie.SyncResult, len(queue))
 		for i, hash := range queue {
 			data, err := srcMem.Get(hash.Bytes())
 			if err != nil {
 				t.Fatalf("failed to retrieve node data for %x: %v", hash, err)
 			}
-			results[i] = pkg2310.SyncResult{Hash: hash, Data: data}
+			results[i] = trie.SyncResult{Hash: hash, Data: data}
 		}
 		// Process each of the state nodes
 		if _, index, err := sched.Process(results); err != nil {

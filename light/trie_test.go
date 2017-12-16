@@ -29,7 +29,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/vm"
 	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/params"
-	"github.com/apolo-technologies/zerium/pkg2310"
+	"github.com/apolo-technologies/zerium/trie"
 )
 
 func TestNodeIterator(t *testing.T) {
@@ -57,8 +57,8 @@ func TestNodeIterator(t *testing.T) {
 }
 
 func diffTries(t1, t2 state.Trie) error {
-	i1 := pkg2310.NewIterator(t1.NodeIterator(nil))
-	i2 := pkg2310.NewIterator(t2.NodeIterator(nil))
+	i1 := trie.NewIterator(t1.NodeIterator(nil))
+	i2 := trie.NewIterator(t2.NodeIterator(nil))
 	for i1.Next() && i2.Next() {
 		if !bytes.Equal(i1.Key, i2.Key) {
 			spew.Dump(i2)

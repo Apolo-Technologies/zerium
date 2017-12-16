@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-package pkg2310
+package trie
 
 import (
 	"fmt"
@@ -63,11 +63,11 @@ func NewSecure(root common.Hash, db Database, cachelimit uint16) (*SecureTrie, e
 	if err != nil {
 		return nil, err
 	}
-	pkg2310.SetCacheLimit(cachelimit)
+	trie.SetCacheLimit(cachelimit)
 	return &SecureTrie{trie: *trie}, nil
 }
 
-// Get returns the value for key stored in the pkg2310.
+// Get returns the value for key stored in the trie.
 // The value bytes must not be modified by the caller.
 func (t *SecureTrie) Get(key []byte) []byte {
 	res, err := t.TryGet(key)
@@ -77,36 +77,36 @@ func (t *SecureTrie) Get(key []byte) []byte {
 	return res
 }
 
-// TryGet returns the value for key stored in the pkg2310.
+// TryGet returns the value for key stored in the trie.
 // The value bytes must not be modified by the caller.
 // If a node was not found in the database, a MissingNodeError is returned.
 func (t *SecureTrie) TryGet(key []byte) ([]byte, error) {
-	return t.pkg2310.TryGet(t.hashKey(key))
+	return t.trie.TryGet(t.hashKey(key))
 }
 
-// Update associates key with value in the pkg2310. Subsequent calls to
+// Update associates key with value in the trie. Subsequent calls to
 // Get will return value. If value has length zero, any existing value
 // is deleted from the trie and calls to Get will return nil.
 //
 // The value bytes must not be modified by the caller while they are
-// stored in the pkg2310.
+// stored in the trie.
 func (t *SecureTrie) Update(key, value []byte) {
 	if err := t.TryUpdate(key, value); err != nil {
 		log.Error(fmt.Sprintf("Unhandled trie error: %v", err))
 	}
 }
 
-// TryUpdate associates key with value in the pkg2310. Subsequent calls to
+// TryUpdate associates key with value in the trie. Subsequent calls to
 // Get will return value. If value has length zero, any existing value
 // is deleted from the trie and calls to Get will return nil.
 //
 // The value bytes must not be modified by the caller while they are
-// stored in the pkg2310.
+// stored in the trie.
 //
 // If a node was not found in the database, a MissingNodeError is returned.
 func (t *SecureTrie) TryUpdate(key, value []byte) error {
 	hk := t.hashKey(key)
-	err := t.pkg2310.TryUpdate(hk, value)
+	err := t.trie.TryUpdate(hk, value)
 	if err != nil {
 		return err
 	}
@@ -114,19 +114,19 @@ func (t *SecureTrie) TryUpdate(key, value []byte) error {
 	return nil
 }
 
-// Delete removes any existing value for key from the pkg2310.
+// Delete removes any existing value for key from the trie.
 func (t *SecureTrie) Delete(key []byte) {
 	if err := t.TryDelete(key); err != nil {
 		log.Error(fmt.Sprintf("Unhandled trie error: %v", err))
 	}
 }
 
-// TryDelete removes any existing value for key from the pkg2310.
+// TryDelete removes any existing value for key from the trie.
 // If a node was not found in the database, a MissingNodeError is returned.
 func (t *SecureTrie) TryDelete(key []byte) error {
 	hk := t.hashKey(key)
 	delete(t.getSecKeyCache(), string(hk))
-	return t.pkg2310.TryDelete(hk)
+	return t.trie.TryDelete(hk)
 }
 
 // GetKey returns the sha3 preimage of a hashed key that was
@@ -135,7 +135,7 @@ func (t *SecureTrie) GetKey(shaKey []byte) []byte {
 	if key, ok := t.getSecKeyCache()[string(shaKey)]; ok {
 		return key
 	}
-	key, _ := t.pkg2310.db.Get(t.secKey(shaKey))
+	key, _ := t.trie.db.Get(t.secKey(shaKey))
 	return key
 }
 
@@ -145,15 +145,15 @@ func (t *SecureTrie) GetKey(shaKey []byte) []byte {
 // Committing flushes nodes from memory. Subsequent Get calls will load nodes
 // from the database.
 func (t *SecureTrie) Commit() (root common.Hash, err error) {
-	return t.CommitTo(t.pkg2310.db)
+	return t.CommitTo(t.trie.db)
 }
 
 func (t *SecureTrie) Hash() common.Hash {
-	return t.pkg2310.Hash()
+	return t.trie.Hash()
 }
 
 func (t *SecureTrie) Root() []byte {
-	return t.pkg2310.Root()
+	return t.trie.Root()
 }
 
 func (t *SecureTrie) Copy() *SecureTrie {
@@ -161,10 +161,10 @@ func (t *SecureTrie) Copy() *SecureTrie {
 	return &cpy
 }
 
-// NodeIterator returns an iterator that returns nodes of the underlying pkg2310. Iteration
+// NodeIterator returns an iterator that returns nodes of the underlying trie. Iteration
 // starts at the key after the given start key.
 func (t *SecureTrie) NodeIterator(start []byte) NodeIterator {
-	return t.pkg2310.NodeIterator(start)
+	return t.trie.NodeIterator(start)
 }
 
 // CommitTo writes all nodes and the secure hash pre-images to the given database.
@@ -172,7 +172,7 @@ func (t *SecureTrie) NodeIterator(start []byte) NodeIterator {
 //
 // Committing flushes nodes from memory. Subsequent Get calls will load nodes from
 // the trie's database. Calling code must ensure that the changes made to db are
-// written back to the trie's attached database before using the pkg2310.
+// written back to the trie's attached database before using the trie.
 func (t *SecureTrie) CommitTo(db DatabaseWriter) (root common.Hash, err error) {
 	if len(t.getSecKeyCache()) > 0 {
 		for hk, key := range t.secKeyCache {
@@ -182,7 +182,7 @@ func (t *SecureTrie) CommitTo(db DatabaseWriter) (root common.Hash, err error) {
 		}
 		t.secKeyCache = make(map[string][]byte)
 	}
-	return t.pkg2310.CommitTo(db)
+	return t.trie.CommitTo(db)
 }
 
 // secKey returns the database key for the preimage of key, as an ephemeral buffer.

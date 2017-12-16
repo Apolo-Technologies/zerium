@@ -21,12 +21,12 @@ import (
 
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/rlp"
-	"github.com/apolo-technologies/zerium/pkg2310"
+	"github.com/apolo-technologies/zerium/trie"
 )
 
 // NewStateSync create a new state trie download scheduler.
-func NewStateSync(root common.Hash, database pkg2310.DatabaseReader) *pkg2310.TrieSync {
-	var syncer *pkg2310.TrieSync
+func NewStateSync(root common.Hash, database trie.DatabaseReader) *trie.TrieSync {
+	var syncer *trie.TrieSync
 	callback := func(leaf []byte, parent common.Hash) error {
 		var obj Account
 		if err := rlp.Decode(bytes.NewReader(leaf), &obj); err != nil {
@@ -36,6 +36,6 @@ func NewStateSync(root common.Hash, database pkg2310.DatabaseReader) *pkg2310.Tr
 		syncer.AddRawEntry(common.BytesToHash(obj.CodeHash), 64, parent)
 		return nil
 	}
-	syncer = pkg2310.NewTrieSync(root, database, callback)
+	syncer = trie.NewTrieSync(root, database, callback)
 	return syncer
 }

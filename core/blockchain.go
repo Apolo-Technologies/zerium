@@ -40,7 +40,7 @@ import (
 	"github.com/apolo-technologies/zerium/metrics"
 	"github.com/apolo-technologies/zerium/params"
 	"github.com/apolo-technologies/zerium/rlp"
-	"github.com/apolo-technologies/zerium/pkg2310"
+	"github.com/apolo-technologies/zerium/trie"
 	"github.com/hashicorp/golang-lru"
 )
 
@@ -292,7 +292,7 @@ func (bc *BlockChain) FastSyncCommitHead(hash common.Hash) error {
 	if block == nil {
 		return fmt.Errorf("non existent block [%x…]", hash[:4])
 	}
-	if _, err := pkg2310.NewSecure(block.Root(), bc.chainDb, 0); err != nil {
+	if _, err := trie.NewSecure(block.Root(), bc.chainDb, 0); err != nil {
 		return err
 	}
 	// If all checks out, manually set the head block

@@ -24,7 +24,7 @@ import (
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/crypto"
-	"github.com/apolo-technologies/zerium/pkg2310"
+	"github.com/apolo-technologies/zerium/trie"
 )
 
 func NewState(ctx context.Context, head *types.Header, odr OdrBackend) *state.StateDB {
@@ -86,14 +86,14 @@ func (db *odrDatabase) ContractCodeSize(addrHash, codeHash common.Hash) (int, er
 type odrTrie struct {
 	db   *odrDatabase
 	id   *TrieID
-	trie *pkg2310.Trie
+	trie *trie.Trie
 }
 
 func (t *odrTrie) TryGet(key []byte) ([]byte, error) {
 	key = crypto.Keccak256(key)
 	var res []byte
 	err := t.do(key, func() (err error) {
-		res, err = t.pkg2310.TryGet(key)
+		res, err = t.trie.TryGet(key)
 		return err
 	})
 	return res, err
@@ -102,32 +102,32 @@ func (t *odrTrie) TryGet(key []byte) ([]byte, error) {
 func (t *odrTrie) TryUpdate(key, value []byte) error {
 	key = crypto.Keccak256(key)
 	return t.do(key, func() error {
-		return t.pkg2310.TryDelete(key)
+		return t.trie.TryDelete(key)
 	})
 }
 
 func (t *odrTrie) TryDelete(key []byte) error {
 	key = crypto.Keccak256(key)
 	return t.do(key, func() error {
-		return t.pkg2310.TryDelete(key)
+		return t.trie.TryDelete(key)
 	})
 }
 
-func (t *odrTrie) CommitTo(db pkg2310.DatabaseWriter) (common.Hash, error) {
+func (t *odrTrie) CommitTo(db trie.DatabaseWriter) (common.Hash, error) {
 	if t.trie == nil {
 		return t.id.Root, nil
 	}
-	return t.pkg2310.CommitTo(db)
+	return t.trie.CommitTo(db)
 }
 
 func (t *odrTrie) Hash() common.Hash {
 	if t.trie == nil {
 		return t.id.Root
 	}
-	return t.pkg2310.Hash()
+	return t.trie.Hash()
 }
 
-func (t *odrTrie) NodeIterator(startkey []byte) pkg2310.NodeIterator {
+func (t *odrTrie) NodeIterator(startkey []byte) trie.NodeIterator {
 	return newNodeIterator(t, startkey)
 }
 
@@ -141,12 +141,12 @@ func (t *odrTrie) do(key []byte, fn func() error) error {
 	for {
 		var err error
 		if t.trie == nil {
-			t.trie, err = pkg2310.New(t.id.Root, t.db.backend.Database())
+			t.trie, err = trie.New(t.id.Root, t.db.backend.Database())
 		}
 		if err == nil {
 			err = fn()
 		}
-		if _, ok := err.(*pkg2310.MissingNodeError); !ok {
+		if _, ok := err.(*trie.MissingNodeError); !ok {
 			return err
 		}
 		r := &TrieRequest{Id: t.id, Key: key}
@@ -157,17 +157,17 @@ func (t *odrTrie) do(key []byte, fn func() error) error {
 }
 
 type nodeIterator struct {
-	pkg2310.NodeIterator
+	trie.NodeIterator
 	t   *odrTrie
 	err error
 }
 
-func newNodeIterator(t *odrTrie, startkey []byte) pkg2310.NodeIterator {
+func newNodeIterator(t *odrTrie, startkey []byte) trie.NodeIterator {
 	it := &nodeIterator{t: t}
 	// Open the actual non-ODR trie if that hasn't happened yet.
 	if t.trie == nil {
 		it.do(func() error {
-			t, err := pkg2310.New(t.id.Root, t.db.backend.Database())
+			t, err := trie.New(t.id.Root, t.db.backend.Database())
 			if err == nil {
 				it.t.trie = t
 			}
@@ -175,7 +175,7 @@ func newNodeIterator(t *odrTrie, startkey []byte) pkg2310.NodeIterator {
 		})
 	}
 	it.do(func() error {
-		it.NodeIterator = it.t.pkg2310.NodeIterator(startkey)
+		it.NodeIterator = it.t.trie.NodeIterator(startkey)
 		return it.NodeIterator.Error()
 	})
 	return it
@@ -195,7 +195,7 @@ func (it *nodeIterator) do(fn func() error) {
 	var lasthash common.Hash
 	for {
 		it.err = fn()
-		missing, ok := it.err.(*pkg2310.MissingNodeError)
+		missing, ok := it.err.(*trie.MissingNodeError)
 		if !ok {
 			return
 		}

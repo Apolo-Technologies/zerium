@@ -31,7 +31,7 @@ import (
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/params"
 	"github.com/apolo-technologies/zerium/rlp"
-	"github.com/apolo-technologies/zerium/pkg2310"
+	"github.com/apolo-technologies/zerium/trie"
 )
 
 const (
@@ -116,7 +116,7 @@ type ChtIndexerBackend struct {
 	db, cdb              zrmdb.Database
 	section, sectionSize uint64
 	lastHash             common.Hash
-	trie                 *pkg2310.Trie
+	trie                 *trie.Trie
 }
 
 // NewBloomTrieIndexer creates a BloomTrie chain indexer
@@ -141,7 +141,7 @@ func (c *ChtIndexerBackend) Reset(section uint64, lastSectionHead common.Hash) e
 		root = GetChtRoot(c.db, section-1, lastSectionHead)
 	}
 	var err error
-	c.trie, err = pkg2310.New(root, c.cdb)
+	c.trie, err = trie.New(root, c.cdb)
 	c.section = section
 	return err
 }
@@ -158,13 +158,13 @@ func (c *ChtIndexerBackend) Process(header *types.Header) {
 	var encNumber [8]byte
 	binary.BigEndian.PutUint64(encNumber[:], num)
 	data, _ := rlp.EncodeToBytes(ChtNode{hash, td})
-	c.pkg2310.Update(encNumber[:], data)
+	c.trie.Update(encNumber[:], data)
 }
 
 // Commit implements core.ChainIndexerBackend
 func (c *ChtIndexerBackend) Commit() error {
 	batch := c.cdb.NewBatch()
-	root, err := c.pkg2310.CommitTo(batch)
+	root, err := c.trie.CommitTo(batch)
 	if err != nil {
 		return err
 	} else {
@@ -207,7 +207,7 @@ func StoreBloomTrieRoot(db zrmdb.Database, sectionIdx uint64, sectionHead, root 
 type BloomTrieIndexerBackend struct {
 	db, cdb                                    zrmdb.Database
 	section, parentSectionSize, bloomTrieRatio uint64
-	trie                                       *pkg2310.Trie
+	trie                                       *trie.Trie
 	sectionHeads                               []common.Hash
 }
 
@@ -236,7 +236,7 @@ func (b *BloomTrieIndexerBackend) Reset(section uint64, lastSectionHead common.H
 		root = GetBloomTrieRoot(b.db, section-1, lastSectionHead)
 	}
 	var err error
-	b.trie, err = pkg2310.New(root, b.cdb)
+	b.trie, err = trie.New(root, b.cdb)
 	b.section = section
 	return err
 }
@@ -274,14 +274,14 @@ func (b *BloomTrieIndexerBackend) Commit() error {
 		decompSize += uint64(len(decomp))
 		compSize += uint64(len(comp))
 		if len(comp) > 0 {
-			b.pkg2310.Update(encKey[:], comp)
+			b.trie.Update(encKey[:], comp)
 		} else {
-			b.pkg2310.Delete(encKey[:])
+			b.trie.Delete(encKey[:])
 		}
 	}
 
 	batch := b.cdb.NewBatch()
-	root, err := b.pkg2310.CommitTo(batch)
+	root, err := b.trie.CommitTo(batch)
 	if err != nil {
 		return err
 	} else {

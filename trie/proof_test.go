@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-package pkg2310
+package trie
 
 import (
 	"bytes"
@@ -34,10 +34,10 @@ func init() {
 
 func TestProof(t *testing.T) {
 	trie, vals := randomTrie(500)
-	root := pkg2310.Hash()
+	root := trie.Hash()
 	for _, kv := range vals {
 		proofs, _ := zrmdb.NewMemDatabase()
-		if pkg2310.Prove(kv.k, 0, proofs) != nil {
+		if trie.Prove(kv.k, 0, proofs) != nil {
 			t.Fatalf("missing key %x while constructing proof", kv.k)
 		}
 		val, err, _ := VerifyProof(root, kv.k, proofs)
@@ -54,11 +54,11 @@ func TestOneElementProof(t *testing.T) {
 	trie := new(Trie)
 	updateString(trie, "k", "v")
 	proofs, _ := zrmdb.NewMemDatabase()
-	pkg2310.Prove([]byte("k"), 0, proofs)
+	trie.Prove([]byte("k"), 0, proofs)
 	if len(proofs.Keys()) != 1 {
 		t.Error("proof should have one element")
 	}
-	val, err, _ := VerifyProof(pkg2310.Hash(), []byte("k"), proofs)
+	val, err, _ := VerifyProof(trie.Hash(), []byte("k"), proofs)
 	if err != nil {
 		t.Fatalf("VerifyProof error: %v\nproof hashes: %v", err, proofs.Keys())
 	}
@@ -69,10 +69,10 @@ func TestOneElementProof(t *testing.T) {
 
 func TestVerifyBadProof(t *testing.T) {
 	trie, vals := randomTrie(800)
-	root := pkg2310.Hash()
+	root := trie.Hash()
 	for _, kv := range vals {
 		proofs, _ := zrmdb.NewMemDatabase()
-		pkg2310.Prove(kv.k, 0, proofs)
+		trie.Prove(kv.k, 0, proofs)
 		if len(proofs.Keys()) == 0 {
 			t.Fatal("zero length proof")
 		}
@@ -110,7 +110,7 @@ func BenchmarkProve(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		kv := vals[keys[i%len(keys)]]
 		proofs, _ := zrmdb.NewMemDatabase()
-		if pkg2310.Prove(kv.k, 0, proofs); len(proofs.Keys()) == 0 {
+		if trie.Prove(kv.k, 0, proofs); len(proofs.Keys()) == 0 {
 			b.Fatalf("zero length proof for %x", kv.k)
 		}
 	}
@@ -118,13 +118,13 @@ func BenchmarkProve(b *testing.B) {
 
 func BenchmarkVerifyProof(b *testing.B) {
 	trie, vals := randomTrie(100)
-	root := pkg2310.Hash()
+	root := trie.Hash()
 	var keys []string
 	var proofs []*zrmdb.MemDatabase
 	for k := range vals {
 		keys = append(keys, k)
 		proof, _ := zrmdb.NewMemDatabase()
-		pkg2310.Prove([]byte(k), 0, proof)
+		trie.Prove([]byte(k), 0, proof)
 		proofs = append(proofs, proof)
 	}
 
@@ -143,14 +143,14 @@ func randomTrie(n int) (*Trie, map[string]*kv) {
 	for i := byte(0); i < 100; i++ {
 		value := &kv{common.LeftPadBytes([]byte{i}, 32), []byte{i}, false}
 		value2 := &kv{common.LeftPadBytes([]byte{i + 10}, 32), []byte{i}, false}
-		pkg2310.Update(value.k, value.v)
-		pkg2310.Update(value2.k, value2.v)
+		trie.Update(value.k, value.v)
+		trie.Update(value2.k, value2.v)
 		vals[string(value.k)] = value
 		vals[string(value2.k)] = value2
 	}
 	for i := 0; i < n; i++ {
 		value := &kv{randBytes(32), randBytes(20), false}
-		pkg2310.Update(value.k, value.v)
+		trie.Update(value.k, value.v)
 		vals[string(value.k)] = value
 	}
 	return trie, vals

@@ -22,7 +22,7 @@ import (
 
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/zrmdb"
-	"github.com/apolo-technologies/zerium/pkg2310"
+	"github.com/apolo-technologies/zerium/trie"
 	lru "github.com/hashicorp/golang-lru"
 )
 
@@ -31,7 +31,7 @@ var MaxTrieCacheGen = uint16(120)
 
 const (
 	// Number of past tries to keep. This value is chosen such that
-	// reasonable chain reorg depths will hit an existing pkg2310.
+	// reasonable chain reorg depths will hit an existing trie.
 	maxPastTries = 12
 
 	// Number of codehash->size associations to keep.
@@ -41,14 +41,14 @@ const (
 // Database wraps access to tries and contract code.
 type Database interface {
 	// Accessing tries:
-	// OpenTrie opens the main account pkg2310.
+	// OpenTrie opens the main account trie.
 	// OpenStorageTrie opens the storage trie of an account.
 	OpenTrie(root common.Hash) (Trie, error)
 	OpenStorageTrie(addrHash, root common.Hash) (Trie, error)
 	// Accessing contract code:
 	ContractCode(addrHash, codeHash common.Hash) ([]byte, error)
 	ContractCodeSize(addrHash, codeHash common.Hash) (int, error)
-	// CopyTrie returns an independent copy of the given pkg2310.
+	// CopyTrie returns an independent copy of the given trie.
 	CopyTrie(Trie) Trie
 }
 
@@ -57,9 +57,9 @@ type Trie interface {
 	TryGet(key []byte) ([]byte, error)
 	TryUpdate(key, value []byte) error
 	TryDelete(key []byte) error
-	CommitTo(pkg2310.DatabaseWriter) (common.Hash, error)
+	CommitTo(trie.DatabaseWriter) (common.Hash, error)
 	Hash() common.Hash
-	NodeIterator(startKey []byte) pkg2310.NodeIterator
+	NodeIterator(startKey []byte) trie.NodeIterator
 	GetKey([]byte) []byte // TODO(fjl): remove this when SecureTrie is removed
 }
 
@@ -73,7 +73,7 @@ func NewDatabase(db zrmdb.Database) Database {
 type cachingDB struct {
 	db            zrmdb.Database
 	mu            sync.Mutex
-	pastTries     []*pkg2310.SecureTrie
+	pastTries     []*trie.SecureTrie
 	codeSizeCache *lru.Cache
 }
 
@@ -86,14 +86,14 @@ func (db *cachingDB) OpenTrie(root common.Hash) (Trie, error) {
 			return cachedTrie{db.pastTries[i].Copy(), db}, nil
 		}
 	}
-	tr, err := pkg2310.NewSecure(root, db.db, MaxTrieCacheGen)
+	tr, err := trie.NewSecure(root, db.db, MaxTrieCacheGen)
 	if err != nil {
 		return nil, err
 	}
 	return cachedTrie{tr, db}, nil
 }
 
-func (db *cachingDB) pushTrie(t *pkg2310.SecureTrie) {
+func (db *cachingDB) pushTrie(t *trie.SecureTrie) {
 	db.mu.Lock()
 	defer db.mu.Unlock()
 
@@ -106,14 +106,14 @@ func (db *cachingDB) pushTrie(t *pkg2310.SecureTrie) {
 }
 
 func (db *cachingDB) OpenStorageTrie(addrHash, root common.Hash) (Trie, error) {
-	return pkg2310.NewSecure(root, db.db, 0)
+	return trie.NewSecure(root, db.db, 0)
 }
 
 func (db *cachingDB) CopyTrie(t Trie) Trie {
 	switch t := t.(type) {
 	case cachedTrie:
 		return cachedTrie{t.SecureTrie.Copy(), db}
-	case *pkg2310.SecureTrie:
+	case *trie.SecureTrie:
 		return t.Copy()
 	default:
 		panic(fmt.Errorf("unknown trie type %T", t))
@@ -141,11 +141,11 @@ func (db *cachingDB) ContractCodeSize(addrHash, codeHash common.Hash) (int, erro
 
 // cachedTrie inserts its trie into a cachingDB on commit.
 type cachedTrie struct {
-	*pkg2310.SecureTrie
+	*trie.SecureTrie
 	db *cachingDB
 }
 
-func (m cachedTrie) CommitTo(dbw pkg2310.DatabaseWriter) (common.Hash, error) {
+func (m cachedTrie) CommitTo(dbw trie.DatabaseWriter) (common.Hash, error) {
 	root, err := m.SecureTrie.CommitTo(dbw)
 	if err == nil {
 		m.db.pushTrie(m.SecureTrie)

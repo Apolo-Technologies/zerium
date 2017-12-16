@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-package pkg2310
+package trie
 
 import (
 	"bytes"
@@ -50,7 +50,7 @@ func newEmpty() *Trie {
 
 func TestEmptyTrie(t *testing.T) {
 	var trie Trie
-	res := pkg2310.Hash()
+	res := trie.Hash()
 	exp := emptyRoot
 	if res != common.Hash(exp) {
 		t.Errorf("expected %x got %x", exp, res)
@@ -61,8 +61,8 @@ func TestNull(t *testing.T) {
 	var trie Trie
 	key := make([]byte, 32)
 	value := []byte("test")
-	pkg2310.Update(key, value)
-	if !bytes.Equal(pkg2310.Get(key), value) {
+	trie.Update(key, value)
+	if !bytes.Equal(trie.Get(key), value) {
 		t.Fatal("wrong value")
 	}
 }
@@ -83,34 +83,34 @@ func TestMissingNode(t *testing.T) {
 	trie, _ := New(common.Hash{}, db)
 	updateString(trie, "120000", "qwerqwerqwerqwerqwerqwerqwerqwer")
 	updateString(trie, "123456", "asdfasdfasdfasdfasdfasdfasdfasdf")
-	root, _ := pkg2310.Commit()
+	root, _ := trie.Commit()
 
 	trie, _ = New(root, db)
-	_, err := pkg2310.TryGet([]byte("120000"))
+	_, err := trie.TryGet([]byte("120000"))
 	if err != nil {
 		t.Errorf("Unexpected error: %v", err)
 	}
 
 	trie, _ = New(root, db)
-	_, err = pkg2310.TryGet([]byte("120099"))
+	_, err = trie.TryGet([]byte("120099"))
 	if err != nil {
 		t.Errorf("Unexpected error: %v", err)
 	}
 
 	trie, _ = New(root, db)
-	_, err = pkg2310.TryGet([]byte("123456"))
+	_, err = trie.TryGet([]byte("123456"))
 	if err != nil {
 		t.Errorf("Unexpected error: %v", err)
 	}
 
 	trie, _ = New(root, db)
-	err = pkg2310.TryUpdate([]byte("120099"), []byte("zxcvzxcvzxcvzxcvzxcvzxcvzxcvzxcv"))
+	err = trie.TryUpdate([]byte("120099"), []byte("zxcvzxcvzxcvzxcvzxcvzxcvzxcvzxcv"))
 	if err != nil {
 		t.Errorf("Unexpected error: %v", err)
 	}
 
 	trie, _ = New(root, db)
-	err = pkg2310.TryDelete([]byte("123456"))
+	err = trie.TryDelete([]byte("123456"))
 	if err != nil {
 		t.Errorf("Unexpected error: %v", err)
 	}
@@ -118,31 +118,31 @@ func TestMissingNode(t *testing.T) {
 	db.Delete(common.FromHex("e1d943cc8f061a0c0b98162830b970395ac9315654824bf21b73b891365262f9"))
 
 	trie, _ = New(root, db)
-	_, err = pkg2310.TryGet([]byte("120000"))
+	_, err = trie.TryGet([]byte("120000"))
 	if _, ok := err.(*MissingNodeError); !ok {
 		t.Errorf("Wrong error: %v", err)
 	}
 
 	trie, _ = New(root, db)
-	_, err = pkg2310.TryGet([]byte("120099"))
+	_, err = trie.TryGet([]byte("120099"))
 	if _, ok := err.(*MissingNodeError); !ok {
 		t.Errorf("Wrong error: %v", err)
 	}
 
 	trie, _ = New(root, db)
-	_, err = pkg2310.TryGet([]byte("123456"))
+	_, err = trie.TryGet([]byte("123456"))
 	if err != nil {
 		t.Errorf("Unexpected error: %v", err)
 	}
 
 	trie, _ = New(root, db)
-	err = pkg2310.TryUpdate([]byte("120099"), []byte("zxcv"))
+	err = trie.TryUpdate([]byte("120099"), []byte("zxcv"))
 	if _, ok := err.(*MissingNodeError); !ok {
 		t.Errorf("Wrong error: %v", err)
 	}
 
 	trie, _ = New(root, db)
-	err = pkg2310.TryDelete([]byte("123456"))
+	err = trie.TryDelete([]byte("123456"))
 	if _, ok := err.(*MissingNodeError); !ok {
 		t.Errorf("Wrong error: %v", err)
 	}
@@ -156,7 +156,7 @@ func TestInsert(t *testing.T) {
 	updateString(trie, "dogglesworth", "cat")
 
 	exp := common.HexToHash("8aad789dff2f538bca5d8ea56e8abe10f4c7ba3a5dea95fea4cd6e7c3a1168d3")
-	root := pkg2310.Hash()
+	root := trie.Hash()
 	if root != exp {
 		t.Errorf("exp %x got %x", exp, root)
 	}
@@ -165,7 +165,7 @@ func TestInsert(t *testing.T) {
 	updateString(trie, "A", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
 	exp = common.HexToHash("d23786fb4a010da3ce639d66d5e904a11dbc02746d1ce25029e53290cabf28ab")
-	root, err := pkg2310.Commit()
+	root, err := trie.Commit()
 	if err != nil {
 		t.Fatalf("commit error: %v", err)
 	}
@@ -194,7 +194,7 @@ func TestGet(t *testing.T) {
 		if i == 1 {
 			return
 		}
-		pkg2310.Commit()
+		trie.Commit()
 	}
 }
 
@@ -218,7 +218,7 @@ func TestDelete(t *testing.T) {
 		}
 	}
 
-	hash := pkg2310.Hash()
+	hash := trie.Hash()
 	exp := common.HexToHash("5991bb8c6514148a29db676a14ac506cd2cd5775ace63c30a4fe457715e9ac84")
 	if hash != exp {
 		t.Errorf("expected %x got %x", exp, hash)
@@ -242,7 +242,7 @@ func TestEmptyValues(t *testing.T) {
 		updateString(trie, val.k, val.v)
 	}
 
-	hash := pkg2310.Hash()
+	hash := trie.Hash()
 	exp := common.HexToHash("5991bb8c6514148a29db676a14ac506cd2cd5775ace63c30a4fe457715e9ac84")
 	if hash != exp {
 		t.Errorf("expected %x got %x", exp, hash)
@@ -263,13 +263,13 @@ func TestReplication(t *testing.T) {
 	for _, val := range vals {
 		updateString(trie, val.k, val.v)
 	}
-	exp, err := pkg2310.Commit()
+	exp, err := trie.Commit()
 	if err != nil {
 		t.Fatalf("commit error: %v", err)
 	}
 
 	// create a new trie on top of the database and check that lookups work.
-	trie2, err := New(exp, pkg2310.db)
+	trie2, err := New(exp, trie.db)
 	if err != nil {
 		t.Fatalf("can't recreate trie at %x: %v", exp, err)
 	}
@@ -286,7 +286,7 @@ func TestReplication(t *testing.T) {
 		t.Errorf("root failure. expected %x got %x", exp, hash)
 	}
 
-	// perform some insertions on the new pkg2310.
+	// perform some insertions on the new trie.
 	vals2 := []struct{ k, v string }{
 		{"do", "verb"},
 		{"zerium", "wookiedoo"},
@@ -308,9 +308,9 @@ func TestReplication(t *testing.T) {
 
 func TestLargeValue(t *testing.T) {
 	trie := newEmpty()
-	pkg2310.Update([]byte("key1"), []byte{99, 99, 99, 99})
-	pkg2310.Update([]byte("key2"), bytes.Repeat([]byte{1}, 32))
-	pkg2310.Hash()
+	trie.Update([]byte("key1"), []byte{99, 99, 99, 99})
+	trie.Update([]byte("key2"), bytes.Repeat([]byte{1}, 32))
+	trie.Hash()
 }
 
 type countingDB struct {
@@ -332,17 +332,17 @@ func TestCacheUnload(t *testing.T) {
 	key2 := "---some other branch"
 	updateString(trie, key1, "this is the branch of key1.")
 	updateString(trie, key2, "this is the branch of key2.")
-	root, _ := pkg2310.Commit()
+	root, _ := trie.Commit()
 
 	// Commit the trie repeatedly and access key1.
 	// The branch containing it is loaded from DB exactly two times:
 	// in the 0th and 6th iteration.
-	db := &countingDB{Database: pkg2310.db, gets: make(map[string]int)}
+	db := &countingDB{Database: trie.db, gets: make(map[string]int)}
 	trie, _ = New(root, db)
-	pkg2310.SetCacheLimit(5)
+	trie.SetCacheLimit(5)
 	for i := 0; i < 12; i++ {
 		getString(trie, key1)
-		pkg2310.Commit()
+		trie.Commit()
 	}
 
 	// Check that it got loaded two times.
@@ -520,21 +520,21 @@ func benchGet(b *testing.B, commit bool) {
 	k := make([]byte, 32)
 	for i := 0; i < benchElemCount; i++ {
 		binary.LittleEndian.PutUint64(k, uint64(i))
-		pkg2310.Update(k, k)
+		trie.Update(k, k)
 	}
 	binary.LittleEndian.PutUint64(k, benchElemCount/2)
 	if commit {
-		pkg2310.Commit()
+		trie.Commit()
 	}
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		pkg2310.Get(k)
+		trie.Get(k)
 	}
 	b.StopTimer()
 
 	if commit {
-		ldb := pkg2310.db.(*zrmdb.LDBDatabase)
+		ldb := trie.db.(*zrmdb.LDBDatabase)
 		ldb.Close()
 		os.RemoveAll(ldb.Path())
 	}
@@ -545,7 +545,7 @@ func benchUpdate(b *testing.B, e binary.ByteOrder) *Trie {
 	k := make([]byte, 32)
 	for i := 0; i < b.N; i++ {
 		e.PutUint64(k, uint64(i))
-		pkg2310.Update(k, k)
+		trie.Update(k, k)
 	}
 	return trie
 }
@@ -578,11 +578,11 @@ func BenchmarkHash(b *testing.B) {
 	// Insert the accounts into the trie and hash it
 	trie := newEmpty()
 	for i := 0; i < len(addresses); i++ {
-		pkg2310.Update(crypto.Keccak256(addresses[i][:]), accounts[i])
+		trie.Update(crypto.Keccak256(addresses[i][:]), accounts[i])
 	}
 	b.ResetTimer()
 	b.ReportAllocs()
-	pkg2310.Hash()
+	trie.Hash()
 }
 
 func tempDB() (string, Database) {
@@ -598,13 +598,13 @@ func tempDB() (string, Database) {
 }
 
 func getString(trie *Trie, k string) []byte {
-	return pkg2310.Get([]byte(k))
+	return trie.Get([]byte(k))
 }
 
 func updateString(trie *Trie, k, v string) {
-	pkg2310.Update([]byte(k), []byte(v))
+	trie.Update([]byte(k), []byte(v))
 }
 
 func deleteString(trie *Trie, k string) {
-	pkg2310.Delete([]byte(k))
+	trie.Delete([]byte(k))
 }

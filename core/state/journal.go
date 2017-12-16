@@ -29,7 +29,7 @@ type journalEntry interface {
 type journal []journalEntry
 
 type (
-	// Changes to the account pkg2310.
+	// Changes to the account trie.
 	createObjectChange struct {
 		account *common.Address
 	}

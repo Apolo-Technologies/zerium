@@ -33,7 +33,7 @@ import (
 	"github.com/apolo-technologies/zerium/p2p"
 	"github.com/apolo-technologies/zerium/params"
 	"github.com/apolo-technologies/zerium/rlp"
-	"github.com/apolo-technologies/zerium/pkg2310"
+	"github.com/apolo-technologies/zerium/trie"
 )
 
 func expectResponse(r p2p.MsgReader, msgcode, reqID, bv uint64, data interface{}) error {
@@ -358,7 +358,7 @@ func testGetProofs(t *testing.T, protocol int) {
 	for i := uint64(0); i <= bc.CurrentBlock().NumberU64(); i++ {
 		header := bc.GetHeaderByNumber(i)
 		root := header.Root
-		trie, _ := pkg2310.New(root, db)
+		trie, _ := trie.New(root, db)
 
 		for _, acc := range accounts {
 			req := ProofReq{
@@ -370,10 +370,10 @@ func testGetProofs(t *testing.T, protocol int) {
 			switch protocol {
 			case 1:
 				var proof light.NodeList
-				pkg2310.Prove(crypto.Keccak256(acc[:]), 0, &proof)
+				trie.Prove(crypto.Keccak256(acc[:]), 0, &proof)
 				proofsV1 = append(proofsV1, proof)
 			case 2:
-				pkg2310.Prove(crypto.Keccak256(acc[:]), 0, proofsV2)
+				trie.Prove(crypto.Keccak256(acc[:]), 0, proofsV2)
 			}
 		}
 	}

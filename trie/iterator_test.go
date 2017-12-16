@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-package pkg2310
+package trie
 
 import (
 	"bytes"
@@ -40,12 +40,12 @@ func TestIterator(t *testing.T) {
 	all := make(map[string]string)
 	for _, val := range vals {
 		all[val.k] = val.v
-		pkg2310.Update([]byte(val.k), []byte(val.v))
+		trie.Update([]byte(val.k), []byte(val.v))
 	}
-	pkg2310.Commit()
+	trie.Commit()
 
 	found := make(map[string]string)
-	it := NewIterator(pkg2310.NodeIterator(nil))
+	it := NewIterator(trie.NodeIterator(nil))
 	for it.Next() {
 		found[string(it.Key)] = string(it.Value)
 	}
@@ -69,13 +69,13 @@ func TestIteratorLargeData(t *testing.T) {
 	for i := byte(0); i < 255; i++ {
 		value := &kv{common.LeftPadBytes([]byte{i}, 32), []byte{i}, false}
 		value2 := &kv{common.LeftPadBytes([]byte{10, i}, 32), []byte{i}, false}
-		pkg2310.Update(value.k, value.v)
-		pkg2310.Update(value2.k, value2.v)
+		trie.Update(value.k, value.v)
+		trie.Update(value2.k, value2.v)
 		vals[string(value.k)] = value
 		vals[string(value2.k)] = value2
 	}
 
-	it := NewIterator(pkg2310.NodeIterator(nil))
+	it := NewIterator(trie.NodeIterator(nil))
 	for it.Next() {
 		vals[string(it.Key)].t = true
 	}
@@ -102,7 +102,7 @@ func TestNodeIteratorCoverage(t *testing.T) {
 
 	// Gather all the node hashes found by the iterator
 	hashes := make(map[common.Hash]struct{})
-	for it := pkg2310.NodeIterator(nil); it.Next(true); {
+	for it := trie.NodeIterator(nil); it.Next(true); {
 		if it.Hash() != (common.Hash{}) {
 			hashes[it.Hash()] = struct{}{}
 		}
@@ -148,23 +148,23 @@ var testdata2 = []kvs{
 func TestIteratorSeek(t *testing.T) {
 	trie := newEmpty()
 	for _, val := range testdata1 {
-		pkg2310.Update([]byte(val.k), []byte(val.v))
+		trie.Update([]byte(val.k), []byte(val.v))
 	}
 
 	// Seek to the middle.
-	it := NewIterator(pkg2310.NodeIterator([]byte("fab")))
+	it := NewIterator(trie.NodeIterator([]byte("fab")))
 	if err := checkIteratorOrder(testdata1[4:], it); err != nil {
 		t.Fatal(err)
 	}
 
 	// Seek to a non-existent key.
-	it = NewIterator(pkg2310.NodeIterator([]byte("barc")))
+	it = NewIterator(trie.NodeIterator([]byte("barc")))
 	if err := checkIteratorOrder(testdata1[1:], it); err != nil {
 		t.Fatal(err)
 	}
 
 	// Seek beyond the end.
-	it = NewIterator(pkg2310.NodeIterator([]byte("z")))
+	it = NewIterator(trie.NodeIterator([]byte("z")))
 	if err := checkIteratorOrder(nil, it); err != nil {
 		t.Fatal(err)
 	}

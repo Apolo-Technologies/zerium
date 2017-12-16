@@ -23,11 +23,11 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/rlp"
-	"github.com/apolo-technologies/zerium/pkg2310"
+	"github.com/apolo-technologies/zerium/trie"
 )
 
-// NodeSet stores a set of trie nodes. It implements pkg2310.Database and can also
-// act as a cache for another pkg2310.Database.
+// NodeSet stores a set of trie nodes. It implements trie.Database and can also
+// act as a cache for another trie.Database.
 type NodeSet struct {
 	db       map[string][]byte
 	dataSize int
@@ -99,7 +99,7 @@ func (db *NodeSet) NodeList() NodeList {
 }
 
 // Store writes the contents of the set to the given database
-func (db *NodeSet) Store(target pkg2310.Database) {
+func (db *NodeSet) Store(target trie.Database) {
 	db.lock.RLock()
 	defer db.lock.RUnlock()
 
@@ -108,11 +108,11 @@ func (db *NodeSet) Store(target pkg2310.Database) {
 	}
 }
 
-// NodeList stores an ordered list of trie nodes. It implements pkg2310.DatabaseWriter.
+// NodeList stores an ordered list of trie nodes. It implements trie.DatabaseWriter.
 type NodeList []rlp.RawValue
 
 // Store writes the contents of the list to the given database
-func (n NodeList) Store(db pkg2310.Database) {
+func (n NodeList) Store(db trie.Database) {
 	for _, node := range n {
 		db.Put(crypto.Keccak256(node), node)
 	}

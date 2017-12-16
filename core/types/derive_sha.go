@@ -21,7 +21,7 @@ import (
 
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/rlp"
-	"github.com/apolo-technologies/zerium/pkg2310"
+	"github.com/apolo-technologies/zerium/trie"
 )
 
 type DerivableList interface {
@@ -31,11 +31,11 @@ type DerivableList interface {
 
 func DeriveSha(list DerivableList) common.Hash {
 	keybuf := new(bytes.Buffer)
-	trie := new(pkg2310.Trie)
+	trie := new(trie.Trie)
 	for i := 0; i < list.Len(); i++ {
 		keybuf.Reset()
 		rlp.Encode(keybuf, uint(i))
-		pkg2310.Update(keybuf.Bytes(), list.GetRlp(i))
+		trie.Update(keybuf.Bytes(), list.GetRlp(i))
 	}
-	return pkg2310.Hash()
+	return trie.Hash()
 }

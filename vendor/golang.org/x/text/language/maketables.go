@@ -525,7 +525,7 @@ func (b *builder) writeBitVector(name string, ss []string) {
 	b.writeSlice(name, vec)
 }
 
-// TODO: convert this type into a list or two-stage pkg2310.
+// TODO: convert this type into a list or two-stage trie.
 func (b *builder) writeMapFunc(name string, m map[string]string, f func(string) uint16) {
 	b.comment(name)
 	v := reflect.ValueOf(m)
