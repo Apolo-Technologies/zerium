@@ -29,7 +29,7 @@ import (
 	"github.com/apolo-technologies/zerium/zrm/downloader"
 	"github.com/apolo-technologies/zerium/zrmclient"
 	"github.com/apolo-technologies/zerium/zrmstats"
-	"github.com/apolo-technologies/zerium/les"
+	"github.com/apolo-technologies/zerium/lzrm"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/p2p"
 	"github.com/apolo-technologies/zerium/p2p/nat"

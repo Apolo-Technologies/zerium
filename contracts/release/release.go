@@ -29,7 +29,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/internal/zrmapi"
-	"github.com/apolo-technologies/zerium/les"
+	"github.com/apolo-technologies/zerium/lzrm"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/p2p"

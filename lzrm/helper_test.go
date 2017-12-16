@@ -33,7 +33,7 @@ import (
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/les/flowcontrol"
+	"github.com/apolo-technologies/zerium/lzrm/flowcontrol"
 	"github.com/apolo-technologies/zerium/light"
 	"github.com/apolo-technologies/zerium/p2p"
 	"github.com/apolo-technologies/zerium/p2p/discover"

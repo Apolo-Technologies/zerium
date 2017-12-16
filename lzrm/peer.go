@@ -29,7 +29,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/core/types"
 	"github.com/apolo-technologies/zerium/zrm"
-	"github.com/apolo-technologies/zerium/les/flowcontrol"
+	"github.com/apolo-technologies/zerium/lzrm/flowcontrol"
 	"github.com/apolo-technologies/zerium/light"
 	"github.com/apolo-technologies/zerium/p2p"
 	"github.com/apolo-technologies/zerium/rlp"

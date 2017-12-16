@@ -44,7 +44,7 @@ import (
 	"github.com/apolo-technologies/zerium/zrm/gasprice"
 	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/zrmstats"
-	"github.com/apolo-technologies/zerium/les"
+	"github.com/apolo-technologies/zerium/lzrm"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/metrics"
 	"github.com/apolo-technologies/zerium/node"
