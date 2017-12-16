@@ -103,7 +103,7 @@ func (s *Zerium) AddLesServer(ls LesServer) {
 // initialisation of the common Zerium object)
 func New(ctx *node.ServiceContext, config *Config) (*Zerium, error) {
 	if config.SyncMode == downloader.LightSync {
-		return nil, errors.New("can't run zrm.Zerium in light sync mode, use les.LightZerium")
+		return nil, errors.New("can't run zrm.Zerium in light sync mode, use lzrm.LightZerium")
 	}
 	if !config.SyncMode.IsValid() {
 		return nil, fmt.Errorf("invalid sync mode %d", config.SyncMode)

@@ -151,14 +151,14 @@ func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 		ethConf.NetworkId = uint64(config.ZeriumNetworkID)
 		ethConf.DatabaseCache = config.ZeriumDatabaseCache
 		if err := rawStack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-			return les.New(ctx, &ethConf)
+			return lzrm.New(ctx, &ethConf)
 		}); err != nil {
 			return nil, fmt.Errorf("zerium init: %v", err)
 		}
 		// If netstats reporting is requested, do it
 		if config.ZeriumNetStats != "" {
 			if err := rawStack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-				var lesServ *les.LightZerium
+				var lesServ *lzrm.LightZerium
 				ctx.Service(&lesServ)
 
 				return zrmstats.New(config.ZeriumNetStats, nil, lesServ)

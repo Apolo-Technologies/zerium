@@ -235,14 +235,14 @@ func newFaucet(genesis *core.Genesis, port int, enodes []*discv5.Node, network u
 		cfg.SyncMode = downloader.LightSync
 		cfg.NetworkId = network
 		cfg.Genesis = genesis
-		return les.New(ctx, &cfg)
+		return lzrm.New(ctx, &cfg)
 	}); err != nil {
 		return nil, err
 	}
 	// Assemble the zrmstats monitoring and reporting service'
 	if stats != "" {
 		if err := stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-			var serv *les.LightZerium
+			var serv *lzrm.LightZerium
 			ctx.Service(&serv)
 			return zrmstats.New(stats, nil, serv)
 		}); err != nil {

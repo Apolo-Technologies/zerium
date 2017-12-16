@@ -1058,13 +1058,13 @@ func RegisterEthService(stack *node.Node, cfg *zrm.Config) {
 	var err error
 	if cfg.SyncMode == downloader.LightSync {
 		err = stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
-			return les.New(ctx, cfg)
+			return lzrm.New(ctx, cfg)
 		})
 	} else {
 		err = stack.Register(func(ctx *node.ServiceContext) (node.Service, error) {
 			fullNode, err := zrm.New(ctx, cfg)
 			if fullNode != nil && cfg.LightServ > 0 {
-				ls, _ := les.NewLesServer(fullNode, cfg)
+				ls, _ := lzrm.NewLesServer(fullNode, cfg)
 				fullNode.AddLesServer(ls)
 			}
 			return fullNode, err
@@ -1099,7 +1099,7 @@ func RegisterEthStatsService(stack *node.Node, url string) {
 		var zrmServ *zrm.Zerium
 		ctx.Service(&zrmServ)
 
-		var lesServ *les.LightZerium
+		var lesServ *lzrm.LightZerium
 		ctx.Service(&lesServ)
 
 		return zrmstats.New(url, zrmServ, lesServ)

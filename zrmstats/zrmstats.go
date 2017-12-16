@@ -71,7 +71,7 @@ type blockChain interface {
 type Service struct {
 	server *p2p.Server        // Peer-to-peer server to retrieve networking infos
 	zrm    *zrm.Zerium      // Full Zerium service if monitoring a full node
-	les    *les.LightZerium // Light Zerium service if monitoring a light node
+	les    *lzrm.LightZerium // Light Zerium service if monitoring a light node
 	engine consensus.Engine   // Consensus engine to retrieve variadic block fields
 
 	node string // Name of the node to display on the monitoring page
@@ -83,7 +83,7 @@ type Service struct {
 }
 
 // New returns a monitoring service ready for stats reporting.
-func New(url string, zrmServ *zrm.Zerium, lesServ *les.LightZerium) (*Service, error) {
+func New(url string, zrmServ *zrm.Zerium, lesServ *lzrm.LightZerium) (*Service, error) {
 	// Parse the netstats connection url
 	re := regexp.MustCompile("([^:@]*)(:([^@]*))?@(.+)")
 	parts := re.FindStringSubmatch(url)
@@ -142,8 +142,8 @@ func (s *Service) loop() {
 		blockchain = s.zrm.BlockChain()
 		txpool = s.zrm.TxPool()
 	} else {
-		blockchain = s.les.BlockChain()
-		txpool = s.les.TxPool()
+		blockchain = s.lzrm.BlockChain()
+		txpool = s.lzrm.TxPool()
 	}
 
 	chainHeadCh := make(chan core.ChainHeadEvent, chainHeadChanSize)
@@ -379,7 +379,7 @@ func (s *Service) login(conn *websocket.Conn) error {
 		protocol = fmt.Sprintf("zrm/%d", zrm.ProtocolVersions[0])
 	} else {
 		network = fmt.Sprintf("%d", infos.Protocols["les"].(*zrm.EthNodeInfo).Network)
-		protocol = fmt.Sprintf("les/%d", les.ClientProtocolVersions[0])
+		protocol = fmt.Sprintf("les/%d", lzrm.ClientProtocolVersions[0])
 	}
 	auth := &authMsg{
 		Id: s.node,
@@ -546,9 +546,9 @@ func (s *Service) assembleBlockStats(block *types.Block) *blockStats {
 		if block != nil {
 			header = block.Header()
 		} else {
-			header = s.les.BlockChain().CurrentHeader()
+			header = s.lzrm.BlockChain().CurrentHeader()
 		}
-		td = s.les.BlockChain().GetTd(header.Hash(), header.Number.Uint64())
+		td = s.lzrm.BlockChain().GetTd(header.Hash(), header.Number.Uint64())
 		txs = []txStats{}
 	}
 	// Assemble and return the block stats
@@ -585,7 +585,7 @@ func (s *Service) reportHistory(conn *websocket.Conn, list []uint64) error {
 		if s.zrm != nil {
 			head = s.zrm.BlockChain().CurrentHeader().Number.Int64()
 		} else {
-			head = s.les.BlockChain().CurrentHeader().Number.Int64()
+			head = s.lzrm.BlockChain().CurrentHeader().Number.Int64()
 		}
 		start := head - historyUpdateRange + 1
 		if start < 0 {
@@ -603,7 +603,7 @@ func (s *Service) reportHistory(conn *websocket.Conn, list []uint64) error {
 		if s.zrm != nil {
 			block = s.zrm.BlockChain().GetBlockByNumber(number)
 		} else {
-			if header := s.les.BlockChain().GetHeaderByNumber(number); header != nil {
+			if header := s.lzrm.BlockChain().GetHeaderByNumber(number); header != nil {
 				block = types.NewBlockWithHeader(header)
 			}
 		}
@@ -644,7 +644,7 @@ func (s *Service) reportPending(conn *websocket.Conn) error {
 	if s.zrm != nil {
 		pending, _ = s.zrm.TxPool().Stats()
 	} else {
-		pending = s.les.TxPool().Stats()
+		pending = s.lzrm.TxPool().Stats()
 	}
 	// Assemble the transaction stats and send it to the server
 	log.Trace("Sending pending transactions to zrmstats", "count", pending)
@@ -692,8 +692,8 @@ func (s *Service) reportStats(conn *websocket.Conn) error {
 		price, _ := s.zrm.ApiBackend.SuggestPrice(context.Background())
 		gasprice = int(price.Uint64())
 	} else {
-		sync := s.les.Downloader().Progress()
-		syncing = s.les.BlockChain().CurrentHeader().Number.Uint64() >= sync.HighestBlock
+		sync := s.lzrm.Downloader().Progress()
+		syncing = s.lzrm.BlockChain().CurrentHeader().Number.Uint64() >= sync.HighestBlock
 	}
 	// Assemble the node stats and send it to the server
 	log.Trace("Sending node details to zrmstats")

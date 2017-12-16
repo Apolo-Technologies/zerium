@@ -66,7 +66,7 @@ func NewReleaseService(ctx *node.ServiceContext, config Config) (node.Service, e
 	if err := ctx.Service(&zerium); err == nil {
 		apiBackend = zerium.ApiBackend
 	} else {
-		var zerium *les.LightZerium
+		var zerium *lzrm.LightZerium
 		if err := ctx.Service(&zerium); err == nil {
 			apiBackend = zerium.ApiBackend
 		} else {
