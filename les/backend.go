@@ -15,7 +15,7 @@
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
 // Package les implements the Light Zerium Subprotocol.
-package les
+package lzrm
 
 import (
 	"fmt"
