@@ -115,7 +115,7 @@ func New(root common.Hash, db Database) (*Trie, error) {
 	trie := &Trie{db: db, originalRoot: root}
 	if (root != common.Hash{}) && root != emptyRoot {
 		if db == nil {
-			panic("trie.New: cannot use existing root without a database")
+			panic("pkg2310.New: cannot use existing root without a database")
 		}
 		rootnode, err := trie.resolveHash(root[:], nil)
 		if err != nil {
