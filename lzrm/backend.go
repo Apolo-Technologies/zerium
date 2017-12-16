@@ -91,7 +91,7 @@ func New(ctx *node.ServiceContext, config *zrm.Config) (*LightZerium, error) {
 	peers := newPeerSet()
 	quitSync := make(chan struct{})
 
-	leth := &LightZerium{
+	lzrm := &LightZerium{
 		chainConfig:      chainConfig,
 		chainDb:          chainDb,
 		eventMux:         ctx.EventMux,
