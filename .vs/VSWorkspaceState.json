@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\build",
+    "\\internal",
+    "\\internal\\build"
   ],
-  "SelectedNode": "\\VERSION",
+  "SelectedNode": "\\internal\\build\\util.go",
   "PreviewInSolutionExplorer": false
 }

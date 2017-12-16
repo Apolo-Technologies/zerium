@@ -10,10 +10,10 @@ fi
 # Create fake Go workspace if it doesn't exist yet.
 workspace="$PWD/build/_workspace"
 root="$PWD"
-ethdir="$workspace/src/github.com/zerium"
-if [ ! -L "$ethdir/zerium" ]; then
-    mkdir -p "$ethdir"
-    cd "$ethdir"
+zrmdir="$workspace/src/github.com/apolo-technologies"
+if [ ! -L "$zrmdir/zerium" ]; then
+    mkdir -p "$zrmdir"
+    cd "$zrmdir"
     ln -s ../../../../../. zerium
     cd "$root"
 fi
@@ -23,8 +23,8 @@ GOPATH="$workspace"
 export GOPATH
 
 # Run the command inside the workspace.
-cd "$ethdir/zerium"
-PWD="$ethdir/zerium"
+cd "$zrmdir/zerium"
+PWD="$zrmdir/zerium"
 
 # Launch the arguments with the configured environment.
 exec "$@"
