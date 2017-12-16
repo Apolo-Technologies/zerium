@@ -126,13 +126,13 @@ func New(ctx *node.ServiceContext, config *zrm.Config) (*LightZerium, error) {
 	if lzrm.protocolManager, err = NewProtocolManager(lzrm.chainConfig, true, ClientProtocolVersions, config.NetworkId, lzrm.eventMux, lzrm.engine, lzrm.peers, lzrm.blockchain, nil, chainDb, lzrm.odr, lzrm.relay, quitSync, &lzrm.wg); err != nil {
 		return nil, err
 	}
-	lzrm.ApiBackend = &LesApiBackend{leth, nil}
+	lzrm.ApiBackend = &LesApiBackend{lzrm, nil}
 	gpoParams := config.GPO
 	if gpoParams.Default == nil {
 		gpoParams.Default = config.GasPrice
 	}
 	lzrm.ApiBackend.gpo = gasprice.NewOracle(lzrm.ApiBackend, gpoParams)
-	return leth, nil
+	return lzrm, nil
 }
 
 func lesTopic(genesisHash common.Hash, protocolVersion uint) discv5.Topic {
