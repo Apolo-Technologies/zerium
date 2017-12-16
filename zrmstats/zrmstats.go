@@ -71,7 +71,7 @@ type blockChain interface {
 type Service struct {
 	server *p2p.Server        // Peer-to-peer server to retrieve networking infos
 	zrm    *zrm.Zerium      // Full Zerium service if monitoring a full node
-	les    *lzrm.LightZerium // Light Zerium service if monitoring a light node
+	lzrm    *lzrm.LightZerium // Light Zerium service if monitoring a light node
 	engine consensus.Engine   // Consensus engine to retrieve variadic block fields
 
 	node string // Name of the node to display on the monitoring page
@@ -99,7 +99,7 @@ func New(url string, zrmServ *zrm.Zerium, lesServ *lzrm.LightZerium) (*Service, 
 	}
 	return &Service{
 		zrm:    zrmServ,
-		les:    lesServ,
+		lzrm:    lesServ,
 		engine: engine,
 		node:   parts[1],
 		pass:   parts[3],
