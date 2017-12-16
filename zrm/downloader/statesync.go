@@ -211,7 +211,7 @@ func (d *Downloader) runStateSync(s *stateSync) *stateSync {
 type stateSync struct {
 	d *Downloader // Downloader instance to access and manage current peerset
 
-	sched  *trie.TrieSync             // State trie sync scheduler defining the tasks
+	sched  *pkg2310.TrieSync             // State trie sync scheduler defining the tasks
 	keccak hash.Hash                  // Keccak256 hasher to verify deliveries with
 	tasks  map[common.Hash]*stateTask // Set of tasks currently queued for retrieval
 
@@ -407,9 +407,9 @@ func (s *stateSync) process(req *stateReq) (bool, error) {
 			s.numUncommitted++
 			s.bytesUncommitted += len(blob)
 			progress = progress || prog
-		case trie.ErrNotRequested:
+		case pkg2310.ErrNotRequested:
 			unexpected++
-		case trie.ErrAlreadyProcessed:
+		case pkg2310.ErrAlreadyProcessed:
 			duplicate++
 		default:
 			return stale, fmt.Errorf("invalid state node %s: %v", hash.TerminalString(), err)
@@ -450,11 +450,11 @@ func (s *stateSync) process(req *stateReq) (bool, error) {
 // peer into the state trie, returning whether anything useful was written or any
 // error occurred.
 func (s *stateSync) processNodeData(blob []byte) (bool, common.Hash, error) {
-	res := trie.SyncResult{Data: blob}
+	res := pkg2310.SyncResult{Data: blob}
 	s.keccak.Reset()
 	s.keccak.Write(blob)
 	s.keccak.Sum(res.Hash[:0])
-	committed, _, err := s.sched.Process([]trie.SyncResult{res})
+	committed, _, err := s.sched.Process([]pkg2310.SyncResult{res})
 	return committed, res.Hash, err
 }
 

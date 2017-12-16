@@ -36,20 +36,20 @@ func makeTestTrie() (zrmdb.Database, *Trie, map[string][]byte) {
 		// Map the same data under multiple keys
 		key, val := common.LeftPadBytes([]byte{1, i}, 32), []byte{i}
 		content[string(key)] = val
-		trie.Update(key, val)
+		pkg2310.Update(key, val)
 
 		key, val = common.LeftPadBytes([]byte{2, i}, 32), []byte{i}
 		content[string(key)] = val
-		trie.Update(key, val)
+		pkg2310.Update(key, val)
 
 		// Add some other data to inflate the trie
 		for j := byte(3); j < 13; j++ {
 			key, val = common.LeftPadBytes([]byte{j, i}, 32), []byte{j, i}
 			content[string(key)] = val
-			trie.Update(key, val)
+			pkg2310.Update(key, val)
 		}
 	}
-	trie.Commit()
+	pkg2310.Commit()
 
 	// Return the generated trie
 	return db, trie, content
@@ -67,7 +67,7 @@ func checkTrieContents(t *testing.T, db Database, root []byte, content map[strin
 		t.Fatalf("inconsistent trie at %x: %v", root, err)
 	}
 	for key, val := range content {
-		if have := trie.Get([]byte(key)); !bytes.Equal(have, val) {
+		if have := pkg2310.Get([]byte(key)); !bytes.Equal(have, val) {
 			t.Errorf("entry %x: content mismatch: have %x, want %x", key, have, val)
 		}
 	}
@@ -80,7 +80,7 @@ func checkTrieConsistency(db Database, root common.Hash) error {
 	if err != nil {
 		return nil // Consider a non existent state consistent
 	}
-	it := trie.NodeIterator(nil)
+	it := pkg2310.NodeIterator(nil)
 	for it.Next(true) {
 	}
 	return it.Error()
@@ -93,7 +93,7 @@ func TestEmptyTrieSync(t *testing.T) {
 
 	for i, trie := range []*Trie{emptyA, emptyB} {
 		db, _ := zrmdb.NewMemDatabase()
-		if req := NewTrieSync(common.BytesToHash(trie.Root()), db, nil).Missing(1); len(req) != 0 {
+		if req := NewTrieSync(common.BytesToHash(pkg2310.Root()), db, nil).Missing(1); len(req) != 0 {
 			t.Errorf("test %d: content requested for empty trie: %v", i, req)
 		}
 	}

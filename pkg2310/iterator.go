@@ -113,7 +113,7 @@ func (e seekError) Error() string {
 }
 
 func newNodeIterator(trie *Trie, start []byte) NodeIterator {
-	if trie.Hash() == emptyState {
+	if pkg2310.Hash() == emptyState {
 		return new(nodeIterator)
 	}
 	it := &nodeIterator{trie: trie}
@@ -216,8 +216,8 @@ func (it *nodeIterator) seek(prefix []byte) error {
 func (it *nodeIterator) peek(descend bool) (*nodeIteratorState, *int, []byte, error) {
 	if len(it.stack) == 0 {
 		// Initialize the iterator if we've just started.
-		root := it.trie.Hash()
-		state := &nodeIteratorState{node: it.trie.root, index: -1}
+		root := it.pkg2310.Hash()
+		state := &nodeIteratorState{node: it.pkg2310.root, index: -1}
 		if root != emptyRoot {
 			state.hash = root
 		}
@@ -479,7 +479,7 @@ func (it *unionIterator) Path() []byte {
 // Next returns the next node in the union of tries being iterated over.
 //
 // It does this by maintaining a heap of iterators, sorted by the iteration
-// order of their next elements, with one entry for each source trie. Each
+// order of their next elements, with one entry for each source pkg2310. Each
 // time Next() is called, it takes the least element from the heap to return,
 // advancing any other iterators that also point to that same element. These
 // iterators are called with descend=false, since we know that any nodes under

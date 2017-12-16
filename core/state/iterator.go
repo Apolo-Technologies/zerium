@@ -30,8 +30,8 @@ import (
 type NodeIterator struct {
 	state *StateDB // State being iterated
 
-	stateIt trie.NodeIterator // Primary iterator for the global state trie
-	dataIt  trie.NodeIterator // Secondary iterator for the data trie of a contract
+	stateIt pkg2310.NodeIterator // Primary iterator for the global state trie
+	dataIt  pkg2310.NodeIterator // Secondary iterator for the data trie of a contract
 
 	accountHash common.Hash // Hash of the node containing the account
 	codeHash    common.Hash // Hash of the contract source code
@@ -66,7 +66,7 @@ func (it *NodeIterator) Next() bool {
 	return it.retrieve()
 }
 
-// step moves the iterator to the next entry of the state trie.
+// step moves the iterator to the next entry of the state pkg2310.
 func (it *NodeIterator) step() error {
 	// Abort if we reached the end of the iteration
 	if it.state == nil {
@@ -74,7 +74,7 @@ func (it *NodeIterator) step() error {
 	}
 	// Initialize the iterator if we've just started
 	if it.stateIt == nil {
-		it.stateIt = it.state.trie.NodeIterator(nil)
+		it.stateIt = it.state.pkg2310.NodeIterator(nil)
 	}
 	// If we had data nodes previously, we surely have at least state nodes
 	if it.dataIt != nil {

@@ -91,19 +91,19 @@ func (m *ManifestWriter) AddEntry(data io.Reader, e *ManifestEntry) (storage.Key
 	}
 	entry := newManifestTrieEntry(e, nil)
 	entry.Hash = key.String()
-	m.trie.addEntry(entry, m.quitC)
+	m.pkg2310.addEntry(entry, m.quitC)
 	return key, nil
 }
 
 // RemoveEntry removes the given path from the manifest
 func (m *ManifestWriter) RemoveEntry(path string) error {
-	m.trie.deleteEntry(path, m.quitC)
+	m.pkg2310.deleteEntry(path, m.quitC)
 	return nil
 }
 
 // Store stores the manifest, returning the resulting storage key
 func (m *ManifestWriter) Store() (storage.Key, error) {
-	return m.trie.hash, m.trie.recalcAndStore()
+	return m.pkg2310.hash, m.pkg2310.recalcAndStore()
 }
 
 // ManifestWalker is used to recursively walk the entries in the manifest and
@@ -137,7 +137,7 @@ func (m *ManifestWalker) Walk(walkFn WalkFn) error {
 }
 
 func (m *ManifestWalker) walk(trie *manifestTrie, prefix string, walkFn WalkFn) error {
-	for _, entry := range trie.entries {
+	for _, entry := range pkg2310.entries {
 		if entry == nil {
 			continue
 		}
@@ -152,7 +152,7 @@ func (m *ManifestWalker) walk(trie *manifestTrie, prefix string, walkFn WalkFn) 
 		if entry.ContentType != ManifestType {
 			continue
 		}
-		if err := trie.loadSubTrie(entry, nil); err != nil {
+		if err := pkg2310.loadSubTrie(entry, nil); err != nil {
 			return err
 		}
 		if err := m.walk(entry.subtrie, entry.Path, walkFn); err != nil {
@@ -225,7 +225,7 @@ func readManifest(manifestReader storage.LazySectionReader, hash storage.Key, dp
 		dpa: dpa,
 	}
 	for _, entry := range man.Entries {
-		trie.addEntry(entry, quitC)
+		pkg2310.addEntry(entry, quitC)
 	}
 	return
 }

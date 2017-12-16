@@ -139,7 +139,7 @@ func (self *Api) Get(key storage.Key, path string) (reader storage.LazySectionRe
 
 	log.Trace(fmt.Sprintf("getEntry(%s)", path))
 
-	entry, _ := trie.getEntry(path)
+	entry, _ := pkg2310.getEntry(path)
 
 	if entry != nil {
 		key = common.Hex2Bytes(entry.Hash)
@@ -171,15 +171,15 @@ func (self *Api) Modify(key storage.Key, path, contentHash, contentType string) 
 			ContentType: contentType,
 		}, nil)
 		entry.Hash = contentHash
-		trie.addEntry(entry, quitC)
+		pkg2310.addEntry(entry, quitC)
 	} else {
-		trie.deleteEntry(path, quitC)
+		pkg2310.deleteEntry(path, quitC)
 	}
 
-	if err := trie.recalcAndStore(); err != nil {
+	if err := pkg2310.recalcAndStore(); err != nil {
 		return nil, err
 	}
-	return trie.hash, nil
+	return pkg2310.hash, nil
 }
 
 func (self *Api) AddFile(mhash, path, fname string, content []byte, nameresolver bool) (storage.Key, string, error) {

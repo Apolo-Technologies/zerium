@@ -569,8 +569,8 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 		for _, req := range req.Reqs {
 			// Retrieve the requested state entry, stopping if enough was found
 			if header := core.GetHeader(pm.chainDb, req.BHash, core.GetBlockNumber(pm.chainDb, req.BHash)); header != nil {
-				if trie, _ := trie.New(header.Root, pm.chainDb); trie != nil {
-					sdata := trie.Get(req.AccKey)
+				if trie, _ := pkg2310.New(header.Root, pm.chainDb); trie != nil {
+					sdata := pkg2310.Get(req.AccKey)
 					var acc state.Account
 					if err := rlp.DecodeBytes(sdata, &acc); err == nil {
 						entry, _ := pm.chainDb.Get(acc.CodeHash)
@@ -696,13 +696,13 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 			}
 			// Retrieve the requested state entry, stopping if enough was found
 			if header := core.GetHeader(pm.chainDb, req.BHash, core.GetBlockNumber(pm.chainDb, req.BHash)); header != nil {
-				if tr, _ := trie.New(header.Root, pm.chainDb); tr != nil {
+				if tr, _ := pkg2310.New(header.Root, pm.chainDb); tr != nil {
 					if len(req.AccKey) > 0 {
 						sdata := tr.Get(req.AccKey)
 						tr = nil
 						var acc state.Account
 						if err := rlp.DecodeBytes(sdata, &acc); err == nil {
-							tr, _ = trie.New(acc.Root, pm.chainDb)
+							tr, _ = pkg2310.New(acc.Root, pm.chainDb)
 						}
 					}
 					if tr != nil {
@@ -732,7 +732,7 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 		var (
 			lastBHash  common.Hash
 			lastAccKey []byte
-			tr, str    *trie.Trie
+			tr, str    *pkg2310.Trie
 		)
 		reqCnt := len(req.Reqs)
 		if reject(uint64(reqCnt), MaxProofsFetch) {
@@ -747,7 +747,7 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 			}
 			if tr == nil || req.BHash != lastBHash {
 				if header := core.GetHeader(pm.chainDb, req.BHash, core.GetBlockNumber(pm.chainDb, req.BHash)); header != nil {
-					tr, _ = trie.New(header.Root, pm.chainDb)
+					tr, _ = pkg2310.New(header.Root, pm.chainDb)
 				} else {
 					tr = nil
 				}
@@ -761,7 +761,7 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 						str = nil
 						var acc state.Account
 						if err := rlp.DecodeBytes(sdata, &acc); err == nil {
-							str, _ = trie.New(acc.Root, pm.chainDb)
+							str, _ = pkg2310.New(acc.Root, pm.chainDb)
 						}
 						lastAccKey = common.CopyBytes(req.AccKey)
 					}
@@ -848,7 +848,7 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 			if header := pm.blockchain.GetHeaderByNumber(req.BlockNum); header != nil {
 				sectionHead := core.GetCanonicalHash(pm.chainDb, (req.ChtNum+1)*light.ChtV1Frequency-1)
 				if root := light.GetChtRoot(pm.chainDb, req.ChtNum, sectionHead); root != (common.Hash{}) {
-					if tr, _ := trie.New(root, trieDb); tr != nil {
+					if tr, _ := pkg2310.New(root, trieDb); tr != nil {
 						var encNumber [8]byte
 						binary.BigEndian.PutUint64(encNumber[:], req.BlockNum)
 						var proof light.NodeList
@@ -887,7 +887,7 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 			lastIdx  uint64
 			lastType uint
 			root     common.Hash
-			tr       *trie.Trie
+			tr       *pkg2310.Trie
 		)
 
 		nodes := light.NewNodeSet()
@@ -900,7 +900,7 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 				var prefix string
 				root, prefix = pm.getHelperTrie(req.HelperTrieType, req.TrieIdx)
 				if root != (common.Hash{}) {
-					if t, err := trie.New(root, zrmdb.NewTable(pm.chainDb, prefix)); err == nil {
+					if t, err := pkg2310.New(root, zrmdb.NewTable(pm.chainDb, prefix)); err == nil {
 						tr = t
 					}
 				}

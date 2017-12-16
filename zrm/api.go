@@ -595,7 +595,7 @@ func (api *PrivateDebugAPI) GetBadBlocks(ctx context.Context) ([]core.BadBlockAr
 // StorageRangeResult is the result of a debug_storageRangeAt API call.
 type StorageRangeResult struct {
 	Storage storageMap   `json:"storage"`
-	NextKey *common.Hash `json:"nextKey"` // nil if Storage includes the last key in the trie.
+	NextKey *common.Hash `json:"nextKey"` // nil if Storage includes the last key in the pkg2310.
 }
 
 type storageMap map[common.Hash]storageEntry
@@ -619,7 +619,7 @@ func (api *PrivateDebugAPI) StorageRangeAt(ctx context.Context, blockHash common
 }
 
 func storageRangeAt(st state.Trie, start []byte, maxResult int) StorageRangeResult {
-	it := trie.NewIterator(st.NodeIterator(start))
+	it := pkg2310.NewIterator(st.NodeIterator(start))
 	result := StorageRangeResult{Storage: storageMap{}}
 	for i := 0; i < maxResult && it.Next(); i++ {
 		e := storageEntry{Value: common.BytesToHash(it.Value)}

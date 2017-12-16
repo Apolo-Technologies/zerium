@@ -97,7 +97,7 @@ func (s *stateObject) empty() bool {
 }
 
 // Account is the Zerium consensus representation of accounts.
-// These objects are stored in the main account trie.
+// These objects are stored in the main account pkg2310.
 type Account struct {
 	Nonce    uint64
 	Balance  *big.Int
@@ -214,7 +214,7 @@ func (self *stateObject) setState(key, value common.Hash) {
 	}
 }
 
-// updateTrie writes cached storage modifications into the object's storage trie.
+// updateTrie writes cached storage modifications into the object's storage pkg2310.
 func (self *stateObject) updateTrie(db Database) Trie {
 	tr := self.getTrie(db)
 	for key, value := range self.dirtyStorage {
@@ -233,17 +233,17 @@ func (self *stateObject) updateTrie(db Database) Trie {
 // UpdateRoot sets the trie root to the current root hash of
 func (self *stateObject) updateRoot(db Database) {
 	self.updateTrie(db)
-	self.data.Root = self.trie.Hash()
+	self.data.Root = self.pkg2310.Hash()
 }
 
 // CommitTrie the storage trie of the object to dwb.
 // This updates the trie root.
-func (self *stateObject) CommitTrie(db Database, dbw trie.DatabaseWriter) error {
+func (self *stateObject) CommitTrie(db Database, dbw pkg2310.DatabaseWriter) error {
 	self.updateTrie(db)
 	if self.dbErr != nil {
 		return self.dbErr
 	}
-	root, err := self.trie.CommitTo(dbw)
+	root, err := self.pkg2310.CommitTo(dbw)
 	if err == nil {
 		self.data.Root = root
 	}

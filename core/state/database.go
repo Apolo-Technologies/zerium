@@ -31,7 +31,7 @@ var MaxTrieCacheGen = uint16(120)
 
 const (
 	// Number of past tries to keep. This value is chosen such that
-	// reasonable chain reorg depths will hit an existing trie.
+	// reasonable chain reorg depths will hit an existing pkg2310.
 	maxPastTries = 12
 
 	// Number of codehash->size associations to keep.
@@ -41,14 +41,14 @@ const (
 // Database wraps access to tries and contract code.
 type Database interface {
 	// Accessing tries:
-	// OpenTrie opens the main account trie.
+	// OpenTrie opens the main account pkg2310.
 	// OpenStorageTrie opens the storage trie of an account.
 	OpenTrie(root common.Hash) (Trie, error)
 	OpenStorageTrie(addrHash, root common.Hash) (Trie, error)
 	// Accessing contract code:
 	ContractCode(addrHash, codeHash common.Hash) ([]byte, error)
 	ContractCodeSize(addrHash, codeHash common.Hash) (int, error)
-	// CopyTrie returns an independent copy of the given trie.
+	// CopyTrie returns an independent copy of the given pkg2310.
 	CopyTrie(Trie) Trie
 }
 
@@ -73,7 +73,7 @@ func NewDatabase(db zrmdb.Database) Database {
 type cachingDB struct {
 	db            zrmdb.Database
 	mu            sync.Mutex
-	pastTries     []*trie.SecureTrie
+	pastTries     []*pkg2310.SecureTrie
 	codeSizeCache *lru.Cache
 }
 

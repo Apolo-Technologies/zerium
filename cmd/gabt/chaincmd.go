@@ -222,8 +222,8 @@ func importChain(ctx *cli.Context) error {
 		utils.Fatalf("Failed to read database stats: %v", err)
 	}
 	fmt.Println(stats)
-	fmt.Printf("Trie cache misses:  %d\n", trie.CacheMisses())
-	fmt.Printf("Trie cache unloads: %d\n\n", trie.CacheUnloads())
+	fmt.Printf("Trie cache misses:  %d\n", pkg2310.CacheMisses())
+	fmt.Printf("Trie cache unloads: %d\n\n", pkg2310.CacheUnloads())
 
 	// Print the memory statistics used by the importing
 	mem := new(runtime.MemStats)

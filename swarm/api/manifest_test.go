@@ -50,7 +50,7 @@ func testGetEntry(t *testing.T, path, match string, paths ...string) *manifestTr
 }
 
 func checkEntry(t *testing.T, path, match string, trie *manifestTrie) {
-	entry, fullpath := trie.getEntry(path)
+	entry, fullpath := pkg2310.getEntry(path)
 	if match == "-" && entry != nil {
 		t.Errorf("expected no match for '%s', got '%s'", path, fullpath)
 	} else if entry == nil {
@@ -115,7 +115,7 @@ func TestAddFileWithManifestPath(t *testing.T) {
 	entry := &manifestTrieEntry{}
 	entry.Path = "a"
 	entry.Hash = "a"
-	trie.addEntry(entry, nil)
+	pkg2310.addEntry(entry, nil)
 	checkEntry(t, "ab", "ab", trie)
 	checkEntry(t, "ac", "ac", trie)
 	checkEntry(t, "a", "a", trie)

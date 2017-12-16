@@ -45,20 +45,20 @@ func makeTestSecureTrie() (zrmdb.Database, *SecureTrie, map[string][]byte) {
 		// Map the same data under multiple keys
 		key, val := common.LeftPadBytes([]byte{1, i}, 32), []byte{i}
 		content[string(key)] = val
-		trie.Update(key, val)
+		pkg2310.Update(key, val)
 
 		key, val = common.LeftPadBytes([]byte{2, i}, 32), []byte{i}
 		content[string(key)] = val
-		trie.Update(key, val)
+		pkg2310.Update(key, val)
 
 		// Add some other data to inflate the trie
 		for j := byte(3); j < 13; j++ {
 			key, val = common.LeftPadBytes([]byte{j, i}, 32), []byte{j, i}
 			content[string(key)] = val
-			trie.Update(key, val)
+			pkg2310.Update(key, val)
 		}
 	}
-	trie.Commit()
+	pkg2310.Commit()
 
 	// Return the generated trie
 	return db, trie, content
@@ -78,12 +78,12 @@ func TestSecureDelete(t *testing.T) {
 	}
 	for _, val := range vals {
 		if val.v != "" {
-			trie.Update([]byte(val.k), []byte(val.v))
+			pkg2310.Update([]byte(val.k), []byte(val.v))
 		} else {
-			trie.Delete([]byte(val.k))
+			pkg2310.Delete([]byte(val.k))
 		}
 	}
-	hash := trie.Hash()
+	hash := pkg2310.Hash()
 	exp := common.HexToHash("29b235a58c3c25ab83010c327d5932bcf05324b7d6b1185e650798034783ca9d")
 	if hash != exp {
 		t.Errorf("expected %x got %x", exp, hash)
@@ -92,16 +92,16 @@ func TestSecureDelete(t *testing.T) {
 
 func TestSecureGetKey(t *testing.T) {
 	trie := newEmptySecure()
-	trie.Update([]byte("foo"), []byte("bar"))
+	pkg2310.Update([]byte("foo"), []byte("bar"))
 
 	key := []byte("foo")
 	value := []byte("bar")
 	seckey := crypto.Keccak256(key)
 
-	if !bytes.Equal(trie.Get(key), value) {
+	if !bytes.Equal(pkg2310.Get(key), value) {
 		t.Errorf("Get did not return bar")
 	}
-	if k := trie.GetKey(seckey); !bytes.Equal(k, key) {
+	if k := pkg2310.GetKey(seckey); !bytes.Equal(k, key) {
 		t.Errorf("GetKey returned %q, want %q", k, key)
 	}
 }

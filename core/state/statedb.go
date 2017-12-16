@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package state provides a caching layer atop the Zerium state trie.
+// Package state provides a caching layer atop the Zerium state pkg2310.
 package state
 
 import (
@@ -37,7 +37,7 @@ type revision struct {
 }
 
 // StateDBs within the zerium protocol are used to store anything
-// within the merkle trie. StateDBs take care of caching and storing
+// within the merkle pkg2310. StateDBs take care of caching and storing
 // nested states. It's the general query interface to retrieve:
 // * Contracts
 // * Accounts
@@ -328,21 +328,21 @@ func (self *StateDB) Suicide(addr common.Address) bool {
 // Setting, updating & deleting state object methods
 //
 
-// updateStateObject writes the given object to the trie.
+// updateStateObject writes the given object to the pkg2310.
 func (self *StateDB) updateStateObject(stateObject *stateObject) {
 	addr := stateObject.Address()
 	data, err := rlp.EncodeToBytes(stateObject)
 	if err != nil {
 		panic(fmt.Errorf("can't encode object at %x: %v", addr[:], err))
 	}
-	self.setError(self.trie.TryUpdate(addr[:], data))
+	self.setError(self.pkg2310.TryUpdate(addr[:], data))
 }
 
-// deleteStateObject removes the given object from the state trie.
+// deleteStateObject removes the given object from the state pkg2310.
 func (self *StateDB) deleteStateObject(stateObject *stateObject) {
 	stateObject.deleted = true
 	addr := stateObject.Address()
-	self.setError(self.trie.TryDelete(addr[:]))
+	self.setError(self.pkg2310.TryDelete(addr[:]))
 }
 
 // Retrieve a state object given my the address. Returns nil if not found.
@@ -356,7 +356,7 @@ func (self *StateDB) getStateObject(addr common.Address) (stateObject *stateObje
 	}
 
 	// Load the object from the database.
-	enc, err := self.trie.TryGet(addr[:])
+	enc, err := self.pkg2310.TryGet(addr[:])
 	if len(enc) == 0 {
 		self.setError(err)
 		return nil
@@ -434,10 +434,10 @@ func (db *StateDB) ForEachStorage(addr common.Address, cb func(key, value common
 		cb(h, value)
 	}
 
-	it := trie.NewIterator(so.getTrie(db.db).NodeIterator(nil))
+	it := pkg2310.NewIterator(so.getTrie(db.db).NodeIterator(nil))
 	for it.Next() {
 		// ignore cached values
-		key := common.BytesToHash(db.trie.GetKey(it.Key))
+		key := common.BytesToHash(db.pkg2310.GetKey(it.Key))
 		if _, ok := so.cachedStorage[key]; !ok {
 			cb(key, common.BytesToHash(it.Value))
 		}
@@ -528,12 +528,12 @@ func (s *StateDB) Finalise(deleteEmptyObjects bool) {
 	s.clearJournalAndRefund()
 }
 
-// IntermediateRoot computes the current root hash of the state trie.
+// IntermediateRoot computes the current root hash of the state pkg2310.
 // It is called in between transactions to get the root hash that
 // goes into transaction receipts.
 func (s *StateDB) IntermediateRoot(deleteEmptyObjects bool) common.Hash {
 	s.Finalise(deleteEmptyObjects)
-	return s.trie.Hash()
+	return s.pkg2310.Hash()
 }
 
 // Prepare sets the current transaction hash and index and block hash which is
@@ -572,16 +572,16 @@ func (s *StateDB) clearJournalAndRefund() {
 }
 
 // CommitTo writes the state to the given database.
-func (s *StateDB) CommitTo(dbw trie.DatabaseWriter, deleteEmptyObjects bool) (root common.Hash, err error) {
+func (s *StateDB) CommitTo(dbw pkg2310.DatabaseWriter, deleteEmptyObjects bool) (root common.Hash, err error) {
 	defer s.clearJournalAndRefund()
 
-	// Commit objects to the trie.
+	// Commit objects to the pkg2310.
 	for addr, stateObject := range s.stateObjects {
 		_, isDirty := s.stateObjectsDirty[addr]
 		switch {
 		case stateObject.suicided || (isDirty && deleteEmptyObjects && stateObject.empty()):
 			// If the object has been removed, don't bother syncing it
-			// and just mark it for deletion in the trie.
+			// and just mark it for deletion in the pkg2310.
 			s.deleteStateObject(stateObject)
 		case isDirty:
 			// Write any contract code associated with the state object
@@ -591,17 +591,17 @@ func (s *StateDB) CommitTo(dbw trie.DatabaseWriter, deleteEmptyObjects bool) (ro
 				}
 				stateObject.dirtyCode = false
 			}
-			// Write any storage changes in the state object to its storage trie.
+			// Write any storage changes in the state object to its storage pkg2310.
 			if err := stateObject.CommitTrie(s.db, dbw); err != nil {
 				return common.Hash{}, err
 			}
-			// Update the object in the main account trie.
+			// Update the object in the main account pkg2310.
 			s.updateStateObject(stateObject)
 		}
 		delete(s.stateObjectsDirty, addr)
 	}
 	// Write trie changes.
-	root, err = s.trie.CommitTo(dbw)
-	log.Debug("Trie cache stats after commit", "misses", trie.CacheMisses(), "unloads", trie.CacheUnloads())
+	root, err = s.pkg2310.CommitTo(dbw)
+	log.Debug("Trie cache stats after commit", "misses", pkg2310.CacheMisses(), "unloads", pkg2310.CacheUnloads())
 	return root, err
 }

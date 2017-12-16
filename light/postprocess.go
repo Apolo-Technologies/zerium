@@ -116,7 +116,7 @@ type ChtIndexerBackend struct {
 	db, cdb              zrmdb.Database
 	section, sectionSize uint64
 	lastHash             common.Hash
-	trie                 *trie.Trie
+	trie                 *pkg2310.Trie
 }
 
 // NewBloomTrieIndexer creates a BloomTrie chain indexer
@@ -141,7 +141,7 @@ func (c *ChtIndexerBackend) Reset(section uint64, lastSectionHead common.Hash) e
 		root = GetChtRoot(c.db, section-1, lastSectionHead)
 	}
 	var err error
-	c.trie, err = trie.New(root, c.cdb)
+	c.trie, err = pkg2310.New(root, c.cdb)
 	c.section = section
 	return err
 }
@@ -158,13 +158,13 @@ func (c *ChtIndexerBackend) Process(header *types.Header) {
 	var encNumber [8]byte
 	binary.BigEndian.PutUint64(encNumber[:], num)
 	data, _ := rlp.EncodeToBytes(ChtNode{hash, td})
-	c.trie.Update(encNumber[:], data)
+	c.pkg2310.Update(encNumber[:], data)
 }
 
 // Commit implements core.ChainIndexerBackend
 func (c *ChtIndexerBackend) Commit() error {
 	batch := c.cdb.NewBatch()
-	root, err := c.trie.CommitTo(batch)
+	root, err := c.pkg2310.CommitTo(batch)
 	if err != nil {
 		return err
 	} else {
@@ -207,7 +207,7 @@ func StoreBloomTrieRoot(db zrmdb.Database, sectionIdx uint64, sectionHead, root 
 type BloomTrieIndexerBackend struct {
 	db, cdb                                    zrmdb.Database
 	section, parentSectionSize, bloomTrieRatio uint64
-	trie                                       *trie.Trie
+	trie                                       *pkg2310.Trie
 	sectionHeads                               []common.Hash
 }
 
@@ -236,7 +236,7 @@ func (b *BloomTrieIndexerBackend) Reset(section uint64, lastSectionHead common.H
 		root = GetBloomTrieRoot(b.db, section-1, lastSectionHead)
 	}
 	var err error
-	b.trie, err = trie.New(root, b.cdb)
+	b.trie, err = pkg2310.New(root, b.cdb)
 	b.section = section
 	return err
 }
@@ -274,14 +274,14 @@ func (b *BloomTrieIndexerBackend) Commit() error {
 		decompSize += uint64(len(decomp))
 		compSize += uint64(len(comp))
 		if len(comp) > 0 {
-			b.trie.Update(encKey[:], comp)
+			b.pkg2310.Update(encKey[:], comp)
 		} else {
-			b.trie.Delete(encKey[:])
+			b.pkg2310.Delete(encKey[:])
 		}
 	}
 
 	batch := b.cdb.NewBatch()
-	root, err := b.trie.CommitTo(batch)
+	root, err := b.pkg2310.CommitTo(batch)
 	if err != nil {
 		return err
 	} else {

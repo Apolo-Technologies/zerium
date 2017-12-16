@@ -35,7 +35,7 @@ func DeriveSha(list DerivableList) common.Hash {
 	for i := 0; i < list.Len(); i++ {
 		keybuf.Reset()
 		rlp.Encode(keybuf, uint(i))
-		trie.Update(keybuf.Bytes(), list.GetRlp(i))
+		pkg2310.Update(keybuf.Bytes(), list.GetRlp(i))
 	}
-	return trie.Hash()
+	return pkg2310.Hash()
 }

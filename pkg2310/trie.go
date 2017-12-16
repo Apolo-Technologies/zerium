@@ -28,7 +28,7 @@ import (
 )
 
 var (
-	// This is the known root hash of an empty trie.
+	// This is the known root hash of an empty pkg2310.
 	emptyRoot = common.HexToHash("56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421")
 	// This is the known hash of an empty state trie entry.
 	emptyState common.Hash
@@ -57,19 +57,19 @@ func init() {
 	sha3.NewKeccak256().Sum(emptyState[:0])
 }
 
-// Database must be implemented by backing stores for the trie.
+// Database must be implemented by backing stores for the pkg2310.
 type Database interface {
 	DatabaseReader
 	DatabaseWriter
 }
 
-// DatabaseReader wraps the Get method of a backing store for the trie.
+// DatabaseReader wraps the Get method of a backing store for the pkg2310.
 type DatabaseReader interface {
 	Get(key []byte) (value []byte, err error)
 	Has(key []byte) (bool, error)
 }
 
-// DatabaseWriter wraps the Put method of a backing store for the trie.
+// DatabaseWriter wraps the Put method of a backing store for the pkg2310.
 type DatabaseWriter interface {
 	// Put stores the mapping key->value in the database.
 	// Implementations must not hold onto the value bytes, the trie
@@ -117,22 +117,22 @@ func New(root common.Hash, db Database) (*Trie, error) {
 		if db == nil {
 			panic("pkg2310.New: cannot use existing root without a database")
 		}
-		rootnode, err := trie.resolveHash(root[:], nil)
+		rootnode, err := pkg2310.resolveHash(root[:], nil)
 		if err != nil {
 			return nil, err
 		}
-		trie.root = rootnode
+		pkg2310.root = rootnode
 	}
 	return trie, nil
 }
 
-// NodeIterator returns an iterator that returns nodes of the trie. Iteration starts at
+// NodeIterator returns an iterator that returns nodes of the pkg2310. Iteration starts at
 // the key after the given start key.
 func (t *Trie) NodeIterator(start []byte) NodeIterator {
 	return newNodeIterator(t, start)
 }
 
-// Get returns the value for key stored in the trie.
+// Get returns the value for key stored in the pkg2310.
 // The value bytes must not be modified by the caller.
 func (t *Trie) Get(key []byte) []byte {
 	res, err := t.TryGet(key)
@@ -142,7 +142,7 @@ func (t *Trie) Get(key []byte) []byte {
 	return res
 }
 
-// TryGet returns the value for key stored in the trie.
+// TryGet returns the value for key stored in the pkg2310.
 // The value bytes must not be modified by the caller.
 // If a node was not found in the database, a MissingNodeError is returned.
 func (t *Trie) TryGet(key []byte) ([]byte, error) {
@@ -192,24 +192,24 @@ func (t *Trie) tryGet(origNode node, key []byte, pos int) (value []byte, newnode
 	}
 }
 
-// Update associates key with value in the trie. Subsequent calls to
+// Update associates key with value in the pkg2310. Subsequent calls to
 // Get will return value. If value has length zero, any existing value
 // is deleted from the trie and calls to Get will return nil.
 //
 // The value bytes must not be modified by the caller while they are
-// stored in the trie.
+// stored in the pkg2310.
 func (t *Trie) Update(key, value []byte) {
 	if err := t.TryUpdate(key, value); err != nil {
 		log.Error(fmt.Sprintf("Unhandled trie error: %v", err))
 	}
 }
 
-// TryUpdate associates key with value in the trie. Subsequent calls to
+// TryUpdate associates key with value in the pkg2310. Subsequent calls to
 // Get will return value. If value has length zero, any existing value
 // is deleted from the trie and calls to Get will return nil.
 //
 // The value bytes must not be modified by the caller while they are
-// stored in the trie.
+// stored in the pkg2310.
 //
 // If a node was not found in the database, a MissingNodeError is returned.
 func (t *Trie) TryUpdate(key, value []byte) error {
@@ -283,7 +283,7 @@ func (t *Trie) insert(n node, prefix, key []byte, value node) (bool, node, error
 	case hashNode:
 		// We've hit a part of the trie that isn't loaded yet. Load
 		// the node and insert into it. This leaves all child nodes on
-		// the path to the value in the trie.
+		// the path to the value in the pkg2310.
 		rn, err := t.resolveHash(n, prefix)
 		if err != nil {
 			return false, nil, err
@@ -299,14 +299,14 @@ func (t *Trie) insert(n node, prefix, key []byte, value node) (bool, node, error
 	}
 }
 
-// Delete removes any existing value for key from the trie.
+// Delete removes any existing value for key from the pkg2310.
 func (t *Trie) Delete(key []byte) {
 	if err := t.TryDelete(key); err != nil {
 		log.Error(fmt.Sprintf("Unhandled trie error: %v", err))
 	}
 }
 
-// TryDelete removes any existing value for key from the trie.
+// TryDelete removes any existing value for key from the pkg2310.
 // If a node was not found in the database, a MissingNodeError is returned.
 func (t *Trie) TryDelete(key []byte) error {
 	k := keybytesToHex(key)
@@ -414,7 +414,7 @@ func (t *Trie) delete(n node, prefix, key []byte) (bool, node, error) {
 	case hashNode:
 		// We've hit a part of the trie that isn't loaded yet. Load
 		// the node and delete from it. This leaves all child nodes on
-		// the path to the value in the trie.
+		// the path to the value in the pkg2310.
 		rn, err := t.resolveHash(n, prefix)
 		if err != nil {
 			return false, nil, err
@@ -455,11 +455,11 @@ func (t *Trie) resolveHash(n hashNode, prefix []byte) (node, error) {
 	return dec, nil
 }
 
-// Root returns the root hash of the trie.
+// Root returns the root hash of the pkg2310.
 // Deprecated: use Hash instead.
 func (t *Trie) Root() []byte { return t.Hash().Bytes() }
 
-// Hash returns the root hash of the trie. It does not write to the
+// Hash returns the root hash of the pkg2310. It does not write to the
 // database and can be used even if the trie doesn't have one.
 func (t *Trie) Hash() common.Hash {
 	hash, cached, _ := t.hashRoot(nil)
@@ -485,7 +485,7 @@ func (t *Trie) Commit() (root common.Hash, err error) {
 // Committing flushes nodes from memory. Subsequent Get calls will
 // load nodes from the trie's database. Calling code must ensure that
 // the changes made to db are written back to the trie's attached
-// database before using the trie.
+// database before using the pkg2310.
 func (t *Trie) CommitTo(db DatabaseWriter) (root common.Hash, err error) {
 	hash, cached, err := t.hashRoot(db)
 	if err != nil {
