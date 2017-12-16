@@ -195,7 +195,7 @@ func (n *Node) GetZeriumClient() (client *ZeriumClient, _ error) {
 	if err != nil {
 		return nil, err
 	}
-	return &ZeriumClient{ethclient.NewClient(rpc)}, nil
+	return &ZeriumClient{zrmclient.NewClient(rpc)}, nil
 }
 
 // GetNodeInfo gathers and returns a collection of metadata known about the host.
