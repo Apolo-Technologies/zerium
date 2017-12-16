@@ -15,7 +15,7 @@
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
 // Package abthash implements the abthash proof-of-work consensus engine.
-package zrmash
+package abthash
 
 import (
 	"errors"

@@ -16,7 +16,7 @@
 
 // +build go1.8
 
-package zrmash
+package abthash
 
 import "math/big"
 
