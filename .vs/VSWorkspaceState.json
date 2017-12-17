@@ -1,10 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\build",
-    "\\internal",
+    "\\agesync\\as33",
+    "\\cmd\\abigen",
     "\\internal\\build"
   ],
-  "SelectedNode": "\\internal\\build\\util.go",
+  "SelectedNode": "\\agesync",
   "PreviewInSolutionExplorer": false
 }

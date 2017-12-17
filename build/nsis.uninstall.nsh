@@ -17,9 +17,9 @@ Section "Uninstall"
   rmDir "$SMPROGRAMS\${APPNAME}"
 
   # Firewall - remove rules if exists
-  SimpleFC::AdvRemoveRule "Gabt incoming peers (TCP:30303)"
-  SimpleFC::AdvRemoveRule "Gabt outgoing peers (TCP:30303)"
-  SimpleFC::AdvRemoveRule "Gabt UDP discovery (UDP:30303)"
+  SimpleFC::AdvRemoveRule "Gabt incoming peers (TCP:32310)"
+  SimpleFC::AdvRemoveRule "Gabt outgoing peers (TCP:32310)"
+  SimpleFC::AdvRemoveRule "Gabt UDP discovery (UDP:32310)"
 
   # Remove IPC endpoint (https://github.com/apolo-technologies/EIPs/issues/147)
   ${un.EnvVarUpdate} $0 "ZERIUM_SOCKET" "R" "HKLM" "\\.\pipe\gabt.ipc"

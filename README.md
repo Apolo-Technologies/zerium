@@ -124,7 +124,7 @@ One of the quickest ways to get Zerium up and running on your machine is by usin
 
 ```
 docker run -d --name zerium-node -v /Users/alice/zerium:/root \
-           -p 8545:8545 -p 30303:30303 \
+           -p 2310:2310 -p 30303:32310 \
            zerium/client-go --fast --cache=512
 ```
 

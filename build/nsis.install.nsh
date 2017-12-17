@@ -24,14 +24,14 @@ Section "Gabt" GABT_IDX
   createShortCut "$SMPROGRAMS\${APPNAME}\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "" ""
 
   # Firewall - remove rules (if exists)
-  SimpleFC::AdvRemoveRule "Gabt incoming peers (TCP:30303)"
-  SimpleFC::AdvRemoveRule "Gabt outgoing peers (TCP:30303)"
-  SimpleFC::AdvRemoveRule "Gabt UDP discovery (UDP:30303)"
+  SimpleFC::AdvRemoveRule "Gabt incoming peers (TCP:32310)"
+  SimpleFC::AdvRemoveRule "Gabt outgoing peers (TCP:32310)"
+  SimpleFC::AdvRemoveRule "Gabt UDP discovery (UDP:32310)"
 
   # Firewall - add rules
-  SimpleFC::AdvAddRule "Gabt incoming peers (TCP:30303)" ""  6 1 1 2147483647 1 "$INSTDIR\gabt.exe" "" "" "Zerium" 30303 "" "" ""
-  SimpleFC::AdvAddRule "Gabt outgoing peers (TCP:30303)" ""  6 2 1 2147483647 1 "$INSTDIR\gabt.exe" "" "" "Zerium" "" 30303 "" ""
-  SimpleFC::AdvAddRule "Gabt UDP discovery (UDP:30303)" "" 17 2 1 2147483647 1 "$INSTDIR\gabt.exe" "" "" "Zerium" "" 30303 "" ""
+  SimpleFC::AdvAddRule "Gabt incoming peers (TCP:32310)" ""  6 1 1 2147483647 1 "$INSTDIR\gabt.exe" "" "" "Zerium" 30303 "" "" ""
+  SimpleFC::AdvAddRule "Gabt outgoing peers (TCP:32310)" ""  6 2 1 2147483647 1 "$INSTDIR\gabt.exe" "" "" "Zerium" "" 30303 "" ""
+  SimpleFC::AdvAddRule "Gabt UDP discovery (UDP:32310)" "" 17 2 1 2147483647 1 "$INSTDIR\gabt.exe" "" "" "Zerium" "" 30303 "" ""
 
   # Set default IPC endpoint (https://github.com/apolo-technologies/EIPs/issues/147)
   ${EnvVarUpdate} $0 "ZERIUM_SOCKET" "R" "HKLM" "\\.\pipe\gabt.ipc"
