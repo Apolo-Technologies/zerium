@@ -119,7 +119,7 @@ func newTransaction(nonce uint64, to *common.Address, amount, gasLimit, gasPrice
 }
 
 // envId returns which chain id this transaction was signed for (if at all)
-func (tx *Transaction) envId() *big.Int {
+func (tx *Transaction) EnvId() *big.Int {
 	return deriveenvId(tx.data.V)
 }
 

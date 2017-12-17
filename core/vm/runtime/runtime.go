@@ -53,7 +53,7 @@ type Config struct {
 func setDefaults(cfg *Config) {
 	if cfg.ChainConfig == nil {
 		cfg.ChainConfig = &params.ChainConfig{
-			envId:        big.NewInt(1),
+			EnvId:        big.NewInt(1),
 			HomesteadBlock: new(big.Int),
 			DAOForkBlock:   new(big.Int),
 			DAOForkSupport: false,
