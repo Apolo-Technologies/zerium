@@ -128,7 +128,7 @@ func (s EIP155Signer) Sender(tx *Transaction) (common.Address, error) {
 	if !tx.Protected() {
 		return HomesteadSigner{}.Sender(tx)
 	}
-	if tx.envId().Cmp(s.envId) != 0 {
+	if tx.EnvId().Cmp(s.envId) != 0 {
 		return common.Address{}, ErrInvalidenvId
 	}
 	V := new(big.Int).Sub(tx.data.V, s.envIdMul)
