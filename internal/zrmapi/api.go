@@ -839,7 +839,7 @@ type RPCTransaction struct {
 func newRPCTransaction(tx *types.Transaction, blockHash common.Hash, blockNumber uint64, index uint64) *RPCTransaction {
 	var signer types.Signer = types.FrontierSigner{}
 	if tx.Protected() {
-		signer = types.NewEIP155Signer(tx.envId())
+		signer = types.NewEIP155Signer(tx.EnvId())
 	}
 	from, _ := types.Sender(signer, tx)
 	v, r, s := tx.RawSignatureValues()
@@ -1009,7 +1009,7 @@ func (s *PublicTransactionPoolAPI) GetTransactionReceipt(hash common.Hash) (map[
 
 	var signer types.Signer = types.FrontierSigner{}
 	if tx.Protected() {
-		signer = types.NewEIP155Signer(tx.envId())
+		signer = types.NewEIP155Signer(tx.EnvId())
 	}
 	from, _ := types.Sender(signer, tx)
 
@@ -1236,7 +1236,7 @@ func (s *PublicTransactionPoolAPI) PendingTransactions() ([]*RPCTransaction, err
 	for _, tx := range pending {
 		var signer types.Signer = types.HomesteadSigner{}
 		if tx.Protected() {
-			signer = types.NewEIP155Signer(tx.envId())
+			signer = types.NewEIP155Signer(tx.EnvId())
 		}
 		from, _ := types.Sender(signer, tx)
 		if _, err := s.b.AccountManager().Find(accounts.Account{Address: from}); err == nil {
