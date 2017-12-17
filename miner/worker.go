@@ -362,7 +362,7 @@ func (self *worker) makeCurrent(parent *types.Block, header *types.Header) error
 	}
 	work := &Work{
 		config:    self.config,
-		signer:    types.NewEIP155Signer(self.config.envID),
+		signer:    types.NewEIP155Signer(self.config.EnvId),
 		state:     state,
 		ancestors: set.New(),
 		family:    set.New(),

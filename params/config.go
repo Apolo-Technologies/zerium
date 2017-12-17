@@ -32,7 +32,7 @@ var (
 var (
 	// MainnetChainConfig is the chain parameters to run a node on the main network.
 	MainnetChainConfig = &ChainConfig{
-		envID:        big.NewInt(1),
+		EnvId:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(1150000),
 		DAOForkBlock:   big.NewInt(1920000),
 		DAOForkSupport: true,
@@ -47,7 +47,7 @@ var (
 
 	// TestnetChainConfig contains the chain parameters to run a node on the Ropsten test network.
 	TestnetChainConfig = &ChainConfig{
-		envID:        big.NewInt(3),
+		EnvId:        big.NewInt(3),
 		HomesteadBlock: big.NewInt(0),
 		DAOForkBlock:   nil,
 		DAOForkSupport: true,
@@ -62,7 +62,7 @@ var (
 
 	// RinkebyChainConfig contains the chain parameters to run a node on the Rinkeby test network.
 	RinkebyChainConfig = &ChainConfig{
-		envID:        big.NewInt(4),
+		EnvId:        big.NewInt(4),
 		HomesteadBlock: big.NewInt(1),
 		DAOForkBlock:   nil,
 		DAOForkSupport: true,
@@ -102,7 +102,7 @@ var (
 // that any network, identified by its genesis block, can have its own
 // set of configuration options.
 type ChainConfig struct {
-	envID *big.Int `json:"envID"` // Chain id identifies the current chain and is used for replay protection
+	EnvId *big.Int `json:"envId"` // Chain id identifies the current chain and is used for replay protection
 
 	HomesteadBlock *big.Int `json:"homesteadBlock,omitempty"` // Homestead switch block (nil = no fork, 0 = already homestead)
 
@@ -153,8 +153,8 @@ func (c *ChainConfig) String() string {
 	default:
 		engine = "unknown"
 	}
-	return fmt.Sprintf("{envID: %v Homestead: %v DAO: %v DAOSupport: %v EIP150: %v EIP155: %v EIP158: %v Byzantium: %v Engine: %v}",
-		c.envID,
+	return fmt.Sprintf("{EnvID: %v Homestead: %v DAO: %v DAOSupport: %v EIP150: %v EIP155: %v EIP158: %v Byzantium: %v Engine: %v}",
+		c.EnvId,
 		c.HomesteadBlock,
 		c.DAOForkBlock,
 		c.DAOForkSupport,
@@ -246,7 +246,7 @@ func (c *ChainConfig) checkCompatible(newcfg *ChainConfig, head *big.Int) *Confi
 	if isForkIncompatible(c.EIP158Block, newcfg.EIP158Block, head) {
 		return newCompatError("EIP158 fork block", c.EIP158Block, newcfg.EIP158Block)
 	}
-	if c.IsEIP158(head) && !configNumEqual(c.envID, newcfg.envID) {
+	if c.IsEIP158(head) && !configNumEqual(c.EnvId, newcfg.EnvId) {
 		return newCompatError("EIP158 chain ID", c.EIP158Block, newcfg.EIP158Block)
 	}
 	if isForkIncompatible(c.ByzantiumBlock, newcfg.ByzantiumBlock, head) {
@@ -316,15 +316,15 @@ func (err *ConfigCompatError) Error() string {
 // Rules is a one time interface meaning that it shouldn't be used in between transition
 // phases.
 type Rules struct {
-	envID                                   *big.Int
+	EnvId                                    *big.Int
 	IsHomestead, IsEIP150, IsEIP155, IsEIP158 bool
 	IsByzantium                               bool
 }
 
 func (c *ChainConfig) Rules(num *big.Int) Rules {
-	envID := c.envID
-	if envID == nil {
-		envID = new(big.Int)
+	envId := c.EnvId
+	if envId == nil {
+		envId = new(big.Int)
 	}
-	return Rules{envID: new(big.Int).Set(envID), IsHomestead: c.IsHomestead(num), IsEIP150: c.IsEIP150(num), IsEIP155: c.IsEIP155(num), IsEIP158: c.IsEIP158(num), IsByzantium: c.IsByzantium(num)}
+	return Rules{EnvId: new(big.Int).Set(envId), IsHomestead: c.IsHomestead(num), IsEIP150: c.IsEIP150(num), IsEIP155: c.IsEIP155(num), IsEIP158: c.IsEIP158(num), IsByzantium: c.IsByzantium(num)}
 }
