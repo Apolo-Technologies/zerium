@@ -586,7 +586,7 @@ func TestFastVsFullChains(t *testing.T) {
 			Alloc:  GenesisAlloc{address: {Balance: funds}},
 		}
 		genesis = gspec.MustCommit(gendb)
-		signer  = types.NewEIP155Signer(gspec.Config.envId)
+		signer  = types.NewEIP155Signer(gspec.Config.EnvId)
 	)
 	blocks, receipts := GenerateChain(gspec.Config, genesis, gendb, 1024, func(i int, block *BlockGen) {
 		block.SetCoinbase(common.Address{0x00})
@@ -761,7 +761,7 @@ func TestChainTxReorgs(t *testing.T) {
 			},
 		}
 		genesis = gspec.MustCommit(db)
-		signer  = types.NewEIP155Signer(gspec.Config.envId)
+		signer  = types.NewEIP155Signer(gspec.Config.EnvId)
 	)
 
 	// Create two transactions shared between the chains:
@@ -867,7 +867,7 @@ func TestLogReorgs(t *testing.T) {
 		code    = common.Hex2Bytes("60606040525b7f24ec1d3ff24c2f6ff210738839dbc339cd45a5294d85c79361016243157aae7b60405180905060405180910390a15b600a8060416000396000f360606040526008565b00")
 		gspec   = &Genesis{Config: params.TestChainConfig, Alloc: GenesisAlloc{addr1: {Balance: big.NewInt(10000000000000)}}}
 		genesis = gspec.MustCommit(db)
-		signer  = types.NewEIP155Signer(gspec.Config.envId)
+		signer  = types.NewEIP155Signer(gspec.Config.EnvId)
 	)
 
 	blockchain, _ := NewBlockChain(db, gspec.Config, abthash.NewFaker(), vm.Config{})
@@ -914,7 +914,7 @@ func TestReorgSideEvent(t *testing.T) {
 			Alloc:  GenesisAlloc{addr1: {Balance: big.NewInt(10000000000000)}},
 		}
 		genesis = gspec.MustCommit(db)
-		signer  = types.NewEIP155Signer(gspec.Config.envId)
+		signer  = types.NewEIP155Signer(gspec.Config.EnvId)
 	)
 
 	blockchain, _ := NewBlockChain(db, gspec.Config, abthash.NewFaker(), vm.Config{})
@@ -1068,7 +1068,7 @@ func TestEIP155Transition(t *testing.T) {
 			}
 			block.AddTx(tx)
 
-			tx, err = basicTx(types.NewEIP155Signer(gspec.Config.envId))
+			tx, err = basicTx(types.NewEIP155Signer(gspec.Config.EnvId))
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -1080,7 +1080,7 @@ func TestEIP155Transition(t *testing.T) {
 			}
 			block.AddTx(tx)
 
-			tx, err = basicTx(types.NewEIP155Signer(gspec.Config.envId))
+			tx, err = basicTx(types.NewEIP155Signer(gspec.Config.EnvId))
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -1158,7 +1158,7 @@ func TestEIP161AccountRemoval(t *testing.T) {
 		var (
 			tx     *types.Transaction
 			err    error
-			signer = types.NewEIP155Signer(gspec.Config.envId)
+			signer = types.NewEIP155Signer(gspec.Config.EnvId)
 		)
 		switch i {
 		case 0:

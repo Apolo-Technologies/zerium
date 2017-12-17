@@ -462,7 +462,7 @@ func deployDashboard(client *sshClient, network string, port int, vhost string, 
 	indexfile := new(bytes.Buffer)
 	template.Must(template.New("").Parse(dashboardContent)).Execute(indexfile, map[string]interface{}{
 		"Network":            network,
-		"NetworkID":          conf.genesis.Config.envId,
+		"NetworkID":          conf.genesis.Config.EnvId,
 		"NetworkTitle":       strings.Title(network),
 		"ZrmstatsPage":       services["zrmstats"],
 		"ExplorerPage":       services["explorer"],
