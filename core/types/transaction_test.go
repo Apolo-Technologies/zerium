@@ -228,8 +228,8 @@ func TestTransactionJSON(t *testing.T) {
 		if tx.Hash() != parsedTx.Hash() {
 			t.Errorf("parsed tx differs from original tx, want %v, got %v", tx, parsedTx)
 		}
-		if tx.envID().Cmp(parsedTx.envID()) != 0 {
-			t.Errorf("invalid chain id, want %d, got %d", tx.envID(), parsedTx.envID())
+		if tx.envId().Cmp(parsedTx.envId()) != 0 {
+			t.Errorf("invalid chain id, want %d, got %d", tx.envId(), parsedTx.envId())
 		}
 	}
 }

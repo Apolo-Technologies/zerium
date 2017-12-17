@@ -182,7 +182,7 @@ and agree upon. This consists of a small JSON file (e.g. call it `genesis.json`)
 ```json
 {
   "config": {
-        "envID": 0,
+        "envId": 0,
         "homesteadBlock": 0,
         "eip155Block": 0,
         "eip158Block": 0

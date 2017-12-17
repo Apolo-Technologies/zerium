@@ -152,11 +152,11 @@ func (w *trezorDriver) Derive(path accounts.DerivationPath) (common.Address, err
 
 // SignTx implements usbwallet.driver, sending the transaction to the Trezor and
 // waiting for the user to confirm or deny the transaction.
-func (w *trezorDriver) SignTx(path accounts.DerivationPath, tx *types.Transaction, envID *big.Int) (common.Address, *types.Transaction, error) {
+func (w *trezorDriver) SignTx(path accounts.DerivationPath, tx *types.Transaction, envId *big.Int) (common.Address, *types.Transaction, error) {
 	if w.device == nil {
 		return common.Address{}, nil, accounts.ErrWalletClosed
 	}
-	return w.trezorSign(path, tx, envID)
+	return w.trezorSign(path, tx, envId)
 }
 
 // trezorDerive sends a derivation request to the Trezor device and returns the
@@ -171,7 +171,7 @@ func (w *trezorDriver) trezorDerive(derivationPath []uint32) (common.Address, er
 
 // trezorSign sends the transaction to the Trezor wallet, and waits for the user
 // to confirm or deny the transaction.
-func (w *trezorDriver) trezorSign(derivationPath []uint32, tx *types.Transaction, envID *big.Int) (common.Address, *types.Transaction, error) {
+func (w *trezorDriver) trezorSign(derivationPath []uint32, tx *types.Transaction, envId *big.Int) (common.Address, *types.Transaction, error) {
 	// Create the transaction initiation message
 	data := tx.Data()
 	length := uint32(len(data))
@@ -192,9 +192,9 @@ func (w *trezorDriver) trezorSign(derivationPath []uint32, tx *types.Transaction
 	} else {
 		request.DataInitialChunk, data = data, nil
 	}
-	if envID != nil { // EIP-155 transaction, set chain ID explicitly (only 32 bit is supported!?)
-		id := uint32(envID.Int64())
-		request.envID = &id
+	if envId != nil { // EIP-155 transaction, set chain ID explicitly (only 32 bit is supported!?)
+		id := uint32(envId.Int64())
+		request.envId = &id
 	}
 	// Send the initiation message and stream content until a signature is returned
 	response := new(trezor.ZeriumTxRequest)
@@ -217,11 +217,11 @@ func (w *trezorDriver) trezorSign(derivationPath []uint32, tx *types.Transaction
 
 	// Create the correct signer and signature transform based on the chain ID
 	var signer types.Signer
-	if envID == nil {
+	if envId == nil {
 		signer = new(types.HomesteadSigner)
 	} else {
-		signer = types.NewEIP155Signer(envID)
-		signature[64] = signature[64] - byte(envID.Uint64()*2+35)
+		signer = types.NewEIP155Signer(envId)
+		signature[64] = signature[64] - byte(envId.Uint64()*2+35)
 	}
 	// Inject the final signature into the transaction and sanity check the sender
 	signed, err := tx.WithSignature(signer, signature)

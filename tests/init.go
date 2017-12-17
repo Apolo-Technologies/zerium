@@ -26,26 +26,26 @@ import (
 // This table defines supported forks and their chain config.
 var Forks = map[string]*params.ChainConfig{
 	"Frontier": {
-		envID: big.NewInt(1),
+		envId: big.NewInt(1),
 	},
 	"Homestead": {
-		envID:        big.NewInt(1),
+		envId:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(0),
 	},
 	"EIP150": {
-		envID:        big.NewInt(1),
+		envId:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(0),
 		EIP150Block:    big.NewInt(0),
 	},
 	"EIP158": {
-		envID:        big.NewInt(1),
+		envId:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(0),
 		EIP150Block:    big.NewInt(0),
 		EIP155Block:    big.NewInt(0),
 		EIP158Block:    big.NewInt(0),
 	},
 	"Byzantium": {
-		envID:        big.NewInt(1),
+		envId:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(0),
 		EIP150Block:    big.NewInt(0),
 		EIP155Block:    big.NewInt(0),
@@ -54,22 +54,22 @@ var Forks = map[string]*params.ChainConfig{
 		ByzantiumBlock: big.NewInt(0),
 	},
 	"FrontierToHomesteadAt5": {
-		envID:        big.NewInt(1),
+		envId:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(5),
 	},
 	"HomesteadToEIP150At5": {
-		envID:        big.NewInt(1),
+		envId:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(0),
 		EIP150Block:    big.NewInt(5),
 	},
 	"HomesteadToDaoAt5": {
-		envID:        big.NewInt(1),
+		envId:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(0),
 		DAOForkBlock:   big.NewInt(5),
 		DAOForkSupport: true,
 	},
 	"EIP158ToByzantiumAt5": {
-		envID:        big.NewInt(1),
+		envId:        big.NewInt(1),
 		HomesteadBlock: big.NewInt(0),
 		EIP150Block:    big.NewInt(0),
 		EIP155Block:    big.NewInt(0),

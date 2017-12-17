@@ -28,7 +28,7 @@ import (
 )
 
 var (
-	ErrInvalidenvID = errors.New("invalid chain id for signer")
+	ErrInvalidenvId = errors.New("invalid chain id for signer")
 )
 
 // sigCache is used to cache the derived sender and contains
@@ -104,22 +104,22 @@ type Signer interface {
 
 // EIP155Transaction implements Signer using the EIP155 rules.
 type EIP155Signer struct {
-	envID, envIDMul *big.Int
+	envId, envIdMul *big.Int
 }
 
-func NewEIP155Signer(envID *big.Int) EIP155Signer {
-	if envID == nil {
-		envID = new(big.Int)
+func NewEIP155Signer(envId *big.Int) EIP155Signer {
+	if envId == nil {
+		envId = new(big.Int)
 	}
 	return EIP155Signer{
-		envID:    envID,
-		envIDMul: new(big.Int).Mul(envID, big.NewInt(2)),
+		envId:    envId,
+		envIdMul: new(big.Int).Mul(envId, big.NewInt(2)),
 	}
 }
 
 func (s EIP155Signer) Equal(s2 Signer) bool {
 	eip155, ok := s2.(EIP155Signer)
-	return ok && eip155.envID.Cmp(s.envID) == 0
+	return ok && eip155.envId.Cmp(s.envId) == 0
 }
 
 var big8 = big.NewInt(8)
@@ -128,10 +128,10 @@ func (s EIP155Signer) Sender(tx *Transaction) (common.Address, error) {
 	if !tx.Protected() {
 		return HomesteadSigner{}.Sender(tx)
 	}
-	if tx.envID().Cmp(s.envID) != 0 {
-		return common.Address{}, ErrInvalidenvID
+	if tx.envId().Cmp(s.envId) != 0 {
+		return common.Address{}, ErrInvalidenvId
 	}
-	V := new(big.Int).Sub(tx.data.V, s.envIDMul)
+	V := new(big.Int).Sub(tx.data.V, s.envIdMul)
 	V.Sub(V, big8)
 	return recoverPlain(s.Hash(tx), tx.data.R, tx.data.S, V, true)
 }
@@ -143,9 +143,9 @@ func (s EIP155Signer) SignatureValues(tx *Transaction, sig []byte) (R, S, V *big
 	if err != nil {
 		return nil, nil, nil, err
 	}
-	if s.envID.Sign() != 0 {
+	if s.envId.Sign() != 0 {
 		V = big.NewInt(int64(sig[64] + 35))
-		V.Add(V, s.envIDMul)
+		V.Add(V, s.envIdMul)
 	}
 	return R, S, V, nil
 }
@@ -160,7 +160,7 @@ func (s EIP155Signer) Hash(tx *Transaction) common.Hash {
 		tx.data.Recipient,
 		tx.data.Amount,
 		tx.data.Payload,
-		s.envID, uint(0), uint(0),
+		s.envId, uint(0), uint(0),
 	})
 }
 
@@ -246,8 +246,8 @@ func recoverPlain(sighash common.Hash, R, S, Vb *big.Int, homestead bool) (commo
 	return addr, nil
 }
 
-// deriveenvID derives the chain id from the given v parameter
-func deriveenvID(v *big.Int) *big.Int {
+// deriveenvId derives the chain id from the given v parameter
+func deriveenvId(v *big.Int) *big.Int {
 	if v.BitLen() <= 64 {
 		v := v.Uint64()
 		if v == 27 || v == 28 {

@@ -268,10 +268,10 @@ func (tx *Transaction) GetCost() *BigInt { return &BigInt{tx.tx.Cost()} }
 func (tx *Transaction) GetSigHash() *Hash { return &Hash{types.HomesteadSigner{}.Hash(tx.tx)} }
 
 // Deprecated: use ZeriumClient.TransactionSender
-func (tx *Transaction) GetFrom(envID *BigInt) (address *Address, _ error) {
+func (tx *Transaction) GetFrom(envId *BigInt) (address *Address, _ error) {
 	var signer types.Signer = types.HomesteadSigner{}
-	if envID != nil {
-		signer = types.NewEIP155Signer(envID.bigint)
+	if envId != nil {
+		signer = types.NewEIP155Signer(envId.bigint)
 	}
 	from, err := types.Sender(signer, tx.tx)
 	return &Address{from}, err
@@ -284,10 +284,10 @@ func (tx *Transaction) GetTo() *Address {
 	return nil
 }
 
-func (tx *Transaction) WithSignature(sig []byte, envID *BigInt) (signedTx *Transaction, _ error) {
+func (tx *Transaction) WithSignature(sig []byte, envId *BigInt) (signedTx *Transaction, _ error) {
 	var signer types.Signer = types.HomesteadSigner{}
-	if envID != nil {
-		signer = types.NewEIP155Signer(envID.bigint)
+	if envId != nil {
+		signer = types.NewEIP155Signer(envId.bigint)
 	}
 	rawTx, err := tx.tx.WithSignature(signer, common.CopyBytes(sig))
 	return &Transaction{rawTx}, err

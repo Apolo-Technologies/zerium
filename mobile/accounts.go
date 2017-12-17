@@ -116,11 +116,11 @@ func (ks *KeyStore) SignHash(address *Address, hash []byte) (signature []byte, _
 }
 
 // SignTx signs the given transaction with the requested account.
-func (ks *KeyStore) SignTx(account *Account, tx *Transaction, envID *BigInt) (*Transaction, error) {
-	if envID == nil { // Null passed from mobile app
-		envID = new(BigInt)
+func (ks *KeyStore) SignTx(account *Account, tx *Transaction, envId *BigInt) (*Transaction, error) {
+	if envId == nil { // Null passed from mobile app
+		envId = new(BigInt)
 	}
-	signed, err := ks.keystore.SignTx(account.account, tx.tx, envID.bigint)
+	signed, err := ks.keystore.SignTx(account.account, tx.tx, envId.bigint)
 	if err != nil {
 		return nil, err
 	}
@@ -136,11 +136,11 @@ func (ks *KeyStore) SignHashPassphrase(account *Account, passphrase string, hash
 
 // SignTxPassphrase signs the transaction if the private key matching the
 // given address can be decrypted with the given passphrase.
-func (ks *KeyStore) SignTxPassphrase(account *Account, passphrase string, tx *Transaction, envID *BigInt) (*Transaction, error) {
-	if envID == nil { // Null passed from mobile app
-		envID = new(BigInt)
+func (ks *KeyStore) SignTxPassphrase(account *Account, passphrase string, tx *Transaction, envId *BigInt) (*Transaction, error) {
+	if envId == nil { // Null passed from mobile app
+		envId = new(BigInt)
 	}
-	signed, err := ks.keystore.SignTxWithPassphrase(account.account, passphrase, tx.tx, envID.bigint)
+	signed, err := ks.keystore.SignTxWithPassphrase(account.account, passphrase, tx.tx, envId.bigint)
 	if err != nil {
 		return nil, err
 	}
