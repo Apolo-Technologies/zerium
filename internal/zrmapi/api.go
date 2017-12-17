@@ -1264,7 +1264,7 @@ func (s *PublicTransactionPoolAPI) Resend(ctx context.Context, sendArgs SendTxAr
 	for _, p := range pending {
 		var signer types.Signer = types.HomesteadSigner{}
 		if p.Protected() {
-			signer = types.NewEIP155Signer(p.envId())
+			signer = types.NewEIP155Signer(p.EnvId())
 		}
 		wantSigHash := signer.Hash(matchTx)
 
