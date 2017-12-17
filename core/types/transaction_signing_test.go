@@ -57,8 +57,8 @@ func TestEIP155envId(t *testing.T) {
 		t.Fatal("expected tx to be protected")
 	}
 
-	if tx.envId().Cmp(signer.envId) != 0 {
-		t.Error("expected envId to be", signer.envId, "got", tx.envId())
+	if tx.EnvId().Cmp(signer.envId) != 0 {
+		t.Error("expected envId to be", signer.envId, "got", tx.EnvId())
 	}
 
 	tx = NewTransaction(0, addr, new(big.Int), new(big.Int), new(big.Int), nil)
@@ -71,8 +71,8 @@ func TestEIP155envId(t *testing.T) {
 		t.Error("didn't expect tx to be protected")
 	}
 
-	if tx.envId().Sign() != 0 {
-		t.Error("expected chain id to be 0 got", tx.envId())
+	if tx.EnvId().Sign() != 0 {
+		t.Error("expected chain id to be 0 got", tx.EnvId())
 	}
 }
 
