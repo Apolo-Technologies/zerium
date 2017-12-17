@@ -162,20 +162,20 @@ func (c *Console) init(preload []string) error {
 		}
 		// Override the openWallet, unlockAccount, newAccount and sign methods since
 		// these require user interaction. Assign these method in the Console the
-		// original abt78 callbacks. These will be called by the jzrm.* methods after
+		// original abt78 callbacks. These will be called by the abt78.* methods after
 		// they got the password from the user and send the original abt78 request to
 		// the backend.
 		if obj := personal.Object(); obj != nil { // make sure the personal api is enabled over the interface
-			if _, err = c.jsre.Run(`jzrm.openWallet = personal.openWallet;`); err != nil {
+			if _, err = c.jsre.Run(`abt78.openWallet = personal.openWallet;`); err != nil {
 				return fmt.Errorf("personal.openWallet: %v", err)
 			}
-			if _, err = c.jsre.Run(`jzrm.unlockAccount = personal.unlockAccount;`); err != nil {
+			if _, err = c.jsre.Run(`abt78.unlockAccount = personal.unlockAccount;`); err != nil {
 				return fmt.Errorf("personal.unlockAccount: %v", err)
 			}
-			if _, err = c.jsre.Run(`jzrm.newAccount = personal.newAccount;`); err != nil {
+			if _, err = c.jsre.Run(`abt78.newAccount = personal.newAccount;`); err != nil {
 				return fmt.Errorf("personal.newAccount: %v", err)
 			}
-			if _, err = c.jsre.Run(`jzrm.sign = personal.sign;`); err != nil {
+			if _, err = c.jsre.Run(`abt78.sign = personal.sign;`); err != nil {
 				return fmt.Errorf("personal.sign: %v", err)
 			}
 			obj.Set("openWallet", bridge.OpenWallet)
