@@ -48,7 +48,7 @@ func (w *wizard) deployFaucet() {
 		}
 	}
 	infos.node.genesis, _ = json.MarshalIndent(w.conf.genesis, "", "  ")
-	infos.node.network = w.conf.genesis.Config.ChainId.Int64()
+	infos.node.network = w.conf.genesis.Config.envID.Int64()
 
 	// Figure out which port to listen on
 	fmt.Println()

@@ -2017,7 +2017,7 @@ type ZeriumSignTx struct {
 	Value            []byte   `protobuf:"bytes,6,opt,name=value" json:"value,omitempty"`
 	DataInitialChunk []byte   `protobuf:"bytes,7,opt,name=data_initial_chunk,json=dataInitialChunk" json:"data_initial_chunk,omitempty"`
 	DataLength       *uint32  `protobuf:"varint,8,opt,name=data_length,json=dataLength" json:"data_length,omitempty"`
-	ChainId          *uint32  `protobuf:"varint,9,opt,name=chain_id,json=chainId" json:"chain_id,omitempty"`
+	envID          *uint32  `protobuf:"varint,9,opt,name=chain_id,json=envID" json:"chain_id,omitempty"`
 	XXX_unrecognized []byte   `json:"-"`
 }
 
@@ -2082,9 +2082,9 @@ func (m *ZeriumSignTx) GetDataLength() uint32 {
 	return 0
 }
 
-func (m *ZeriumSignTx) GetChainId() uint32 {
-	if m != nil && m.ChainId != nil {
-		return *m.ChainId
+func (m *ZeriumSignTx) GetenvID() uint32 {
+	if m != nil && m.envID != nil {
+		return *m.envID
 	}
 	return 0
 }

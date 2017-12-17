@@ -28,7 +28,7 @@ import (
 )
 
 var (
-	ErrInvalidChainId = errors.New("invalid chain id for signer")
+	ErrInvalidenvID = errors.New("invalid chain id for signer")
 )
 
 // sigCache is used to cache the derived sender and contains
@@ -43,7 +43,7 @@ func MakeSigner(config *params.ChainConfig, blockNumber *big.Int) Signer {
 	var signer Signer
 	switch {
 	case config.IsEIP155(blockNumber):
-		signer = NewEIP155Signer(config.ChainId)
+		signer = NewEIP155Signer(config.envID)
 	case config.IsHomestead(blockNumber):
 		signer = HomesteadSigner{}
 	default:
@@ -104,22 +104,22 @@ type Signer interface {
 
 // EIP155Transaction implements Signer using the EIP155 rules.
 type EIP155Signer struct {
-	chainId, chainIdMul *big.Int
+	envID, envIDMul *big.Int
 }
 
-func NewEIP155Signer(chainId *big.Int) EIP155Signer {
-	if chainId == nil {
-		chainId = new(big.Int)
+func NewEIP155Signer(envID *big.Int) EIP155Signer {
+	if envID == nil {
+		envID = new(big.Int)
 	}
 	return EIP155Signer{
-		chainId:    chainId,
-		chainIdMul: new(big.Int).Mul(chainId, big.NewInt(2)),
+		envID:    envID,
+		envIDMul: new(big.Int).Mul(envID, big.NewInt(2)),
 	}
 }
 
 func (s EIP155Signer) Equal(s2 Signer) bool {
 	eip155, ok := s2.(EIP155Signer)
-	return ok && eip155.chainId.Cmp(s.chainId) == 0
+	return ok && eip155.envID.Cmp(s.envID) == 0
 }
 
 var big8 = big.NewInt(8)
@@ -128,10 +128,10 @@ func (s EIP155Signer) Sender(tx *Transaction) (common.Address, error) {
 	if !tx.Protected() {
 		return HomesteadSigner{}.Sender(tx)
 	}
-	if tx.ChainId().Cmp(s.chainId) != 0 {
-		return common.Address{}, ErrInvalidChainId
+	if tx.envID().Cmp(s.envID) != 0 {
+		return common.Address{}, ErrInvalidenvID
 	}
-	V := new(big.Int).Sub(tx.data.V, s.chainIdMul)
+	V := new(big.Int).Sub(tx.data.V, s.envIDMul)
 	V.Sub(V, big8)
 	return recoverPlain(s.Hash(tx), tx.data.R, tx.data.S, V, true)
 }
@@ -143,9 +143,9 @@ func (s EIP155Signer) SignatureValues(tx *Transaction, sig []byte) (R, S, V *big
 	if err != nil {
 		return nil, nil, nil, err
 	}
-	if s.chainId.Sign() != 0 {
+	if s.envID.Sign() != 0 {
 		V = big.NewInt(int64(sig[64] + 35))
-		V.Add(V, s.chainIdMul)
+		V.Add(V, s.envIDMul)
 	}
 	return R, S, V, nil
 }
@@ -160,7 +160,7 @@ func (s EIP155Signer) Hash(tx *Transaction) common.Hash {
 		tx.data.Recipient,
 		tx.data.Amount,
 		tx.data.Payload,
-		s.chainId, uint(0), uint(0),
+		s.envID, uint(0), uint(0),
 	})
 }
 
@@ -246,8 +246,8 @@ func recoverPlain(sighash common.Hash, R, S, Vb *big.Int, homestead bool) (commo
 	return addr, nil
 }
 
-// deriveChainId derives the chain id from the given v parameter
-func deriveChainId(v *big.Int) *big.Int {
+// deriveenvID derives the chain id from the given v parameter
+func deriveenvID(v *big.Int) *big.Int {
 	if v.BitLen() <= 64 {
 		v := v.Uint64()
 		if v == 27 || v == 28 {

@@ -40,7 +40,7 @@ var (
 // deriveSigner makes a *best* guess about which signer to use.
 func deriveSigner(V *big.Int) Signer {
 	if V.Sign() != 0 && isProtectedV(V) {
-		return NewEIP155Signer(deriveChainId(V))
+		return NewEIP155Signer(deriveenvID(V))
 	} else {
 		return HomesteadSigner{}
 	}
@@ -118,9 +118,9 @@ func newTransaction(nonce uint64, to *common.Address, amount, gasLimit, gasPrice
 	return &Transaction{data: d}
 }
 
-// ChainId returns which chain id this transaction was signed for (if at all)
-func (tx *Transaction) ChainId() *big.Int {
-	return deriveChainId(tx.data.V)
+// envID returns which chain id this transaction was signed for (if at all)
+func (tx *Transaction) envID() *big.Int {
+	return deriveenvID(tx.data.V)
 }
 
 // Protected returns whether the transaction is protected from replay protection.
@@ -168,8 +168,8 @@ func (tx *Transaction) UnmarshalJSON(input []byte) error {
 	}
 	var V byte
 	if isProtectedV(dec.V) {
-		chainId := deriveChainId(dec.V).Uint64()
-		V = byte(dec.V.Uint64() - 35 - 2*chainId)
+		envID := deriveenvID(dec.V).Uint64()
+		V = byte(dec.V.Uint64() - 35 - 2*envID)
 	} else {
 		V = byte(dec.V.Uint64() - 27)
 	}

@@ -98,7 +98,7 @@ func (w *keystoreWallet) SignHash(account accounts.Account, hash []byte) ([]byte
 // with the given account. If the wallet does not wrap this particular account,
 // an error is returned to avoid account leakage (even though in theory we may
 // be able to sign via our shared keystore backend).
-func (w *keystoreWallet) SignTx(account accounts.Account, tx *types.Transaction, chainID *big.Int) (*types.Transaction, error) {
+func (w *keystoreWallet) SignTx(account accounts.Account, tx *types.Transaction, envID *big.Int) (*types.Transaction, error) {
 	// Make sure the requested account is contained within
 	if account.Address != w.account.Address {
 		return nil, accounts.ErrUnknownAccount
@@ -107,7 +107,7 @@ func (w *keystoreWallet) SignTx(account accounts.Account, tx *types.Transaction,
 		return nil, accounts.ErrUnknownAccount
 	}
 	// Account seems valid, request the keystore to sign
-	return w.keystore.SignTx(account, tx, chainID)
+	return w.keystore.SignTx(account, tx, envID)
 }
 
 // SignHashWithPassphrase implements accounts.Wallet, attempting to sign the
@@ -126,7 +126,7 @@ func (w *keystoreWallet) SignHashWithPassphrase(account accounts.Account, passph
 
 // SignTxWithPassphrase implements accounts.Wallet, attempting to sign the given
 // transaction with the given account using passphrase as extra authentication.
-func (w *keystoreWallet) SignTxWithPassphrase(account accounts.Account, passphrase string, tx *types.Transaction, chainID *big.Int) (*types.Transaction, error) {
+func (w *keystoreWallet) SignTxWithPassphrase(account accounts.Account, passphrase string, tx *types.Transaction, envID *big.Int) (*types.Transaction, error) {
 	// Make sure the requested account is contained within
 	if account.Address != w.account.Address {
 		return nil, accounts.ErrUnknownAccount
@@ -135,5 +135,5 @@ func (w *keystoreWallet) SignTxWithPassphrase(account accounts.Account, passphra
 		return nil, accounts.ErrUnknownAccount
 	}
 	// Account seems valid, request the keystore to sign
-	return w.keystore.SignTxWithPassphrase(account, passphrase, tx, chainID)
+	return w.keystore.SignTxWithPassphrase(account, passphrase, tx, envID)
 }
