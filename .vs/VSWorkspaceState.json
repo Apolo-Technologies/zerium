@@ -1,10 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\accounts\\usbwallet",
-    "\\internal\\jsre",
-    "\\internal\\jsre\\deps",
-    "\\internal\\zrmapi"
+    ""
   ],
   "SelectedNode": "\\internal",
   "PreviewInSolutionExplorer": false

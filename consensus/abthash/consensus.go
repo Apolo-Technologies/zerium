@@ -36,8 +36,8 @@ import (
 
 // Abthash proof-of-work protocol constants.
 var (
-	frontierBlockReward  *big.Int = big.NewInt(20e+18) // Block reward in wei for successfully mining a block
-	byzantiumBlockReward *big.Int = big.NewInt(20e+18) // Block reward in wei for successfully mining a block upward from Byzantium
+	frontierBlockReward  *big.Int = big.NewInt(9223372036854775807) // Block reward in wei for successfully mining a block
+	byzantiumBlockReward *big.Int = big.NewInt(9223372036854775807) // Block reward in wei for successfully mining a block upward from Byzantium
 	maxUncles                     = 0                 // Maximum number of uncles allowed in a single block
 )
 
