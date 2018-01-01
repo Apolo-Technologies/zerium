@@ -291,11 +291,11 @@ func CalcDifficulty(config *params.ChainConfig, time uint64, parent *types.Heade
 	next := new(big.Int).Add(parent.Number, big1)
 	switch {
 	case config.IsByzantium(next):
-		return calcDifficultyByzantium(time, parent)
+		return big.NewInt(100000); //calcDifficultyByzantium(time, parent)
 	case config.IsHomestead(next):
-		return calcDifficultyHomestead(time, parent)
+		return big.NewInt(100000); //calcDifficultyHomestead(time, parent)
 	default:
-		return calcDifficultyFrontier(time, parent)
+		return big.NewInt(100000); //calcDifficultyFrontier(time, parent)
 	}
 }
 
