@@ -24,14 +24,14 @@ type (
 		right  short
 		bottom short
 	}
-	abtconsole_screen_buffer_info struct {
+	zaeconsole_screen_buffer_info struct {
 		size                coord
 		cursor_position     coord
 		attributes          word
 		window              small_rect
 		maximum_window_size coord
 	}
-	abtconsole_cursor_info struct {
+	zaeconsole_cursor_info struct {
 		size    dword
 		visible int32
 	}
@@ -73,28 +73,28 @@ var kernel32 = syscall.NewLazyDLL("kernel32.dll")
 var is_cjk = runewidth.IsEastAsian()
 
 var (
-	proc_set_abtconsole_active_screen_buffer = kernel32.NewProc("SetConsoleActiveScreenBuffer")
-	proc_set_abtconsole_screen_buffer_size   = kernel32.NewProc("SetConsoleScreenBufferSize")
-	proc_create_abtconsole_screen_buffer     = kernel32.NewProc("CreateConsoleScreenBuffer")
-	proc_get_abtconsole_screen_buffer_info   = kernel32.NewProc("GetConsoleScreenBufferInfo")
-	proc_write_abtconsole_output             = kernel32.NewProc("WriteConsoleOutputW")
-	proc_write_abtconsole_output_character   = kernel32.NewProc("WriteConsoleOutputCharacterW")
-	proc_write_abtconsole_output_attribute   = kernel32.NewProc("WriteConsoleOutputAttribute")
-	proc_set_abtconsole_cursor_info          = kernel32.NewProc("SetConsoleCursorInfo")
-	proc_set_abtconsole_cursor_position      = kernel32.NewProc("SetConsoleCursorPosition")
-	proc_get_abtconsole_cursor_info          = kernel32.NewProc("GetConsoleCursorInfo")
-	proc_read_abtconsole_input               = kernel32.NewProc("ReadConsoleInputW")
-	proc_get_abtconsole_mode                 = kernel32.NewProc("GetConsoleMode")
-	proc_set_abtconsole_mode                 = kernel32.NewProc("SetConsoleMode")
-	proc_fill_abtconsole_output_character    = kernel32.NewProc("FillConsoleOutputCharacterW")
-	proc_fill_abtconsole_output_attribute    = kernel32.NewProc("FillConsoleOutputAttribute")
+	proc_set_zaeconsole_active_screen_buffer = kernel32.NewProc("SetConsoleActiveScreenBuffer")
+	proc_set_zaeconsole_screen_buffer_size   = kernel32.NewProc("SetConsoleScreenBufferSize")
+	proc_create_zaeconsole_screen_buffer     = kernel32.NewProc("CreateConsoleScreenBuffer")
+	proc_get_zaeconsole_screen_buffer_info   = kernel32.NewProc("GetConsoleScreenBufferInfo")
+	proc_write_zaeconsole_output             = kernel32.NewProc("WriteConsoleOutputW")
+	proc_write_zaeconsole_output_character   = kernel32.NewProc("WriteConsoleOutputCharacterW")
+	proc_write_zaeconsole_output_attribute   = kernel32.NewProc("WriteConsoleOutputAttribute")
+	proc_set_zaeconsole_cursor_info          = kernel32.NewProc("SetConsoleCursorInfo")
+	proc_set_zaeconsole_cursor_position      = kernel32.NewProc("SetConsoleCursorPosition")
+	proc_get_zaeconsole_cursor_info          = kernel32.NewProc("GetConsoleCursorInfo")
+	proc_read_zaeconsole_input               = kernel32.NewProc("ReadConsoleInputW")
+	proc_get_zaeconsole_mode                 = kernel32.NewProc("GetConsoleMode")
+	proc_set_zaeconsole_mode                 = kernel32.NewProc("SetConsoleMode")
+	proc_fill_zaeconsole_output_character    = kernel32.NewProc("FillConsoleOutputCharacterW")
+	proc_fill_zaeconsole_output_attribute    = kernel32.NewProc("FillConsoleOutputAttribute")
 	proc_create_event                     = kernel32.NewProc("CreateEventW")
 	proc_wait_for_multiple_objects        = kernel32.NewProc("WaitForMultipleObjects")
 	proc_set_event                        = kernel32.NewProc("SetEvent")
 )
 
-func set_abtconsole_active_screen_buffer(h syscall.Handle) (err error) {
-	r0, _, e1 := syscall.Syscall(proc_set_abtconsole_active_screen_buffer.Addr(),
+func set_zaeconsole_active_screen_buffer(h syscall.Handle) (err error) {
+	r0, _, e1 := syscall.Syscall(proc_set_zaeconsole_active_screen_buffer.Addr(),
 		1, uintptr(h), 0, 0)
 	if int(r0) == 0 {
 		if e1 != 0 {
@@ -106,8 +106,8 @@ func set_abtconsole_active_screen_buffer(h syscall.Handle) (err error) {
 	return
 }
 
-func set_abtconsole_screen_buffer_size(h syscall.Handle, size coord) (err error) {
-	r0, _, e1 := syscall.Syscall(proc_set_abtconsole_screen_buffer_size.Addr(),
+func set_zaeconsole_screen_buffer_size(h syscall.Handle, size coord) (err error) {
+	r0, _, e1 := syscall.Syscall(proc_set_zaeconsole_screen_buffer_size.Addr(),
 		2, uintptr(h), size.uintptr(), 0)
 	if int(r0) == 0 {
 		if e1 != 0 {
@@ -119,9 +119,9 @@ func set_abtconsole_screen_buffer_size(h syscall.Handle, size coord) (err error)
 	return
 }
 
-func create_abtconsole_screen_buffer() (h syscall.Handle, err error) {
-	r0, _, e1 := syscall.Syscall6(proc_create_abtconsole_screen_buffer.Addr(),
-		5, uintptr(generic_read|generic_write), 0, 0, abtconsole_textmode_buffer, 0, 0)
+func create_zaeconsole_screen_buffer() (h syscall.Handle, err error) {
+	r0, _, e1 := syscall.Syscall6(proc_create_zaeconsole_screen_buffer.Addr(),
+		5, uintptr(generic_read|generic_write), 0, 0, zaeconsole_textmode_buffer, 0, 0)
 	if int(r0) == 0 {
 		if e1 != 0 {
 			err = error(e1)
@@ -132,8 +132,8 @@ func create_abtconsole_screen_buffer() (h syscall.Handle, err error) {
 	return syscall.Handle(r0), err
 }
 
-func get_abtconsole_screen_buffer_info(h syscall.Handle, info *abtconsole_screen_buffer_info) (err error) {
-	r0, _, e1 := syscall.Syscall(proc_get_abtconsole_screen_buffer_info.Addr(),
+func get_zaeconsole_screen_buffer_info(h syscall.Handle, info *zaeconsole_screen_buffer_info) (err error) {
+	r0, _, e1 := syscall.Syscall(proc_get_zaeconsole_screen_buffer_info.Addr(),
 		2, uintptr(h), uintptr(unsafe.Pointer(info)), 0)
 	if int(r0) == 0 {
 		if e1 != 0 {
@@ -145,10 +145,10 @@ func get_abtconsole_screen_buffer_info(h syscall.Handle, info *abtconsole_screen
 	return
 }
 
-func write_abtconsole_output(h syscall.Handle, chars []char_info, dst small_rect) (err error) {
+func write_zaeconsole_output(h syscall.Handle, chars []char_info, dst small_rect) (err error) {
 	tmp_coord = coord{dst.right - dst.left + 1, dst.bottom - dst.top + 1}
 	tmp_rect = dst
-	r0, _, e1 := syscall.Syscall6(proc_write_abtconsole_output.Addr(),
+	r0, _, e1 := syscall.Syscall6(proc_write_zaeconsole_output.Addr(),
 		5, uintptr(h), uintptr(unsafe.Pointer(&chars[0])), tmp_coord.uintptr(),
 		tmp_coord0.uintptr(), uintptr(unsafe.Pointer(&tmp_rect)), 0)
 	if int(r0) == 0 {
@@ -161,8 +161,8 @@ func write_abtconsole_output(h syscall.Handle, chars []char_info, dst small_rect
 	return
 }
 
-func write_abtconsole_output_character(h syscall.Handle, chars []wchar, pos coord) (err error) {
-	r0, _, e1 := syscall.Syscall6(proc_write_abtconsole_output_character.Addr(),
+func write_zaeconsole_output_character(h syscall.Handle, chars []wchar, pos coord) (err error) {
+	r0, _, e1 := syscall.Syscall6(proc_write_zaeconsole_output_character.Addr(),
 		5, uintptr(h), uintptr(unsafe.Pointer(&chars[0])), uintptr(len(chars)),
 		pos.uintptr(), uintptr(unsafe.Pointer(&tmp_arg)), 0)
 	if int(r0) == 0 {
@@ -175,8 +175,8 @@ func write_abtconsole_output_character(h syscall.Handle, chars []wchar, pos coor
 	return
 }
 
-func write_abtconsole_output_attribute(h syscall.Handle, attrs []word, pos coord) (err error) {
-	r0, _, e1 := syscall.Syscall6(proc_write_abtconsole_output_attribute.Addr(),
+func write_zaeconsole_output_attribute(h syscall.Handle, attrs []word, pos coord) (err error) {
+	r0, _, e1 := syscall.Syscall6(proc_write_zaeconsole_output_attribute.Addr(),
 		5, uintptr(h), uintptr(unsafe.Pointer(&attrs[0])), uintptr(len(attrs)),
 		pos.uintptr(), uintptr(unsafe.Pointer(&tmp_arg)), 0)
 	if int(r0) == 0 {
@@ -189,8 +189,8 @@ func write_abtconsole_output_attribute(h syscall.Handle, attrs []word, pos coord
 	return
 }
 
-func set_abtconsole_cursor_info(h syscall.Handle, info *abtconsole_cursor_info) (err error) {
-	r0, _, e1 := syscall.Syscall(proc_set_abtconsole_cursor_info.Addr(),
+func set_zaeconsole_cursor_info(h syscall.Handle, info *zaeconsole_cursor_info) (err error) {
+	r0, _, e1 := syscall.Syscall(proc_set_zaeconsole_cursor_info.Addr(),
 		2, uintptr(h), uintptr(unsafe.Pointer(info)), 0)
 	if int(r0) == 0 {
 		if e1 != 0 {
@@ -202,8 +202,8 @@ func set_abtconsole_cursor_info(h syscall.Handle, info *abtconsole_cursor_info) 
 	return
 }
 
-func get_abtconsole_cursor_info(h syscall.Handle, info *abtconsole_cursor_info) (err error) {
-	r0, _, e1 := syscall.Syscall(proc_get_abtconsole_cursor_info.Addr(),
+func get_zaeconsole_cursor_info(h syscall.Handle, info *zaeconsole_cursor_info) (err error) {
+	r0, _, e1 := syscall.Syscall(proc_get_zaeconsole_cursor_info.Addr(),
 		2, uintptr(h), uintptr(unsafe.Pointer(info)), 0)
 	if int(r0) == 0 {
 		if e1 != 0 {
@@ -215,8 +215,8 @@ func get_abtconsole_cursor_info(h syscall.Handle, info *abtconsole_cursor_info) 
 	return
 }
 
-func set_abtconsole_cursor_position(h syscall.Handle, pos coord) (err error) {
-	r0, _, e1 := syscall.Syscall(proc_set_abtconsole_cursor_position.Addr(),
+func set_zaeconsole_cursor_position(h syscall.Handle, pos coord) (err error) {
+	r0, _, e1 := syscall.Syscall(proc_set_zaeconsole_cursor_position.Addr(),
 		2, uintptr(h), pos.uintptr(), 0)
 	if int(r0) == 0 {
 		if e1 != 0 {
@@ -228,8 +228,8 @@ func set_abtconsole_cursor_position(h syscall.Handle, pos coord) (err error) {
 	return
 }
 
-func read_abtconsole_input(h syscall.Handle, record *input_record) (err error) {
-	r0, _, e1 := syscall.Syscall6(proc_read_abtconsole_input.Addr(),
+func read_zaeconsole_input(h syscall.Handle, record *input_record) (err error) {
+	r0, _, e1 := syscall.Syscall6(proc_read_zaeconsole_input.Addr(),
 		4, uintptr(h), uintptr(unsafe.Pointer(record)), 1, uintptr(unsafe.Pointer(&tmp_arg)), 0, 0)
 	if int(r0) == 0 {
 		if e1 != 0 {
@@ -241,8 +241,8 @@ func read_abtconsole_input(h syscall.Handle, record *input_record) (err error) {
 	return
 }
 
-func get_abtconsole_mode(h syscall.Handle, mode *dword) (err error) {
-	r0, _, e1 := syscall.Syscall(proc_get_abtconsole_mode.Addr(),
+func get_zaeconsole_mode(h syscall.Handle, mode *dword) (err error) {
+	r0, _, e1 := syscall.Syscall(proc_get_zaeconsole_mode.Addr(),
 		2, uintptr(h), uintptr(unsafe.Pointer(mode)), 0)
 	if int(r0) == 0 {
 		if e1 != 0 {
@@ -254,8 +254,8 @@ func get_abtconsole_mode(h syscall.Handle, mode *dword) (err error) {
 	return
 }
 
-func set_abtconsole_mode(h syscall.Handle, mode dword) (err error) {
-	r0, _, e1 := syscall.Syscall(proc_set_abtconsole_mode.Addr(),
+func set_zaeconsole_mode(h syscall.Handle, mode dword) (err error) {
+	r0, _, e1 := syscall.Syscall(proc_set_zaeconsole_mode.Addr(),
 		2, uintptr(h), uintptr(mode), 0)
 	if int(r0) == 0 {
 		if e1 != 0 {
@@ -267,8 +267,8 @@ func set_abtconsole_mode(h syscall.Handle, mode dword) (err error) {
 	return
 }
 
-func fill_abtconsole_output_character(h syscall.Handle, char wchar, n int) (err error) {
-	r0, _, e1 := syscall.Syscall6(proc_fill_abtconsole_output_character.Addr(),
+func fill_zaeconsole_output_character(h syscall.Handle, char wchar, n int) (err error) {
+	r0, _, e1 := syscall.Syscall6(proc_fill_zaeconsole_output_character.Addr(),
 		5, uintptr(h), uintptr(char), uintptr(n), tmp_coord.uintptr(),
 		uintptr(unsafe.Pointer(&tmp_arg)), 0)
 	if int(r0) == 0 {
@@ -281,8 +281,8 @@ func fill_abtconsole_output_character(h syscall.Handle, char wchar, n int) (err 
 	return
 }
 
-func fill_abtconsole_output_attribute(h syscall.Handle, attr word, n int) (err error) {
-	r0, _, e1 := syscall.Syscall6(proc_fill_abtconsole_output_attribute.Addr(),
+func fill_zaeconsole_output_attribute(h syscall.Handle, attr word, n int) (err error) {
+	r0, _, e1 := syscall.Syscall6(proc_fill_zaeconsole_output_attribute.Addr(),
 		5, uintptr(h), uintptr(attr), uintptr(n), tmp_coord.uintptr(),
 		uintptr(unsafe.Pointer(&tmp_arg)), 0)
 	if int(r0) == 0 {
@@ -347,7 +347,7 @@ type input_event struct {
 }
 
 var (
-	orig_cursor_info abtconsole_cursor_info
+	orig_cursor_info zaeconsole_cursor_info
 	orig_size        coord
 	orig_mode        dword
 	orig_screen      syscall.Handle
@@ -374,7 +374,7 @@ var (
 	alt_mode_esc     = false
 
 	// these ones just to prevent heap allocs at all costs
-	tmp_info   abtconsole_screen_buffer_info
+	tmp_info   zaeconsole_screen_buffer_info
 	tmp_arg    dword
 	tmp_coord0 = coord{0, 0}
 	tmp_coord  = coord{0, 0}
@@ -382,7 +382,7 @@ var (
 )
 
 func get_cursor_position(out syscall.Handle) coord {
-	err := get_abtconsole_screen_buffer_info(out, &tmp_info)
+	err := get_zaeconsole_screen_buffer_info(out, &tmp_info)
 	if err != nil {
 		panic(err)
 	}
@@ -390,7 +390,7 @@ func get_cursor_position(out syscall.Handle) coord {
 }
 
 func get_term_size(out syscall.Handle) coord {
-	err := get_abtconsole_screen_buffer_info(out, &tmp_info)
+	err := get_zaeconsole_screen_buffer_info(out, &tmp_info)
 	if err != nil {
 		panic(err)
 	}
@@ -398,7 +398,7 @@ func get_term_size(out syscall.Handle) coord {
 }
 
 func get_win_size(out syscall.Handle) coord {
-	err := get_abtconsole_screen_buffer_info(out, &tmp_info)
+	err := get_zaeconsole_screen_buffer_info(out, &tmp_info)
 	if err != nil {
 		panic(err)
 	}
@@ -554,7 +554,7 @@ func cell_to_char_info(c Cell) (attr word, wc [2]wchar) {
 }
 
 func move_cursor(x, y int) {
-	err := set_abtconsole_cursor_position(out, coord{short(x), short(y)})
+	err := set_zaeconsole_cursor_position(out, coord{short(x), short(y)})
 	if err != nil {
 		panic(err)
 	}
@@ -566,10 +566,10 @@ func show_cursor(visible bool) {
 		v = 1
 	}
 
-	var info abtconsole_cursor_info
+	var info zaeconsole_cursor_info
 	info.size = 100
 	info.visible = v
-	err := set_abtconsole_cursor_info(out, &info)
+	err := set_zaeconsole_cursor_info(out, &info)
 	if err != nil {
 		panic(err)
 	}
@@ -584,11 +584,11 @@ func clear() {
 	})
 
 	area := int(term_size.x) * int(term_size.y)
-	err = fill_abtconsole_output_attribute(out, attr, area)
+	err = fill_zaeconsole_output_attribute(out, attr, area)
 	if err != nil {
 		panic(err)
 	}
-	err = fill_abtconsole_output_character(out, char[0], area)
+	err = fill_zaeconsole_output_character(out, char[0], area)
 	if err != nil {
 		panic(err)
 	}
@@ -769,7 +769,7 @@ func input_event_producer() {
 		default:
 		}
 
-		err = read_abtconsole_input(in, &r)
+		err = read_zaeconsole_input(in, &r)
 		if err != nil {
 			input_comm <- Event{Type: EventError, Err: err}
 		}

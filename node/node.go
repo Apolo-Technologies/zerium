@@ -669,9 +669,9 @@ func (n *Node) apis() []rpc.API {
 			Service:   NewPublicDebugAPI(n),
 			Public:    true,
 		}, {
-			Namespace: "abt78",
+			Namespace: "zae",
 			Version:   "1.0",
-			Service:   NewPublicAbt78API(n),
+			Service:   NewPubliczaeAPI(n),
 			Public:    true,
 		},
 	}

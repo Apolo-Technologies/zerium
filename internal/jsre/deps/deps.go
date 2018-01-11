@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package deps contains the abtconsole JavaScript dependencies Go embedded.
+// Package deps contains the zaeconsole JavaScript dependencies Go embedded.
 package deps
 
-//go:generate go-bindata -nometadata -pkg deps -o bindata.go bignumber.js abt78.js
+//go:generate go-bindata -nometadata -pkg deps -o bindata.go bignumber.js zae.js
 //go:generate gofmt -w -s bindata.go

@@ -35,7 +35,7 @@ import (
 	"github.com/apolo-technologies/zerium/accounts/keystore"
 	"github.com/apolo-technologies/zerium/cmd/utils"
 	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/abtconsole"
+	"github.com/apolo-technologies/zerium/zaeconsole"
 	"github.com/apolo-technologies/zerium/contracts/ens"
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/zrmclient"
@@ -142,7 +142,7 @@ var (
 
 	// the following flags are deprecated and should be removed in the future
 	DeprecatedEthAPIFlag = cli.StringFlag{
-		Name:  "zrmapi",
+		Name:  "zaeapi",
 		Usage: "DEPRECATED: please use --ens-api and --swap-api",
 	}
 )
@@ -377,9 +377,9 @@ func version(ctx *cli.Context) error {
 }
 
 func bzzd(ctx *cli.Context) error {
-	// exit if the deprecated --zrmapi flag is set
+	// exit if the deprecated --zaeapi flag is set
 	if ctx.GlobalString(DeprecatedEthAPIFlag.Name) != "" {
-		utils.Fatalf("--zrmapi is no longer a valid command line flag, please use --ens-api and/or --swap-api.")
+		utils.Fatalf("--zaeapi is no longer a valid command line flag, please use --ens-api and/or --swap-api.")
 	}
 
 	cfg := defaultNodeConfig
@@ -584,7 +584,7 @@ func getPassPhrase(prompt string, i int, passwords []string) string {
 	if prompt != "" {
 		fmt.Println(prompt)
 	}
-	password, err := abtconsole.Stdin.PromptPassword("Passphrase: ")
+	password, err := zaeconsole.Stdin.PromptPassword("Passphrase: ")
 	if err != nil {
 		utils.Fatalf("Failed to read passphrase: %v", err)
 	}

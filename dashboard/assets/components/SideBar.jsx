@@ -57,7 +57,7 @@ class SideBar extends Component {
             const id = TAGS[key].id;
             this.clickOn[id] = event => {
                 event.preventDefault();
-                abtconsole.log(event.target.key);
+                zaeconsole.log(event.target.key);
                 this.props.changeContent(id);
             };
         }

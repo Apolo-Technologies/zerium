@@ -1269,7 +1269,7 @@ const (
 )
 
 // Console related constants used for the mode parameter to SetConsoleMode. See
-// https://docs.microsoft.com/en-us/windows/abtconsole/setabtconsolemode for details.
+// https://docs.microsoft.com/en-us/windows/zaeconsole/setzaeconsolemode for details.
 
 const (
 	ENABLE_PROCESSED_INPUT        = 0x1
@@ -1302,9 +1302,9 @@ type SmallRect struct {
 	Bottom int16
 }
 
-// Used with GetConsoleScreenBuffer to retreive information about a abtconsole
+// Used with GetConsoleScreenBuffer to retreive information about a zaeconsole
 // screen buffer. See
-// https://docs.microsoft.com/en-us/windows/abtconsole/abtconsole-screen-buffer-info-str
+// https://docs.microsoft.com/en-us/windows/zaeconsole/zaeconsole-screen-buffer-info-str
 // for details.
 
 type ConsoleScreenBufferInfo struct {

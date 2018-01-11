@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-package abtconsole
+package zaeconsole
 
 import (
 	"fmt"
@@ -28,7 +28,7 @@ import (
 	"strings"
 
 	"github.com/apolo-technologies/zerium/internal/jsre"
-	"github.com/apolo-technologies/zerium/internal/abt78ext"
+	"github.com/apolo-technologies/zerium/internal/zaeext"
 	"github.com/apolo-technologies/zerium/rpc"
 	"github.com/mattn/go-colorable"
 	"github.com/peterh/liner"
@@ -48,9 +48,9 @@ const HistoryFile = "history"
 const DefaultPrompt = "> "
 
 // Config is te collection of configurations to fine tune the behavior of the
-// JavaScript abtconsole.
+// JavaScript zaeconsole.
 type Config struct {
-	DataDir  string       // Data directory to store the abtconsole history at
+	DataDir  string       // Data directory to store the zaeconsole history at
 	DocRoot  string       // Filesystem path from where to load JavaScript files from
 	Client   *rpc.Client  // RPC client to execute Zerium requests through
 	Prompt   string       // Input prompt prefix string (defaults to DefaultPrompt)
@@ -60,15 +60,15 @@ type Config struct {
 }
 
 // Console is a JavaScript interpreted runtime environment. It is a fully fleged
-// JavaScript abtconsole attached to a running node via an external or in-process RPC
+// JavaScript zaeconsole attached to a running node via an external or in-process RPC
 // client.
 type Console struct {
 	client   *rpc.Client  // RPC client to execute Zerium requests through
 	jsre     *jsre.JSRE   // JavaScript runtime environment running the interpreter
 	prompt   string       // Input prompt prefix string
 	prompter UserPrompter // Input prompter to allow interactive user feedback
-	histPath string       // Absolute path to the abtconsole scrollback history
-	history  []string     // Scroll history maintained by the abtconsole
+	histPath string       // Absolute path to the zaeconsole scrollback history
+	history  []string     // Scroll history maintained by the zaeconsole
 	printer  io.Writer    // Output writer to serialize any display strings to
 }
 
@@ -83,8 +83,8 @@ func New(config Config) (*Console, error) {
 	if config.Printer == nil {
 		config.Printer = colorable.NewColorableStdout()
 	}
-	// Initialize the abtconsole and return
-	abtconsole := &Console{
+	// Initialize the zaeconsole and return
+	zaeconsole := &Console{
 		client:   config.Client,
 		jsre:     jsre.New(config.DocRoot, config.Printer),
 		prompt:   config.Prompt,
@@ -92,14 +92,14 @@ func New(config Config) (*Console, error) {
 		printer:  config.Printer,
 		histPath: filepath.Join(config.DataDir, HistoryFile),
 	}
-	if err := abtconsole.init(config.Preload); err != nil {
+	if err := zaeconsole.init(config.Preload); err != nil {
 		return nil, err
 	}
-	return abtconsole, nil
+	return zaeconsole, nil
 }
 
 // init retrieves the available APIs from the remote RPC provider and initializes
-// the abtconsole's JavaScript namespaces based on the exposed modules.
+// the zaeconsole's JavaScript namespaces based on the exposed modules.
 func (c *Console) init(preload []string) error {
 	// Initialize the JavaScript <-> Go RPC bridge
 	bridge := newBridge(c.client, c.prompter, c.printer)
@@ -109,42 +109,42 @@ func (c *Console) init(preload []string) error {
 	jg_zrmObj.Object().Set("send", bridge.Send)
 	jg_zrmObj.Object().Set("sendAsync", bridge.Send)
 
-	abtconsoleObj, _ := c.jsre.Get("abtconsole")
-	abtconsoleObj.Object().Set("log", c.abtconsoleOutput)
-	abtconsoleObj.Object().Set("error", c.abtconsoleOutput)
+	zaeconsoleObj, _ := c.jsre.Get("zaeconsole")
+	zaeconsoleObj.Object().Set("log", c.zaeconsoleOutput)
+	zaeconsoleObj.Object().Set("error", c.zaeconsoleOutput)
 
 	// Load all the internal utility JavaScript libraries
 	if err := c.jsre.Compile("bignumber.js", jsre.BigNumber_JS); err != nil {
 		return fmt.Errorf("bignumber.js: %v", err)
 	}
-	if err := c.jsre.Compile("abt78.js", jsre.Abt78_JS); err != nil {
-		return fmt.Errorf("abt78.js: %v", err)
+	if err := c.jsre.Compile("zae.js", jsre.zae_JS); err != nil {
+		return fmt.Errorf("zae.js: %v", err)
 	}
-	if _, err := c.jsre.Run("var Abt78 = require('abt78');"); err != nil {
-		return fmt.Errorf("abt78 require: %v", err)
+	if _, err := c.jsre.Run("var zae = require('zae');"); err != nil {
+		return fmt.Errorf("zae require: %v", err)
 	}
-	if _, err := c.jsre.Run("var abt78 = new Abt78(jg_zrm);"); err != nil {
-		return fmt.Errorf("abt78 provider: %v", err)
+	if _, err := c.jsre.Run("var zae = new zae(jg_zrm);"); err != nil {
+		return fmt.Errorf("zae provider: %v", err)
 	}
 	// Load the supported APIs into the JavaScript runtime environment
 	apis, err := c.client.SupportedModules()
 	if err != nil {
 		return fmt.Errorf("api modules: %v", err)
 	}
-	flatten := "var zrm = abt78.zrm; var personal = abt78.personal; "
+	flatten := "var zrm = zae.zrm; var personal = zae.personal; "
 	for api := range apis {
-		if api == "abt78" {
+		if api == "zae" {
 			continue // manually mapped or ignore
 		}
-		if file, ok := abt78ext.Modules[api]; ok {
+		if file, ok := zaeext.Modules[api]; ok {
 			// Load our extension for the module.
 			if err = c.jsre.Compile(fmt.Sprintf("%s.js", api), file); err != nil {
 				return fmt.Errorf("%s.js: %v", api, err)
 			}
-			flatten += fmt.Sprintf("var %s = abt78.%s; ", api, api)
-		} else if obj, err := c.jsre.Run("abt78." + api); err == nil && obj.IsObject() {
-			// Enable abt78.js built-in extension if available.
-			flatten += fmt.Sprintf("var %s = abt78.%s; ", api, api)
+			flatten += fmt.Sprintf("var %s = zae.%s; ", api, api)
+		} else if obj, err := c.jsre.Run("zae." + api); err == nil && obj.IsObject() {
+			// Enable zae.js built-in extension if available.
+			flatten += fmt.Sprintf("var %s = zae.%s; ", api, api)
 		}
 	}
 	if _, err = c.jsre.Run(flatten); err != nil {
@@ -153,7 +153,7 @@ func (c *Console) init(preload []string) error {
 	// Initialize the global name register (disabled for now)
 	//c.jsre.Run(`var GlobalRegistrar = zrm.contract(` + registrar.GlobalRegistrarAbi + `);   registrar = GlobalRegistrar.at("` + registrar.GlobalRegistrarAddr + `");`)
 
-	// If the abtconsole is in interactive mode, instrument password related methods to query the user
+	// If the zaeconsole is in interactive mode, instrument password related methods to query the user
 	if c.prompter != nil {
 		// Retrieve the account management object to instrument
 		personal, err := c.jsre.Get("personal")
@@ -162,20 +162,20 @@ func (c *Console) init(preload []string) error {
 		}
 		// Override the openWallet, unlockAccount, newAccount and sign methods since
 		// these require user interaction. Assign these method in the Console the
-		// original abt78 callbacks. These will be called by the abt78.* methods after
-		// they got the password from the user and send the original abt78 request to
+		// original zae callbacks. These will be called by the zae.* methods after
+		// they got the password from the user and send the original zae request to
 		// the backend.
 		if obj := personal.Object(); obj != nil { // make sure the personal api is enabled over the interface
-			if _, err = c.jsre.Run(`abt78.openWallet = personal.openWallet;`); err != nil {
+			if _, err = c.jsre.Run(`zae.openWallet = personal.openWallet;`); err != nil {
 				return fmt.Errorf("personal.openWallet: %v", err)
 			}
-			if _, err = c.jsre.Run(`abt78.unlockAccount = personal.unlockAccount;`); err != nil {
+			if _, err = c.jsre.Run(`zae.unlockAccount = personal.unlockAccount;`); err != nil {
 				return fmt.Errorf("personal.unlockAccount: %v", err)
 			}
-			if _, err = c.jsre.Run(`abt78.newAccount = personal.newAccount;`); err != nil {
+			if _, err = c.jsre.Run(`zae.newAccount = personal.newAccount;`); err != nil {
 				return fmt.Errorf("personal.newAccount: %v", err)
 			}
-			if _, err = c.jsre.Run(`abt78.sign = personal.sign;`); err != nil {
+			if _, err = c.jsre.Run(`zae.sign = personal.sign;`); err != nil {
 				return fmt.Errorf("personal.sign: %v", err)
 			}
 			obj.Set("openWallet", bridge.OpenWallet)
@@ -184,7 +184,7 @@ func (c *Console) init(preload []string) error {
 			obj.Set("sign", bridge.Sign)
 		}
 	}
-	// The admin.sleep and admin.sleepBlocks are offered by the abtconsole and not by the RPC layer.
+	// The admin.sleep and admin.sleepBlocks are offered by the zaeconsole and not by the RPC layer.
 	admin, err := c.jsre.Get("admin")
 	if err != nil {
 		return err
@@ -193,7 +193,7 @@ func (c *Console) init(preload []string) error {
 		obj.Set("sleepBlocks", bridge.SleepBlocks)
 		obj.Set("sleep", bridge.Sleep)
 	}
-	// Preload any JavaScript files before starting the abtconsole
+	// Preload any JavaScript files before starting the zaeconsole
 	for _, path := range preload {
 		if err := c.jsre.Exec(path); err != nil {
 			failure := err.Error()
@@ -203,7 +203,7 @@ func (c *Console) init(preload []string) error {
 			return fmt.Errorf("%s: %v", path, failure)
 		}
 	}
-	// Configure the abtconsole's input prompter for scrollback and tab completion
+	// Configure the zaeconsole's input prompter for scrollback and tab completion
 	if c.prompter != nil {
 		if content, err := ioutil.ReadFile(c.histPath); err != nil {
 			c.prompter.SetHistory(nil)
@@ -216,9 +216,9 @@ func (c *Console) init(preload []string) error {
 	return nil
 }
 
-// abtconsoleOutput is an override for the abtconsole.log and abtconsole.error methods to
+// zaeconsoleOutput is an override for the zaeconsole.log and zaeconsole.error methods to
 // stream the output into the configured output stream instead of stdout.
-func (c *Console) abtconsoleOutput(call otto.FunctionCall) otto.Value {
+func (c *Console) zaeconsoleOutput(call otto.FunctionCall) otto.Value {
 	output := []string{}
 	for _, argument := range call.ArgumentList {
 		output = append(output, fmt.Sprintf("%v", argument))
@@ -242,8 +242,8 @@ func (c *Console) AutoCompleteInput(line string, pos int) (string, []string, str
 		if line[start] == '.' || (line[start] >= 'a' && line[start] <= 'z') || (line[start] >= 'A' && line[start] <= 'Z') {
 			continue
 		}
-		// Handle abt78 in a special way (i.e. other numbers aren't auto completed)
-		if start >= 3 && line[start-3:start] == "abt78" {
+		// Handle zae in a special way (i.e. other numbers aren't auto completed)
+		if start >= 3 && line[start-3:start] == "zae" {
 			start -= 3
 			continue
 		}
@@ -255,15 +255,15 @@ func (c *Console) AutoCompleteInput(line string, pos int) (string, []string, str
 }
 
 // Welcome show summary of current Gabt instance and some metadata about the
-// abtconsole's available modules.
+// zaeconsole's available modules.
 func (c *Console) Welcome() {
 	// Print some generic Gabt metadata
-	fmt.Fprintf(c.printer, "Welcome to the Gabt JavaScript abtconsole!\n\n")
+	fmt.Fprintf(c.printer, "Welcome to the Gabt JavaScript zaeconsole!\n\n")
 	c.jsre.Run(`
-		abtconsole.log("instance: " + abt78.version.node);
-		abtconsole.log("coinbase: " + zrm.coinbase);
-		abtconsole.log("at block: " + zrm.blockNumber + " (" + new Date(1000 * zrm.getBlock(zrm.blockNumber).timestamp) + ")");
-		abtconsole.log(" datadir: " + admin.datadir);
+		zaeconsole.log("instance: " + zae.version.node);
+		zaeconsole.log("coinbase: " + zrm.coinbase);
+		zaeconsole.log("at block: " + zrm.blockNumber + " (" + new Date(1000 * zrm.getBlock(zrm.blockNumber).timestamp) + ")");
+		zaeconsole.log(" datadir: " + admin.datadir);
 	`)
 	// List all the supported modules for the user to call
 	if apis, err := c.client.SupportedModules(); err == nil {
@@ -326,7 +326,7 @@ func (c *Console) Interactive() {
 		scheduler <- prompt
 		select {
 		case <-abort:
-			// User forcefully quite the abtconsole
+			// User forcefully quite the zaeconsole
 			fmt.Fprintln(c.printer, "caught interrupt, exiting")
 			return
 
@@ -412,7 +412,7 @@ func (c *Console) Execute(path string) error {
 	return c.jsre.Exec(path)
 }
 
-// Stop cleans up the abtconsole and terminates the runtime envorinment.
+// Stop cleans up the zaeconsole and terminates the runtime envorinment.
 func (c *Console) Stop(graceful bool) error {
 	if err := ioutil.WriteFile(c.histPath, []byte(strings.Join(c.history, "\n")), 0600); err != nil {
 		return err

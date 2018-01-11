@@ -40,7 +40,7 @@ import (
 	"github.com/apolo-technologies/zerium/zrm/gasprice"
 	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/internal/zrmapi"
+	"github.com/apolo-technologies/zerium/internal/zaeapi"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/miner"
 	"github.com/apolo-technologies/zerium/node"
@@ -82,14 +82,14 @@ type Zerium struct {
 	bloomRequests chan chan *bloombits.Retrieval // Channel receiving bloom data retrieval requests
 	bloomIndexer  *core.ChainIndexer             // Bloom indexer operating during block imports
 
-	ApiBackend *ZrmApiBackend
+	ApiBackend *zaeapiBackend
 
 	miner     *miner.Miner
 	gasPrice  *big.Int
 	zeriumbase common.Address
 
 	networkId     uint64
-	netRPCService *zrmapi.PublicNetAPI
+	netRPCService *zaeapi.PublicNetAPI
 
 	lock sync.RWMutex // Protects the variadic fields (e.g. gas price and zeriumbase)
 }
@@ -169,7 +169,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Zerium, error) {
 	zrm.miner = miner.New(zrm, zrm.chainConfig, zrm.EventMux(), zrm.engine)
 	zrm.miner.SetExtra(makeExtraData(config.ExtraData))
 
-	zrm.ApiBackend = &ZrmApiBackend{zrm, nil}
+	zrm.ApiBackend = &zaeapiBackend{zrm, nil}
 	gpoParams := config.GPO
 	if gpoParams.Default == nil {
 		gpoParams.Default = config.GasPrice
@@ -236,7 +236,7 @@ func CreateConsensusEngine(ctx *node.ServiceContext, config *Config, chainConfig
 // APIs returns the collection of RPC services the zerium package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
 func (s *Zerium) APIs() []rpc.API {
-	apis := zrmapi.GetAPIs(s.ApiBackend)
+	apis := zaeapi.GetAPIs(s.ApiBackend)
 
 	// Append any APIs exposed explicitly by the consensus engine
 	apis = append(apis, s.engine.APIs(s.BlockChain())...)
@@ -310,7 +310,7 @@ func (s *Zerium) Zeriumbase() (eb common.Address, err error) {
 	return common.Address{}, fmt.Errorf("zeriumbase address must be explicitly specified")
 }
 
-// set in js abtconsole via admin interface or wrapper from cli flags
+// set in js zaeconsole via admin interface or wrapper from cli flags
 func (self *Zerium) SetZeriumbase(zeriumbase common.Address) {
 	self.lock.Lock()
 	self.zeriumbase = zeriumbase
@@ -375,7 +375,7 @@ func (s *Zerium) Start(srvr *p2p.Server) error {
 	s.startBloomHandlers()
 
 	// Start the RPC service
-	s.netRPCService = zrmapi.NewPublicNetAPI(srvr, s.NetVersion())
+	s.netRPCService = zaeapi.NewPublicNetAPI(srvr, s.NetVersion())
 
 	// Figure out a max peers count based on the server limits
 	maxPeers := srvr.MaxPeers

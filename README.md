@@ -56,7 +56,7 @@ the user doesn't care about years-old historical data, so we can fast-sync quick
 state of the network. To do so:
 
 ```
-$ gabt --fast --cache=512 abtconsole
+$ gabt --fast --cache=512 zaeconsole
 ```
 
 This command will:
@@ -66,8 +66,8 @@ This command will:
  * Bump the memory allowance of the database to 512MB (`--cache=512`), which can help significantly in
    sync times especially for HDD users. This flag is optional and you can set it as high or as low as
    you'd like, though we'd recommend the 512MB - 2GB range.
- * Start up Gabt's built-in interactive [JavaScript abtconsole](https://github.com/apolo-technologies/zerium/wiki/JavaScript-Console),
-   (via the trailing `abtconsole` subcommand) through which you can invoke all official [`abt78` methods](https://github.com/apolo-technologies/wiki/wiki/JavaScript-API)
+ * Start up Gabt's built-in interactive [JavaScript zaeconsole](https://github.com/apolo-technologies/zerium/wiki/JavaScript-Console),
+   (via the trailing `zaeconsole` subcommand) through which you can invoke all official [`zae` methods](https://github.com/apolo-technologies/wiki/wiki/JavaScript-API)
    as well as Gabt's own [management APIs](https://github.com/apolo-technologies/zerium/wiki/Management-APIs).
    This too is optional and if you leave it out you can always attach to an already running Gabt instance
    with `gabt attach`.
@@ -80,10 +80,10 @@ entire system. In other words, instead of attaching to the main network, you wan
 network with your node, which is fully equivalent to the main network, but with play-Zerium only.
 
 ```
-$ gabt --testnet --fast --cache=512 abtconsole
+$ gabt --testnet --fast --cache=512 zaeconsole
 ```
 
-The `--fast`, `--cache` flags and `abtconsole` subcommand have the exact same meaning as above and they
+The `--fast`, `--cache` flags and `zaeconsole` subcommand have the exact same meaning as above and they
 are equally useful on the testnet too. Please see above for their explanations if you've skipped to
 here.
 
@@ -135,7 +135,7 @@ Do not forget `--rpcaddr 0.0.0.0`, if you want to access RPC from other containe
 ### Programatically interfacing Gabt nodes
 
 As a developer, sooner rather than later you'll want to start interacting with Gabt and the Zerium
-network via your own programs and not manually through the abtconsole. To aid this, Gabt has built in
+network via your own programs and not manually through the zaeconsole. To aid this, Gabt has built in
 support for a JSON-RPC based APIs ([standard APIs](https://github.com/apolo-technologies/wiki/wiki/JSON-RPC) and
 [Gabt specific APIs](https://github.com/apolo-technologies/zerium/wiki/Management-APIs)). These can be
 exposed via HTTP, WebSockets and IPC (unix sockets on unix based platforms, and named pipes on Windows).
@@ -149,15 +149,15 @@ HTTP based JSON-RPC API options:
   * `--rpc` Enable the HTTP-RPC server
   * `--rpcaddr` HTTP-RPC server listening interface (default: "localhost")
   * `--rpcport` HTTP-RPC server listening port (default: 8545)
-  * `--rpcapi` API's offered over the HTTP-RPC interface (default: "zrm,net,abt78")
+  * `--rpcapi` API's offered over the HTTP-RPC interface (default: "zrm,net,zae")
   * `--rpccorsdomain` Comma separated list of domains from which to accept cross origin requests (browser enforced)
   * `--ws` Enable the WS-RPC server
   * `--wsaddr` WS-RPC server listening interface (default: "localhost")
   * `--wsport` WS-RPC server listening port (default: 8546)
-  * `--wsapi` API's offered over the WS-RPC interface (default: "zrm,net,abt78")
+  * `--wsapi` API's offered over the WS-RPC interface (default: "zrm,net,zae")
   * `--wsorigins` Origins from which to accept websockets requests
   * `--ipcdisable` Disable the IPC-RPC server
-  * `--ipcapi` API's offered over the IPC-RPC interface (default: "admin,debug,zrm,miner,net,personal,shh,txpool,abt78")
+  * `--ipcapi` API's offered over the IPC-RPC interface (default: "admin,debug,zrm,miner,net,personal,shh,txpool,zae")
   * `--ipcpath` Filename for IPC socket/pipe within the datadir (explicit paths escape it)
 
 You'll need to use your own programming environments' capabilities (libraries, tools, etc) to connect

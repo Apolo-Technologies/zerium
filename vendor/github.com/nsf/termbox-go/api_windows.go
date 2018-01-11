@@ -32,12 +32,12 @@ func Init() error {
 		return err
 	}
 
-	err = get_abtconsole_mode(in, &orig_mode)
+	err = get_zaeconsole_mode(in, &orig_mode)
 	if err != nil {
 		return err
 	}
 
-	err = set_abtconsole_mode(in, enable_window_input)
+	err = set_zaeconsole_mode(in, enable_window_input)
 	if err != nil {
 		return err
 	}
@@ -45,12 +45,12 @@ func Init() error {
 	orig_size = get_term_size(out)
 	win_size := get_win_size(out)
 
-	err = set_abtconsole_screen_buffer_size(out, win_size)
+	err = set_zaeconsole_screen_buffer_size(out, win_size)
 	if err != nil {
 		return err
 	}
 
-	err = get_abtconsole_cursor_info(out, &orig_cursor_info)
+	err = get_zaeconsole_cursor_info(out, &orig_cursor_info)
 	if err != nil {
 		return err
 	}
@@ -86,10 +86,10 @@ func Close() {
 	}
 	<-cancel_done_comm
 
-	set_abtconsole_cursor_info(out, &orig_cursor_info)
-	set_abtconsole_cursor_position(out, coord{})
-	set_abtconsole_screen_buffer_size(out, orig_size)
-	set_abtconsole_mode(in, orig_mode)
+	set_zaeconsole_cursor_info(out, &orig_cursor_info)
+	set_zaeconsole_cursor_position(out, coord{})
+	set_zaeconsole_screen_buffer_size(out, orig_size)
+	set_zaeconsole_mode(in, orig_mode)
 	syscall.Close(in)
 	syscall.Close(out)
 	syscall.Close(interrupt)
@@ -114,7 +114,7 @@ func Flush() error {
 			right:  term_size.x - 1,
 			bottom: diff.pos + diff.lines - 1,
 		}
-		write_abtconsole_output(out, diff.chars, r)
+		write_zaeconsole_output(out, diff.chars, r)
 	}
 	if !is_cursor_hidden(cursor_x, cursor_y) {
 		move_cursor(cursor_x, cursor_y)
@@ -174,8 +174,8 @@ func PollEvent() Event {
 }
 
 // Returns the size of the internal back buffer (which is mostly the same as
-// abtconsole's window size in characters). But it doesn't always match the size
-// of the abtconsole window, after the abtconsole size has changed, the internal back
+// zaeconsole's window size in characters). But it doesn't always match the size
+// of the zaeconsole window, after the zaeconsole size has changed, the internal back
 // buffer will get in sync only after Clear or Flush function calls.
 func Size() (int, int) {
 	return int(term_size.x), int(term_size.y)
@@ -207,12 +207,12 @@ func SetInputMode(mode InputMode) InputMode {
 		return input_mode
 	}
 	if mode&InputMouse != 0 {
-		err := set_abtconsole_mode(in, enable_window_input|enable_mouse_input|enable_extended_flags)
+		err := set_zaeconsole_mode(in, enable_window_input|enable_mouse_input|enable_extended_flags)
 		if err != nil {
 			panic(err)
 		}
 	} else {
-		err := set_abtconsole_mode(in, enable_window_input)
+		err := set_zaeconsole_mode(in, enable_window_input)
 		if err != nil {
 			panic(err)
 		}
@@ -224,7 +224,7 @@ func SetInputMode(mode InputMode) InputMode {
 
 // Sets the termbox output mode.
 //
-// Windows abtconsole does not support extra colour modes,
+// Windows zaeconsole does not support extra colour modes,
 // so this will always set and return OutputNormal.
 func SetOutputMode(mode OutputMode) OutputMode {
 	return OutputNormal

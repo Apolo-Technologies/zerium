@@ -425,7 +425,7 @@ var (
 	}
 	PreloadJSFlag = cli.StringFlag{
 		Name:  "preload",
-		Usage: "Comma separated list of JavaScript files to preload into the abtconsole",
+		Usage: "Comma separated list of JavaScript files to preload into the zaeconsole",
 	}
 
 	// Network Settings
@@ -1173,7 +1173,7 @@ func MakeChain(ctx *cli.Context, stack *node.Node) (chain *core.BlockChain, chai
 	return chain, chainDb
 }
 
-// MakeConsolePreloads retrieves the absolute paths for the abtconsole JavaScript
+// MakeConsolePreloads retrieves the absolute paths for the zaeconsole JavaScript
 // scripts to preload before starting.
 func MakeConsolePreloads(ctx *cli.Context) []string {
 	// Skip preloading if there's nothing to preload

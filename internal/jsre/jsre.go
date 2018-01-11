@@ -33,7 +33,7 @@ import (
 
 var (
 	BigNumber_JS = deps.MustAsset("bignumber.js")
-	Abt78_JS      = deps.MustAsset("abt78.js")
+	zae_JS      = deps.MustAsset("zae.js")
 )
 
 /*

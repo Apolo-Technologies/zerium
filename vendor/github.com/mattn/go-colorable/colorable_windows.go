@@ -43,7 +43,7 @@ type smallRect struct {
 	bottom short
 }
 
-type abtconsoleScreenBufferInfo struct {
+type zaeconsoleScreenBufferInfo struct {
 	size              coord
 	cursorPosition    coord
 	attributes        word
@@ -51,7 +51,7 @@ type abtconsoleScreenBufferInfo struct {
 	maximumWindowSize coord
 }
 
-type abtconsoleCursorInfo struct {
+type zaeconsoleCursorInfo struct {
 	size    dword
 	visible int32
 }
@@ -82,7 +82,7 @@ func NewColorable(file *os.File) io.Writer {
 	}
 
 	if isatty.IsTerminal(file.Fd()) {
-		var csbi abtconsoleScreenBufferInfo
+		var csbi zaeconsoleScreenBufferInfo
 		handle := syscall.Handle(file.Fd())
 		procGetConsoleScreenBufferInfo.Call(uintptr(handle), uintptr(unsafe.Pointer(&csbi)))
 		return &Writer{out: file, handle: handle, oldattr: csbi.attributes, oldpos: coord{0, 0}}
@@ -360,9 +360,9 @@ var color256 = map[int]int{
 	255: 0xeeeeee,
 }
 
-// Write write data on abtconsole
+// Write write data on zaeconsole
 func (w *Writer) Write(data []byte) (n int, err error) {
-	var csbi abtconsoleScreenBufferInfo
+	var csbi zaeconsoleScreenBufferInfo
 	procGetConsoleScreenBufferInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&csbi)))
 
 	er := bytes.NewReader(data)
@@ -411,7 +411,7 @@ loop:
 			buf.Write([]byte(string(c)))
 		}
 
-		var csbi abtconsoleScreenBufferInfo
+		var csbi zaeconsoleScreenBufferInfo
 		switch m {
 		case 'A':
 			n, err = strconv.Atoi(buf.String())
@@ -443,7 +443,7 @@ loop:
 				continue
 			}
 			if n, err = strconv.Atoi(buf.String()); err == nil {
-				var csbi abtconsoleScreenBufferInfo
+				var csbi zaeconsoleScreenBufferInfo
 				procGetConsoleScreenBufferInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&csbi)))
 				csbi.cursorPosition.x += short(n)
 				procSetConsoleCursorPosition.Call(uintptr(w.handle), *(*uintptr)(unsafe.Pointer(&csbi.cursorPosition)))
@@ -636,7 +636,7 @@ loop:
 		case 'h':
 			cs := buf.String()
 			if cs == "?25" {
-				var ci abtconsoleCursorInfo
+				var ci zaeconsoleCursorInfo
 				procGetConsoleCursorInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&ci)))
 				ci.visible = 1
 				procSetConsoleCursorInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&ci)))
@@ -644,7 +644,7 @@ loop:
 		case 'l':
 			cs := buf.String()
 			if cs == "?25" {
-				var ci abtconsoleCursorInfo
+				var ci zaeconsoleCursorInfo
 				procGetConsoleCursorInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&ci)))
 				ci.visible = 0
 				procSetConsoleCursorInfo.Call(uintptr(w.handle), uintptr(unsafe.Pointer(&ci)))
@@ -659,7 +659,7 @@ loop:
 	return len(data) - w.lastbuf.Len(), nil
 }
 
-type abtconsoleColor struct {
+type zaeconsoleColor struct {
 	rgb       int
 	red       bool
 	green     bool
@@ -667,7 +667,7 @@ type abtconsoleColor struct {
 	intensity bool
 }
 
-func (c abtconsoleColor) foregroundAttr() (attr word) {
+func (c zaeconsoleColor) foregroundAttr() (attr word) {
 	if c.red {
 		attr |= foregroundRed
 	}
@@ -683,7 +683,7 @@ func (c abtconsoleColor) foregroundAttr() (attr word) {
 	return
 }
 
-func (c abtconsoleColor) backgroundAttr() (attr word) {
+func (c zaeconsoleColor) backgroundAttr() (attr word) {
 	if c.red {
 		attr |= backgroundRed
 	}
@@ -699,23 +699,23 @@ func (c abtconsoleColor) backgroundAttr() (attr word) {
 	return
 }
 
-var color16 = []abtconsoleColor{
-	abtconsoleColor{0x000000, false, false, false, false},
-	abtconsoleColor{0x000080, false, false, true, false},
-	abtconsoleColor{0x008000, false, true, false, false},
-	abtconsoleColor{0x008080, false, true, true, false},
-	abtconsoleColor{0x800000, true, false, false, false},
-	abtconsoleColor{0x800080, true, false, true, false},
-	abtconsoleColor{0x808000, true, true, false, false},
-	abtconsoleColor{0xc0c0c0, true, true, true, false},
-	abtconsoleColor{0x808080, false, false, false, true},
-	abtconsoleColor{0x0000ff, false, false, true, true},
-	abtconsoleColor{0x00ff00, false, true, false, true},
-	abtconsoleColor{0x00ffff, false, true, true, true},
-	abtconsoleColor{0xff0000, true, false, false, true},
-	abtconsoleColor{0xff00ff, true, false, true, true},
-	abtconsoleColor{0xffff00, true, true, false, true},
-	abtconsoleColor{0xffffff, true, true, true, true},
+var color16 = []zaeconsoleColor{
+	zaeconsoleColor{0x000000, false, false, false, false},
+	zaeconsoleColor{0x000080, false, false, true, false},
+	zaeconsoleColor{0x008000, false, true, false, false},
+	zaeconsoleColor{0x008080, false, true, true, false},
+	zaeconsoleColor{0x800000, true, false, false, false},
+	zaeconsoleColor{0x800080, true, false, true, false},
+	zaeconsoleColor{0x808000, true, true, false, false},
+	zaeconsoleColor{0xc0c0c0, true, true, true, false},
+	zaeconsoleColor{0x808080, false, false, false, true},
+	zaeconsoleColor{0x0000ff, false, false, true, true},
+	zaeconsoleColor{0x00ff00, false, true, false, true},
+	zaeconsoleColor{0x00ffff, false, true, true, true},
+	zaeconsoleColor{0xff0000, true, false, false, true},
+	zaeconsoleColor{0xff00ff, true, false, true, true},
+	zaeconsoleColor{0xffff00, true, true, false, true},
+	zaeconsoleColor{0xffffff, true, true, true, true},
 }
 
 type hsv struct {
@@ -764,7 +764,7 @@ func toHSV(rgb int) hsv {
 
 type hsvTable []hsv
 
-func toHSVTable(rgbTable []abtconsoleColor) hsvTable {
+func toHSVTable(rgbTable []zaeconsoleColor) hsvTable {
 	t := make(hsvTable, len(rgbTable))
 	for i, c := range rgbTable {
 		t[i] = toHSV(c.rgb)
@@ -772,7 +772,7 @@ func toHSVTable(rgbTable []abtconsoleColor) hsvTable {
 	return t
 }
 
-func (t hsvTable) find(rgb int) abtconsoleColor {
+func (t hsvTable) find(rgb int) zaeconsoleColor {
 	hsv := toHSV(rgb)
 	n := 7
 	l := float32(5.0)

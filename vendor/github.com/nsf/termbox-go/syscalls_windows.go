@@ -57,5 +57,5 @@ const (
 
 	generic_read            = 0x80000000
 	generic_write           = 0x40000000
-	abtconsole_textmode_buffer = 0x1
+	zaeconsole_textmode_buffer = 0x1
 )

@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-package abtconsole
+package zaeconsole
 
 import (
 	"bytes"
@@ -34,7 +34,7 @@ import (
 )
 
 const (
-	testInstance = "abtconsole-tester"
+	testInstance = "zaeconsole-tester"
 	testAddress  = "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 )
 
@@ -50,7 +50,7 @@ func (p *hookedPrompter) PromptInput(prompt string) (string, error) {
 	case <-time.After(time.Second):
 		return "", errors.New("prompt timeout")
 	}
-	// Retrieve the response and feed to the abtconsole
+	// Retrieve the response and feed to the zaeconsole
 	select {
 	case input := <-p.scheduler:
 		return input, nil
@@ -69,21 +69,21 @@ func (p *hookedPrompter) SetHistory(history []string)              {}
 func (p *hookedPrompter) AppendHistory(command string)             {}
 func (p *hookedPrompter) SetWordCompleter(completer WordCompleter) {}
 
-// tester is a abtconsole test environment for the abtconsole tests to operate on.
+// tester is a zaeconsole test environment for the zaeconsole tests to operate on.
 type tester struct {
 	workspace string
 	stack     *node.Node
 	zerium  *zrm.Zerium
-	abtconsole   *Console
+	zaeconsole   *Console
 	input     *hookedPrompter
 	output    *bytes.Buffer
 }
 
-// newTester creates a test environment based on which the abtconsole can operate.
+// newTester creates a test environment based on which the zaeconsole can operate.
 // Please ensure you call Close() on the returned tester to avoid leaks.
 func newTester(t *testing.T, confOverride func(*zrm.Config)) *tester {
 	// Create a temporary storage for the node keys and initialize it
-	workspace, err := ioutil.TempDir("", "abtconsole-tester-")
+	workspace, err := ioutil.TempDir("", "zaeconsole-tester-")
 	if err != nil {
 		t.Fatalf("failed to create temporary keystore: %v", err)
 	}
@@ -104,7 +104,7 @@ func newTester(t *testing.T, confOverride func(*zrm.Config)) *tester {
 	if err = stack.Register(func(ctx *node.ServiceContext) (node.Service, error) { return zrm.New(ctx, ethConf) }); err != nil {
 		t.Fatalf("failed to register Zerium protocol: %v", err)
 	}
-	// Start the node and assemble the JavaScript abtconsole around it
+	// Start the node and assemble the JavaScript zaeconsole around it
 	if err = stack.Start(); err != nil {
 		t.Fatalf("failed to start test stack: %v", err)
 	}
@@ -115,7 +115,7 @@ func newTester(t *testing.T, confOverride func(*zrm.Config)) *tester {
 	prompter := &hookedPrompter{scheduler: make(chan string)}
 	printer := new(bytes.Buffer)
 
-	abtconsole, err := New(Config{
+	zaeconsole, err := New(Config{
 		DataDir:  stack.DataDir(),
 		DocRoot:  "testdata",
 		Client:   client,
@@ -124,7 +124,7 @@ func newTester(t *testing.T, confOverride func(*zrm.Config)) *tester {
 		Preload:  []string{"preload.js"},
 	})
 	if err != nil {
-		t.Fatalf("failed to create JavaScript abtconsole: %v", err)
+		t.Fatalf("failed to create JavaScript zaeconsole: %v", err)
 	}
 	// Create the final tester and return
 	var zerium *zrm.Zerium
@@ -134,7 +134,7 @@ func newTester(t *testing.T, confOverride func(*zrm.Config)) *tester {
 		workspace: workspace,
 		stack:     stack,
 		zerium:  zerium,
-		abtconsole:   abtconsole,
+		zaeconsole:   zaeconsole,
 		input:     prompter,
 		output:    printer,
 	}
@@ -142,8 +142,8 @@ func newTester(t *testing.T, confOverride func(*zrm.Config)) *tester {
 
 // Close cleans up any temporary data folders and held resources.
 func (env *tester) Close(t *testing.T) {
-	if err := env.abtconsole.Stop(false); err != nil {
-		t.Errorf("failed to stop embedded abtconsole: %v", err)
+	if err := env.zaeconsole.Stop(false); err != nil {
+		t.Errorf("failed to stop embedded zaeconsole: %v", err)
 	}
 	if err := env.stack.Stop(); err != nil {
 		t.Errorf("failed to stop embedded node: %v", err)
@@ -153,28 +153,28 @@ func (env *tester) Close(t *testing.T) {
 
 // Tests that the node lists the correct welcome message, notably that it contains
 // the instance name, coinbase account, block number, data directory and supported
-// abtconsole modules.
+// zaeconsole modules.
 func TestWelcome(t *testing.T) {
 	tester := newTester(t, nil)
 	defer tester.Close(t)
 
-	tester.abtconsole.Welcome()
+	tester.zaeconsole.Welcome()
 
 	output := string(tester.output.Bytes())
 	if want := "Welcome"; !strings.Contains(output, want) {
-		t.Fatalf("abtconsole output missing welcome message: have\n%s\nwant also %s", output, want)
+		t.Fatalf("zaeconsole output missing welcome message: have\n%s\nwant also %s", output, want)
 	}
 	if want := fmt.Sprintf("instance: %s", testInstance); !strings.Contains(output, want) {
-		t.Fatalf("abtconsole output missing instance: have\n%s\nwant also %s", output, want)
+		t.Fatalf("zaeconsole output missing instance: have\n%s\nwant also %s", output, want)
 	}
 	if want := fmt.Sprintf("coinbase: %s", testAddress); !strings.Contains(output, want) {
-		t.Fatalf("abtconsole output missing coinbase: have\n%s\nwant also %s", output, want)
+		t.Fatalf("zaeconsole output missing coinbase: have\n%s\nwant also %s", output, want)
 	}
 	if want := "at block: 0"; !strings.Contains(output, want) {
-		t.Fatalf("abtconsole output missing sync status: have\n%s\nwant also %s", output, want)
+		t.Fatalf("zaeconsole output missing sync status: have\n%s\nwant also %s", output, want)
 	}
 	if want := fmt.Sprintf("datadir: %s", tester.workspace); !strings.Contains(output, want) {
-		t.Fatalf("abtconsole output missing coinbase: have\n%s\nwant also %s", output, want)
+		t.Fatalf("zaeconsole output missing coinbase: have\n%s\nwant also %s", output, want)
 	}
 }
 
@@ -183,19 +183,19 @@ func TestEvaluate(t *testing.T) {
 	tester := newTester(t, nil)
 	defer tester.Close(t)
 
-	tester.abtconsole.Evaluate("2 + 2")
+	tester.zaeconsole.Evaluate("2 + 2")
 	if output := string(tester.output.Bytes()); !strings.Contains(output, "4") {
 		t.Fatalf("statement evaluation failed: have %s, want %s", output, "4")
 	}
 }
 
-// Tests that the abtconsole can be used in interactive mode.
+// Tests that the zaeconsole can be used in interactive mode.
 func TestInteractive(t *testing.T) {
-	// Create a tester and run an interactive abtconsole in the background
+	// Create a tester and run an interactive zaeconsole in the background
 	tester := newTester(t, nil)
 	defer tester.Close(t)
 
-	go tester.abtconsole.Interactive()
+	go tester.zaeconsole.Interactive()
 
 	// Wait for a promt and send a statement back
 	select {
@@ -225,7 +225,7 @@ func TestPreload(t *testing.T) {
 	tester := newTester(t, nil)
 	defer tester.Close(t)
 
-	tester.abtconsole.Evaluate("preloaded")
+	tester.zaeconsole.Evaluate("preloaded")
 	if output := string(tester.output.Bytes()); !strings.Contains(output, "some-preloaded-string") {
 		t.Fatalf("preloaded variable missing: have %s, want %s", output, "some-preloaded-string")
 	}
@@ -236,9 +236,9 @@ func TestExecute(t *testing.T) {
 	tester := newTester(t, nil)
 	defer tester.Close(t)
 
-	tester.abtconsole.Execute("exec.js")
+	tester.zaeconsole.Execute("exec.js")
 
-	tester.abtconsole.Evaluate("execed")
+	tester.zaeconsole.Evaluate("execed")
 	if output := string(tester.output.Bytes()); !strings.Contains(output, "some-executed-string") {
 		t.Fatalf("execed variable missing: have %s, want %s", output, "some-executed-string")
 	}
@@ -250,7 +250,7 @@ func TestPrettyPrint(t *testing.T) {
 	tester := newTester(t, nil)
 	defer tester.Close(t)
 
-	tester.abtconsole.Evaluate("obj = {int: 1, string: 'two', list: [3, 3, 3], obj: {null: null, func: function(){}}}")
+	tester.zaeconsole.Evaluate("obj = {int: 1, string: 'two', list: [3, 3, 3], obj: {null: null, func: function(){}}}")
 
 	// Define some specially formatted fields
 	var (
@@ -280,7 +280,7 @@ func TestPrettyPrint(t *testing.T) {
 func TestPrettyError(t *testing.T) {
 	tester := newTester(t, nil)
 	defer tester.Close(t)
-	tester.abtconsole.Evaluate("throw 'hello'")
+	tester.zaeconsole.Evaluate("throw 'hello'")
 
 	want := jsre.ErrorColor("hello") + "\n"
 	if output := string(tester.output.Bytes()); output != want {

@@ -35,7 +35,7 @@ import (
 	"github.com/apolo-technologies/zerium/zrm/gasprice"
 	"github.com/apolo-technologies/zerium/zrmdb"
 	"github.com/apolo-technologies/zerium/event"
-	"github.com/apolo-technologies/zerium/internal/zrmapi"
+	"github.com/apolo-technologies/zerium/internal/zaeapi"
 	"github.com/apolo-technologies/zerium/light"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/node"
@@ -72,7 +72,7 @@ type LightZerium struct {
 	accountManager *accounts.Manager
 
 	networkId     uint64
-	netRPCService *zrmapi.PublicNetAPI
+	netRPCService *zaeapi.PublicNetAPI
 
 	wg sync.WaitGroup
 }
@@ -173,7 +173,7 @@ func (s *LightDummyAPI) Mining() bool {
 // APIs returns the collection of RPC services the zerium package offers.
 // NOTE, some of these services probably need to be moved to somewhere else.
 func (s *LightZerium) APIs() []rpc.API {
-	return append(zrmapi.GetAPIs(s.ApiBackend), []rpc.API{
+	return append(zaeapi.GetAPIs(s.ApiBackend), []rpc.API{
 		{
 			Namespace: "zrm",
 			Version:   "1.0",
@@ -220,7 +220,7 @@ func (s *LightZerium) Protocols() []p2p.Protocol {
 func (s *LightZerium) Start(srvr *p2p.Server) error {
 	s.startBloomHandlers()
 	log.Warn("Light client mode is an experimental feature")
-	s.netRPCService = zrmapi.NewPublicNetAPI(srvr, s.networkId)
+	s.netRPCService = zaeapi.NewPublicNetAPI(srvr, s.networkId)
 	// search the topic belonging to the oldest supported protocol because
 	// servers always advertise all supported protocols
 	protocolVersion := ClientProtocolVersions[len(ClientProtocolVersions)-1]

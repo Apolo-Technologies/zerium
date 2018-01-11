@@ -27,7 +27,7 @@ import (
 
 	"github.com/apolo-technologies/zerium/cmd/utils"
 	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/abtconsole"
+	"github.com/apolo-technologies/zerium/zaeconsole"
 	"github.com/apolo-technologies/zerium/core"
 	"github.com/apolo-technologies/zerium/core/state"
 	"github.com/apolo-technologies/zerium/core/types"
@@ -349,7 +349,7 @@ func removeDB(ctx *cli.Context) error {
 		}
 		// Confirm removal and execute
 		fmt.Println(dbdir)
-		confirm, err := abtconsole.Stdin.PromptConfirm("Remove this database?")
+		confirm, err := zaeconsole.Stdin.PromptConfirm("Remove this database?")
 		switch {
 		case err != nil:
 			utils.Fatalf("%v", err)

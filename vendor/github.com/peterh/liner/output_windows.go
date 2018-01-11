@@ -11,7 +11,7 @@ type smallRect struct {
 	left, top, right, bottom int16
 }
 
-type abtconsoleScreenBufferInfo struct {
+type zaeconsoleScreenBufferInfo struct {
 	dwSize              coord
 	dwCursorPosition    coord
 	wAttributes         int16
@@ -20,14 +20,14 @@ type abtconsoleScreenBufferInfo struct {
 }
 
 func (s *State) cursorPos(x int) {
-	var sbi abtconsoleScreenBufferInfo
+	var sbi zaeconsoleScreenBufferInfo
 	procGetConsoleScreenBufferInfo.Call(uintptr(s.hOut), uintptr(unsafe.Pointer(&sbi)))
 	procSetConsoleCursorPosition.Call(uintptr(s.hOut),
 		uintptr(int(x)&0xFFFF|int(sbi.dwCursorPosition.y)<<16))
 }
 
 func (s *State) eraseLine() {
-	var sbi abtconsoleScreenBufferInfo
+	var sbi zaeconsoleScreenBufferInfo
 	procGetConsoleScreenBufferInfo.Call(uintptr(s.hOut), uintptr(unsafe.Pointer(&sbi)))
 	var numWritten uint32
 	procFillConsoleOutputCharacter.Call(uintptr(s.hOut), uintptr(' '),
@@ -37,7 +37,7 @@ func (s *State) eraseLine() {
 }
 
 func (s *State) eraseScreen() {
-	var sbi abtconsoleScreenBufferInfo
+	var sbi zaeconsoleScreenBufferInfo
 	procGetConsoleScreenBufferInfo.Call(uintptr(s.hOut), uintptr(unsafe.Pointer(&sbi)))
 	var numWritten uint32
 	procFillConsoleOutputCharacter.Call(uintptr(s.hOut), uintptr(' '),
@@ -48,14 +48,14 @@ func (s *State) eraseScreen() {
 }
 
 func (s *State) moveUp(lines int) {
-	var sbi abtconsoleScreenBufferInfo
+	var sbi zaeconsoleScreenBufferInfo
 	procGetConsoleScreenBufferInfo.Call(uintptr(s.hOut), uintptr(unsafe.Pointer(&sbi)))
 	procSetConsoleCursorPosition.Call(uintptr(s.hOut),
 		uintptr(int(sbi.dwCursorPosition.x)&0xFFFF|(int(sbi.dwCursorPosition.y)-lines)<<16))
 }
 
 func (s *State) moveDown(lines int) {
-	var sbi abtconsoleScreenBufferInfo
+	var sbi zaeconsoleScreenBufferInfo
 	procGetConsoleScreenBufferInfo.Call(uintptr(s.hOut), uintptr(unsafe.Pointer(&sbi)))
 	procSetConsoleCursorPosition.Call(uintptr(s.hOut),
 		uintptr(int(sbi.dwCursorPosition.x)&0xFFFF|(int(sbi.dwCursorPosition.y)+lines)<<16))
@@ -66,7 +66,7 @@ func (s *State) emitNewLine() {
 }
 
 func (s *State) getColumns() {
-	var sbi abtconsoleScreenBufferInfo
+	var sbi zaeconsoleScreenBufferInfo
 	procGetConsoleScreenBufferInfo.Call(uintptr(s.hOut), uintptr(unsafe.Pointer(&sbi)))
 	s.columns = int(sbi.dwSize.x)
 	if s.columns > 1 {

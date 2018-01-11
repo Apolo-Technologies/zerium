@@ -36,7 +36,7 @@ import (
 
 	"github.com/apolo-technologies/zerium/cmd/utils"
 	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/abtconsole"
+	"github.com/apolo-technologies/zerium/zaeconsole"
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/log"
 	"github.com/apolo-technologies/zerium/p2p"
@@ -205,7 +205,7 @@ func initialize() {
 
 	if *mailServerMode {
 		if len(msPassword) == 0 {
-			msPassword, err = abtconsole.Stdin.PromptPassword("Please enter the Mail Server password: ")
+			msPassword, err = zaeconsole.Stdin.PromptPassword("Please enter the Mail Server password: ")
 			if err != nil {
 				utils.Fatalf("Failed to read Mail Server password: %s", err)
 			}
@@ -327,7 +327,7 @@ func configureNode() {
 	if *requestMail {
 		p2pAccept = true
 		if len(msPassword) == 0 {
-			msPassword, err = abtconsole.Stdin.PromptPassword("Please enter the Mail Server password: ")
+			msPassword, err = zaeconsole.Stdin.PromptPassword("Please enter the Mail Server password: ")
 			if err != nil {
 				utils.Fatalf("Failed to read Mail Server password: %s", err)
 			}
@@ -336,7 +336,7 @@ func configureNode() {
 
 	if !*asymmetricMode && !*forwarderMode {
 		if len(symPass) == 0 {
-			symPass, err = abtconsole.Stdin.PromptPassword("Please enter the password for symmetric encryption: ")
+			symPass, err = zaeconsole.Stdin.PromptPassword("Please enter the password for symmetric encryption: ")
 			if err != nil {
 				utils.Fatalf("Failed to read passphrase: %v", err)
 			}

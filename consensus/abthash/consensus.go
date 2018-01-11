@@ -38,7 +38,7 @@ import (
 var (
 	frontierBlockReward  *big.Int = big.NewInt(9223372036854775807) // Block reward in wei for successfully mining a block
 	byzantiumBlockReward *big.Int = big.NewInt(9223372036854775807) // Block reward in wei for successfully mining a block upward from Byzantium
-	maxUncles                     = 0                 // Maximum number of uncles allowed in a single block
+	maxUncles                     = 4                 // Maximum number of uncles allowed in a single block
 )
 
 // Various error messages to mark blocks invalid. These should be private to

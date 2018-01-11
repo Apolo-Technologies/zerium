@@ -29,7 +29,7 @@ import (
 	"github.com/apolo-technologies/zerium/accounts/keystore"
 	"github.com/apolo-technologies/zerium/cmd/utils"
 	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/abtconsole"
+	"github.com/apolo-technologies/zerium/zaeconsole"
 	"github.com/apolo-technologies/zerium/zrm"
 	"github.com/apolo-technologies/zerium/zrmclient"
 	"github.com/apolo-technologies/zerium/internal/debug"
@@ -160,8 +160,8 @@ func init() {
 		// See accountcmd.go:
 		accountCommand,
 		walletCommand,
-		// See abtconsolecmd.go:
-		abtconsoleCommand,
+		// See zaeconsolecmd.go:
+		zaeconsoleCommand,
 		attachCommand,
 		javascriptCommand,
 		// See misccmd.go:
@@ -177,7 +177,7 @@ func init() {
 
 	app.Flags = append(app.Flags, nodeFlags...)
 	app.Flags = append(app.Flags, rpcFlags...)
-	app.Flags = append(app.Flags, abtconsoleFlags...)
+	app.Flags = append(app.Flags, zaeconsoleFlags...)
 	app.Flags = append(app.Flags, debug.Flags...)
 	app.Flags = append(app.Flags, whisperFlags...)
 
@@ -195,7 +195,7 @@ func init() {
 
 	app.After = func(ctx *cli.Context) error {
 		debug.Exit()
-		abtconsole.Stdin.Close() // Resets terminal mode.
+		zaeconsole.Stdin.Close() // Resets terminal mode.
 		return nil
 	}
 }

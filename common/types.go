@@ -55,7 +55,7 @@ func (h Hash) Bytes() []byte { return h[:] }
 func (h Hash) Big() *big.Int { return new(big.Int).SetBytes(h[:]) }
 func (h Hash) Hex() string   { return hexutil.Encode(h[:]) }
 
-// TerminalString implements log.TerminalStringer, formatting a string for abtconsole
+// TerminalString implements log.TerminalStringer, formatting a string for zaeconsole
 // output during logging.
 func (h Hash) TerminalString() string {
 	return fmt.Sprintf("%x…%x", h[:3], h[29:])

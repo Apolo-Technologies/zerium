@@ -23,7 +23,7 @@ import (
 	"sync"
 
 	"github.com/apolo-technologies/zerium/common"
-	"github.com/apolo-technologies/zerium/internal/zrmapi"
+	"github.com/apolo-technologies/zerium/internal/zaeapi"
 	"github.com/apolo-technologies/zerium/params"
 	"github.com/apolo-technologies/zerium/rpc"
 )
@@ -39,7 +39,7 @@ type Config struct {
 // Oracle recommends gas prices based on the content of recent
 // blocks. Suitable for both light and full clients.
 type Oracle struct {
-	backend   zrmapi.Backend
+	backend   zaeapi.Backend
 	lastHead  common.Hash
 	lastPrice *big.Int
 	cacheLock sync.RWMutex
@@ -50,7 +50,7 @@ type Oracle struct {
 }
 
 // NewOracle returns a new oracle.
-func NewOracle(backend zrmapi.Backend, params Config) *Oracle {
+func NewOracle(backend zaeapi.Backend, params Config) *Oracle {
 	blocks := params.Blocks
 	if blocks < 1 {
 		blocks = 1

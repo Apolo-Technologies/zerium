@@ -22,23 +22,23 @@ import (
 	"strings"
 
 	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/abtconsole"
+	"github.com/apolo-technologies/zerium/zaeconsole"
 	"github.com/apolo-technologies/zerium/node"
 	"github.com/apolo-technologies/zerium/rpc"
 	"gopkg.in/urfave/cli.v1"
 )
 
 var (
-	abtconsoleFlags = []cli.Flag{utils.JSpathFlag, utils.ExecFlag, utils.PreloadJSFlag}
+	zaeconsoleFlags = []cli.Flag{utils.JSpathFlag, utils.ExecFlag, utils.PreloadJSFlag}
 
-	abtconsoleCommand = cli.Command{
+	zaeconsoleCommand = cli.Command{
 		Action:   utils.MigrateFlags(localConsole),
-		Name:     "abtconsole",
+		Name:     "zaeconsole",
 		Usage:    "Start an interactive JavaScript environment",
-		Flags:    append(append(append(nodeFlags, rpcFlags...), abtconsoleFlags...), whisperFlags...),
+		Flags:    append(append(append(nodeFlags, rpcFlags...), zaeconsoleFlags...), whisperFlags...),
 		Category: "CONSOLE COMMANDS",
 		Description: `
-The Gabt abtconsole is an interactive shell for the JavaScript runtime environment
+The Gabt zaeconsole is an interactive shell for the JavaScript runtime environment
 which exposes a node admin interface as well as the Ðapp JavaScript API.
 See https://github.com/apolo-technologies/zerium/wiki/Javascipt-Console.`,
 	}
@@ -48,13 +48,13 @@ See https://github.com/apolo-technologies/zerium/wiki/Javascipt-Console.`,
 		Name:      "attach",
 		Usage:     "Start an interactive JavaScript environment (connect to node)",
 		ArgsUsage: "[endpoint]",
-		Flags:     append(abtconsoleFlags, utils.DataDirFlag),
+		Flags:     append(zaeconsoleFlags, utils.DataDirFlag),
 		Category:  "CONSOLE COMMANDS",
 		Description: `
-The Gabt abtconsole is an interactive shell for the JavaScript runtime environment
+The Gabt zaeconsole is an interactive shell for the JavaScript runtime environment
 which exposes a node admin interface as well as the Ðapp JavaScript API.
 See https://github.com/apolo-technologies/zerium/wiki/Javascipt-Console.
-This command allows to open a abtconsole on a running gabt node.`,
+This command allows to open a zaeconsole on a running gabt node.`,
 	}
 
 	javascriptCommand = cli.Command{
@@ -62,7 +62,7 @@ This command allows to open a abtconsole on a running gabt node.`,
 		Name:      "js",
 		Usage:     "Execute the specified JavaScript files",
 		ArgsUsage: "<jsfile> [jsfile...]",
-		Flags:     append(nodeFlags, abtconsoleFlags...),
+		Flags:     append(nodeFlags, zaeconsoleFlags...),
 		Category:  "CONSOLE COMMANDS",
 		Description: `
 The JavaScript VM exposes a node admin interface as well as the Ðapp
@@ -70,7 +70,7 @@ JavaScript API. See https://github.com/apolo-technologies/zerium/wiki/Javascipt-
 	}
 )
 
-// localConsole starts a new gabt node, attaching a JavaScript abtconsole to it at the
+// localConsole starts a new gabt node, attaching a JavaScript zaeconsole to it at the
 // same time.
 func localConsole(ctx *cli.Context) error {
 	// Create and start the node based on the CLI flags
@@ -78,65 +78,65 @@ func localConsole(ctx *cli.Context) error {
 	startNode(ctx, node)
 	defer node.Stop()
 
-	// Attach to the newly started node and start the JavaScript abtconsole
+	// Attach to the newly started node and start the JavaScript zaeconsole
 	client, err := node.Attach()
 	if err != nil {
 		utils.Fatalf("Failed to attach to the inproc gabt: %v", err)
 	}
-	config := abtconsole.Config{
+	config := zaeconsole.Config{
 		DataDir: utils.MakeDataDir(ctx),
 		DocRoot: ctx.GlobalString(utils.JSpathFlag.Name),
 		Client:  client,
 		Preload: utils.MakeConsolePreloads(ctx),
 	}
 
-	abtconsole, err := abtconsole.New(config)
+	zaeconsole, err := zaeconsole.New(config)
 	if err != nil {
-		utils.Fatalf("Failed to start the JavaScript abtconsole: %v", err)
+		utils.Fatalf("Failed to start the JavaScript zaeconsole: %v", err)
 	}
-	defer abtconsole.Stop(false)
+	defer zaeconsole.Stop(false)
 
 	// If only a short execution was requested, evaluate and return
 	if script := ctx.GlobalString(utils.ExecFlag.Name); script != "" {
-		abtconsole.Evaluate(script)
+		zaeconsole.Evaluate(script)
 		return nil
 	}
 	// Otherwise print the welcome screen and enter interactive mode
-	abtconsole.Welcome()
-	abtconsole.Interactive()
+	zaeconsole.Welcome()
+	zaeconsole.Interactive()
 
 	return nil
 }
 
 // remoteConsole will connect to a remote gabt instance, attaching a JavaScript
-// abtconsole to it.
+// zaeconsole to it.
 func remoteConsole(ctx *cli.Context) error {
-	// Attach to a remotely running gabt instance and start the JavaScript abtconsole
+	// Attach to a remotely running gabt instance and start the JavaScript zaeconsole
 	client, err := dialRPC(ctx.Args().First())
 	if err != nil {
 		utils.Fatalf("Unable to attach to remote gabt: %v", err)
 	}
-	config := abtconsole.Config{
+	config := zaeconsole.Config{
 		DataDir: utils.MakeDataDir(ctx),
 		DocRoot: ctx.GlobalString(utils.JSpathFlag.Name),
 		Client:  client,
 		Preload: utils.MakeConsolePreloads(ctx),
 	}
 
-	abtconsole, err := abtconsole.New(config)
+	zaeconsole, err := zaeconsole.New(config)
 	if err != nil {
-		utils.Fatalf("Failed to start the JavaScript abtconsole: %v", err)
+		utils.Fatalf("Failed to start the JavaScript zaeconsole: %v", err)
 	}
-	defer abtconsole.Stop(false)
+	defer zaeconsole.Stop(false)
 
 	if script := ctx.GlobalString(utils.ExecFlag.Name); script != "" {
-		abtconsole.Evaluate(script)
+		zaeconsole.Evaluate(script)
 		return nil
 	}
 
 	// Otherwise print the welcome screen and enter interactive mode
-	abtconsole.Welcome()
-	abtconsole.Interactive()
+	zaeconsole.Welcome()
+	zaeconsole.Interactive()
 
 	return nil
 }
@@ -156,7 +156,7 @@ func dialRPC(endpoint string) (*rpc.Client, error) {
 }
 
 // ephemeralConsole starts a new gabt node, attaches an ephemeral JavaScript
-// abtconsole to it, executes each of the files specified as arguments and tears
+// zaeconsole to it, executes each of the files specified as arguments and tears
 // everything down.
 func ephemeralConsole(ctx *cli.Context) error {
 	// Create and start the node based on the CLI flags
@@ -164,27 +164,27 @@ func ephemeralConsole(ctx *cli.Context) error {
 	startNode(ctx, node)
 	defer node.Stop()
 
-	// Attach to the newly started node and start the JavaScript abtconsole
+	// Attach to the newly started node and start the JavaScript zaeconsole
 	client, err := node.Attach()
 	if err != nil {
 		utils.Fatalf("Failed to attach to the inproc gabt: %v", err)
 	}
-	config := abtconsole.Config{
+	config := zaeconsole.Config{
 		DataDir: utils.MakeDataDir(ctx),
 		DocRoot: ctx.GlobalString(utils.JSpathFlag.Name),
 		Client:  client,
 		Preload: utils.MakeConsolePreloads(ctx),
 	}
 
-	abtconsole, err := abtconsole.New(config)
+	zaeconsole, err := zaeconsole.New(config)
 	if err != nil {
-		utils.Fatalf("Failed to start the JavaScript abtconsole: %v", err)
+		utils.Fatalf("Failed to start the JavaScript zaeconsole: %v", err)
 	}
-	defer abtconsole.Stop(false)
+	defer zaeconsole.Stop(false)
 
 	// Evaluate each of the specified JavaScript files
 	for _, file := range ctx.Args() {
-		if err = abtconsole.Execute(file); err != nil {
+		if err = zaeconsole.Execute(file); err != nil {
 			utils.Fatalf("Failed to execute %s: %v", file, err)
 		}
 	}
@@ -196,7 +196,7 @@ func ephemeralConsole(ctx *cli.Context) error {
 		<-abort
 		os.Exit(0)
 	}()
-	abtconsole.Stop(true)
+	zaeconsole.Stop(true)
 
 	return nil
 }

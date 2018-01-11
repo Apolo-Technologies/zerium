@@ -363,23 +363,23 @@ func (api *PublicDebugAPI) Metrics(raw bool) (map[string]interface{}, error) {
 	return counters, nil
 }
 
-// PublicAbt78API offers helper utils
-type PublicAbt78API struct {
+// PubliczaeAPI offers helper utils
+type PubliczaeAPI struct {
 	stack *Node
 }
 
-// NewPublicAbt78API creates a new Abt78Service instance
-func NewPublicAbt78API(stack *Node) *PublicAbt78API {
-	return &PublicAbt78API{stack}
+// NewPubliczaeAPI creates a new zaeService instance
+func NewPubliczaeAPI(stack *Node) *PubliczaeAPI {
+	return &PubliczaeAPI{stack}
 }
 
 // ClientVersion returns the node name
-func (s *PublicAbt78API) ClientVersion() string {
+func (s *PubliczaeAPI) ClientVersion() string {
 	return s.stack.Server().Name
 }
 
 // Sha3 applies the zerium sha3 implementation on the input.
 // It assumes the input is hex encoded.
-func (s *PublicAbt78API) Sha3(input hexutil.Bytes) hexutil.Bytes {
+func (s *PubliczaeAPI) Sha3(input hexutil.Bytes) hexutil.Bytes {
 	return crypto.Keccak256(input)
 }

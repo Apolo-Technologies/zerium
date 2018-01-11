@@ -15,12 +15,12 @@ Parse and return an AST
         // Sample xyzzy example
         (function(){
             if (3.14159 > 0) {
-                abtconsole.log("Hello, World.");
+                zaeconsole.log("Hello, World.");
                 return;
             }
 
             var xyzzy = NaN;
-            abtconsole.log("Nothing happens.");
+            zaeconsole.log("Nothing happens.");
             return xyzzy;
         })();
     `

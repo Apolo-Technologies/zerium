@@ -16,8 +16,8 @@
 
 // Package keystore implements encrypted storage of secp256k1 private keys.
 //
-// Keys are stored as encrypted JSON files according to the Abt78 Secret Storage specification.
-// See https://github.com/apolo-technologies/wiki/wiki/Abt78-Secret-Storage-Definition for more information.
+// Keys are stored as encrypted JSON files according to the zae Secret Storage specification.
+// See https://github.com/apolo-technologies/wiki/wiki/zae-Secret-Storage-Definition for more information.
 package keystore
 
 import (

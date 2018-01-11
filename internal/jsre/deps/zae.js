@@ -602,20 +602,20 @@ module.exports = SolidityTypeBytes;
 
 },{"./formatters":9,"./type":14}],7:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file coder.js
@@ -889,20 +889,20 @@ module.exports = SolidityTypeDynamicBytes;
 
 },{"./formatters":9,"./type":14}],9:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file formatters.js
@@ -1177,20 +1177,20 @@ module.exports = SolidityTypeInt;
 
 },{"./formatters":9,"./type":14}],11:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** 
  * @file param.js
@@ -1723,20 +1723,20 @@ if (typeof XMLHttpRequest === 'undefined') {
 
 },{}],18:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file config.js
  * @authors:
@@ -1804,20 +1804,20 @@ module.exports = {
 
 },{"bignumber.js":"bignumber.js"}],19:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** 
  * @file sha3.js
@@ -1844,20 +1844,20 @@ module.exports = function (value, options) {
 
 },{"crypto-js":59,"crypto-js/sha3":80}],20:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file utils.js
@@ -2480,23 +2480,23 @@ module.exports={
 
 },{}],22:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
- * @file abt78.js
+ * @file zae.js
  * @authors:
  *   Jeffrey Wilcke <jeff@ethdev.com>
  *   Marek Kotewicz <marek@ethdev.com>
@@ -2506,28 +2506,28 @@ module.exports={
  * @date 2014
  */
 
-var RequestManager = require('./abt78/requestmanager');
-var Iban = require('./abt78/iban');
-var Eth = require('./abt78/methods/zrm');
-var DB = require('./abt78/methods/db');
-var Shh = require('./abt78/methods/shh');
-var Net = require('./abt78/methods/net');
-var Personal = require('./abt78/methods/personal');
-var Swarm = require('./abt78/methods/swarm');
-var Settings = require('./abt78/settings');
+var RequestManager = require('./zae/requestmanager');
+var Iban = require('./zae/iban');
+var Eth = require('./zae/methods/zrm');
+var DB = require('./zae/methods/db');
+var Shh = require('./zae/methods/shh');
+var Net = require('./zae/methods/net');
+var Personal = require('./zae/methods/personal');
+var Swarm = require('./zae/methods/swarm');
+var Settings = require('./zae/settings');
 var version = require('./version.json');
 var utils = require('./utils/utils');
 var sha3 = require('./utils/sha3');
-var extend = require('./abt78/extend');
-var Batch = require('./abt78/batch');
-var Property = require('./abt78/property');
-var HttpProvider = require('./abt78/httpprovider');
-var IpcProvider = require('./abt78/ipcprovider');
+var extend = require('./zae/extend');
+var Batch = require('./zae/batch');
+var Property = require('./zae/property');
+var HttpProvider = require('./zae/httpprovider');
+var IpcProvider = require('./zae/ipcprovider');
 var BigNumber = require('bignumber.js');
 
 
 
-function Abt78 (provider) {
+function zae (provider) {
     this._requestManager = new RequestManager(provider);
     this.currentProvider = provider;
     this.zrm = new Eth(this);
@@ -2551,48 +2551,48 @@ function Abt78 (provider) {
 }
 
 // expose providers on the class
-Abt78.providers = {
+zae.providers = {
     HttpProvider: HttpProvider,
     IpcProvider: IpcProvider
 };
 
-Abt78.prototype.setProvider = function (provider) {
+zae.prototype.setProvider = function (provider) {
     this._requestManager.setProvider(provider);
     this.currentProvider = provider;
 };
 
-Abt78.prototype.reset = function (keepIsSyncing) {
+zae.prototype.reset = function (keepIsSyncing) {
     this._requestManager.reset(keepIsSyncing);
     this.settings = new Settings();
 };
 
-Abt78.prototype.BigNumber = BigNumber;
-Abt78.prototype.toHex = utils.toHex;
-Abt78.prototype.toAscii = utils.toAscii;
-Abt78.prototype.toUtf8 = utils.toUtf8;
-Abt78.prototype.fromAscii = utils.fromAscii;
-Abt78.prototype.fromUtf8 = utils.fromUtf8;
-Abt78.prototype.toDecimal = utils.toDecimal;
-Abt78.prototype.fromDecimal = utils.fromDecimal;
-Abt78.prototype.toBigNumber = utils.toBigNumber;
-Abt78.prototype.toWei = utils.toWei;
-Abt78.prototype.fromWei = utils.fromWei;
-Abt78.prototype.isAddress = utils.isAddress;
-Abt78.prototype.isChecksumAddress = utils.isChecksumAddress;
-Abt78.prototype.toChecksumAddress = utils.toChecksumAddress;
-Abt78.prototype.isIBAN = utils.isIBAN;
-Abt78.prototype.padLeft = utils.padLeft;
-Abt78.prototype.padRight = utils.padRight;
+zae.prototype.BigNumber = BigNumber;
+zae.prototype.toHex = utils.toHex;
+zae.prototype.toAscii = utils.toAscii;
+zae.prototype.toUtf8 = utils.toUtf8;
+zae.prototype.fromAscii = utils.fromAscii;
+zae.prototype.fromUtf8 = utils.fromUtf8;
+zae.prototype.toDecimal = utils.toDecimal;
+zae.prototype.fromDecimal = utils.fromDecimal;
+zae.prototype.toBigNumber = utils.toBigNumber;
+zae.prototype.toWei = utils.toWei;
+zae.prototype.fromWei = utils.fromWei;
+zae.prototype.isAddress = utils.isAddress;
+zae.prototype.isChecksumAddress = utils.isChecksumAddress;
+zae.prototype.toChecksumAddress = utils.toChecksumAddress;
+zae.prototype.isIBAN = utils.isIBAN;
+zae.prototype.padLeft = utils.padLeft;
+zae.prototype.padRight = utils.padRight;
 
 
-Abt78.prototype.sha3 = function(string, options) {
+zae.prototype.sha3 = function(string, options) {
     return '0x' + sha3(string, options);
 };
 
 /**
  * Transforms direct icap to address
  */
-Abt78.prototype.fromICAP = function (icap) {
+zae.prototype.fromICAP = function (icap) {
     var iban = new Iban(icap);
     return iban.address();
 };
@@ -2601,7 +2601,7 @@ var properties = function () {
     return [
         new Property({
             name: 'version.node',
-            getter: 'abt78_clientVersion'
+            getter: 'zae_clientVersion'
         }),
         new Property({
             name: 'version.network',
@@ -2621,33 +2621,33 @@ var properties = function () {
     ];
 };
 
-Abt78.prototype.isConnected = function(){
+zae.prototype.isConnected = function(){
     return (this.currentProvider && this.currentProvider.isConnected());
 };
 
-Abt78.prototype.createBatch = function () {
+zae.prototype.createBatch = function () {
     return new Batch(this);
 };
 
-module.exports = Abt78;
+module.exports = zae;
 
 
-},{"./utils/sha3":19,"./utils/utils":20,"./version.json":21,"./abt78/batch":24,"./abt78/extend":28,"./abt78/httpprovider":32,"./abt78/iban":33,"./abt78/ipcprovider":34,"./abt78/methods/db":37,"./abt78/methods/zrm":38,"./abt78/methods/net":39,"./abt78/methods/personal":40,"./abt78/methods/shh":41,"./abt78/methods/swarm":42,"./abt78/property":45,"./abt78/requestmanager":46,"./abt78/settings":47,"bignumber.js":"bignumber.js"}],23:[function(require,module,exports){
+},{"./utils/sha3":19,"./utils/utils":20,"./version.json":21,"./zae/batch":24,"./zae/extend":28,"./zae/httpprovider":32,"./zae/iban":33,"./zae/ipcprovider":34,"./zae/methods/db":37,"./zae/methods/zrm":38,"./zae/methods/net":39,"./zae/methods/personal":40,"./zae/methods/shh":41,"./zae/methods/swarm":42,"./zae/property":45,"./zae/requestmanager":46,"./zae/settings":47,"bignumber.js":"bignumber.js"}],23:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file allevents.js
@@ -2693,7 +2693,7 @@ AllSolidityEvents.prototype.decode = function (data) {
     })[0];
 
     if (!match) { // cannot find matching event?
-        abtconsole.warn('cannot find event for log');
+        zaeconsole.warn('cannot find event for log');
         return data;
     }
 
@@ -2724,20 +2724,20 @@ module.exports = AllSolidityEvents;
 
 },{"../utils/sha3":19,"../utils/utils":20,"./event":27,"./filter":29,"./formatters":30,"./methods/watches":43}],24:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** 
  * @file batch.js
@@ -2748,8 +2748,8 @@ module.exports = AllSolidityEvents;
 var Jsonrpc = require('./jsonrpc');
 var errors = require('./errors');
 
-var Batch = function (abt78) {
-    this.requestManager = abt78._requestManager;
+var Batch = function (zae) {
+    this.requestManager = zae._requestManager;
     this.requests = [];
 };
 
@@ -2792,20 +2792,20 @@ module.exports = Batch;
 
 },{"./errors":26,"./jsonrpc":35}],25:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file contract.js
@@ -2923,7 +2923,7 @@ var checkForContractAddress = function(contract, callback){
 
                             if(code.length > 3) {
 
-                                // abtconsole.log('Contract code deployed!');
+                                // zaeconsole.log('Contract code deployed!');
 
                                 contract.address = receipt.contractAddress;
 
@@ -3104,20 +3104,20 @@ module.exports = ContractFactory;
 
 },{"../solidity/coder":7,"../utils/utils":20,"./allevents":23,"./event":27,"./function":31}],26:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** 
  * @file errors.js
@@ -3149,20 +3149,20 @@ module.exports = {
 
 },{}],27:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file event.js
@@ -3365,31 +3365,31 @@ var Property = require('./property');
 
 // TODO: refactor, so the input params are not altered.
 // it's necessary to make same 'extension' work with multiple providers
-var extend = function (abt78) {
+var extend = function (zae) {
     /* jshint maxcomplexity:5 */
     var ex = function (extension) {
 
         var extendedObject;
         if (extension.property) {
-            if (!abt78[extension.property]) {
-                abt78[extension.property] = {};
+            if (!zae[extension.property]) {
+                zae[extension.property] = {};
             }
-            extendedObject = abt78[extension.property];
+            extendedObject = zae[extension.property];
         } else {
-            extendedObject = abt78;
+            extendedObject = zae;
         }
 
         if (extension.methods) {
             extension.methods.forEach(function (method) {
                 method.attachToObject(extendedObject);
-                method.setRequestManager(abt78._requestManager);
+                method.setRequestManager(zae._requestManager);
             });
         }
 
         if (extension.properties) {
             extension.properties.forEach(function (property) {
                 property.attachToObject(extendedObject);
-                property.setRequestManager(abt78._requestManager);
+                property.setRequestManager(zae._requestManager);
             });
         }
     };
@@ -3409,20 +3409,20 @@ module.exports = extend;
 
 },{"./../utils/utils":20,"./formatters":30,"./method":36,"./property":45}],29:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file filter.js
  * @authors:
@@ -3658,20 +3658,20 @@ module.exports = Filter;
 'use strict'
 
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file formatters.js
@@ -3966,20 +3966,20 @@ module.exports = {
 
 },{"../utils/config":18,"../utils/utils":20,"./iban":33}],31:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file function.js
@@ -4251,20 +4251,20 @@ module.exports = SolidityFunction;
 
 },{"../solidity/coder":7,"../utils/sha3":19,"../utils/utils":20,"./errors":26,"./formatters":30}],32:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file httpprovider.js
  * @authors:
@@ -4410,20 +4410,20 @@ module.exports = HttpProvider;
 
 },{"./errors":26,"xhr2":86,"xmlhttprequest":17}],33:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** 
  * @file iban.js
@@ -4639,20 +4639,20 @@ module.exports = Iban;
 
 },{"bignumber.js":"bignumber.js"}],34:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file ipcprovider.js
  * @authors:
@@ -4674,7 +4674,7 @@ var IpcProvider = function (path, net) {
     this.connection = net.connect({path: this.path});
 
     this.connection.on('error', function(e){
-        abtconsole.error('IPC Connection Error', e);
+        zaeconsole.error('IPC Connection Error', e);
         _this._timeout();
     });
 
@@ -4848,20 +4848,20 @@ module.exports = IpcProvider;
 
 },{"../utils/utils":20,"./errors":26}],35:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file jsonrpc.js
  * @authors:
@@ -4885,7 +4885,7 @@ var Jsonrpc = {
  */
 Jsonrpc.toPayload = function (method, params) {
     if (!method)
-        abtconsole.error('jsonrpc method should be specified!');
+        zaeconsole.error('jsonrpc method should be specified!');
 
     // advance message ID
     Jsonrpc.messageId++;
@@ -4935,20 +4935,20 @@ module.exports = Jsonrpc;
 
 },{}],36:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file method.js
@@ -5101,20 +5101,20 @@ module.exports = Method;
 
 },{"../utils/utils":20,"./errors":26}],37:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file db.js
  * @authors:
@@ -5124,14 +5124,14 @@ module.exports = Method;
 
 var Method = require('../method');
 
-var DB = function (abt78) {
-    this._requestManager = abt78._requestManager;
+var DB = function (zae) {
+    this._requestManager = zae._requestManager;
 
     var self = this;
     
     methods().forEach(function(method) { 
         method.attachToObject(self);
-        method.setRequestManager(abt78._requestManager);
+        method.setRequestManager(zae._requestManager);
     });
 };
 
@@ -5169,20 +5169,20 @@ module.exports = DB;
 
 },{"../method":36}],38:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file zrm.js
@@ -5226,8 +5226,8 @@ var uncleCountCall = function (args) {
     return (utils.isString(args[0]) && args[0].indexOf('0x') === 0) ? 'zrm_getUncleCountByBlockHash' : 'zrm_getUncleCountByBlockNumber';
 };
 
-function Eth(abt78) {
-    this._requestManager = abt78._requestManager;
+function Eth(zae) {
+    this._requestManager = zae._requestManager;
 
     var self = this;
 
@@ -5525,20 +5525,20 @@ module.exports = Eth;
 
 },{"../../utils/config":18,"../../utils/utils":20,"../contract":25,"../filter":29,"../formatters":30,"../iban":33,"../method":36,"../namereg":44,"../property":45,"../syncing":48,"../transfer":49,"./watches":43}],39:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file zrm.js
  * @authors:
@@ -5549,18 +5549,18 @@ module.exports = Eth;
 var utils = require('../../utils/utils');
 var Property = require('../property');
 
-var Net = function (abt78) {
-    this._requestManager = abt78._requestManager;
+var Net = function (zae) {
+    this._requestManager = zae._requestManager;
 
     var self = this;
 
     properties().forEach(function(p) { 
         p.attachToObject(self);
-        p.setRequestManager(abt78._requestManager);
+        p.setRequestManager(zae._requestManager);
     });
 };
 
-/// @returns an array of objects describing abt78.zrm api properties
+/// @returns an array of objects describing zae.zrm api properties
 var properties = function () {
     return [
         new Property({
@@ -5579,20 +5579,20 @@ module.exports = Net;
 
 },{"../../utils/utils":20,"../property":45}],40:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file zrm.js
@@ -5607,8 +5607,8 @@ var Method = require('../method');
 var Property = require('../property');
 var formatters = require('../formatters');
 
-function Personal(abt78) {
-    this._requestManager = abt78._requestManager;
+function Personal(zae) {
+    this._requestManager = zae._requestManager;
 
     var self = this;
 
@@ -5696,20 +5696,20 @@ module.exports = Personal;
 
 },{"../formatters":30,"../method":36,"../property":45}],41:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file shh.js
  * @authors:
@@ -5722,8 +5722,8 @@ var Method = require('../method');
 var Filter = require('../filter');
 var watches = require('./watches');
 
-var Shh = function (abt78) {
-    this._requestManager = abt78._requestManager;
+var Shh = function (zae) {
+    this._requestManager = zae._requestManager;
 
     var self = this;
 
@@ -5842,27 +5842,27 @@ module.exports = Shh;
 
 },{"../filter":29,"../method":36,"./watches":43}],42:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file bzz.js
  * @author Alex Beregszaszi <alex@rtfs.hu>
  * @date 2016
  *
- * Reference: https://github.com/apolo-technologies/zerium/blob/swarm/internal/abt78ext/abt78ext.go#L33
+ * Reference: https://github.com/apolo-technologies/zerium/blob/swarm/internal/zaeext/zaeext.go#L33
  */
 
 "use strict";
@@ -5870,8 +5870,8 @@ module.exports = Shh;
 var Method = require('../method');
 var Property = require('../property');
 
-function Swarm(abt78) {
-    this._requestManager = abt78._requestManager;
+function Swarm(zae) {
+    this._requestManager = zae._requestManager;
 
     var self = this;
 
@@ -5989,20 +5989,20 @@ module.exports = Swarm;
 
 },{"../method":36,"../property":45}],43:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file watches.js
  * @authors:
@@ -6012,7 +6012,7 @@ module.exports = Swarm;
 
 var Method = require('../method');
 
-/// @returns an array of objects describing abt78.zrm.filter api methods
+/// @returns an array of objects describing zae.zrm.filter api methods
 var zrm = function () {
     var newFilterCall = function (args) {
         var type = args[0];
@@ -6063,7 +6063,7 @@ var zrm = function () {
     ];
 };
 
-/// @returns an array of objects describing abt78.shh.watch api methods
+/// @returns an array of objects describing zae.shh.watch api methods
 var shh = function () {
 
     return [
@@ -6098,20 +6098,20 @@ module.exports = {
 
 },{"../method":36}],44:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** 
  * @file namereg.js
@@ -6139,20 +6139,20 @@ module.exports = {
 
 },{"../contracts/GlobalRegistrar.json":1,"../contracts/ICAPRegistrar.json":2}],45:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /**
  * @file property.js
@@ -6285,20 +6285,20 @@ module.exports = Property;
 
 },{"../utils/utils":20}],46:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** 
  * @file requestmanager.js
@@ -6336,7 +6336,7 @@ var RequestManager = function (provider) {
  */
 RequestManager.prototype.send = function (data) {
     if (!this.provider) {
-        abtconsole.error(errors.InvalidProvider());
+        zaeconsole.error(errors.InvalidProvider());
         return null;
     }
 
@@ -6488,7 +6488,7 @@ RequestManager.prototype.poll = function () {
     }
 
     if (!this.provider) {
-        abtconsole.error(errors.InvalidProvider());
+        zaeconsole.error(errors.InvalidProvider());
         return;
     }
 
@@ -6516,7 +6516,7 @@ RequestManager.prototype.poll = function () {
     this.provider.sendAsync(payload, function (error, results) {
 
 
-        // TODO: abtconsole log?
+        // TODO: zaeconsole log?
         if (error) {
             return;
         }
@@ -6563,20 +6563,20 @@ module.exports = Settings;
 
 },{}],48:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** @file syncing.js
  * @authors:
@@ -6658,20 +6658,20 @@ module.exports = IsSyncing;
 
 },{"../utils/utils":20,"./formatters":30}],49:[function(require,module,exports){
 /*
-    This file is part of abt78.js.
+    This file is part of zae.js.
 
-    abt78.js is free software: you can redistribute it and/or modify
+    zae.js is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    abt78.js is distributed in the hope that it will be useful,
+    zae.js is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Lesser General Public License for more details.
 
     You should have received a copy of the GNU Lesser General Public License
-    along with abt78.js.  If not, see <http://www.gnu.org/licenses/>.
+    along with zae.js.  If not, see <http://www.gnu.org/licenses/>.
 */
 /** 
  * @file transfer.js
@@ -13614,15 +13614,15 @@ module.exports = XMLHttpRequest;
 module.exports = BigNumber; // jshint ignore:line
 
 
-},{}],"abt78":[function(require,module,exports){
-var Abt78 = require('./lib/abt78');
+},{}],"zae":[function(require,module,exports){
+var zae = require('./lib/zae');
 
 // dont override global variable
-if (typeof window !== 'undefined' && typeof window.Abt78 === 'undefined') {
-    window.Abt78 = Abt78;
+if (typeof window !== 'undefined' && typeof window.zae === 'undefined') {
+    window.zae = zae;
 }
 
-module.exports = Abt78;
+module.exports = zae;
 
-},{"./lib/abt78":22}]},{},["abt78"])
-//# sourceMappingURL=abt78-light.js.map
+},{"./lib/zae":22}]},{},["zae"])
+//# sourceMappingURL=zae-light.js.map

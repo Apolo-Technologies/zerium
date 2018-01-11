@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\dashboard",
+    "\\internal",
+    "\\internal\\jsre",
+    "\\internal\\jsre\\deps",
+    "\\internal\\zaeext",
+    "\\internal\\zrmapi"
   ],
-  "SelectedNode": "\\internal",
+  "SelectedNode": "\\internal\\zrmapi\\api.go",
   "PreviewInSolutionExplorer": false
 }

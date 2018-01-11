@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-package abtconsole
+package zaeconsole
 
 import (
 	"fmt"
@@ -27,7 +27,7 @@ import (
 // Only this reader may be used for input because it keeps an internal buffer.
 var Stdin = newTerminalPrompter()
 
-// UserPrompter defines the methods needed by the abtconsole to promt the user for
+// UserPrompter defines the methods needed by the zaeconsole to promt the user for
 // various types of inputs.
 type UserPrompter interface {
 	// PromptInput displays the given prompt to the user and requests some textual

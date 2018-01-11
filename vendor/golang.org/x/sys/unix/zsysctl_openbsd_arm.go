@@ -9,7 +9,7 @@ type mibentry struct {
 }
 
 var sysctlMib = []mibentry{
-	{"ddb.abtconsole", []_C_int{9, 6}},
+	{"ddb.zaeconsole", []_C_int{9, 6}},
 	{"ddb.log", []_C_int{9, 7}},
 	{"ddb.max_line", []_C_int{9, 3}},
 	{"ddb.max_width", []_C_int{9, 2}},

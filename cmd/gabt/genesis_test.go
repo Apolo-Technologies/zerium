@@ -103,7 +103,7 @@ func TestCustomGenesis(t *testing.T) {
 		gabt := runGabt(t,
 			"--datadir", datadir, "--maxpeers", "0", "--port", "0",
 			"--nodiscover", "--nat", "none", "--ipcdisable",
-			"--exec", tt.query, "abtconsole")
+			"--exec", tt.query, "zaeconsole")
 		gabt.ExpectRegexp(tt.result)
 		gabt.ExpectExit()
 	}

@@ -74,7 +74,7 @@ class Dashboard extends Component {
 
     // update analyzes the incoming message, and updates the charts' content correspondingly.
     update = msg => {
-        abtconsole.log(msg);
+        zaeconsole.log(msg);
         this.setState(prevState => {
             let newState = [];
             newState.shouldUpdate = {};

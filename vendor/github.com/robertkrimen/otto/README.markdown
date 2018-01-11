@@ -20,7 +20,7 @@ Run something in the VM
 vm := otto.New()
 vm.Run(`
     abc = 2 + 2;
-    abtconsole.log("The value of abc is " + abc); // 4
+    zaeconsole.log("The value of abc is " + abc); // 4
 `)
 ```
 
@@ -39,7 +39,7 @@ Set a number
 ```go
 vm.Set("def", 11)
 vm.Run(`
-    abtconsole.log("The value of def is " + def);
+    zaeconsole.log("The value of def is " + def);
     // The value of def is 11
 `)
 ```
@@ -49,7 +49,7 @@ Set a string
 ```go
 vm.Set("xyzzy", "Nothing happens.")
 vm.Run(`
-    abtconsole.log(xyzzy.length); // 16
+    zaeconsole.log(xyzzy.length); // 16
 `)
 ```
 
@@ -119,12 +119,12 @@ src := `
     // Sample xyzzy example
     (function(){
         if (3.14159 > 0) {
-            abtconsole.log("Hello, World.");
+            zaeconsole.log("Hello, World.");
             return;
         }
 
         var xyzzy = NaN;
-        abtconsole.log("Nothing happens.");
+        zaeconsole.log("Nothing happens.");
         return xyzzy;
     })();
 `

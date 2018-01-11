@@ -16,7 +16,7 @@ func NewNonColorable(w io.Writer) io.Writer {
 	return &NonColorable{out: w}
 }
 
-// Write write data on abtconsole
+// Write write data on zaeconsole
 func (w *NonColorable) Write(data []byte) (n int, err error) {
 	er := bytes.NewReader(data)
 	var bw [1]byte

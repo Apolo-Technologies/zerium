@@ -161,7 +161,7 @@ func (c *Context) value(name string) interface{} {
 	return c.flagSet.Lookup(name).Value.(flag.Getter).Get()
 }
 
-// Args contains apps abtconsole arguments
+// Args contains apps zaeconsole arguments
 type Args []string
 
 // Args returns the command line arguments associated with the context.

@@ -31,20 +31,20 @@ import (
 )
 
 const (
-	ipcAPIs  = "admin:1.0 debug:1.0 zrm:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 abt78:1.0"
-	httpAPIs = "zrm:1.0 net:1.0 rpc:1.0 abt78:1.0"
+	ipcAPIs  = "admin:1.0 debug:1.0 zrm:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 zae:1.0"
+	httpAPIs = "zrm:1.0 net:1.0 rpc:1.0 zae:1.0"
 )
 
-// Tests that a node embedded within a abtconsole can be started up properly and
+// Tests that a node embedded within a zaeconsole can be started up properly and
 // then terminated by closing the input stream.
 func TestConsoleWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 
-	// Start a gabt abtconsole, make sure it's cleaned up and terminate the abtconsole
+	// Start a gabt zaeconsole, make sure it's cleaned up and terminate the zaeconsole
 	gabt := runGabt(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--zeriumbase", coinbase, "--shh",
-		"abtconsole")
+		"zaeconsole")
 
 	// Gather all the infos the welcome message needs to contain
 	gabt.SetTemplateFunc("goos", func() string { return runtime.GOOS })
@@ -56,7 +56,7 @@ func TestConsoleWelcome(t *testing.T) {
 
 	// Verify the actual welcome message to the required template
 	gabt.Expect(`
-Welcome to the Gabt JavaScript abtconsole!
+Welcome to the Gabt JavaScript zaeconsole!
 
 instance: Gabt/v{{gabtver}}/{{goos}}-{{goarch}}/{{gover}}
 coinbase: {{.Zeriumbase}}
@@ -69,7 +69,7 @@ at block: 0 ({{niltime}})
 	gabt.ExpectExit()
 }
 
-// Tests that a abtconsole can be attached to a running node via various means.
+// Tests that a zaeconsole can be attached to a running node via various means.
 func TestIPCAttachWelcome(t *testing.T) {
 	// Configure the instance for IPC attachement
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
@@ -142,7 +142,7 @@ func testAttachWelcome(t *testing.T, gabt *testgabt, endpoint, apis string) {
 
 	// Verify the actual welcome message to the required template
 	attach.Expect(`
-Welcome to the Gabt JavaScript abtconsole!
+Welcome to the Gabt JavaScript zaeconsole!
 
 instance: Gabt/v{{gabtver}}/{{goos}}-{{goarch}}/{{gover}}
 coinbase: {{zeriumbase}}
@@ -155,7 +155,7 @@ at block: 0 ({{niltime}}){{if ipc}}
 	attach.ExpectExit()
 }
 
-// trulyRandInt generates a crypto random integer used by the abtconsole tests to
+// trulyRandInt generates a crypto random integer used by the zaeconsole tests to
 // not clash network ports with other tests running cocurrently.
 func trulyRandInt(lo, hi int) int {
 	num, _ := rand.Int(rand.Reader, big.NewInt(int64(hi-lo)))

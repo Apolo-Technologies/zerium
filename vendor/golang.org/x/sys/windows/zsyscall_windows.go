@@ -1623,8 +1623,8 @@ func getCurrentProcessId() (pid uint32) {
 	return
 }
 
-func GetConsoleMode(abtconsole Handle, mode *uint32) (err error) {
-	r1, _, e1 := syscall.Syscall(procGetConsoleMode.Addr(), 2, uintptr(abtconsole), uintptr(unsafe.Pointer(mode)), 0)
+func GetConsoleMode(zaeconsole Handle, mode *uint32) (err error) {
+	r1, _, e1 := syscall.Syscall(procGetConsoleMode.Addr(), 2, uintptr(zaeconsole), uintptr(unsafe.Pointer(mode)), 0)
 	if r1 == 0 {
 		if e1 != 0 {
 			err = errnoErr(e1)
@@ -1635,8 +1635,8 @@ func GetConsoleMode(abtconsole Handle, mode *uint32) (err error) {
 	return
 }
 
-func SetConsoleMode(abtconsole Handle, mode uint32) (err error) {
-	r1, _, e1 := syscall.Syscall(procSetConsoleMode.Addr(), 2, uintptr(abtconsole), uintptr(mode), 0)
+func SetConsoleMode(zaeconsole Handle, mode uint32) (err error) {
+	r1, _, e1 := syscall.Syscall(procSetConsoleMode.Addr(), 2, uintptr(zaeconsole), uintptr(mode), 0)
 	if r1 == 0 {
 		if e1 != 0 {
 			err = errnoErr(e1)
@@ -1647,8 +1647,8 @@ func SetConsoleMode(abtconsole Handle, mode uint32) (err error) {
 	return
 }
 
-func GetConsoleScreenBufferInfo(abtconsole Handle, info *ConsoleScreenBufferInfo) (err error) {
-	r1, _, e1 := syscall.Syscall(procGetConsoleScreenBufferInfo.Addr(), 2, uintptr(abtconsole), uintptr(unsafe.Pointer(info)), 0)
+func GetConsoleScreenBufferInfo(zaeconsole Handle, info *ConsoleScreenBufferInfo) (err error) {
+	r1, _, e1 := syscall.Syscall(procGetConsoleScreenBufferInfo.Addr(), 2, uintptr(zaeconsole), uintptr(unsafe.Pointer(info)), 0)
 	if r1 == 0 {
 		if e1 != 0 {
 			err = errnoErr(e1)
@@ -1659,8 +1659,8 @@ func GetConsoleScreenBufferInfo(abtconsole Handle, info *ConsoleScreenBufferInfo
 	return
 }
 
-func WriteConsole(abtconsole Handle, buf *uint16, towrite uint32, written *uint32, reserved *byte) (err error) {
-	r1, _, e1 := syscall.Syscall6(procWriteConsoleW.Addr(), 5, uintptr(abtconsole), uintptr(unsafe.Pointer(buf)), uintptr(towrite), uintptr(unsafe.Pointer(written)), uintptr(unsafe.Pointer(reserved)), 0)
+func WriteConsole(zaeconsole Handle, buf *uint16, towrite uint32, written *uint32, reserved *byte) (err error) {
+	r1, _, e1 := syscall.Syscall6(procWriteConsoleW.Addr(), 5, uintptr(zaeconsole), uintptr(unsafe.Pointer(buf)), uintptr(towrite), uintptr(unsafe.Pointer(written)), uintptr(unsafe.Pointer(reserved)), 0)
 	if r1 == 0 {
 		if e1 != 0 {
 			err = errnoErr(e1)
@@ -1671,8 +1671,8 @@ func WriteConsole(abtconsole Handle, buf *uint16, towrite uint32, written *uint3
 	return
 }
 
-func ReadConsole(abtconsole Handle, buf *uint16, toread uint32, read *uint32, inputControl *byte) (err error) {
-	r1, _, e1 := syscall.Syscall6(procReadConsoleW.Addr(), 5, uintptr(abtconsole), uintptr(unsafe.Pointer(buf)), uintptr(toread), uintptr(unsafe.Pointer(read)), uintptr(unsafe.Pointer(inputControl)), 0)
+func ReadConsole(zaeconsole Handle, buf *uint16, toread uint32, read *uint32, inputControl *byte) (err error) {
+	r1, _, e1 := syscall.Syscall6(procReadConsoleW.Addr(), 5, uintptr(zaeconsole), uintptr(unsafe.Pointer(buf)), uintptr(toread), uintptr(unsafe.Pointer(read)), uintptr(unsafe.Pointer(inputControl)), 0)
 	if r1 == 0 {
 		if e1 != 0 {
 			err = errnoErr(e1)

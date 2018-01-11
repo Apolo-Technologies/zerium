@@ -36,26 +36,26 @@ import (
 	"github.com/apolo-technologies/zerium/rpc"
 )
 
-// ZrmApiBackend implements zrmapi.Backend for full nodes
-type ZrmApiBackend struct {
+// zaeapiBackend implements zaeapi.Backend for full nodes
+type zaeapiBackend struct {
 	zrm *Zerium
 	gpo *gasprice.Oracle
 }
 
-func (b *ZrmApiBackend) ChainConfig() *params.ChainConfig {
+func (b *zaeapiBackend) ChainConfig() *params.ChainConfig {
 	return b.zrm.chainConfig
 }
 
-func (b *ZrmApiBackend) CurrentBlock() *types.Block {
+func (b *zaeapiBackend) CurrentBlock() *types.Block {
 	return b.zrm.blockchain.CurrentBlock()
 }
 
-func (b *ZrmApiBackend) SetHead(number uint64) {
+func (b *zaeapiBackend) SetHead(number uint64) {
 	b.zrm.protocolManager.downloader.Cancel()
 	b.zrm.blockchain.SetHead(number)
 }
 
-func (b *ZrmApiBackend) HeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Header, error) {
+func (b *zaeapiBackend) HeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Header, error) {
 	// Pending block is only known by the miner
 	if blockNr == rpc.PendingBlockNumber {
 		block := b.zrm.miner.PendingBlock()
@@ -68,7 +68,7 @@ func (b *ZrmApiBackend) HeaderByNumber(ctx context.Context, blockNr rpc.BlockNum
 	return b.zrm.blockchain.GetHeaderByNumber(uint64(blockNr)), nil
 }
 
-func (b *ZrmApiBackend) BlockByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Block, error) {
+func (b *zaeapiBackend) BlockByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*types.Block, error) {
 	// Pending block is only known by the miner
 	if blockNr == rpc.PendingBlockNumber {
 		block := b.zrm.miner.PendingBlock()
@@ -81,7 +81,7 @@ func (b *ZrmApiBackend) BlockByNumber(ctx context.Context, blockNr rpc.BlockNumb
 	return b.zrm.blockchain.GetBlockByNumber(uint64(blockNr)), nil
 }
 
-func (b *ZrmApiBackend) StateAndHeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*state.StateDB, *types.Header, error) {
+func (b *zaeapiBackend) StateAndHeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*state.StateDB, *types.Header, error) {
 	// Pending state is only known by the miner
 	if blockNr == rpc.PendingBlockNumber {
 		block, state := b.zrm.miner.Pending()
@@ -96,19 +96,19 @@ func (b *ZrmApiBackend) StateAndHeaderByNumber(ctx context.Context, blockNr rpc.
 	return stateDb, header, err
 }
 
-func (b *ZrmApiBackend) GetBlock(ctx context.Context, blockHash common.Hash) (*types.Block, error) {
+func (b *zaeapiBackend) GetBlock(ctx context.Context, blockHash common.Hash) (*types.Block, error) {
 	return b.zrm.blockchain.GetBlockByHash(blockHash), nil
 }
 
-func (b *ZrmApiBackend) GetReceipts(ctx context.Context, blockHash common.Hash) (types.Receipts, error) {
+func (b *zaeapiBackend) GetReceipts(ctx context.Context, blockHash common.Hash) (types.Receipts, error) {
 	return core.GetBlockReceipts(b.zrm.chainDb, blockHash, core.GetBlockNumber(b.zrm.chainDb, blockHash)), nil
 }
 
-func (b *ZrmApiBackend) GetTd(blockHash common.Hash) *big.Int {
+func (b *zaeapiBackend) GetTd(blockHash common.Hash) *big.Int {
 	return b.zrm.blockchain.GetTdByHash(blockHash)
 }
 
-func (b *ZrmApiBackend) GetEVM(ctx context.Context, msg core.Message, state *state.StateDB, header *types.Header, vmCfg vm.Config) (*vm.EVM, func() error, error) {
+func (b *zaeapiBackend) GetEVM(ctx context.Context, msg core.Message, state *state.StateDB, header *types.Header, vmCfg vm.Config) (*vm.EVM, func() error, error) {
 	state.SetBalance(msg.From(), math.MaxBig256)
 	vmError := func() error { return nil }
 
@@ -116,31 +116,31 @@ func (b *ZrmApiBackend) GetEVM(ctx context.Context, msg core.Message, state *sta
 	return vm.NewEVM(context, state, b.zrm.chainConfig, vmCfg), vmError, nil
 }
 
-func (b *ZrmApiBackend) SubscribeRemovedLogsEvent(ch chan<- core.RemovedLogsEvent) event.Subscription {
+func (b *zaeapiBackend) SubscribeRemovedLogsEvent(ch chan<- core.RemovedLogsEvent) event.Subscription {
 	return b.zrm.BlockChain().SubscribeRemovedLogsEvent(ch)
 }
 
-func (b *ZrmApiBackend) SubscribeChainEvent(ch chan<- core.ChainEvent) event.Subscription {
+func (b *zaeapiBackend) SubscribeChainEvent(ch chan<- core.ChainEvent) event.Subscription {
 	return b.zrm.BlockChain().SubscribeChainEvent(ch)
 }
 
-func (b *ZrmApiBackend) SubscribeChainHeadEvent(ch chan<- core.ChainHeadEvent) event.Subscription {
+func (b *zaeapiBackend) SubscribeChainHeadEvent(ch chan<- core.ChainHeadEvent) event.Subscription {
 	return b.zrm.BlockChain().SubscribeChainHeadEvent(ch)
 }
 
-func (b *ZrmApiBackend) SubscribeChainSideEvent(ch chan<- core.ChainSideEvent) event.Subscription {
+func (b *zaeapiBackend) SubscribeChainSideEvent(ch chan<- core.ChainSideEvent) event.Subscription {
 	return b.zrm.BlockChain().SubscribeChainSideEvent(ch)
 }
 
-func (b *ZrmApiBackend) SubscribeLogsEvent(ch chan<- []*types.Log) event.Subscription {
+func (b *zaeapiBackend) SubscribeLogsEvent(ch chan<- []*types.Log) event.Subscription {
 	return b.zrm.BlockChain().SubscribeLogsEvent(ch)
 }
 
-func (b *ZrmApiBackend) SendTx(ctx context.Context, signedTx *types.Transaction) error {
+func (b *zaeapiBackend) SendTx(ctx context.Context, signedTx *types.Transaction) error {
 	return b.zrm.txPool.AddLocal(signedTx)
 }
 
-func (b *ZrmApiBackend) GetPoolTransactions() (types.Transactions, error) {
+func (b *zaeapiBackend) GetPoolTransactions() (types.Transactions, error) {
 	pending, err := b.zrm.txPool.Pending()
 	if err != nil {
 		return nil, err
@@ -152,56 +152,56 @@ func (b *ZrmApiBackend) GetPoolTransactions() (types.Transactions, error) {
 	return txs, nil
 }
 
-func (b *ZrmApiBackend) GetPoolTransaction(hash common.Hash) *types.Transaction {
+func (b *zaeapiBackend) GetPoolTransaction(hash common.Hash) *types.Transaction {
 	return b.zrm.txPool.Get(hash)
 }
 
-func (b *ZrmApiBackend) GetPoolNonce(ctx context.Context, addr common.Address) (uint64, error) {
+func (b *zaeapiBackend) GetPoolNonce(ctx context.Context, addr common.Address) (uint64, error) {
 	return b.zrm.txPool.State().GetNonce(addr), nil
 }
 
-func (b *ZrmApiBackend) Stats() (pending int, queued int) {
+func (b *zaeapiBackend) Stats() (pending int, queued int) {
 	return b.zrm.txPool.Stats()
 }
 
-func (b *ZrmApiBackend) TxPoolContent() (map[common.Address]types.Transactions, map[common.Address]types.Transactions) {
+func (b *zaeapiBackend) TxPoolContent() (map[common.Address]types.Transactions, map[common.Address]types.Transactions) {
 	return b.zrm.TxPool().Content()
 }
 
-func (b *ZrmApiBackend) SubscribeTxPreEvent(ch chan<- core.TxPreEvent) event.Subscription {
+func (b *zaeapiBackend) SubscribeTxPreEvent(ch chan<- core.TxPreEvent) event.Subscription {
 	return b.zrm.TxPool().SubscribeTxPreEvent(ch)
 }
 
-func (b *ZrmApiBackend) Downloader() *downloader.Downloader {
+func (b *zaeapiBackend) Downloader() *downloader.Downloader {
 	return b.zrm.Downloader()
 }
 
-func (b *ZrmApiBackend) ProtocolVersion() int {
+func (b *zaeapiBackend) ProtocolVersion() int {
 	return b.zrm.EthVersion()
 }
 
-func (b *ZrmApiBackend) SuggestPrice(ctx context.Context) (*big.Int, error) {
+func (b *zaeapiBackend) SuggestPrice(ctx context.Context) (*big.Int, error) {
 	return b.gpo.SuggestPrice(ctx)
 }
 
-func (b *ZrmApiBackend) ChainDb() zrmdb.Database {
+func (b *zaeapiBackend) ChainDb() zrmdb.Database {
 	return b.zrm.ChainDb()
 }
 
-func (b *ZrmApiBackend) EventMux() *event.TypeMux {
+func (b *zaeapiBackend) EventMux() *event.TypeMux {
 	return b.zrm.EventMux()
 }
 
-func (b *ZrmApiBackend) AccountManager() *accounts.Manager {
+func (b *zaeapiBackend) AccountManager() *accounts.Manager {
 	return b.zrm.AccountManager()
 }
 
-func (b *ZrmApiBackend) BloomStatus() (uint64, uint64) {
+func (b *zaeapiBackend) BloomStatus() (uint64, uint64) {
 	sections, _, _ := b.zrm.bloomIndexer.Sections()
 	return params.BloomBitsBlocks, sections
 }
 
-func (b *ZrmApiBackend) ServiceFilter(ctx context.Context, session *bloombits.MatcherSession) {
+func (b *zaeapiBackend) ServiceFilter(ctx context.Context, session *bloombits.MatcherSession) {
 	for i := 0; i < bloomFilterThreads; i++ {
 		go session.Multiplex(bloomRetrievalBatch, bloomRetrievalWait, b.zrm.bloomRequests)
 	}

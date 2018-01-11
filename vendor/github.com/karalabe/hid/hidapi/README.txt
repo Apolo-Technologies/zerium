@@ -280,7 +280,7 @@ not. To build using the DDK:
    2. From the Start menu, in the Windows Driver Kits folder, select Build
       Environments, then your operating system, then the x86 Free Build
       Environment (or one that is appropriate for your system).
-   3. From the abtconsole, change directory to the windows/ddk_build/ directory,
+   3. From the zaeconsole, change directory to the windows/ddk_build/ directory,
       which is part of the HIDAPI distribution.
    4. Type build.
    5. You can find the output files (DLL and LIB) in a subdirectory created

@@ -23,7 +23,7 @@ import (
 	"github.com/apolo-technologies/zerium/accounts"
 	"github.com/apolo-technologies/zerium/accounts/keystore"
 	"github.com/apolo-technologies/zerium/cmd/utils"
-	"github.com/apolo-technologies/zerium/abtconsole"
+	"github.com/apolo-technologies/zerium/zaeconsole"
 	"github.com/apolo-technologies/zerium/crypto"
 	"github.com/apolo-technologies/zerium/log"
 	"gopkg.in/urfave/cli.v1"
@@ -247,12 +247,12 @@ func getPassPhrase(prompt string, confirmation bool, i int, passwords []string) 
 	if prompt != "" {
 		fmt.Println(prompt)
 	}
-	password, err := abtconsole.Stdin.PromptPassword("Passphrase: ")
+	password, err := zaeconsole.Stdin.PromptPassword("Passphrase: ")
 	if err != nil {
 		utils.Fatalf("Failed to read passphrase: %v", err)
 	}
 	if confirmation {
-		confirm, err := abtconsole.Stdin.PromptPassword("Repeat passphrase: ")
+		confirm, err := zaeconsole.Stdin.PromptPassword("Repeat passphrase: ")
 		if err != nil {
 			utils.Fatalf("Failed to read passphrase confirmation: %v", err)
 		}

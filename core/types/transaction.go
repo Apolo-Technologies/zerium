@@ -160,7 +160,7 @@ func (tx *Transaction) MarshalJSON() ([]byte, error) {
 	return data.MarshalJSON()
 }
 
-// UnmarshalJSON decodes the abt78 RPC transaction format.
+// UnmarshalJSON decodes the zae RPC transaction format.
 func (tx *Transaction) UnmarshalJSON(input []byte) error {
 	var dec txdata
 	if err := dec.UnmarshalJSON(input); err != nil {

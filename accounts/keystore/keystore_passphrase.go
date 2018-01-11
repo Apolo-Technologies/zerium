@@ -19,7 +19,7 @@
 This key store behaves as KeyStorePlain with the difference that
 the private key is encrypted and on disk uses another JSON encoding.
 
-The crypto is documented at https://github.com/apolo-technologies/wiki/wiki/Abt78-Secret-Storage-Definition
+The crypto is documented at https://github.com/apolo-technologies/wiki/wiki/zae-Secret-Storage-Definition
 
 */
 

@@ -24,7 +24,7 @@ import (
 	"github.com/apolo-technologies/zerium/common"
 	"github.com/apolo-technologies/zerium/common/hexutil"
 	"github.com/apolo-technologies/zerium/core/types"
-	"github.com/apolo-technologies/zerium/internal/zrmapi"
+	"github.com/apolo-technologies/zerium/internal/zaeapi"
 	"github.com/apolo-technologies/zerium/rlp"
 	"github.com/apolo-technologies/zerium/rpc"
 )
@@ -37,18 +37,18 @@ import (
 // object. These should be rewritten to internal Go method calls when the Go API
 // is refactored to support a clean library use.
 type ContractBackend struct {
-	eapi  *zrmapi.PublicZeriumAPI        // Wrapper around the Zerium object to access metadata
-	bcapi *zrmapi.PublicBlockChainAPI      // Wrapper around the blockchain to access chain data
-	txapi *zrmapi.PublicTransactionPoolAPI // Wrapper around the transaction pool to access transaction data
+	eapi  *zaeapi.PublicZeriumAPI        // Wrapper around the Zerium object to access metadata
+	bcapi *zaeapi.PublicBlockChainAPI      // Wrapper around the blockchain to access chain data
+	txapi *zaeapi.PublicTransactionPoolAPI // Wrapper around the transaction pool to access transaction data
 }
 
 // NewContractBackend creates a new native contract backend using an existing
 // Zerium object.
-func NewContractBackend(apiBackend zrmapi.Backend) *ContractBackend {
+func NewContractBackend(apiBackend zaeapi.Backend) *ContractBackend {
 	return &ContractBackend{
-		eapi:  zrmapi.NewPublicZeriumAPI(apiBackend),
-		bcapi: zrmapi.NewPublicBlockChainAPI(apiBackend),
-		txapi: zrmapi.NewPublicTransactionPoolAPI(apiBackend, new(zrmapi.AddrLocker)),
+		eapi:  zaeapi.NewPublicZeriumAPI(apiBackend),
+		bcapi: zaeapi.NewPublicBlockChainAPI(apiBackend),
+		txapi: zaeapi.NewPublicTransactionPoolAPI(apiBackend, new(zaeapi.AddrLocker)),
 	}
 }
 
@@ -78,8 +78,8 @@ func (b *ContractBackend) PendingCallContract(ctx context.Context, msg zerium.Ca
 	return out, err
 }
 
-func toCallArgs(msg zerium.CallMsg) zrmapi.CallArgs {
-	args := zrmapi.CallArgs{
+func toCallArgs(msg zerium.CallMsg) zaeapi.CallArgs {
+	args := zaeapi.CallArgs{
 		To:   msg.To,
 		From: msg.From,
 		Data: msg.Data,

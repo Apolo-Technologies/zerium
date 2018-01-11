@@ -12,7 +12,7 @@ Run something in the VM
     vm := otto.New()
     vm.Run(`
         abc = 2 + 2;
-    	abtconsole.log("The value of abc is " + abc); // 4
+    	zaeconsole.log("The value of abc is " + abc); // 4
     `)
 
 Get a value out of the VM
@@ -25,7 +25,7 @@ Set a number
 
     vm.Set("def", 11)
     vm.Run(`
-    	abtconsole.log("The value of def is " + def);
+    	zaeconsole.log("The value of def is " + def);
     	// The value of def is 11
     `)
 
@@ -33,7 +33,7 @@ Set a string
 
     vm.Set("xyzzy", "Nothing happens.")
     vm.Run(`
-    	abtconsole.log(xyzzy.length); // 16
+    	zaeconsole.log(xyzzy.length); // 16
     `)
 
 Get the value of an expression
@@ -90,12 +90,12 @@ Parse and return an AST
         // Sample xyzzy example
         (function(){
             if (3.14159 > 0) {
-                abtconsole.log("Hello, World.");
+                zaeconsole.log("Hello, World.");
                 return;
             }
 
             var xyzzy = NaN;
-            abtconsole.log("Nothing happens.");
+            zaeconsole.log("Nothing happens.");
             return xyzzy;
         })();
     `
@@ -247,7 +247,7 @@ func New() *Otto {
 	}
 	self.runtime.otto = self
 	self.runtime.traceLimit = 10
-	self.Set("abtconsole", self.runtime.newConsole())
+	self.Set("zaeconsole", self.runtime.newConsole())
 
 	registry.Apply(func(entry registry.Entry) {
 		self.Run(entry.Source())
