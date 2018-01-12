@@ -48,7 +48,7 @@ const (
 // all registered services.
 type Config struct {
 	// Name sets the instance name of the node. It must not contain the / character and is
-	// used in the devp2p node identifier. The instance name of gabt is "gabt". If no
+	// used in the devp2p node identifier. The instance name of zaed is "zaed". If no
 	// value is specified, the basename of the current executable is used.
 	Name string `toml:"-"`
 
@@ -215,9 +215,9 @@ func DefaultWSEndpoint() string {
 // NodeName returns the devp2p node identifier.
 func (c *Config) NodeName() string {
 	name := c.name()
-	// Backwards compatibility: previous versions used title-cased "Gabt", keep that.
-	if name == "gabt" || name == "gabt-testnet" {
-		name = "Gabt"
+	// Backwards compatibility: previous versions used title-cased "zaed", keep that.
+	if name == "zaed" || name == "zaed-testnet" {
+		name = "zaed"
 	}
 	if c.UserIdent != "" {
 		name += "/" + c.UserIdent
@@ -241,8 +241,8 @@ func (c *Config) name() string {
 	return c.Name
 }
 
-// These resources are resolved differently for "gabt" instances.
-var isOldGabtResource = map[string]bool{
+// These resources are resolved differently for "zaed" instances.
+var isOldzaedResource = map[string]bool{
 	"chaindata":          true,
 	"nodes":              true,
 	"nodekey":            true,
@@ -259,10 +259,10 @@ func (c *Config) resolvePath(path string) string {
 		return ""
 	}
 	// Backwards-compatibility: ensure that data directory files created
-	// by gabt 1.4 are used if they exist.
-	if c.name() == "gabt" && isOldGabtResource[path] {
+	// by zaed 1.4 are used if they exist.
+	if c.name() == "zaed" && isOldzaedResource[path] {
 		oldpath := ""
-		if c.Name == "gabt" {
+		if c.Name == "zaed" {
 			oldpath = filepath.Join(c.DataDir, path)
 		}
 		if oldpath != "" && common.FileExist(oldpath) {

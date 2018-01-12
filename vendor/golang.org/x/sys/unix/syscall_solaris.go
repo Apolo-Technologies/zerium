@@ -273,11 +273,11 @@ func Wait4(pid int, wstatus *WaitStatus, options int, rusage *Rusage) (int, erro
 	return wpid, nil
 }
 
-//sys	gabtostname(buf []byte) (n int, err error)
+//sys	zaedostname(buf []byte) (n int, err error)
 
 func Gethostname() (name string, err error) {
 	var buf [MaxHostNameLen]byte
-	n, err := gabtostname(buf[:])
+	n, err := zaedostname(buf[:])
 	if n != 0 {
 		return "", err
 	}

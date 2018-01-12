@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-// package zaeext contains gabt specific zae.js extensions.
+// package zaeext contains zaed specific zae.js extensions.
 package zaeext
 
 var Modules = map[string]string{

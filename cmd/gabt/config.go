@@ -76,7 +76,7 @@ type zrmstatsConfig struct {
 	URL string `toml:",omitempty"`
 }
 
-type gabtConfig struct {
+type zaedConfig struct {
 	Eth       zrm.Config
 	Shh       whisper.Config
 	Node      node.Config
@@ -84,7 +84,7 @@ type gabtConfig struct {
 	Dashboard dashboard.Config
 }
 
-func loadConfig(file string, cfg *gabtConfig) error {
+func loadConfig(file string, cfg *zaedConfig) error {
 	f, err := os.Open(file)
 	if err != nil {
 		return err
@@ -105,13 +105,13 @@ func defaultNodeConfig() node.Config {
 	cfg.Version = params.VersionWithCommit(gitCommit)
 	cfg.HTTPModules = append(cfg.HTTPModules, "zrm", "shh")
 	cfg.WSModules = append(cfg.WSModules, "zrm", "shh")
-	cfg.IPCPath = "gabt.ipc"
+	cfg.IPCPath = "zaed.ipc"
 	return cfg
 }
 
-func makeConfigNode(ctx *cli.Context) (*node.Node, gabtConfig) {
+func makeConfigNode(ctx *cli.Context) (*node.Node, zaedConfig) {
 	// Load defaults.
-	cfg := gabtConfig{
+	cfg := zaedConfig{
 		Eth:       zrm.DefaultConfig,
 		Shh:       whisper.DefaultConfig,
 		Node:      defaultNodeConfig(),
@@ -190,7 +190,7 @@ func makeFullNode(ctx *cli.Context) *node.Node {
 		copy(config.Commit[:], commit)
 		return release.NewReleaseService(ctx, config)
 	}); err != nil {
-		utils.Fatalf("Failed to register the Gabt release oracle service: %v", err)
+		utils.Fatalf("Failed to register the zaed release oracle service: %v", err)
 	}
 	return stack
 }

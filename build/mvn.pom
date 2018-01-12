@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.zerium</groupId>
-  <artifactId>gabt</artifactId>
+  <artifactId>zaed</artifactId>
   <version>{{.Version}}</version>
   <packaging>aar</packaging>
 

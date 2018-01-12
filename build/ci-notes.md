@@ -46,4 +46,4 @@ Then go into the source package directory for your running distribution and buil
 Built packages are placed in the dist/ directory.
 
     $ cd ..
-    $ dpkg-deb -c gabt-unstable_1.6.0+xenial_amd64.deb
+    $ dpkg-deb -c zaed-unstable_1.6.0+xenial_amd64.deb

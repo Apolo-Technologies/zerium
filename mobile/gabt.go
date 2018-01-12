@@ -17,7 +17,7 @@
 // Contains all the wrappers from the node package to support client side node
 // management on mobile platforms.
 
-package gabt
+package zaed
 
 import (
 	"encoding/json"
@@ -37,7 +37,7 @@ import (
 	whisper "github.com/apolo-technologies/zerium/whisper/whisperv5"
 )
 
-// NodeConfig represents the collection of configuration values to fine tune the Gabt
+// NodeConfig represents the collection of configuration values to fine tune the zaed
 // node embedded into a mobile process. The available values are a subset of the
 // entire API provided by zerium to reduce the maintenance surface and dev
 // complexity.
@@ -90,12 +90,12 @@ func NewNodeConfig() *NodeConfig {
 	return &config
 }
 
-// Node represents a Gabt Zerium node instance.
+// Node represents a zaed Zerium node instance.
 type Node struct {
 	node *node.Node
 }
 
-// NewNode creates and configures a new Gabt node.
+// NewNode creates and configures a new zaed node.
 func NewNode(datadir string, config *NodeConfig) (stack *Node, _ error) {
 	// If no or partial configurations were specified, use defaults
 	if config == nil {

@@ -3,12 +3,12 @@ FROM alpine:3.5
 RUN \
   apk add --update go git make gcc musl-dev linux-headers ca-certificates && \
   git clone --depth 1 https://github.com/apolo-technologies/zerium && \
-  (cd zerium && make gabt) && \
-  cp zerium/build/bin/gabt /gabt && \
+  (cd zerium && make zaed) && \
+  cp zerium/build/bin/zaed /zaed && \
   apk del go git make gcc musl-dev linux-headers && \
   rm -rf /zerium && rm -rf /var/cache/apk/*
 
 EXPOSE 8545
 EXPOSE 30303
 
-ENTRYPOINT ["/gabt"]
+ENTRYPOINT ["/zaed"]

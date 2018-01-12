@@ -6,11 +6,11 @@
 # - BUILDVERSION, build id version
 #
 # The created installer executes the following steps:
-# 1. install gabt for all users
+# 1. install zaed for all users
 # 2. install optional development tools such as abigen
 # 3. create an uninstaller
-# 4. configures the Windows firewall for gabt
-# 5. create gabt, attach and uninstall start menu entries
+# 4. configures the Windows firewall for zaed
+# 5. create zaed, attach and uninstall start menu entries
 # 6. configures the registry that allows Windows to manage the package through its platform tools
 # 7. adds the environment system wide variable ZERIUM_SOCKET
 # 8. adds the install directory to %PATH%
@@ -30,7 +30,7 @@
 CRCCheck on
 
 !define GROUPNAME "Zerium"
-!define APPNAME "Gabt"
+!define APPNAME "zaed"
 !define DESCRIPTION "Official Go implementation of the Zerium protocol"
 !addplugindir .\
 
@@ -55,7 +55,7 @@ ${EndIf}
 !macroend
 
 function .onInit
-  # make vars are global for all users since gabt is installed global
+  # make vars are global for all users since zaed is installed global
   setShellVarContext all
   !insertmacro VerifyUserIsAdmin
 

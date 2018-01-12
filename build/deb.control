@@ -11,8 +11,8 @@ Vcs-Browser: https://github.com/apolo-technologies/zerium
 Package: {{.Name}}
 Architecture: any
 Depends: ${misc:Depends}, {{.ExeList}}
-Description: Meta-package to install gabt and other tools
- Meta-package to install gabt and other tools
+Description: Meta-package to install zaed and other tools
+ Meta-package to install zaed and other tools
 
 {{range .Executables}}
 Package: {{$.ExeName .}}

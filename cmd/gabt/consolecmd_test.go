@@ -40,25 +40,25 @@ const (
 func TestConsoleWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 
-	// Start a gabt zaeconsole, make sure it's cleaned up and terminate the zaeconsole
-	gabt := runGabt(t,
+	// Start a zaed zaeconsole, make sure it's cleaned up and terminate the zaeconsole
+	zaed := runzaed(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--zeriumbase", coinbase, "--shh",
 		"zaeconsole")
 
 	// Gather all the infos the welcome message needs to contain
-	gabt.SetTemplateFunc("goos", func() string { return runtime.GOOS })
-	gabt.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
-	gabt.SetTemplateFunc("gover", runtime.Version)
-	gabt.SetTemplateFunc("gabtver", func() string { return params.Version })
-	gabt.SetTemplateFunc("niltime", func() string { return time.Unix(0, 0).Format(time.RFC1123) })
-	gabt.SetTemplateFunc("apis", func() string { return ipcAPIs })
+	zaed.SetTemplateFunc("goos", func() string { return runtime.GOOS })
+	zaed.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
+	zaed.SetTemplateFunc("gover", runtime.Version)
+	zaed.SetTemplateFunc("zaedver", func() string { return params.Version })
+	zaed.SetTemplateFunc("niltime", func() string { return time.Unix(0, 0).Format(time.RFC1123) })
+	zaed.SetTemplateFunc("apis", func() string { return ipcAPIs })
 
 	// Verify the actual welcome message to the required template
-	gabt.Expect(`
-Welcome to the Gabt JavaScript zaeconsole!
+	zaed.Expect(`
+Welcome to the zaed JavaScript zaeconsole!
 
-instance: Gabt/v{{gabtver}}/{{goos}}-{{goarch}}/{{gover}}
+instance: zaed/v{{zaedver}}/{{goos}}-{{goarch}}/{{gover}}
 coinbase: {{.Zeriumbase}}
 at block: 0 ({{niltime}})
  datadir: {{.Datadir}}
@@ -66,7 +66,7 @@ at block: 0 ({{niltime}})
 
 > {{.InputLine "exit"}}
 `)
-	gabt.ExpectExit()
+	zaed.ExpectExit()
 }
 
 // Tests that a zaeconsole can be attached to a running node via various means.
@@ -75,57 +75,57 @@ func TestIPCAttachWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 	var ipc string
 	if runtime.GOOS == "windows" {
-		ipc = `\\.\pipe\gabt` + strconv.Itoa(trulyRandInt(100000, 999999))
+		ipc = `\\.\pipe\zaed` + strconv.Itoa(trulyRandInt(100000, 999999))
 	} else {
 		ws := tmpdir(t)
 		defer os.RemoveAll(ws)
-		ipc = filepath.Join(ws, "gabt.ipc")
+		ipc = filepath.Join(ws, "zaed.ipc")
 	}
 	// Note: we need --shh because testAttachWelcome checks for default
 	// list of ipc modules and shh is included there.
-	gabt := runGabt(t,
+	zaed := runzaed(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--zeriumbase", coinbase, "--shh", "--ipcpath", ipc)
 
 	time.Sleep(2 * time.Second) // Simple way to wait for the RPC endpoint to open
-	testAttachWelcome(t, gabt, "ipc:"+ipc, ipcAPIs)
+	testAttachWelcome(t, zaed, "ipc:"+ipc, ipcAPIs)
 
-	gabt.Interrupt()
-	gabt.ExpectExit()
+	zaed.Interrupt()
+	zaed.ExpectExit()
 }
 
 func TestHTTPAttachWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 	port := strconv.Itoa(trulyRandInt(1024, 65536)) // Yeah, sometimes this will fail, sorry :P
-	gabt := runGabt(t,
+	zaed := runzaed(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--zeriumbase", coinbase, "--rpc", "--rpcport", port)
 
 	time.Sleep(2 * time.Second) // Simple way to wait for the RPC endpoint to open
-	testAttachWelcome(t, gabt, "http://localhost:"+port, httpAPIs)
+	testAttachWelcome(t, zaed, "http://localhost:"+port, httpAPIs)
 
-	gabt.Interrupt()
-	gabt.ExpectExit()
+	zaed.Interrupt()
+	zaed.ExpectExit()
 }
 
 func TestWSAttachWelcome(t *testing.T) {
 	coinbase := "0x8605cdbbdb6d264aa742e77020dcbc58fcdce182"
 	port := strconv.Itoa(trulyRandInt(1024, 65536)) // Yeah, sometimes this will fail, sorry :P
 
-	gabt := runGabt(t,
+	zaed := runzaed(t,
 		"--port", "0", "--maxpeers", "0", "--nodiscover", "--nat", "none",
 		"--zeriumbase", coinbase, "--ws", "--wsport", port)
 
 	time.Sleep(2 * time.Second) // Simple way to wait for the RPC endpoint to open
-	testAttachWelcome(t, gabt, "ws://localhost:"+port, httpAPIs)
+	testAttachWelcome(t, zaed, "ws://localhost:"+port, httpAPIs)
 
-	gabt.Interrupt()
-	gabt.ExpectExit()
+	zaed.Interrupt()
+	zaed.ExpectExit()
 }
 
-func testAttachWelcome(t *testing.T, gabt *testgabt, endpoint, apis string) {
-	// Attach to a running gabt note and terminate immediately
-	attach := runGabt(t, "attach", endpoint)
+func testAttachWelcome(t *testing.T, zaed *testzaed, endpoint, apis string) {
+	// Attach to a running zaed note and terminate immediately
+	attach := runzaed(t, "attach", endpoint)
 	defer attach.ExpectExit()
 	attach.CloseStdin()
 
@@ -133,18 +133,18 @@ func testAttachWelcome(t *testing.T, gabt *testgabt, endpoint, apis string) {
 	attach.SetTemplateFunc("goos", func() string { return runtime.GOOS })
 	attach.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
 	attach.SetTemplateFunc("gover", runtime.Version)
-	attach.SetTemplateFunc("gabtver", func() string { return params.Version })
-	attach.SetTemplateFunc("zeriumbase", func() string { return gabt.Zeriumbase })
+	attach.SetTemplateFunc("zaedver", func() string { return params.Version })
+	attach.SetTemplateFunc("zeriumbase", func() string { return zaed.Zeriumbase })
 	attach.SetTemplateFunc("niltime", func() string { return time.Unix(0, 0).Format(time.RFC1123) })
 	attach.SetTemplateFunc("ipc", func() bool { return strings.HasPrefix(endpoint, "ipc") })
-	attach.SetTemplateFunc("datadir", func() string { return gabt.Datadir })
+	attach.SetTemplateFunc("datadir", func() string { return zaed.Datadir })
 	attach.SetTemplateFunc("apis", func() string { return apis })
 
 	// Verify the actual welcome message to the required template
 	attach.Expect(`
-Welcome to the Gabt JavaScript zaeconsole!
+Welcome to the zaed JavaScript zaeconsole!
 
-instance: Gabt/v{{gabtver}}/{{goos}}-{{goarch}}/{{gover}}
+instance: zaed/v{{zaedver}}/{{goos}}-{{goarch}}/{{gover}}
 coinbase: {{zeriumbase}}
 at block: 0 ({{niltime}}){{if ipc}}
  datadir: {{datadir}}{{end}}

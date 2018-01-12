@@ -274,8 +274,8 @@ const tmplSourceJava = `
 
 package {{.Package}};
 
-import org.zerium.gabt.*;
-import org.zerium.gabt.internal.*;
+import org.zerium.zaed.*;
+import org.zerium.zaed.internal.*;
 
 {{range $contract := .Contracts}}
 	public class {{.Type}} {

@@ -38,7 +38,7 @@ var (
 		Flags:    append(append(append(nodeFlags, rpcFlags...), zaeconsoleFlags...), whisperFlags...),
 		Category: "CONSOLE COMMANDS",
 		Description: `
-The Gabt zaeconsole is an interactive shell for the JavaScript runtime environment
+The zaed zaeconsole is an interactive shell for the JavaScript runtime environment
 which exposes a node admin interface as well as the Ðapp JavaScript API.
 See https://github.com/apolo-technologies/zerium/wiki/Javascipt-Console.`,
 	}
@@ -51,10 +51,10 @@ See https://github.com/apolo-technologies/zerium/wiki/Javascipt-Console.`,
 		Flags:     append(zaeconsoleFlags, utils.DataDirFlag),
 		Category:  "CONSOLE COMMANDS",
 		Description: `
-The Gabt zaeconsole is an interactive shell for the JavaScript runtime environment
+The zaed zaeconsole is an interactive shell for the JavaScript runtime environment
 which exposes a node admin interface as well as the Ðapp JavaScript API.
 See https://github.com/apolo-technologies/zerium/wiki/Javascipt-Console.
-This command allows to open a zaeconsole on a running gabt node.`,
+This command allows to open a zaeconsole on a running zaed node.`,
 	}
 
 	javascriptCommand = cli.Command{
@@ -70,7 +70,7 @@ JavaScript API. See https://github.com/apolo-technologies/zerium/wiki/Javascipt-
 	}
 )
 
-// localConsole starts a new gabt node, attaching a JavaScript zaeconsole to it at the
+// localConsole starts a new zaed node, attaching a JavaScript zaeconsole to it at the
 // same time.
 func localConsole(ctx *cli.Context) error {
 	// Create and start the node based on the CLI flags
@@ -81,7 +81,7 @@ func localConsole(ctx *cli.Context) error {
 	// Attach to the newly started node and start the JavaScript zaeconsole
 	client, err := node.Attach()
 	if err != nil {
-		utils.Fatalf("Failed to attach to the inproc gabt: %v", err)
+		utils.Fatalf("Failed to attach to the inproc zaed: %v", err)
 	}
 	config := zaeconsole.Config{
 		DataDir: utils.MakeDataDir(ctx),
@@ -108,13 +108,13 @@ func localConsole(ctx *cli.Context) error {
 	return nil
 }
 
-// remoteConsole will connect to a remote gabt instance, attaching a JavaScript
+// remoteConsole will connect to a remote zaed instance, attaching a JavaScript
 // zaeconsole to it.
 func remoteConsole(ctx *cli.Context) error {
-	// Attach to a remotely running gabt instance and start the JavaScript zaeconsole
+	// Attach to a remotely running zaed instance and start the JavaScript zaeconsole
 	client, err := dialRPC(ctx.Args().First())
 	if err != nil {
-		utils.Fatalf("Unable to attach to remote gabt: %v", err)
+		utils.Fatalf("Unable to attach to remote zaed: %v", err)
 	}
 	config := zaeconsole.Config{
 		DataDir: utils.MakeDataDir(ctx),
@@ -143,19 +143,19 @@ func remoteConsole(ctx *cli.Context) error {
 
 // dialRPC returns a RPC client which connects to the given endpoint.
 // The check for empty endpoint implements the defaulting logic
-// for "gabt attach" and "gabt monitor" with no argument.
+// for "zaed attach" and "zaed monitor" with no argument.
 func dialRPC(endpoint string) (*rpc.Client, error) {
 	if endpoint == "" {
 		endpoint = node.DefaultIPCEndpoint(clientIdentifier)
 	} else if strings.HasPrefix(endpoint, "rpc:") || strings.HasPrefix(endpoint, "ipc:") {
-		// Backwards compatibility with gabt < 1.5 which required
+		// Backwards compatibility with zaed < 1.5 which required
 		// these prefixes.
 		endpoint = endpoint[4:]
 	}
 	return rpc.Dial(endpoint)
 }
 
-// ephemeralConsole starts a new gabt node, attaches an ephemeral JavaScript
+// ephemeralConsole starts a new zaed node, attaches an ephemeral JavaScript
 // zaeconsole to it, executes each of the files specified as arguments and tears
 // everything down.
 func ephemeralConsole(ctx *cli.Context) error {
@@ -167,7 +167,7 @@ func ephemeralConsole(ctx *cli.Context) error {
 	// Attach to the newly started node and start the JavaScript zaeconsole
 	client, err := node.Attach()
 	if err != nil {
-		utils.Fatalf("Failed to attach to the inproc gabt: %v", err)
+		utils.Fatalf("Failed to attach to the inproc zaed: %v", err)
 	}
 	config := zaeconsole.Config{
 		DataDir: utils.MakeDataDir(ctx),

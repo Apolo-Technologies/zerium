@@ -254,11 +254,11 @@ func (c *Console) AutoCompleteInput(line string, pos int) (string, []string, str
 	return line[:start], c.jsre.CompleteKeywords(line[start:pos]), line[pos:]
 }
 
-// Welcome show summary of current Gabt instance and some metadata about the
+// Welcome show summary of current zaed instance and some metadata about the
 // zaeconsole's available modules.
 func (c *Console) Welcome() {
-	// Print some generic Gabt metadata
-	fmt.Fprintf(c.printer, "Welcome to the Gabt JavaScript zaeconsole!\n\n")
+	// Print some generic zaed metadata
+	fmt.Fprintf(c.printer, "Welcome to the zaed JavaScript zaeconsole!\n\n")
 	c.jsre.Run(`
 		zaeconsole.log("instance: " + zae.version.node);
 		zaeconsole.log("coinbase: " + zrm.coinbase);

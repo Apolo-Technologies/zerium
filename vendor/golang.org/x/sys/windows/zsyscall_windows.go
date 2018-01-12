@@ -197,7 +197,7 @@ var (
 	procWSASend                            = modws2_32.NewProc("WSASend")
 	procWSARecvFrom                        = modws2_32.NewProc("WSARecvFrom")
 	procWSASendTo                          = modws2_32.NewProc("WSASendTo")
-	procgabtostbyname                      = modws2_32.NewProc("gabtostbyname")
+	proczaedostbyname                      = modws2_32.NewProc("zaedostbyname")
 	procgetservbyname                      = modws2_32.NewProc("getservbyname")
 	procntohs                              = modws2_32.NewProc("ntohs")
 	procgetprotobyname                     = modws2_32.NewProc("getprotobyname")
@@ -2071,7 +2071,7 @@ func GetHostByName(name string) (h *Hostent, err error) {
 }
 
 func _GetHostByName(name *byte) (h *Hostent, err error) {
-	r0, _, e1 := syscall.Syscall(procgabtostbyname.Addr(), 1, uintptr(unsafe.Pointer(name)), 0, 0)
+	r0, _, e1 := syscall.Syscall(proczaedostbyname.Addr(), 1, uintptr(unsafe.Pointer(name)), 0, 0)
 	h = (*Hostent)(unsafe.Pointer(r0))
 	if h == nil {
 		if e1 != 0 {

@@ -31,7 +31,7 @@ import (
 	"github.com/apolo-technologies/zerium/trie"
 )
 
-// stateReq represents a batch of state fetch requests groupped togabter into
+// stateReq represents a batch of state fetch requests groupped tozaeder into
 // a single data retrieval network packet.
 type stateReq struct {
 	items    []common.Hash              // Hashes of the state items to download

@@ -4,7 +4,7 @@ default: build
 
 build:
 	go build -o bin/swarm    github.com/apolo-technologies/zerium/cmd/swarm
-	go build -o bin/gabt     github.com/apolo-technologies/zerium/cmd/gabt
+	go build -o bin/zaed     github.com/apolo-technologies/zerium/cmd/zaed
 	go build -o bin/bootnode github.com/apolo-technologies/zerium/cmd/bootnode
 
 cluster: build

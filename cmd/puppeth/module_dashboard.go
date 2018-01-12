@@ -82,7 +82,7 @@ var dashboardContent = `
 									{{if .FaucetPage}}<li><a onclick="load('//{{.FaucetPage}}')"><i class="fa fa-bath"></i> Crypto Faucet</a></li>{{end}}
 									<li id="connect"><a><i class="fa fa-plug"></i> Connect Yourself</a>
 										<ul id="connect_list" class="nav child_menu">
-											<li><a onclick="$('#connect').removeClass('active'); $('#connect_list').toggle(); load('#connect-zerium-gabt')">Go Zerium: Gabt</a></li>
+											<li><a onclick="$('#connect').removeClass('active'); $('#connect_list').toggle(); load('#connect-zerium-zaed')">Go Zerium: zaed</a></li>
 											<li><a onclick="$('#connect').removeClass('active'); $('#connect_list').toggle(); load('#connect-zerium-mist')">Go Zerium: Wallet & Mist</a></li>
 											<li><a onclick="$('#connect').removeClass('active'); $('#connect_list').toggle(); load('#connect-zerium-mobile')">Go Zerium: Android & iOS</a></li>
 										</ul>
@@ -94,10 +94,10 @@ var dashboardContent = `
 					</div>
 				</div>
 				<div class="right_col" role="main" style="padding: 0">
-					<div id="connect-zerium-gabt" hidden style="padding: 16px;">
+					<div id="connect-zerium-zaed" hidden style="padding: 16px;">
 						<div class="page-title">
 							<div class="title_left">
-								<h3>Connect Yourself &ndash; Go Zerium: Gabt</h3>
+								<h3>Connect Yourself &ndash; Go Zerium: zaed</h3>
 							</div>
 						</div>
 						<div class="clearfix"></div>
@@ -112,12 +112,12 @@ var dashboardContent = `
 										<p>An archive node synchronizes the blockchain by downloading the full chain from the genesis block to the current head block, executing all the transactions contained within. As the node crunches through the transactions, all past historical state is stored on disk, and can be queried for each and every block.</p>
 										<p>Initial processing required to execute all transactions may require non-negligible time and disk capacity required to store all past state may be non-insignificant. High end machines with SSD storage, modern CPUs and 8GB+ RAM are recommended.</p>
 										<br/>
-										<p>To run an archive node, download <a href="/{{.GabtGenesis}}"><code>{{.GabtGenesis}}</code></a> and start Gabt with:
-											<pre>gabt --datadir=$HOME/.{{.Network}} init {{.GabtGenesis}}</pre>
-											<pre>gabt --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=1024 --syncmode=full{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
+										<p>To run an archive node, download <a href="/{{.zaedGenesis}}"><code>{{.zaedGenesis}}</code></a> and start zaed with:
+											<pre>zaed --datadir=$HOME/.{{.Network}} init {{.zaedGenesis}}</pre>
+											<pre>zaed --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=1024 --syncmode=full{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
 										</p>
 										<br/>
-										<p>You can download Gabt from <a href="https://gabt.zerium.org/downloads/" target="about:blank">https://gabt.zerium.org/downloads/</a>.</p>
+										<p>You can download zaed from <a href="https://zaed.zerium.org/downloads/" target="about:blank">https://zaed.zerium.org/downloads/</a>.</p>
 									</div>
 								</div>
 							</div>
@@ -131,12 +131,12 @@ var dashboardContent = `
 										<p>A full node synchronizes the blockchain by downloading the full chain from the genesis block to the current head block, but does not execute the transactions. Instead, it downloads all the transactions receipts along with the entire recent state. As the node downloads the recent state directly, historical data can only be queried from that block onward.</p>
 										<p>Initial processing required to synchronize is more bandwidth intensive, but is light on the CPU and has significantly reduced disk requirements. Mid range machines with HDD storage, decent CPUs and 4GB+ RAM should be enough.</p>
 										<br/>
-										<p>To run a full node, download <a href="/{{.GabtGenesis}}"><code>{{.GabtGenesis}}</code></a> and start Gabt with:
-											<pre>gabt --datadir=$HOME/.{{.Network}} init {{.GabtGenesis}}</pre>
-											<pre>gabt --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=512{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
+										<p>To run a full node, download <a href="/{{.zaedGenesis}}"><code>{{.zaedGenesis}}</code></a> and start zaed with:
+											<pre>zaed --datadir=$HOME/.{{.Network}} init {{.zaedGenesis}}</pre>
+											<pre>zaed --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=512{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesFullFlat}}</pre>
 										</p>
 										<br/>
-										<p>You can download Gabt from <a href="https://gabt.zerium.org/downloads/" target="about:blank">https://gabt.zerium.org/downloads/</a>.</p>
+										<p>You can download zaed from <a href="https://zaed.zerium.org/downloads/" target="about:blank">https://zaed.zerium.org/downloads/</a>.</p>
 									</div>
 								</div>
 							</div>
@@ -153,12 +153,12 @@ var dashboardContent = `
 										<p>A light node synchronizes the blockchain by downloading and verifying only the chain of headers from the genesis block to the current head, without executing any transactions or retrieving any associated state. As no state is available locally, any interaction with the blockchain relies on on-demand data retrievals from remote nodes.</p>
 										<p>Initial processing required to synchronize is light, as it only verifies the validity of the headers; similarly required disk capacity is small, tallying around 500 bytes per header. Low end machines with arbitrary storage, weak CPUs and 512MB+ RAM should cope well.</p>
 										<br/>
-										<p>To run a light node, download <a href="/{{.GabtGenesis}}"><code>{{.GabtGenesis}}</code></a> and start Gabt with:
-											<pre>gabt --datadir=$HOME/.{{.Network}} --light init {{.GabtGenesis}}</pre>
-											<pre>gabt --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --syncmode=light{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
+										<p>To run a light node, download <a href="/{{.zaedGenesis}}"><code>{{.zaedGenesis}}</code></a> and start zaed with:
+											<pre>zaed --datadir=$HOME/.{{.Network}} --light init {{.zaedGenesis}}</pre>
+											<pre>zaed --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --syncmode=light{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
 										</p>
 										<br/>
-										<p>You can download Gabt from <a href="https://gabt.zerium.org/downloads/" target="about:blank">https://gabt.zerium.org/downloads/</a>.</p>
+										<p>You can download zaed from <a href="https://zaed.zerium.org/downloads/" target="about:blank">https://zaed.zerium.org/downloads/</a>.</p>
 									</div>
 								</div>
 							</div>
@@ -172,12 +172,12 @@ var dashboardContent = `
 										<p>An embedded node is a variation of the light node with configuration parameters tuned towards low memory footprint. As such, it may sacrifice processing and disk IO performance to conserve memory. It should be considered an <strong>experimental</strong> direction for now without hard guarantees or bounds on the resources used.</p>
 										<p>Initial processing required to synchronize is light, as it only verifies the validity of the headers; similarly required disk capacity is small, tallying around 500 bytes per header. Embedded machines with arbitrary storage, low power CPUs and 128MB+ RAM may work.</p>
 										<br/>
-										<p>To run an embedded node, download <a href="/{{.GabtGenesis}}"><code>{{.GabtGenesis}}</code></a> and start Gabt with:
-											<pre>gabt --datadir=$HOME/.{{.Network}} --light init {{.GabtGenesis}}</pre>
-											<pre>gabt --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=32 --syncmode=light{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
+										<p>To run an embedded node, download <a href="/{{.zaedGenesis}}"><code>{{.zaedGenesis}}</code></a> and start zaed with:
+											<pre>zaed --datadir=$HOME/.{{.Network}} --light init {{.zaedGenesis}}</pre>
+											<pre>zaed --networkid={{.NetworkID}} --datadir=$HOME/.{{.Network}} --cache=32 --syncmode=light{{if .Zrmstats}} --zrmstats='{{.Zrmstats}}'{{end}} --bootnodes={{.BootnodesLightFlat}}</pre>
 										</p>
 										<br/>
-										<p>You can download Gabt from <a href="https://gabt.zerium.org/downloads/" target="about:blank">https://gabt.zerium.org/downloads/</a>.</p>
+										<p>You can download zaed from <a href="https://zaed.zerium.org/downloads/" target="about:blank">https://zaed.zerium.org/downloads/</a>.</p>
 									</div>
 								</div>
 							</div>
@@ -201,11 +201,11 @@ var dashboardContent = `
 										<p>The Zerium Wallet is an <a href="https://electron.atom.io/" target="about:blank">Electron</a> based desktop application to manage your Zerium accounts and funds. Beside the usual account life-cycle operations you would expect to perform, the wallet also provides a means to send transactions from your accounts and to interact with smart contracts deployed on the network.</p>
 										<p>Under the hood the wallet is backed by a zerium full node, meaning that a mid range machine is assumed. Similarly, synchronization is based on <strong>fast-sync</strong>, which will download all blockchain data from the network and make it available to the wallet. Light nodes cannot currently fully back the wallet, but it's a target actively pursued.</p>
 										<br/>
-										<p>To connect with the Zerium Wallet, you'll need to initialize your private network first via Gabt as the wallet does not currently support calling Gabt directly. To initialize your local chain, download <a href="/{{.GabtGenesis}}"><code>{{.GabtGenesis}}</code></a> and run:
-											<pre>gabt --datadir=$HOME/.{{.Network}} init {{.GabtGenesis}}</pre>
+										<p>To connect with the Zerium Wallet, you'll need to initialize your private network first via zaed as the wallet does not currently support calling zaed directly. To initialize your local chain, download <a href="/{{.zaedGenesis}}"><code>{{.zaedGenesis}}</code></a> and run:
+											<pre>zaed --datadir=$HOME/.{{.Network}} init {{.zaedGenesis}}</pre>
 										</p>
 										<p>With your local chain initialized, you can start the Zerium Wallet:
-											<pre>zeriumwallet --rpc $HOME/.{{.Network}}/gabt.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Zrmstats}} --node-zrmstats='{{.Zrmstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
+											<pre>zeriumwallet --rpc $HOME/.{{.Network}}/zaed.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Zrmstats}} --node-zrmstats='{{.Zrmstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
 										<p>
 										<br/>
 										<p>You can download the Zerium Wallet from <a href="https://github.com/apolo-technologies/mist/releases" target="about:blank">https://github.com/apolo-technologies/mist/releases</a>.</p>
@@ -222,11 +222,11 @@ var dashboardContent = `
 										<p>The Mist browser is an <a href="https://electron.atom.io/" target="about:blank">Electron</a> based desktop application to load and interact with Zerium enabled third party web DApps. Beside all the functionality provided by the Zerium Wallet, Mist is an extended web-browser where loaded pages have access to the Zerium network via a zae.js provider, and may also interact with users' own accounts (given proper authorization and confirmation of course).</p>
 										<p>Under the hood the browser is backed by a zerium full node, meaning that a mid range machine is assumed. Similarly, synchronization is based on <strong>fast-sync</strong>, which will download all blockchain data from the network and make it available to the wallet. Light nodes cannot currently fully back the wallet, but it's a target actively pursued.</p>
 										<br/>
-										<p>To connect with the Mist browser, you'll need to initialize your private network first via Gabt as Mist does not currently support calling Gabt directly. To initialize your local chain, download <a href="/{{.GabtGenesis}}"><code>{{.GabtGenesis}}</code></a> and run:
-											<pre>gabt --datadir=$HOME/.{{.Network}} init {{.GabtGenesis}}</pre>
+										<p>To connect with the Mist browser, you'll need to initialize your private network first via zaed as Mist does not currently support calling zaed directly. To initialize your local chain, download <a href="/{{.zaedGenesis}}"><code>{{.zaedGenesis}}</code></a> and run:
+											<pre>zaed --datadir=$HOME/.{{.Network}} init {{.zaedGenesis}}</pre>
 										</p>
 										<p>With your local chain initialized, you can start Mist:
-											<pre>mist --rpc $HOME/.{{.Network}}/gabt.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Zrmstats}} --node-zrmstats='{{.Zrmstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
+											<pre>mist --rpc $HOME/.{{.Network}}/zaed.ipc --node-networkid={{.NetworkID}} --node-datadir=$HOME/.{{.Network}}{{if .Zrmstats}} --node-zrmstats='{{.Zrmstats}}'{{end}} --node-bootnodes={{.BootnodesFullFlat}}</pre>
 										<p>
 										<br/>
 										<p>You can download the Mist browser from <a href="https://github.com/apolo-technologies/mist/releases" target="about:blank">https://github.com/apolo-technologies/mist/releases</a>.</p>
@@ -254,9 +254,9 @@ var dashboardContent = `
 										<p>Under the hood the Android library is backed by a zerium light node, meaning that given a not-too-old Android device, you should be able to join the network without significant issues. Certain functionality is not yet available and rough edges are bound to appear here and there, please report issues if you find any.</p>
 										<br/>
 										<p>The stable Android archives are distributed via Maven Central, and the develop snapshots via the Sonatype repositories. Before proceeding, please ensure you have a recent version configured in your Android project. You can find details in <a href="https://github.com/apolo-technologies/zerium/wiki/Mobile:-Introduction#android-archive" target="about:blank">Mobile: Introduction &ndash; Android archive</a>.
-										<p>Before connecting to the Zerium network, download the <a href="/{{.GabtGenesis}}"><code>{{.GabtGenesis}}</code></a> genesis json file and either store it in your Android project as a resource file you can access, or save it as a string in a variable. You're going to need to to initialize your client.</p>
-										<p>Inside your Java code you can now import the gabt archive and connect to Zerium:
-											<pre>import org.zerium.gabt.*;</pre>
+										<p>Before connecting to the Zerium network, download the <a href="/{{.zaedGenesis}}"><code>{{.zaedGenesis}}</code></a> genesis json file and either store it in your Android project as a resource file you can access, or save it as a string in a variable. You're going to need to to initialize your client.</p>
+										<p>Inside your Java code you can now import the zaed archive and connect to Zerium:
+											<pre>import org.zerium.zaed.*;</pre>
 <pre>
 Enodes bootnodes = new Enodes();{{range .BootnodesLight}}
 bootnodes.append(new Enode("{{.}}"));{{end}}
@@ -285,23 +285,23 @@ node.start();
 										<p>Under the hood the iOS library is backed by a zerium light node, meaning that given a not-too-old Apple device, you should be able to join the network without significant issues. Certain functionality is not yet available and rough edges are bound to appear here and there, please report issues if you find any.</p>
 										<br/>
 										<p>Both stable and develop builds of the iOS framework are available via CocoaPods. Before proceeding, please ensure you have a recent version configured in your iOS project. You can find details in <a href="https://github.com/apolo-technologies/zerium/wiki/Mobile:-Introduction#ios-framework" target="about:blank">Mobile: Introduction &ndash; iOS framework</a>.
-										<p>Before connecting to the Zerium network, download the <a href="/{{.GabtGenesis}}"><code>{{.GabtGenesis}}</code></a> genesis json file and either store it in your iOS project as a resource file you can access, or save it as a string in a variable. You're going to need to to initialize your client.</p>
-										<p>Inside your Swift code you can now import the gabt framework and connect to Zerium (ObjC should be analogous):
-											<pre>import Gabt</pre>
+										<p>Before connecting to the Zerium network, download the <a href="/{{.zaedGenesis}}"><code>{{.zaedGenesis}}</code></a> genesis json file and either store it in your iOS project as a resource file you can access, or save it as a string in a variable. You're going to need to to initialize your client.</p>
+										<p>Inside your Swift code you can now import the zaed framework and connect to Zerium (ObjC should be analogous):
+											<pre>import zaed</pre>
 <pre>
 var error: NSError?
 
-let bootnodes = GabtNewEnodesEmpty(){{range .BootnodesLight}}
-bootnodes?.append(GabtNewEnode("{{.}}", &error)){{end}}
+let bootnodes = zaedNewEnodesEmpty(){{range .BootnodesLight}}
+bootnodes?.append(zaedNewEnode("{{.}}", &error)){{end}}
 
-let config = GabtNewNodeConfig()
+let config = zaedNewNodeConfig()
 config?.setBootstrapNodes(bootnodes)
 config?.setZeriumNetworkID({{.NetworkID}})
 config?.setZeriumGenesis(genesis){{if .Zrmstats}}
 config?.setZeriumNetStats("{{.Zrmstats}}"){{end}}
 
 let datadir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-let node = GabtNewNode(datadir + "/.{{.Network}}", config, &error);
+let node = zaedNewNode(datadir + "/.{{.Network}}", config, &error);
 try! node?.start();
 </pre>
 										<p>
@@ -322,7 +322,7 @@ try! node?.start();
 										<p>Puppeth is a tool to aid you in creating a new Zerium network down to the genesis block, bootnodes, signers, zrmstats server, crypto faucet, wallet browsers, block explorer, dashboard and more; without the hassle that it would normally entail to manually configure all these services one by one.</p>
 										<p>Puppeth uses ssh to dial in to remote servers, and builds its network components out of docker containers using docker-compose. The user is guided through the process via a command line wizard that does the heavy lifting and topology configuration automatically behind the scenes.</p>
 										<br/>
-										<p>Puppeth is distributed as part of the <a href="https://gabt.zerium.org/downloads/" target="about:blank">Gabt &amp; Tools</a> bundles, but can also be installed separately via:<pre>go get github.com/apolo-technologies/zerium/cmd/puppeth</pre></p>
+										<p>Puppeth is distributed as part of the <a href="https://zaed.zerium.org/downloads/" target="about:blank">zaed &amp; Tools</a> bundles, but can also be installed separately via:<pre>go get github.com/apolo-technologies/zerium/cmd/puppeth</pre></p>
 										<br/>
 										<p><em>Copyright 2017. The zerium Authors.</em></p>
 									</div>
@@ -345,7 +345,7 @@ try! node?.start();
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gentelella/1.3.0/js/custom.min.js"></script>
 		<script>
 			var load = function(url) {
-				$("#connect-zerium-gabt").fadeOut(300)
+				$("#connect-zerium-zaed").fadeOut(300)
 				$("#connect-zerium-mist").fadeOut(300)
 				$("#connect-zerium-mobile").fadeOut(300)
 				$("#about").fadeOut(300)
@@ -468,7 +468,7 @@ func deployDashboard(client *sshClient, network string, port int, vhost string, 
 		"ExplorerPage":       services["explorer"],
 		"WalletPage":         services["wallet"],
 		"FaucetPage":         services["faucet"],
-		"GabtGenesis":        network + ".json",
+		"zaedGenesis":        network + ".json",
 		"BootnodesFull":      conf.bootFull,
 		"BootnodesLight":     conf.bootLight,
 		"BootnodesFullFlat":  strings.Join(conf.bootFull, ","),

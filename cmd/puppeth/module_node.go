@@ -38,11 +38,11 @@ ADD genesis.json /genesis.json
 	ADD signer.pass /signer.pass
 {{end}}
 RUN \
-  echo 'gabt init /genesis.json' > gabt.sh && \{{if .Unlock}}
-	echo 'mkdir -p /root/.zerium/keystore/ && cp /signer.json /root/.zerium/keystore/' >> gabt.sh && \{{end}}
-	echo $'gabt --networkid {{.NetworkID}} --cache 512 --port {{.Port}} --maxpeers {{.Peers}} {{.LightFlag}} --zrmstats \'{{.Zrmstats}}\' {{if .BootV4}}--bootnodesv4 {{.BootV4}}{{end}} {{if .BootV5}}--bootnodesv5 {{.BootV5}}{{end}} {{if .Zeriumbase}}--zeriumbase {{.Zeriumbase}} --mine{{end}}{{if .Unlock}}--unlock 0 --password /signer.pass --mine{{end}} --targetgaslimit {{.GasTarget}} --gasprice {{.GasPrice}}' >> gabt.sh
+  echo 'zaed init /genesis.json' > zaed.sh && \{{if .Unlock}}
+	echo 'mkdir -p /root/.zerium/keystore/ && cp /signer.json /root/.zerium/keystore/' >> zaed.sh && \{{end}}
+	echo $'zaed --networkid {{.NetworkID}} --cache 512 --port {{.Port}} --maxpeers {{.Peers}} {{.LightFlag}} --zrmstats \'{{.Zrmstats}}\' {{if .BootV4}}--bootnodesv4 {{.BootV4}}{{end}} {{if .BootV5}}--bootnodesv5 {{.BootV5}}{{end}} {{if .Zeriumbase}}--zeriumbase {{.Zeriumbase}} --mine{{end}}{{if .Unlock}}--unlock 0 --password /signer.pass --mine{{end}} --targetgaslimit {{.GasTarget}} --gasprice {{.GasPrice}}' >> zaed.sh
 
-ENTRYPOINT ["/bin/sh", "gabt.sh"]
+ENTRYPOINT ["/bin/sh", "zaed.sh"]
 `
 
 // nodeComposefile is the docker-compose.yml file required to deploy and maintain
@@ -197,7 +197,7 @@ func checkNode(client *sshClient, network string, boot bool) (*nodeInfos, error)
 
 	// Container available, retrieve its node ID and its genesis json
 	var out []byte
-	if out, err = client.Run(fmt.Sprintf("docker exec %s_%s_1 gabt --exec admin.nodeInfo.id attach", network, kind)); err != nil {
+	if out, err = client.Run(fmt.Sprintf("docker exec %s_%s_1 zaed --exec admin.nodeInfo.id attach", network, kind)); err != nil {
 		return nil, ErrServiceUnreachable
 	}
 	id := bytes.Trim(bytes.TrimSpace(out), "\"")

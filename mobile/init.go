@@ -16,7 +16,7 @@
 
 // Contains initialization code for the mbile library.
 
-package gabt
+package zaed
 
 import (
 	"os"

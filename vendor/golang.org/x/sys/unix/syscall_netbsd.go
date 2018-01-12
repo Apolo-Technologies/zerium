@@ -373,8 +373,8 @@ func IoctlGetTermios(fd int, req uint) (*Termios, error) {
 // compat_43_oftruncate
 // compat_43_ogetdirentries
 // compat_43_ogetdtablesize
-// compat_43_ogabtostid
-// compat_43_ogabtostname
+// compat_43_ozaedostid
+// compat_43_ozaedostname
 // compat_43_ogetkerninfo
 // compat_43_ogetpagesize
 // compat_43_ogetpeername

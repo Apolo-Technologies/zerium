@@ -415,7 +415,7 @@ makeOffsetAtLeast8:
 	//   length -= offset
 	//   d      += offset
 	//   offset += offset
-	//   // The two previous lines togabter means that d-offset, and therefore
+	//   // The two previous lines tozaeder means that d-offset, and therefore
 	//   // R15, is unchanged.
 	// }
 	CMPQ DX, $8

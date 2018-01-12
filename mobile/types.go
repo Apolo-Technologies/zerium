@@ -16,7 +16,7 @@
 
 // Contains all the wrappers from the core/types package.
 
-package gabt
+package zaed
 
 import (
 	"encoding/json"

@@ -1,4 +1,4 @@
-Name "gabt ${MAJORVERSION}.${MINORVERSION}.${BUILDVERSION}" # VERSION variables set through command line arguments
+Name "zaed ${MAJORVERSION}.${MINORVERSION}.${BUILDVERSION}" # VERSION variables set through command line arguments
 InstallDir "$InstDir"
 OutFile "${OUTPUTFILE}" # set through command line arguments
 
@@ -12,30 +12,30 @@ PageEx license
   LicenseData {{.License}}
 PageExEnd
 
-# Install gabt binary
-Section "Gabt" GABT_IDX
+# Install zaed binary
+Section "zaed" zaed_IDX
   SetOutPath $INSTDIR
-  file {{.Gabt}}
+  file {{.zaed}}
 
   # Create start menu launcher
   createDirectory "$SMPROGRAMS\${APPNAME}"
-  createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "$INSTDIR\gabt.exe" "--fast" "--cache=512"
-  createShortCut "$SMPROGRAMS\${APPNAME}\Attach.lnk" "$INSTDIR\gabt.exe" "attach" "" ""
+  createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "$INSTDIR\zaed.exe" "--fast" "--cache=512"
+  createShortCut "$SMPROGRAMS\${APPNAME}\Attach.lnk" "$INSTDIR\zaed.exe" "attach" "" ""
   createShortCut "$SMPROGRAMS\${APPNAME}\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "" ""
 
   # Firewall - remove rules (if exists)
-  SimpleFC::AdvRemoveRule "Gabt incoming peers (TCP:32310)"
-  SimpleFC::AdvRemoveRule "Gabt outgoing peers (TCP:32310)"
-  SimpleFC::AdvRemoveRule "Gabt UDP discovery (UDP:32310)"
+  SimpleFC::AdvRemoveRule "zaed incoming peers (TCP:32310)"
+  SimpleFC::AdvRemoveRule "zaed outgoing peers (TCP:32310)"
+  SimpleFC::AdvRemoveRule "zaed UDP discovery (UDP:32310)"
 
   # Firewall - add rules
-  SimpleFC::AdvAddRule "Gabt incoming peers (TCP:32310)" ""  6 1 1 2147483647 1 "$INSTDIR\gabt.exe" "" "" "Zerium" 30303 "" "" ""
-  SimpleFC::AdvAddRule "Gabt outgoing peers (TCP:32310)" ""  6 2 1 2147483647 1 "$INSTDIR\gabt.exe" "" "" "Zerium" "" 30303 "" ""
-  SimpleFC::AdvAddRule "Gabt UDP discovery (UDP:32310)" "" 17 2 1 2147483647 1 "$INSTDIR\gabt.exe" "" "" "Zerium" "" 30303 "" ""
+  SimpleFC::AdvAddRule "zaed incoming peers (TCP:32310)" ""  6 1 1 2147483647 1 "$INSTDIR\zaed.exe" "" "" "Zerium" 30303 "" "" ""
+  SimpleFC::AdvAddRule "zaed outgoing peers (TCP:32310)" ""  6 2 1 2147483647 1 "$INSTDIR\zaed.exe" "" "" "Zerium" "" 30303 "" ""
+  SimpleFC::AdvAddRule "zaed UDP discovery (UDP:32310)" "" 17 2 1 2147483647 1 "$INSTDIR\zaed.exe" "" "" "Zerium" "" 30303 "" ""
 
   # Set default IPC endpoint (https://github.com/apolo-technologies/EIPs/issues/147)
-  ${EnvVarUpdate} $0 "ZERIUM_SOCKET" "R" "HKLM" "\\.\pipe\gabt.ipc"
-  ${EnvVarUpdate} $0 "ZERIUM_SOCKET" "A" "HKLM" "\\.\pipe\gabt.ipc"
+  ${EnvVarUpdate} $0 "ZERIUM_SOCKET" "R" "HKLM" "\\.\pipe\zaed.ipc"
+  ${EnvVarUpdate} $0 "ZERIUM_SOCKET" "A" "HKLM" "\\.\pipe\zaed.ipc"
 
   # Add instdir to PATH
   Push "$INSTDIR"
@@ -54,8 +54,8 @@ Var GetInstalledSize.total
 Function GetInstalledSize
   StrCpy $GetInstalledSize.total 0
 
-  ${if} ${SectionIsSelected} ${GABT_IDX}
-    SectionGetSize ${GABT_IDX} $0
+  ${if} ${SectionIsSelected} ${zaed_IDX}
+    SectionGetSize ${zaed_IDX} $0
     IntOp $GetInstalledSize.total $GetInstalledSize.total + $0
   ${endif}
 

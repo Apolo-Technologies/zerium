@@ -1,6 +1,6 @@
 ## Go Zerium Dashboard
 
-The dashboard is a data visualizer integrated into gabt, intended to collect and visualize useful information of an Zerium node. It consists of two parts:
+The dashboard is a data visualizer integrated into zaed, intended to collect and visualize useful information of an Zerium node. It consists of two parts:
 
 * The client visualizes the collected data.
 * The server collects the data, and updates the clients.
@@ -15,14 +15,14 @@ As the dashboard depends on certain NPM packages (which are not included in the 
 $ (cd dashboard/assets && npm install)
 ```
 
-Normally the dashboard assets are bundled into Gabt via `go-bindata` to avoid external dependencies. Rebuilding Gabt after each UI modification however is not feasible from a developer perspective. Instead, we can run `webpack` in watch mode to automatically rebundle the UI, and ask `gabt` to use external assets to not rely on compiled resources:
+Normally the dashboard assets are bundled into zaed via `go-bindata` to avoid external dependencies. Rebuilding zaed after each UI modification however is not feasible from a developer perspective. Instead, we can run `webpack` in watch mode to automatically rebundle the UI, and ask `zaed` to use external assets to not rely on compiled resources:
 
 ```
 $ (cd dashboard/assets && ./node_modules/.bin/webpack --watch)
-$ gabt --dashboard --dashboard.assets=dashboard/assets/public --vmodule=dashboard=5
+$ zaed --dashboard --dashboard.assets=dashboard/assets/public --vmodule=dashboard=5
 ```
 
-To bundle up the final UI into Gabt, run `webpack` and `go generate`:
+To bundle up the final UI into zaed, run `webpack` and `go generate`:
 
 ```
 $ (cd dashboard/assets && ./node_modules/.bin/webpack)

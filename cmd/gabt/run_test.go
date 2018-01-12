@@ -27,14 +27,14 @@ import (
 )
 
 func tmpdir(t *testing.T) string {
-	dir, err := ioutil.TempDir("", "gabt-test")
+	dir, err := ioutil.TempDir("", "zaed-test")
 	if err != nil {
 		t.Fatal(err)
 	}
 	return dir
 }
 
-type testgabt struct {
+type testzaed struct {
 	*cmdtest.TestCmd
 
 	// template variables for expect
@@ -43,8 +43,8 @@ type testgabt struct {
 }
 
 func init() {
-	// Run the app if we've been exec'd as "gabt-test" in runGzrm.
-	reexec.Register("gabt-test", func() {
+	// Run the app if we've been exec'd as "zaed-test" in runGzrm.
+	reexec.Register("zaed-test", func() {
 		if err := app.Run(os.Args); err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
@@ -61,10 +61,10 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-// spawns gabt with the given command line args. If the args don't set --datadir, the
+// spawns zaed with the given command line args. If the args don't set --datadir, the
 // child g gets a temporary data directory.
-func runGabt(t *testing.T, args ...string) *testgabt {
-	tt := &testgabt{}
+func runzaed(t *testing.T, args ...string) *testzaed {
+	tt := &testzaed{}
 	tt.TestCmd = cmdtest.NewTestCmd(t, tt)
 	for i, arg := range args {
 		switch {
@@ -90,9 +90,9 @@ func runGabt(t *testing.T, args ...string) *testgabt {
 		}()
 	}
 
-	// Boot "gabt". This actually runs the test binary but the TestMain
+	// Boot "zaed". This actually runs the test binary but the TestMain
 	// function will prevent any tests from running.
-	tt.Run("gabt-test", args...)
+	tt.Run("zaed-test", args...)
 
 	return tt
 }

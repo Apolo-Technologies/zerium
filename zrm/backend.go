@@ -140,7 +140,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Zerium, error) {
 	if !config.SkipBcVersionCheck {
 		bcVersion := core.GetBlockChainVersion(chainDb)
 		if bcVersion != core.BlockChainVersion && bcVersion != 0 {
-			return nil, fmt.Errorf("Blockchain DB version mismatch (%d / %d). Run gabt upgradedb.\n", bcVersion, core.BlockChainVersion)
+			return nil, fmt.Errorf("Blockchain DB version mismatch (%d / %d). Run zaed upgradedb.\n", bcVersion, core.BlockChainVersion)
 		}
 		core.WriteBlockChainVersion(chainDb, core.BlockChainVersion)
 	}
@@ -184,7 +184,7 @@ func makeExtraData(extra []byte) []byte {
 		// create default extradata
 		extra, _ = rlp.EncodeToBytes([]interface{}{
 			uint(params.VersionMajor<<16 | params.VersionMinor<<8 | params.VersionPatch),
-			"gabt",
+			"zaed",
 			runtime.Version(),
 			runtime.GOOS,
 		})

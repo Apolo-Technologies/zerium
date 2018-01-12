@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the zerium library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package gabt contains the simplified mobile APIs to zerium.
+// Package zaed contains the simplified mobile APIs to zerium.
 //
 // The scope of this package is *not* to allow writing a custom Zerium client
 // with pieces plucked from zerium, rather to allow writing native dapps on
@@ -58,4 +58,4 @@
 // Note, a panic *cannot* cross over language boundaries, instead will result in
 // an undebuggable SEGFAULT in the process. For error handling only ever use error
 // returns, which may be the only or the second return.
-package gabt
+package zaed

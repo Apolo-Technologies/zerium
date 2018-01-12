@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-  spec.name         = 'Gabt'
+  spec.name         = 'zaed'
   spec.version      = '{{.Version}}'
   spec.license      = { :type => 'GNU Lesser General Public License, Version 3.0' }
   spec.homepage     = 'https://github.com/apolo-technologies/zerium'
@@ -14,7 +14,7 @@ Pod::Spec.new do |spec|
 	spec.ios.vendored_frameworks = 'Frameworks/Gzrm.framework'
 
 	spec.prepare_command = <<-CMD
-    curl https://gabtstore.blob.core.windows.net/builds/{{.Archive}}.tar.gz | tar -xvz
+    curl https://zaedstore.blob.core.windows.net/builds/{{.Archive}}.tar.gz | tar -xvz
     mkdir Frameworks
     mv {{.Archive}}/Gzrm.framework Frameworks
     rm -rf {{.Archive}}

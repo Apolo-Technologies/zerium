@@ -16,7 +16,7 @@
 
 // +build !android,!ios
 
-package gabt
+package zaed
 
 // clientIdentifier is a hard coded identifier to report into the network.
-var clientIdentifier = "GabtMobile"
+var clientIdentifier = "zaedMobile"

@@ -16,7 +16,7 @@
 
 // Contains a wrapper for the Zerium client.
 
-package gabt
+package zaed
 
 import (
 	"math/big"

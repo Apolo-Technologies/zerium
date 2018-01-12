@@ -16,7 +16,7 @@
 
 // +build ios
 
-package gabt
+package zaed
 
 // clientIdentifier is a hard coded identifier to report into the network.
-var clientIdentifier = "iGabt"
+var clientIdentifier = "izaed"

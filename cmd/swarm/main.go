@@ -104,7 +104,7 @@ var (
 	EnsAPIFlag = cli.StringFlag{
 		Name:  "ens-api",
 		Usage: "URL of the Zerium API provider to use for ENS record lookups",
-		Value: node.DefaultIPCEndpoint("gabt"),
+		Value: node.DefaultIPCEndpoint("zaed"),
 	}
 	EnsAddrFlag = cli.StringFlag{
 		Name:  "ens-addr",
@@ -149,7 +149,7 @@ var (
 
 var defaultNodeConfig = node.DefaultConfig
 
-// This init function sets defaults so cmd/swarm can run alongside gabt.
+// This init function sets defaults so cmd/swarm can run alongside zaed.
 func init() {
 	defaultNodeConfig.Name = clientIdentifier
 	defaultNodeConfig.Version = params.VersionWithCommit(gitCommit)

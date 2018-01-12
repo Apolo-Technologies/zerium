@@ -62,19 +62,19 @@ import (
 )
 
 var (
-	// Files that end up in the gabt*.zip archive.
-	gabtArchiveFiles = []string{
+	// Files that end up in the zaed*.zip archive.
+	zaedArchiveFiles = []string{
 		"COPYING",
-		executablePath("gabt"),
+		executablePath("zaed"),
 	}
 
-	// Files that end up in the gabt-alltools*.zip archive.
+	// Files that end up in the zaed-alltools*.zip archive.
 	allToolsArchiveFiles = []string{
 		"COPYING",
 		executablePath("abigen"),
 		executablePath("bootnode"),
 		executablePath("evm"),
-		executablePath("gabt"),
+		executablePath("zaed"),
 		executablePath("puppeth"),
 		executablePath("rlpdump"),
 		executablePath("swarm"),
@@ -96,7 +96,7 @@ var (
 			Description: "Developer utility version of the EVM (Zerium Virtual Machine) that is capable of running bytecode snippets within a configurable environment and execution mode.",
 		},
 		{
-			Name:        "gabt",
+			Name:        "zaed",
 			Description: "Zerium CLI client.",
 		},
 		{
@@ -322,7 +322,7 @@ func doLint(cmdline []string) {
 	build.MustRun(goTool("get", "gopkg.in/alecthomas/gometalinter.v1"))
 	build.MustRunCommand(filepath.Join(GOBIN, "gometalinter.v1"), "--install")
 
-	// Run fast linters batched togabter
+	// Run fast linters batched tozaeder
 	configs := []string{"--vendor", "--disable-all", "--enable=vet", "--enable=gofmt", "--enable=misspell"}
 	build.MustRunCommand(filepath.Join(GOBIN, "gometalinter.v1"), append(configs, packages...)...)
 
@@ -340,7 +340,7 @@ func doArchive(cmdline []string) {
 		arch   = flag.String("arch", runtime.GOARCH, "Architecture cross packaging")
 		atype  = flag.String("type", "zip", "Type of archive to write (zip|tar)")
 		signer = flag.String("signer", "", `Environment variable holding the signing key (e.g. LINUX_SIGNING_KEY)`)
-		upload = flag.String("upload", "", `Destination to upload the archives (usually "gabtstore/builds")`)
+		upload = flag.String("upload", "", `Destination to upload the archives (usually "zaedstore/builds")`)
 		ext    string
 	)
 	flag.CommandLine.Parse(cmdline)
@@ -356,17 +356,17 @@ func doArchive(cmdline []string) {
 	var (
 		env      = build.Env()
 		base     = archiveBasename(*arch, env)
-		gabt     = "gabt-" + base + ext
-		alltools = "gabt-alltools-" + base + ext
+		zaed     = "zaed-" + base + ext
+		alltools = "zaed-alltools-" + base + ext
 	)
 	maybeSkipArchive(env)
-	if err := build.WriteArchive(gabt, gabtArchiveFiles); err != nil {
+	if err := build.WriteArchive(zaed, zaedArchiveFiles); err != nil {
 		log.Fatal(err)
 	}
 	if err := build.WriteArchive(alltools, allToolsArchiveFiles); err != nil {
 		log.Fatal(err)
 	}
-	for _, archive := range []string{gabt, alltools} {
+	for _, archive := range []string{zaed, alltools} {
 		if err := archiveUpload(archive, *upload, *signer); err != nil {
 			log.Fatal(err)
 		}
@@ -493,7 +493,7 @@ func makeWorkdir(wdflag string) string {
 	if wdflag != "" {
 		err = os.MkdirAll(wdflag, 0744)
 	} else {
-		wdflag, err = ioutil.TempDir("", "gabt-build-")
+		wdflag, err = ioutil.TempDir("", "zaed-build-")
 	}
 	if err != nil {
 		log.Fatal(err)
@@ -630,7 +630,7 @@ func doWindowsInstaller(cmdline []string) {
 	var (
 		arch    = flag.String("arch", runtime.GOARCH, "Architecture for cross build packaging")
 		signer  = flag.String("signer", "", `Environment variable holding the signing key (e.g. WINDOWS_SIGNING_KEY)`)
-		upload  = flag.String("upload", "", `Destination to upload the archives (usually "gabtstore/builds")`)
+		upload  = flag.String("upload", "", `Destination to upload the archives (usually "zaedstore/builds")`)
 		workdir = flag.String("workdir", "", `Output directory for packages (uses temp dir if unset)`)
 	)
 	flag.CommandLine.Parse(cmdline)
@@ -642,28 +642,28 @@ func doWindowsInstaller(cmdline []string) {
 	var (
 		devTools []string
 		allTools []string
-		gabtTool string
+		zaedTool string
 	)
 	for _, file := range allToolsArchiveFiles {
 		if file == "COPYING" { // license, copied later
 			continue
 		}
 		allTools = append(allTools, filepath.Base(file))
-		if filepath.Base(file) == "gabt.exe" {
-			gabtTool = file
+		if filepath.Base(file) == "zaed.exe" {
+			zaedTool = file
 		} else {
 			devTools = append(devTools, file)
 		}
 	}
 
 	// Render NSIS scripts: Installer NSIS contains two installer sections,
-	// first section contains the gabt binary, second section holds the dev tools.
+	// first section contains the zaed binary, second section holds the dev tools.
 	templateData := map[string]interface{}{
 		"License":  "COPYING",
-		"Gabt":     gabtTool,
+		"zaed":     zaedTool,
 		"DevTools": devTools,
 	}
-	build.Render("build/nsis.gabt.nsi", filepath.Join(*workdir, "gabt.nsi"), 0644, nil)
+	build.Render("build/nsis.zaed.nsi", filepath.Join(*workdir, "zaed.nsi"), 0644, nil)
 	build.Render("build/nsis.install.nsh", filepath.Join(*workdir, "install.nsh"), 0644, templateData)
 	build.Render("build/nsis.uninstall.nsh", filepath.Join(*workdir, "uninstall.nsh"), 0644, allTools)
 	build.Render("build/nsis.pathupdate.nsh", filepath.Join(*workdir, "PathUpdate.nsh"), 0644, nil)
@@ -678,14 +678,14 @@ func doWindowsInstaller(cmdline []string) {
 	if env.Commit != "" {
 		version[2] += "-" + env.Commit[:8]
 	}
-	installer, _ := filepath.Abs("gabt-" + archiveBasename(*arch, env) + ".exe")
+	installer, _ := filepath.Abs("zaed-" + archiveBasename(*arch, env) + ".exe")
 	build.MustRunCommand("makensis.exe",
 		"/DOUTPUTFILE="+installer,
 		"/DMAJORVERSION="+version[0],
 		"/DMINORVERSION="+version[1],
 		"/DBUILDVERSION="+version[2],
 		"/DARCH="+*arch,
-		filepath.Join(*workdir, "gabt.nsi"),
+		filepath.Join(*workdir, "zaed.nsi"),
 	)
 
 	// Sign and publish installer.
@@ -701,7 +701,7 @@ func doAndroidArchive(cmdline []string) {
 		local  = flag.Bool("local", false, `Flag whether we're only doing a local build (skip Maven artifacts)`)
 		signer = flag.String("signer", "", `Environment variable holding the signing key (e.g. ANDROID_SIGNING_KEY)`)
 		deploy = flag.String("deploy", "", `Destination to deploy the archive (usually "https://oss.sonatype.org")`)
-		upload = flag.String("upload", "", `Destination to upload the archive (usually "gabtstore/builds")`)
+		upload = flag.String("upload", "", `Destination to upload the archive (usually "zaedstore/builds")`)
 	)
 	flag.CommandLine.Parse(cmdline)
 	env := build.Env()
@@ -720,7 +720,7 @@ func doAndroidArchive(cmdline []string) {
 
 	if *local {
 		// If we're building locally, copy bundle to build dir and skip Maven
-		os.Rename("gabt.aar", filepath.Join(GOBIN, "gabt.aar"))
+		os.Rename("zaed.aar", filepath.Join(GOBIN, "zaed.aar"))
 		return
 	}
 	meta := newMavenMetadata(env)
@@ -730,8 +730,8 @@ func doAndroidArchive(cmdline []string) {
 	maybeSkipArchive(env)
 
 	// Sign and upload the archive to Azure
-	archive := "gabt-" + archiveBasename("android", env) + ".aar"
-	os.Rename("gabt.aar", archive)
+	archive := "zaed-" + archiveBasename("android", env) + ".aar"
+	os.Rename("zaed.aar", archive)
 
 	if err := archiveUpload(archive, *upload, *signer); err != nil {
 		log.Fatal(err)
@@ -815,7 +815,7 @@ func newMavenMetadata(env build.Environment) mavenMetadata {
 	}
 	return mavenMetadata{
 		Version:      version,
-		Package:      "gabt-" + version,
+		Package:      "zaed-" + version,
 		Develop:      isUnstableBuild(env),
 		Contributors: contribs,
 	}
@@ -828,7 +828,7 @@ func doXCodeFramework(cmdline []string) {
 		local  = flag.Bool("local", false, `Flag whether we're only doing a local build (skip Maven artifacts)`)
 		signer = flag.String("signer", "", `Environment variable holding the signing key (e.g. IOS_SIGNING_KEY)`)
 		deploy = flag.String("deploy", "", `Destination to deploy the archive (usually "trunk")`)
-		upload = flag.String("upload", "", `Destination to upload the archives (usually "gabtstore/builds")`)
+		upload = flag.String("upload", "", `Destination to upload the archives (usually "zaedstore/builds")`)
 	)
 	flag.CommandLine.Parse(cmdline)
 	env := build.Env()
@@ -844,7 +844,7 @@ func doXCodeFramework(cmdline []string) {
 		build.MustRun(bind)
 		return
 	}
-	archive := "gabt-" + archiveBasename("ios", env)
+	archive := "zaed-" + archiveBasename("ios", env)
 	if err := os.Mkdir(archive, os.ModePerm); err != nil {
 		log.Fatal(err)
 	}
@@ -968,7 +968,7 @@ func xgoTool(args []string) *exec.Cmd {
 
 func doPurge(cmdline []string) {
 	var (
-		store = flag.String("store", "", `Destination from where to purge archives (usually "gabtstore/builds")`)
+		store = flag.String("store", "", `Destination from where to purge archives (usually "zaedstore/builds")`)
 		limit = flag.Int("days", 30, `Age threshold above which to delete unstalbe archives`)
 	)
 	flag.CommandLine.Parse(cmdline)

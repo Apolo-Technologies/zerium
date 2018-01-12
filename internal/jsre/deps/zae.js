@@ -1231,7 +1231,7 @@ SolidityParam.prototype.withOffset = function (offset) {
 };
 
 /**
- * This method should be used to combine solidity params togabter
+ * This method should be used to combine solidity params tozaeder
  * eg. when appending an array
  *
  * @method combine
@@ -1909,7 +1909,7 @@ var unitMap = {
     'kether':       '1000000000000000000000',
     'grand':        '1000000000000000000000',
     'mether':       '1000000000000000000000000',
-    'gabter':       '1000000000000000000000000000',
+    'zaeder':       '1000000000000000000000000000',
     'tether':       '1000000000000000000000000000000'
 };
 
@@ -2150,7 +2150,7 @@ var getValueOfUnit = function (unit) {
  * - zerium      --             --
  * - kether                    --           grand
  * - mether
- * - gabter
+ * - zaeder
  * - tether
  *
  * @method fromWei
@@ -2178,7 +2178,7 @@ var fromWei = function(number, unit) {
  * - zerium      --             --
  * - kether                    --           grand
  * - mether
- * - gabter
+ * - zaeder
  * - tether
  *
  * @method toWei
@@ -3239,7 +3239,7 @@ SolidityEvent.prototype.signature = function () {
  * @method encode
  * @param {Object} indexed
  * @param {Object} options
- * @return {Object} everything combined togabter and encoded
+ * @return {Object} everything combined tozaeder and encoded
  */
 SolidityEvent.prototype.encode = function (indexed, options) {
     indexed = indexed || {};

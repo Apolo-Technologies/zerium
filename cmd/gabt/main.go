@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with zerium. If not, see <http://www.gnu.org/licenses/>.
 
-// gabt is the official command-line client for Zerium.
+// zaed is the official command-line client for Zerium.
 package main
 
 import (
@@ -40,13 +40,13 @@ import (
 )
 
 const (
-	clientIdentifier = "gabt" // Client identifier to advertise over the network
+	clientIdentifier = "zaed" // Client identifier to advertise over the network
 )
 
 var (
 	// Git SHA1 commit hash of the release (set via linker flags)
 	gitCommit = ""
-	// Zerium address of the Gabt release oracle.
+	// Zerium address of the zaed release oracle.
 	relOracle = common.HexToAddress("0xfa7b9770ca4cb04296cac84f37736d4041251cdf")
 	// The app that holds all commands and flags.
 	app = utils.NewApp(gitCommit, "the zerium command line interface")
@@ -143,8 +143,8 @@ var (
 )
 
 func init() {
-	// Initialize the CLI app and start Gabt
-	app.Action = gabt
+	// Initialize the CLI app and start zaed
+	app.Action = zaed
 	app.HideVersion = true // we have a command to print the version
 	app.Copyright = "Copyright 2013-2017 The zerium Authors"
 	app.Commands = []cli.Command{
@@ -207,10 +207,10 @@ func main() {
 	}
 }
 
-// gabt is the main entry point into the system if no special subcommand is ran.
+// zaed is the main entry point into the system if no special subcommand is ran.
 // It creates a default node based on the command line arguments and runs it in
 // blocking mode, waiting for it to be shut down.
-func gabt(ctx *cli.Context) error {
+func zaed(ctx *cli.Context) error {
 	node := makeFullNode(ctx)
 	startNode(ctx, node)
 	node.Wait()

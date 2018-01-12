@@ -16,7 +16,7 @@
 
 // Contains all the wrappers from the zerium root package.
 
-package gabt
+package zaed
 
 import (
 	"errors"
