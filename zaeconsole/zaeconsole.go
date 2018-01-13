@@ -117,7 +117,7 @@ func (c *Console) init(preload []string) error {
 	if err := c.jsre.Compile("bignumber.js", jsre.BigNumber_JS); err != nil {
 		return fmt.Errorf("bignumber.js: %v", err)
 	}
-	if err := c.jsre.Compile("zae.js", jsre.zae_JS); err != nil {
+	if err := c.jsre.Compile("zae.js", jsre.Zae_JS); err != nil {
 		return fmt.Errorf("zae.js: %v", err)
 	}
 	if _, err := c.jsre.Run("var zae = require('zae');"); err != nil {
