@@ -1,11 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\internal",
-    "\\internal\\jsre",
-    "\\internal\\jsre\\deps",
-    "\\internal\\zaeext"
+    "\\accounts",
+    "\\accounts\\abi",
+    "\\accounts\\abi\\bind",
+    "\\accounts\\abi\\bind\\backends",
+    "\\consensus",
+    "\\consensus\\abthash",
+    "\\light"
   ],
-  "SelectedNode": "\\internal\\jsre\\jsre.go",
+  "SelectedNode": "\\accounts\\abi\\bind\\backend.go",
   "PreviewInSolutionExplorer": false
 }
